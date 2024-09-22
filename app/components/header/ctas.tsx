@@ -1,15 +1,17 @@
+import AppointmentButton from "@/app/components/buttons/appointment";
+import {ReactNodeProps} from "@/lib/types/core";
 
 export default function HeaderCtas() {
     return (
         <HeaderCtasContainer>
             <a href="/" className="text-blue-600">Beitrag berechnen</a>
-            <a href="/" className="text-yellow-100 bg-orange rounded-full px-6 py-2">Termin vereinbaren</a>
+            <AppointmentButton key="appointment"/>
             <a href="/" className="text-blue-600">Fragen?</a>
         </HeaderCtasContainer>
     );
 }
 
-function HeaderCtasContainer({ children }) {
+function HeaderCtasContainer({ children }: ReactNodeProps) {
     return (
         <div className="flex gap-6 items-center">
             {children}

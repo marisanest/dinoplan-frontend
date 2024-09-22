@@ -8,7 +8,8 @@ import {AdvancedImage} from "@cloudinary/react";
 
 export default function LandingKeyPointsPointImage({point}: LandingKeyPointsPointProps) {
     const myImage = cloudinary.image(point.image);
-    myImage.resize(scale().width(2833));
+    myImage.resize(scale().width(2833)); // todo
+
     return (
         <LandingKeyPointsPointImageContainer>
             <AdvancedImage cldImg={myImage}/>
@@ -18,7 +19,7 @@ export default function LandingKeyPointsPointImage({point}: LandingKeyPointsPoin
 
 function LandingKeyPointsPointImageContainer({children}: ReactNodeProps) {
     return (
-        <div className="px-10">
+        <div className="px-x-xs">
             {children}
         </div>
     );

@@ -1,7 +1,14 @@
 :root {
+    --max-w-sm: 1000px;
 
-}
+    --spacing-x-sm: 5rem;
 
-body {
+    --spacing-y-xs: 2rem;
+    --spacing-y-s: 3.5rem;
+    --spacing-y-sm: 4.5rem;
+    --spacing-y-m: 6rem;
 
+    --gap-sm: 5rem;
+
+    --dino-bottom-offset: 2.5rem;
 }

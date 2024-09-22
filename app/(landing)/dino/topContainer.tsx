@@ -13,7 +13,7 @@ export default function LandingDinoTopContainer({children}: ReactNodeProps) {
     );
 
     return (
-        <div className={cn("bg-orange-200 rounded-bl-[50px] rounded-tr-[50px] p-14 flex flex-col transition-[box-shadow]", selectedSegment ? 'shadow-[0px_6px_10px_-10px_black]' : '')}>
+        <div className={cn("relative z-10 bg-orange-200 rounded-bl-[50px] rounded-tr-[50px] transition-[box-shadow] px-x-sm py-y-sm", selectedSegment ? 'shadow-[0px_6px_10px_-10px_black]' : 'shadow-[0px_0px_0px_0px_black]')}>
             {children}
         </div>
     );

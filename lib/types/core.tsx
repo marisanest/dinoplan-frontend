@@ -16,7 +16,17 @@ export type DinoSegmentType = {
     title: string,
     description: string,
     image: string,
+    checkmarks: CheckmarksType,
     width: string
+};
+
+export type CheckmarksType = {
+    items: string[];
+    dot: DotType;
+};
+
+export type DotType = {
+    backgroundColor?: string;
 };
 
 export type KeyPointType = {

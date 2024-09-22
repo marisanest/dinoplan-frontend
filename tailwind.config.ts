@@ -13,6 +13,7 @@ const config: Config = {
         'blue-600': '#294290',
         'red-200': '#FAA19F',
         orange: '#E6B45A',
+        'orange-faded': '#eecb8d',
         'orange-600': '#CAA263',
         'orange-400': '#EFE6D6',
         'orange-200': '#F7F2EA',
@@ -22,8 +23,33 @@ const config: Config = {
         sm: 'calc(100dvw - 20rem)'
       },
       maxWidth: {
-        'sm': '1100px'
+        'sm': 'var(--max-w-sm)'
       },
+      padding: {
+        'x-xs': 'var(--spacing-y-xs)',
+        'x-s': 'var(--spacing-y-s)',
+        'x-sm': 'var(--spacing-y-sm)',
+        'x-m': 'var(--spacing-y-m)',
+
+        'y-xs': 'var(--spacing-y-xs)',
+        'y-s': 'var(--spacing-y-s)',
+        'y-sm': 'var(--spacing-y-sm)',
+        'y-m': 'var(--spacing-y-m)',
+      },
+     margin: {
+       'x-xs': 'var(--spacing-y-xs)',
+       'x-s': 'var(--spacing-y-s)',
+       'x-sm': 'var(--spacing-y-sm)',
+       'x-m': 'var(--spacing-y-m)',
+
+       'y-xs': 'var(--spacing-y-xs)',
+       'y-s': 'var(--spacing-y-s)',
+       'y-sm': 'var(--spacing-y-sm)',
+       'y-m': 'var(--spacing-y-m)',
+     },
+      gap: {
+        sm: 'var(--gap-sm)',
+      }
     },
   },
   plugins: [],

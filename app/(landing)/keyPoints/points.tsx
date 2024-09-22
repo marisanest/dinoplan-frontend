@@ -46,7 +46,7 @@ export default function LandingKeyPointsPoints() {
 
 function LandingKeyPointsPointsContainer({children}: ReactNodeProps) {
     return (
-        <div className="grid grid-cols-3 mt-10 px-10">
+        <div className="grid grid-cols-3 mt-y-s">
             {children}
         </div>
     );
