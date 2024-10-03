@@ -1,9 +1,28 @@
 import {ReactNodeProps} from "@/lib/types/core";
 import cn from "clsx";
 
-export default function Title({className, children}: ReactNodeProps) {
+export type TitleProps = {
+    size?: "xs" | "sm" | "md" | "lg" | "xl";
+    color?: string;
+    align?: "left" | "center" | "right";
+} & ReactNodeProps
+
+const sizeToClasses: { [key: string]: string } = {
+    xl: 'text-5xl font-medium',
+    lg: 'text-3xl font-medium',
+    md: 'text-xl font-medium',
+    sm: 'text-lg font-medium',
+}
+
+const alignToClasses: { [key: string]: string } = {
+    left: 'justify-start',
+    center: 'justify-center text-center',
+    right: 'justify-end',
+}
+
+export default function Title({className, children, size = 'xl', color = 'text-blue-600', align = 'center'}: TitleProps) {
     return (
-        <TitleContainer className={className}>
+        <TitleContainer className={cn(className, sizeToClasses[size], color, alignToClasses[align])}>
             {children}
         </TitleContainer>
     );
@@ -11,7 +30,7 @@ export default function Title({className, children}: ReactNodeProps) {
 
 function TitleContainer({className, children}: ReactNodeProps) {
     return (
-        <div className={cn("flex justify-center items-center w-full text-4xl font-medium text-blue-600 text-center", className)}>
+        <div className={cn("flex items-center w-full", className)}>
             {children}
         </div>
     );

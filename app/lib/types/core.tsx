@@ -30,7 +30,31 @@ export type DotType = {
 };
 
 export type KeyPointType = {
-    id: number,
-    title: string,
-    image: string,
+    id: number;
+    title: string;
+    image: string;
+}
+
+export type ServiceType = {
+    id: number;
+    title: string;
+    segment: 'Sparen' | 'Ernstfallabsicherung' | 'Zusatzversicherungen';
+    example: ServiceExampleType;
+}
+
+export type ServiceExampleType = {
+    input: string[];
+    output: string[];
+}
+
+export type LinkType = {
+    type: 'internal' | 'external' | 'email';
+    href: string;
+}
+
+
+export type Characteristic = {
+    id: number;
+    title: string;
+    description: string;
 }
