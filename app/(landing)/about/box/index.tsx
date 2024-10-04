@@ -11,7 +11,7 @@ export default function LandingAboutBox() {
                 <LandingAboutBoxImage key="image" />
             </div>
             <div className="w-fit">
-                <AppointmentButton className="mt-y-xs" />
+                <AppointmentButton className="mt-3" />
             </div>
         </LandingAboutBoxContainer>
     );
@@ -19,7 +19,7 @@ export default function LandingAboutBox() {
 
 function LandingAboutBoxContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full bg-orange-200 rounded-2xl py-y-xs px-x-s flex flex-col items-center">
+        <div className="w-full bg-orange-200 rounded-3xl py-y-s px-x-s flex flex-col items-center">
             {children}
         </div>
     );

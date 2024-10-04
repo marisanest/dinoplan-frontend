@@ -4,9 +4,9 @@ import {ReactNodeProps} from "@/lib/types/core";
 export default function HeaderCtas() {
     return (
         <HeaderCtasContainer>
-            <a href="/" className="text-blue-600">Beitrag berechnen</a>
+            <a href="/rechner" className="text-blue-600">Beitrag berechnen</a>
             <AppointmentButton key="appointment"/>
-            <a href="/" className="text-blue-600">Fragen?</a>
+            <a href="/#faq" className="text-blue-600">Fragen?</a>
         </HeaderCtasContainer>
     );
 }

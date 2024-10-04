@@ -57,4 +57,11 @@ export type Characteristic = {
     id: number;
     title: string;
     description: string;
+    iconComponent: ReactNode;
+}
+
+export type QuestionType = {
+    id: number;
+    question: string;
+    answer: string;
 }

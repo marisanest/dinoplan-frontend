@@ -1,16 +1,17 @@
 import type {ReactNode} from 'react';
 import Link from "next/link";
-import {LinkProps} from "@/components/link/index";
+import {ReactNodeProps} from "@/lib/types/core";
 
 export type InternalLinkProps = {
+  href: string;
   replace?: boolean;
   scroll?: boolean;
   prefetch?: boolean;
-} & LinkProps;
+} & ReactNodeProps;
 
 export default function InternalLink({
   className,
-  link,
+  href,
   replace = false,
   scroll = false,
   prefetch = true,
@@ -18,7 +19,7 @@ export default function InternalLink({
 }: InternalLinkProps): ReactNode {
   return (
     <Link
-        href={link.href}
+        href={href}
         className={className}
         replace={replace}
         scroll={scroll}

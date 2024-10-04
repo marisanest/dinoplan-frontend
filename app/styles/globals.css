@@ -12,3 +12,9 @@
 
     --dino-bottom-offset: 2.5rem;
 }
+
+
+html,
+body {
+    font-family: var(--font-nunito);
+}

@@ -1,14 +1,18 @@
 import type {ReactNode} from 'react';
-import {LinkProps} from "@/components/link/index";
+import {ReactNodeProps} from "@/lib/types/core";
+
+export type EmailLinkProps = {
+  href: string;
+} & ReactNodeProps;
 
 export default function EmailLink({
   className,
-  link,
+  href,
   children,
-}: LinkProps): ReactNode {
+}: EmailLinkProps): ReactNode {
   return (
       <a className={className}
-         href={link.href}>
+         href={href}>
         {children && children}
       </a>
   );

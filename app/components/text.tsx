@@ -2,7 +2,7 @@ import {ReactNodeProps} from "@/lib/types/core";
 import cn from "clsx";
 
 export type TextProps = {
-    trustedHtml: string | TrustedHTML;
+    trustedHtml: string | TrustedHTML | undefined;
     size?: "xs" | "sm" | "md" | "lg" | "xl";
     color?: string;
     align?: "left" | "center" | "right";
@@ -32,6 +32,6 @@ export default function RichText({className, trustedHtml, size = 'lg', color = '
 
 function RichTextContainer({className, trustedHtml}: Pick<TextProps, 'trustedHtml'> & ReactNodeProps) {
     return (
-        <p className={cn("flex items-center w-full", className)} dangerouslySetInnerHTML={{ __html: trustedHtml }} />
+        <p className={cn("flex items-center w-full", className)} dangerouslySetInnerHTML={{ __html: trustedHtml ?? '' }} />
     );
 }

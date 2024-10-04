@@ -4,22 +4,29 @@ import cn from "clsx"
 type BannerProps = {
     fixed?: boolean;
     isHeader?: boolean;
+    isFooter?: boolean;
 }
 
-export default function Banner({ className = "bg-yellow-100", fixed = false, isHeader = false, children }: BannerProps & ReactNodeProps) {
-    const compiledClassName = cn('h-20 px-10 rounded-full flex justify-between items-center w-full', className, fixed ? 'z-50 fixed left-0 right-0 top-0' : '')
+export default function Banner({ className = "bg-yellow-100", fixed = false, isHeader = false, isFooter = false, children }: BannerProps & ReactNodeProps) {
+    className = cn('h-20 px-10 rounded-full flex justify-between items-center w-full', className, fixed ? 'z-50 fixed left-0 right-0 top-0' : '')
 
-    return (
-        <>
-            {isHeader ? (
-                <header className={compiledClassName}>
-                    {children}
-                </header>
-            ) : (
-                <div className={compiledClassName}>
-                    {children}
-                </div>
-            )}
-        </>
-    );
+    if (isHeader) {
+        return (
+            <header className={className}>
+                {children}
+            </header>
+        )
+    } else if (isFooter) {
+        return (
+            <footer className={className}>
+                {children}
+            </footer>
+        )
+    } else {
+        return (
+            <div className={className}>
+            {children}
+            </div>
+        )
+    }
 }

@@ -1,16 +1,20 @@
 import type {ReactNode} from 'react';
-import {LinkProps} from "@/components/link/index";
+import {ReactNodeProps} from "@/lib/types/core";
+
+export type ExternalLinkProps = {
+  href: string;
+} & ReactNodeProps;
 
 export default function ExternalLink({
   className,
-  link,
+  href,
   children,
-}: LinkProps): ReactNode {
+}: ExternalLinkProps): ReactNode {
   return (
       <a className={className}
          target="_blank"
          rel="noopener noreferrer"
-         href={link.href}>
+         href={href}>
         {children && children}
       </a>
   );

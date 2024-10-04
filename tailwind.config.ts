@@ -52,6 +52,10 @@ const config: Config = {
         sm: 'var(--gap-sm)',
       }
     },
+    fontFamily: {
+      nunito: ['var(--font-nunito)'],
+      afacad: ['var(--font-afacad)'],
+    },
   },
   plugins: [],
 };

@@ -15,7 +15,7 @@ export default function LandingStartTitle() {
 
 function LandingStartTitleContainer({children}: ReactNodeProps) {
     return (
-        <div className="text-blue-600 text-7xl font-medium flex flex-col h-[85dvh] justify-center">
+        <div className="text-blue-600 text-7xl font-medium flex flex-col h-[85dvh] justify-center font-afacad">
             {children}
         </div>
     );

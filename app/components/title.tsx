@@ -30,7 +30,7 @@ export default function Title({className, children, size = 'xl', color = 'text-b
 
 function TitleContainer({className, children}: ReactNodeProps) {
     return (
-        <div className={cn("flex items-center w-full", className)}>
+        <div className={cn("flex items-center w-full !font-afacad", className)}>
             {children}
         </div>
     );
