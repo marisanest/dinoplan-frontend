@@ -8,7 +8,9 @@ export default function LandingAboutBoxPersonalFeature({personalFeature}) {
         <LandingAboutBoxPersonalFeatureContainer>
             <LandingAboutBoxPersonalFeatureIcon personalFeature={personalFeature} />
             <div>
-                <Title key="title" size="sm" align="left">{personalFeature.title}</Title>
+                <Title key="title" size="sm" align="left">
+                    {personalFeature.name}
+                </Title>
                 <div key="description" className="flex items-center w-full mt-2 font-normal text-sm justify-start text-blue-600" >
                     <PortableText value={personalFeature.description} />
                 </div>

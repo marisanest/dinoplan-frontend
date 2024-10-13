@@ -3,7 +3,7 @@ import cn from "clsx";
 import Link from "@/components/link";
 
 export type ButtonProps = {
-    colors?: 'default' | 'red';
+    colors?: 'default' | 'red' | 'blue';
     link?: LinkType;
     onClick?: () => void;
 } & ReactNodeProps;
@@ -11,6 +11,7 @@ export type ButtonProps = {
 const colorsToClasses = {
     default: 'border-blue-600 text-blue-600 hover:border-red-200 hover:bg-red-200 hover:text-yellow-100',
     red: 'border-red-200 bg-red-200 text-yellow-100 hover:border-red-200-faded hover:bg-red-200-faded',
+    blue: 'border-blue bg-blue text-yellow-100 ',
 }
 
 export default function Button({ className, children, colors = 'default', link, onClick }: ButtonProps) {

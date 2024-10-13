@@ -1,15 +1,16 @@
+import Logo from "@/components/logo/logo";
 
 export default function HeaderLogo() {
     return (
         <HeaderLogoContainer>
-            <a href="/">Dinoplan</a>
+            <a href="/"><Logo/></a>
         </HeaderLogoContainer>
     );
 }
 
 function HeaderLogoContainer({ children }) {
     return (
-        <div className="text-blue-600 font-bold text-4xl">
+        <div>
             {children}
         </div>
     );
