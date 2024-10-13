@@ -2,17 +2,21 @@ import {ReactNodeProps} from "@/lib/types/core";
 import Title from "@/app/components/title";
 import Description from "@/app/components/description";
 import LandingAboutBox from "@/(landing)/about/box";
+import {LandingProps} from "@/(landing)/landing";
+import {PortableText} from "next-sanity";
 
-export default function LandingAbout() {
+export default function LandingAbout({aboutPageSection}: Pick<LandingProps, 'aboutPageSection'>) {
+    if (!aboutPageSection) return null;
+
     return (
         <LandingAboutContainer>
-            <Title key="title">Wir sind Dinoplan</Title>
+            <Title key="title">
+                <PortableText value={aboutPageSection.title} />
+            </Title>
             <Description key="description" className="my-y-xs">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
-                Mauris viverra volutpat consequat. Maecenas non iaculis dolor.<br/>
-                Aliquam facilisis dolor vel elementum mollis. Nullam dapibus at ligula eget hendrerit.
+                <PortableText value={aboutPageSection.description} />
             </Description>
-            <LandingAboutBox key="box" />
+            <LandingAboutBox key="box" aboutPageSection={aboutPageSection} />
         </LandingAboutContainer>
     );
 }

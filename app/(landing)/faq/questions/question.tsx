@@ -2,18 +2,13 @@
 
 import {QuestionType, ReactNodeProps} from "@/lib/types/core";
 import RichText from "@/components/text";
-import CircleIcon from "@/components/icons/circle";
 import {useShallow} from "zustand/react/shallow";
 import useQuestionsStore from "@/lib/stores/useQuestionsStore";
 import LandingFaqQuestionAnswer from "@/(landing)/faq/questions/answer";
 import ArrowIcon from "@/components/icons/arrow";
 import cn from "clsx";
 
-export type LandingFaqQuestionProps = {
-    question: QuestionType;
-};
-
-export default function LandingFaqQuestion({question}: LandingFaqQuestionProps) {
+export default function LandingFaqQuestion({question}) {
     const { selectedQuestion, selectQuestion } = useQuestionsStore(
         useShallow((state) => ({
             selectedQuestion: state.selectedQuestion,

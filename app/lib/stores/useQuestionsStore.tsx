@@ -1,16 +1,15 @@
 import { create } from 'zustand';
-import {QuestionType} from "@/lib/types/core";
 
 export type UseQuestionsStoreProps = {
-  selectedQuestion: null | undefined | QuestionType;
-  selectQuestion: (service: QuestionType) => void;
+  selectedQuestion: null | undefined | any;
+  selectQuestion: (question: any) => void;
 }
 
 const useQuestionsStore = create<UseQuestionsStoreProps>((set, get) => ({
   selectedQuestion: null,
-  selectQuestion: (service) => {
+  selectQuestion: (question) => {
     const selectedQuestion = get().selectedQuestion;
-    const nextSelectedQuestion = selectedQuestion && selectedQuestion.id === service.id ? null : service
+    const nextSelectedQuestion = selectedQuestion && selectedQuestion.id === question.id ? null : question
 
     set({
       selectedQuestion: nextSelectedQuestion,

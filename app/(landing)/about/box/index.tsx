@@ -1,14 +1,15 @@
 import {ReactNodeProps} from "@/lib/types/core";
 import LandingAboutBoxImage from "@/(landing)/about/box/image";
-import LandingAboutBoxCharacteristics from "@/(landing)/about/box/characteristics";
+import LandingAboutBoxPersonalFeatures from "@/(landing)/about/box/personalFeatures";
 import AppointmentButton from "@/components/buttons/appointment";
+import {LandingProps} from "@/(landing)/landing";
 
-export default function LandingAboutBox() {
+export default function LandingAboutBox({aboutPageSection}: Pick<LandingProps, 'aboutPageSection'>) {
     return (
         <LandingAboutBoxContainer>
             <div className="grid grid-cols-2 gap-sm">
-                <LandingAboutBoxCharacteristics key="characteristics" />
-                <LandingAboutBoxImage key="image" />
+                <LandingAboutBoxPersonalFeatures key="personalFeatures" aboutPageSection={aboutPageSection} />
+                <LandingAboutBoxImage key="image" aboutPageSection={aboutPageSection} />
             </div>
             <div className="w-fit">
                 <AppointmentButton className="mt-3" />

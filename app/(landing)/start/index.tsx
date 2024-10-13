@@ -2,15 +2,18 @@ import {ReactNodeProps} from "@/lib/types/core";
 import LandingStartTitle from "@/app/(landing)/start/title";
 import LandingStartDescription from "@/app/(landing)/start/description";
 import LandingStartBackground from "@/app/(landing)/start/background";
+import {LandingProps} from "@/(landing)/landing";
 
-export default function LandingStart() {
+export default function LandingStart({startPageSection}: Pick<LandingProps, 'startPageSection'>) {
+    if (!startPageSection) return null;
+
     return (
         <LandingStartContainer>
             <div className="relative z-10">
-                <LandingStartTitle/>
-                <LandingStartDescription/>
+                <LandingStartTitle startPageSection={startPageSection} />
+                <LandingStartDescription startPageSection={startPageSection} />
             </div>
-            <LandingStartBackground key="background" />
+            <LandingStartBackground key="background" startPageSection={startPageSection} />
         </LandingStartContainer>
     );
 }

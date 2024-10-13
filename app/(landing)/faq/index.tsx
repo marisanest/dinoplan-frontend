@@ -1,18 +1,23 @@
 import {ReactNodeProps} from "@/lib/types/core";
 import Title from "@/app/components/title";
-import Description from "@/app/components/description";
-import LandingAboutBox from "@/(landing)/about/box";
-import RichText from "@/components/text";
 import LandingFaqImage from "@/(landing)/faq/image";
 import LandingFaqQuestions from "@/(landing)/faq/questions";
+import {LandingProps} from "@/(landing)/landing";
+import {PortableText} from "next-sanity";
 
-export default function LandingFaq() {
+export default function LandingFaq({faqPageSection}: Pick<LandingProps, 'faqPageSection'>) {
+    if (!faqPageSection) return null;
+
     return (
         <LandingFaqContainer>
-            <Title key="title">Häufig gestellte Fragen</Title>
-            <RichText key="sub-title" className="mt-3" size="xl" trustedHtml="zu Dinoplan" />
-            <LandingFaqImage key="image" />
-            <LandingFaqQuestions key="questions" />
+            <Title key="title">
+                <PortableText value={faqPageSection.title} />
+            </Title>
+            <div key="sub-title" className="mt-3 text-blue-600 flex items-center w-full justify-center text-center font-normal text-xl">
+                <PortableText value={faqPageSection.subTitle} />
+            </div>
+            <LandingFaqImage key="image" faqPageSection={faqPageSection} />
+            <LandingFaqQuestions key="questions" faqPageSection={faqPageSection} />
         </LandingFaqContainer>
     );
 }

@@ -1,16 +1,18 @@
-"use client"
-
 import {ReactNodeProps} from "@/lib/types/core";
-import {AdvancedImage} from "@cloudinary/react";
-import cn from "clsx";
-import {cloudinary} from "@/lib/cloudinary";
+import {LandingProps} from "@/(landing)/landing";
+import {urlFor} from "@/lib/sanity/image";
+import Image from "next/image";
 
-export default function LandingAboutBoxImage() {
-    const cldImg = cloudinary.image('dinoplan/Dinoplan_Final_Files_buvcau');
-
+export default function LandingAboutBoxImage({aboutPageSection}: Pick<LandingProps, 'aboutPageSection'>) {
     return (
         <LandingAboutBoxImageContainer>
-            <AdvancedImage className={cn('w-full h-auto')} cldImg={cldImg} />
+            <Image
+                src={urlFor(aboutPageSection.illustration)?.url()}
+                alt="Wir sind Dinoplan"
+                className="w-full h-auto"
+                height="310"
+                width="250"
+            />
         </LandingAboutBoxImageContainer>
     );
 }

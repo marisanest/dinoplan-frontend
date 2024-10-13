@@ -1,21 +1,22 @@
 import {ReactNodeProps} from "@/lib/types/core";
 import {useShallow} from "zustand/react/shallow";
 import useQuestionsStore from "@/lib/stores/useQuestionsStore";
-import {LandingFaqQuestionProps} from "@/(landing)/faq/questions/question";
-import RichText from "@/components/text";
+import {PortableText} from "next-sanity";
 
-export default function LandingFaqQuestionAnswer({question}: LandingFaqQuestionProps) {
+export default function LandingFaqQuestionAnswer({question}) {
     const { selectedQuestion } = useQuestionsStore(
         useShallow((state) => ({
             selectedQuestion: state.selectedQuestion,
         })),
     );
 
-    if (!selectedQuestion || selectedQuestion.id !== question.id) return null;
+    if (!selectedQuestion || selectedQuestion._id !== question._id) return null;
 
     return (
         <LandingFaqQuestionAnswerContainer>
-            <RichText trustedHtml={selectedQuestion.answer} size="md" align="left" />
+            <div className="flex items-center w-full justify-start font-light text-md text-blue-600">
+                <PortableText value={question.answer} />
+            </div>
         </LandingFaqQuestionAnswerContainer>
     );
 }

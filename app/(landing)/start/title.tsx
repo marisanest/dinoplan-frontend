@@ -1,14 +1,11 @@
 import {ReactNodeProps} from "@/lib/types/core";
+import {PortableText} from "next-sanity";
+import {LandingProps} from "@/(landing)/landing";
 
-export default function LandingStartTitle() {
+export default function LandingStartTitle({startPageSection}: Pick<LandingProps, 'startPageSection'>) {
     return (
         <LandingStartTitleContainer>
-            <h1>Dinoplan.</h1>
-            <h2>
-                Der Plan für dich
-                <br/>
-                und dein Kind.
-            </h2>
+            <PortableText value={startPageSection?.title} />
         </LandingStartTitleContainer>
     );
 }
