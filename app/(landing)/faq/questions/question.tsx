@@ -21,7 +21,7 @@ export default function LandingFaqQuestion({question}) {
             <div className="flex cursor-pointer" onClick={() => selectQuestion(question)}>
                 <RichText key={question.id} trustedHtml={question.question} align="left" size="lg"/>
                 <div className="bg-red-200 rounded-full w-7 h-7 flex justify-center items-center">
-                    <ArrowIcon className={cn("transition-transform duration-700", selectedQuestion && selectedQuestion.id === question.id ? 'rotate-180' : 'rotate-0')} />
+                    <ArrowIcon className={cn("transition-transform duration-700", selectedQuestion && selectedQuestion._id === question._id ? 'rotate-180' : 'rotate-0')} />
                 </div>
             </div>
             <LandingFaqQuestionAnswer question={question} />

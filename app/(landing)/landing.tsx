@@ -13,6 +13,7 @@ import LandingServiceSegments from "@/app/(landing)/serviceSegments";
 import LandingServiceFeatures from "@/(landing)/serviceFeatures";
 import LandingServiceModules from "@/(landing)/serviceModules";
 import LandingStart from "@/(landing)/start";
+import FooterImage from "@/components/footer/image";
 
 export type LandingProps = {
     startPageSection: PAGE_SECTION_START_QUERYResult;
@@ -33,6 +34,7 @@ export default function Landing({startPageSection, serviceSegmentsPageSection, s
             <LandingServiceModules serviceModulesPageSection={serviceModulesPageSection} />
             <LandingAbout aboutPageSection={aboutPageSection} />
             <LandingFaq faqPageSection={faqPageSection} />
+            <FooterImage/>
         </main>
 
     );

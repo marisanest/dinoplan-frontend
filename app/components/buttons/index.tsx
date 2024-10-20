@@ -3,7 +3,8 @@ import cn from "clsx";
 import Link from "@/components/link";
 
 export type ButtonProps = {
-    colors?: 'default' | 'red' | 'blue';
+    size?: 'base' | 'sm';
+    colors?: 'default' | 'red' | 'blue' | 'orange';
     link?: LinkType;
     onClick?: () => void;
 } & ReactNodeProps;
@@ -11,19 +12,31 @@ export type ButtonProps = {
 const colorsToClasses = {
     default: 'border-blue-600 text-blue-600 hover:border-red-200 hover:bg-red-200 hover:text-yellow-100',
     red: 'border-red-200 bg-red-200 text-yellow-100 hover:border-red-200-faded hover:bg-red-200-faded',
-    blue: 'border-blue bg-blue text-yellow-100 ',
+    blue: 'border-blue bg-blue text-yellow-100',
+    orange: 'border-orange bg-orange text-yellow-100',
 }
 
-export default function Button({ className, children, colors = 'default', link, onClick }: ButtonProps) {
+const sizesToClasses = {
+    base: 'h-[60px] border-[3px] text-lg',
+    sm: 'h-[50px] border-[3px] text-lg',
+}
+
+const sizesToChildrenClasses = {
+    base: 'px-[2rem]',
+    sm: 'px-[1rem]',
+}
+
+export default function Button({ className, children, size = 'base', colors = 'default', link, onClick }: ButtonProps) {
     const containerClassName = cn(
-        "rounded-full h-[60px] border-[3px] text-lg cursor-pointer transition-colors",
+        "rounded-full cursor-pointer transition-colors",
+        sizesToClasses[size],
         colorsToClasses[colors],
         className
     )
-    const childrenClassName = "px-[2rem] h-full flex justify-center items-center";
+    const childrenClassName = cn("h-full flex justify-center items-center", sizesToChildrenClasses[size]);
 
     if (link) {
-        children = <Link className={childrenClassName} link={link}>{children}</Link>
+        children = <Link className={childrenClassName} link={link} >{children}</Link>
     } else {
         children = <div className={childrenClassName}>{children}</div>
     }

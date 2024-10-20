@@ -12,6 +12,7 @@ const sizeToClasses: { [key: string]: string } = {
     lg: 'text-3xl font-medium',
     md: 'text-xl font-medium',
     sm: 'text-lg font-medium',
+    xs: 'text-base font-regular',
 }
 
 const alignToClasses: { [key: string]: string } = {

@@ -11,10 +11,66 @@
     --gap-sm: 5rem;
 
     --dino-bottom-offset: 2.5rem;
+
+    --blue: #4772D2;
+    --blue-600: #294290;
+    --blue-600-faded: #889bd3;
+    --red-200: #FAA19F;
+    --red-200-faded: #ffc7c6;
+    --orange: #E6B45A;
+    --orange-faded: #eecb8d;
+    --orange-600: #CAA263;
+    --orange-400: #EFE6D6;
+    --orange-200: #F7F2EA;
+    --yellow-100: #FFFFF;
 }
 
 
 html,
 body {
     font-family: var(--font-nunito);
+}
+
+
+
+input[type=text]:active,
+input[type=text]:focus,
+input[type=text]:focus-visible {
+    /*background-color: var(--yellow-100);*/
+    box-shadow: none;
+    outline: none;
+}
+
+input[type=text]::placeholder {
+    text-align: left;
+    color: var(--blue-600-faded);
+    opacity: 1;
+}
+
+input[type=text]::-ms-input-placeholder {
+    color: var(--blue);
+}
+
+.MuiInputBase-root {
+    border-radius: 0!important;
+    border: 0!important;
+}
+
+/*.css-w1u3ce {*/
+/*    display: none;*/
+/*}*/
+
+.MuiOutlinedInput-notchedOutline  {
+    /*display: none;*/
+    border: 2px solid var(--blue);
+}
+
+.MuiOutlinedInput-notchedOutline:hover  {
+    /*display: none;*/
+    border: 2px solid var(--blue);
+}
+
+
+.css-81qg8w {
+    color: var(--blue-600-faded)!important;
 }

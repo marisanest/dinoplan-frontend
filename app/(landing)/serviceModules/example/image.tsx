@@ -2,11 +2,7 @@ import {ArrayElement, ReactNodeProps, ServiceType} from "@/lib/types/core";
 import {AdvancedImage} from "@cloudinary/react";
 import cn from "clsx";
 import {cloudinary} from "@/lib/cloudinary";
-import {SERVICE_MODULES_QUERYResult} from "@/lib/types/sanity-types";
 
-export type LandingServiceModulesExampleImageProps = {
-    serviceModule: ArrayElement<SERVICE_MODULES_QUERYResult>;
-}
 
 const serviceModuleTypeToIllustration = {
     'Sparen': 'dinoplan/Dinoplan_Final_Files_Dino_Savings_cropped_egaqfj_22f51c',
@@ -14,8 +10,8 @@ const serviceModuleTypeToIllustration = {
     'Zusatzversicherungen': 'dinoplan/Dinoplan_Final_Files_Dino_Caring_cropped_iprhz3_90d2ee',
 }
 
-export default function LandingServiceModulesExampleImage({serviceModule}: LandingServiceModulesExampleImageProps) {
-    const cldImg = cloudinary.image(serviceModuleTypeToIllustration[serviceModule.type]);
+export default function LandingServiceModulesExampleImage({serviceModule}) {
+    const cldImg = cloudinary.image(serviceModuleTypeToIllustration["Sparen"]);
 
     return (
         <LandingServiceModulesExampleImageContainer>

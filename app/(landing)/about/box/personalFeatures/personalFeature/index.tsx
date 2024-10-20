@@ -3,10 +3,10 @@ import Title from "@/components/title";
 import LandingAboutBoxPersonalFeatureIcon from "@/(landing)/about/box/personalFeatures/personalFeature/icon";
 import {PortableText} from "next-sanity";
 
-export default function LandingAboutBoxPersonalFeature({personalFeature}) {
+export default function LandingAboutBoxPersonalFeature({personalFeature, index}) {
     return (
         <LandingAboutBoxPersonalFeatureContainer>
-            <LandingAboutBoxPersonalFeatureIcon personalFeature={personalFeature} />
+            <LandingAboutBoxPersonalFeatureIcon personalFeature={personalFeature} index={index} />
             <div>
                 <Title key="title" size="sm" align="left">
                     {personalFeature.name}

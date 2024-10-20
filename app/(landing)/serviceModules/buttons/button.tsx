@@ -1,16 +1,10 @@
 "use client"
 
 import Button from "@/app/components/buttons";
-import {ArrayElement} from "@/lib/types/core";
 import {useShallow} from "zustand/react/shallow";
 import useServiceModulesStore from "@/lib/stores/useServiceModulesStore";
-import {SERVICE_MODULES_QUERYResult} from "@/lib/types/sanity-types";
 
-export type LandingServiceModulesButtonProps = {
-    serviceModule: ArrayElement<SERVICE_MODULES_QUERYResult>;
-}
-
-export default function LandingServiceModulesButton({serviceModule}: LandingServiceModulesButtonProps) {
+export default function LandingServiceModulesButton({serviceModule}) {
     const { selectedServiceModule, selectServiceModule } = useServiceModulesStore(
         useShallow((state) => ({
             selectedServiceModule: state.selectedServiceModule,

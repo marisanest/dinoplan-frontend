@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         blue: '#4772D2',
+        'blue-faded': 'rgba(76,118,201,0.27)',
         'blue-600': '#294290',
         'red-200': '#FAA19F',
         'red-200-faded': '#ffc7c6',
@@ -17,6 +18,7 @@ const config: Config = {
         'orange-faded': '#eecb8d',
         'orange-600': '#CAA263',
         'orange-400': '#EFE6D6',
+        'orange-300': '#F3EBDF',
         'orange-200': '#F7F2EA',
         'yellow-100': '#FFFFFA'
       },

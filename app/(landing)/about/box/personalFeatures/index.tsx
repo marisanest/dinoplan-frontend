@@ -7,8 +7,8 @@ export default function LandingAboutBoxPersonalFeatures({aboutPageSection}: Pick
 
     return (
         <LandingAboutBoxPersonalFeaturesContainer>
-            {aboutPageSection.personalFeatures?.map((personalFeature) => (
-                <LandingAboutBoxPersonalFeature key={personalFeature.personalFeature?._id} personalFeature={personalFeature.personalFeature} />
+            {aboutPageSection.personalFeatures?.map((personalFeature, index) => (
+                <LandingAboutBoxPersonalFeature key={personalFeature.personalFeature?._id} personalFeature={personalFeature.personalFeature} index={index} />
             ))}
         </LandingAboutBoxPersonalFeaturesContainer>
     );
