@@ -7,7 +7,7 @@ const options = { next: { revalidate: 0 } };
 const SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "serviceSegment"] {
      _id,
      dinoPrefix,
-     dinoIllustration,
+     illustration,
      serviceModules[] {
       serviceModule-> {
         _id,

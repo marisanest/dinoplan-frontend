@@ -11,7 +11,7 @@ export default function LandingStartBackground({startPageSection}: Pick<LandingP
             <Image
                 src={urlFor(startPageSection.illustration)?.url()}
                 alt="Illustration"
-                className="ml-auto max-h-[75vh] w-auto"
+                className="ml-auto max-h-[calc(100dvh-5rem-10rem)] w-auto"
                 height="2833"
                 width="2078"
             />
@@ -21,7 +21,7 @@ export default function LandingStartBackground({startPageSection}: Pick<LandingP
 
 function LandingStartBackgroundContainer({children}: ReactNodeProps) {
     return (
-        <div className="absolute right-0 left-0 top-0 bottom-0 px-20 pt-20 flex flex-col items-center">
+        <div className="absolute right-0 left-0 top-0 bottom-0 px-20 pt-[5rem] flex flex-col items-center">
             {children}
         </div>
     );

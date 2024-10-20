@@ -14,16 +14,17 @@ const colorsToClasses = {
     red: 'border-red-200 bg-red-200 text-yellow-100 hover:border-red-200-faded hover:bg-red-200-faded',
     blue: 'border-blue bg-blue text-yellow-100',
     orange: 'border-orange bg-orange text-yellow-100',
+    bright: 'border-orange-200 bg-orange-200 text-blue-600'
 }
 
 const sizesToClasses = {
     base: 'h-[60px] border-[3px] text-lg',
-    sm: 'h-[50px] border-[3px] text-lg',
+    sm: 'h-[55px] border-[3px] text-lg',
 }
 
 const sizesToChildrenClasses = {
     base: 'px-[2rem]',
-    sm: 'px-[1rem]',
+    sm: 'px-[2rem]',
 }
 
 export default function Button({ className, children, size = 'base', colors = 'default', link, onClick }: ButtonProps) {

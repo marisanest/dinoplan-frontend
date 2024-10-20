@@ -14,6 +14,9 @@ import LandingServiceFeatures from "@/(landing)/serviceFeatures";
 import LandingServiceModules from "@/(landing)/serviceModules";
 import LandingStart from "@/(landing)/start";
 import FooterImage from "@/components/footer/image";
+import AppointmentButton from "@/components/buttons/appointment";
+import RichText from "@/components/text";
+import Button from "@/components/buttons";
 
 export type LandingProps = {
     startPageSection: PAGE_SECTION_START_QUERYResult;
@@ -22,13 +25,32 @@ export type LandingProps = {
     serviceModulesPageSection: PAGE_SECTION_SERVICE_MODULES_QUERYResult;
     aboutPageSection: PAGE_SECTION_ABOUT_QUERYResult;
     faqPageSection: PAGE_SECTION_FAQ_QUERYResult;
+    contact: any;
 }
 
-export default function Landing({startPageSection, serviceSegmentsPageSection, serviceFeaturesPageSection, serviceModulesPageSection, aboutPageSection, faqPageSection}: LandingProps) {
+export default function Landing({
+                                    startPageSection,
+                                    serviceSegmentsPageSection,
+                                    serviceFeaturesPageSection,
+                                    serviceModulesPageSection,
+                                    aboutPageSection,
+                                    faqPageSection,
+                                    contact,
+                                }: LandingProps) {
+
     return (
         <main>
-            <LandingStart startPageSection={startPageSection} />
-            <Banner className="bg-orange"></Banner>
+            <LandingStart startPageSection={startPageSection}
+                          serviceSegmentsPageSection={serviceSegmentsPageSection} />
+            <Banner className="bg-orange !justify-center gap-[2rem]">
+                <RichText className="!w-fit"
+                          trustedHtml="Lasse dich jetzt kostenlos online von unseren Experten beraten." />
+                <Button link={contact.calendly}
+                        size="sm"
+                        colors="bright">
+                    Termin vereinbaren
+                </Button>
+            </Banner>
             <LandingServiceSegments serviceSegmentsPageSection={serviceSegmentsPageSection} />
             <LandingServiceFeatures serviceFeaturesPageSection={serviceFeaturesPageSection} />
             <LandingServiceModules serviceModulesPageSection={serviceModulesPageSection} />

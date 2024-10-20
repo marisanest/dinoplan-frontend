@@ -4,7 +4,7 @@ import "./styles/tailwind.css";
 import "./styles/globals.css";
 import Header from "@/app/components/header/header";
 import {ReactNode} from "react";
-import localFont from 'next/font/local'
+import localFont from 'next/font/local';
 import Footer from "@/components/footer";
 
 const nunito = Nunito({
@@ -12,7 +12,6 @@ const nunito = Nunito({
     variable: '--font-nunito',
     display: 'swap',
 })
-
 const afacad = localFont({
     src: [
         {
@@ -72,9 +71,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${nunito.variable} ${afacad.variable}`}>
-      <Header />
-      {children}
-      <Footer />
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

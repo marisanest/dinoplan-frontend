@@ -6,6 +6,12 @@ import CheckmarkDot from "@/app/components/checkmarkDot";
 import useServiceSegmentsStore from "@/lib/stores/useServiceSegmentsStore";
 import {PortableText} from "next-sanity";
 
+const segmentNameToCheckmarkDotColor = {
+    'Geldanlage': 'bg-orange',
+    'Ernstfallabsicherung': 'bg-blue',
+    'Zusatzversicherungen': 'bg-red-200',
+}
+
 export default function LandingServiceSegmentsDescription() {
     const { selectedServiceSegment } = useServiceSegmentsStore(
         useShallow((state) => ({
@@ -25,7 +31,7 @@ export default function LandingServiceSegmentsDescription() {
                 <div className="flex flex-col gap-[1rem] w-full">
                     {selectedServiceSegment?.serviceModules?.map((serviceModule) => (
                         <div key={serviceModule.serviceModule?._id} className="flex items-center gap-[1rem] w-full">
-                            <CheckmarkDot />
+                            <CheckmarkDot backgroundColor={segmentNameToCheckmarkDotColor[selectedServiceSegment.name]} />
                             <div className="text-blue-600 break-words w-full">{serviceModule.serviceModule.name}</div>
                         </div>
                     ))}

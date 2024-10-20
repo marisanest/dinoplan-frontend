@@ -6,7 +6,7 @@ export default function CalculatorServiceSegmentImage({serviceSegment}: Calculat
     return (
         <div className="cursor-pointer">
             <Image
-                src={urlFor(serviceSegment.dinoIllustration)?.url()}
+                src={urlFor(serviceSegment.illustration)?.url()}
                 alt={serviceSegment.name}
                 className="w-full max-w-[250px]"
                 height="310"

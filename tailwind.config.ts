@@ -20,13 +20,16 @@ const config: Config = {
         'orange-400': '#EFE6D6',
         'orange-300': '#F3EBDF',
         'orange-200': '#F7F2EA',
-        'yellow-100': '#FFFFFA'
+        'yellow-100': '#FFFFFA',
+        'yellow-100-transparent': 'rgba(255,255,250,0.6)',
       },
       width: {
-        sm: 'calc(100dvw - 20rem)'
+        sm: 'calc(100dvw - 20rem)',
+        md: 'calc(100dvw - 10rem)',
       },
       maxWidth: {
-        'sm': 'var(--max-w-sm)'
+        'sm': 'var(--max-w-sm)',
+        'md': 'var(--max-w-md)'
       },
       padding: {
         'x-xs': 'var(--spacing-y-xs)',

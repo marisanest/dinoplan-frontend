@@ -24,7 +24,7 @@ export default function LandingServiceModulesExample() {
             </div>
             <div className="w-fit pt-y-s">
                 <Button colors="red"
-                        link={{type: 'internal', href: '/rechner'}}>
+                        link={{type: 'internal', url: '/rechner'}}>
                     Beitrag berechnen
                 </Button>
             </div>

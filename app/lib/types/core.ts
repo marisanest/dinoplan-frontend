@@ -49,7 +49,7 @@ export type ServiceExampleType = {
 
 export type LinkType = {
     type: 'internal' | 'external' | 'email';
-    href: string;
+    url: string;
 }
 
 

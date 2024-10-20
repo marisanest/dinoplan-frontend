@@ -17,7 +17,7 @@ export default function Link({
       return (
         <InternalLink
             className={className}
-            href={link.href}>
+            href={link.url}>
           {children}
         </InternalLink>
       );
@@ -25,7 +25,7 @@ export default function Link({
       return (
         <ExternalLink
           className={className}
-          href={link.href}>
+          href={link.url}>
           {children}
         </ExternalLink>
       );
@@ -33,7 +33,7 @@ export default function Link({
       return (
         <EmailLink
           className={className}
-          href={link.href}>
+          href={link.url}>
           {children}
         </EmailLink>
       );

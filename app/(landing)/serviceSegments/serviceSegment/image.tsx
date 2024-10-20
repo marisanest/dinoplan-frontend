@@ -15,7 +15,7 @@ export default function LandingServiceSegmentImage({serviceSegment}: LandingServ
     return (
         <div className="cursor-pointer" onClick={() => selectServiceSegment(serviceSegment)}>
             <Image
-                src={urlFor(serviceSegment.dinoIllustration)?.url()}
+                src={urlFor(serviceSegment.illustration)?.url()}
                 alt={serviceSegment.name}
                 className="w-full max-w-[250px]"
                 height="310"

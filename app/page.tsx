@@ -20,7 +20,7 @@ const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSection
            _id,
            name,
            dinoPrefix,
-           dinoIllustration,
+           illustration,
            description,
            serviceModules[] {
               serviceModule-> {
@@ -53,9 +53,10 @@ const PAGE_SECTION_SERVICE_MODULES_QUERY = defineQuery(`*[_type == "pageSections
         serviceModule-> {
            _id,
            name,
-           illustration,
-           name,
            example,
+           serviceSegment-> {
+              illustration
+           }
         }
     }
 }`);
@@ -88,6 +89,12 @@ const PAGE_SECTION_FAQ_QUERY = defineQuery(`*[_type == "pageSectionsFaq"][0] {
     illustration,
 }`);
 
+const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {
+    _id, 
+    email, 
+    calendly,
+}`);
+
 export default async function LandingPage() {
   const startPageSection = await client.fetch(PAGE_SECTION_START_QUERY, {}, options);
   const serviceSegmentsPageSection = await client.fetch(PAGE_SECTION_SERVICE_SEGMENTS_QUERY, {}, options);
@@ -95,6 +102,7 @@ export default async function LandingPage() {
   const serviceModulesPageSection = await client.fetch(PAGE_SECTION_SERVICE_MODULES_QUERY, {}, options);
   const aboutPageSection = await client.fetch(PAGE_SECTION_ABOUT_QUERY, {}, options);
   const faqPageSection = await client.fetch(PAGE_SECTION_FAQ_QUERY, {}, options);
+  const contact = await client.fetch(CONTACT_QUERY, {}, options);
 
   return (
       <Landing startPageSection={startPageSection}
@@ -102,6 +110,7 @@ export default async function LandingPage() {
                serviceFeaturesPageSection={serviceFeaturesPageSection}
                serviceModulesPageSection={serviceModulesPageSection}
                aboutPageSection={aboutPageSection}
-               faqPageSection={faqPageSection} />
+               faqPageSection={faqPageSection}
+               contact={contact} />
   );
 }

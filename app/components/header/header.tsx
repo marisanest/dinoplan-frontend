@@ -4,7 +4,7 @@ import Banner from "@/app/components/banner";
 
 export default function Header() {
     return (
-        <Banner fixed isHeader>
+        <Banner className="backdrop-blur-[10px] bg-yellow-100-transparent" fixed isHeader>
             <HeaderLogo />
             <HeaderCtas />
         </Banner>

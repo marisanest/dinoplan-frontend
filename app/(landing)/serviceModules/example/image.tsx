@@ -1,21 +1,17 @@
-import {ArrayElement, ReactNodeProps, ServiceType} from "@/lib/types/core";
-import {AdvancedImage} from "@cloudinary/react";
-import cn from "clsx";
-import {cloudinary} from "@/lib/cloudinary";
-
-
-const serviceModuleTypeToIllustration = {
-    'Sparen': 'dinoplan/Dinoplan_Final_Files_Dino_Savings_cropped_egaqfj_22f51c',
-    'Ernstfallabsicherung': 'dinoplan/Dinoplan_Final_Files_Dino_Super_cropped_b87i7p_3b12e1',
-    'Zusatzversicherungen': 'dinoplan/Dinoplan_Final_Files_Dino_Caring_cropped_iprhz3_90d2ee',
-}
+import {ReactNodeProps} from "@/lib/types/core";
+import {urlFor} from "@/lib/sanity/image";
+import Image from "next/image";
 
 export default function LandingServiceModulesExampleImage({serviceModule}) {
-    const cldImg = cloudinary.image(serviceModuleTypeToIllustration["Sparen"]);
-
     return (
         <LandingServiceModulesExampleImageContainer>
-            <AdvancedImage className={cn('w-full', 'max-w-[250px]')} cldImg={cldImg}/>
+            <Image
+                src={urlFor(serviceModule.serviceSegment.illustration)?.url()}
+                alt="Illustration"
+                className="w-full max-w-[250px]"
+                height="310"
+                width="250"
+            />
         </LandingServiceModulesExampleImageContainer>
     );
 }

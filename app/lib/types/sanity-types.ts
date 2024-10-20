@@ -74,43 +74,53 @@ export type Slug = {
   source?: string;
 };
 
+export type Contact = {
+  _id: string;
+  _type: "contact";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  email?: Link;
+  calendly?: Link;
+};
+
+export type Customer = {
+  _id: string;
+  _type: "customer";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  email?: string;
+  childName?: string;
+  childDateOfBirth?: string;
+  serviceModules?: Array<{
+    serviceModule?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "serviceModule";
+    };
+    _key: string;
+  }>;
+};
+
 export type CostCalculation = {
   _id: string;
   _type: "costCalculation";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
   inflationRate?: number;
   interestRate?: number;
 };
 
-export type PageSection = {
+export type PageSectionsImprint = {
   _id: string;
-  _type: "pageSection";
+  _type: "pageSectionsImprint";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  identifier?: string;
   title?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-  subTitle?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -554,7 +564,7 @@ export type ServiceSegment = {
   _rev: string;
   name?: string;
   dinoPrefix?: string;
-  dinoIllustration?: {
+  illustration?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -611,13 +621,7 @@ export type ServiceModule = {
     cost?: number;
     ageAtPayout?: number;
   };
-  costCalculationForInsurance?: Array<{
-    costPerMonth?: number;
-    minAge?: number;
-    hasChildPreExistingConditions?: boolean;
-    _type: "costsPerMonth";
-    _key: string;
-  }>;
+  costPerMonthForInsurance?: number;
   example?: {
     input?: Array<{
       children?: Array<{
@@ -715,11 +719,39 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | CostCalculation | PageSection | PageSectionsFaq | Question | PageSectionsAbout | PersonalFeature | PageSectionsServiceModules | PageSectionsServiceFeatures | PageSectionsServiceSegments | PageSectionsStart | ServiceFeature | ServiceSegment | ServiceModule | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type Link = {
+  _type: "link";
+  text?: string;
+  type?: string;
+  internalLink?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "none";
+  };
+  url?: string;
+  email?: string;
+  phone?: string;
+  value?: string;
+  blank?: boolean;
+  parameters?: string;
+  anchor?: string;
+};
+
+export type None = {
+  _id: string;
+  _type: "none";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  isNone?: boolean;
+};
+
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | Contact | Customer | CostCalculation | PageSectionsImprint | PageSectionsFaq | Question | PageSectionsAbout | PersonalFeature | PageSectionsServiceModules | PageSectionsServiceFeatures | PageSectionsServiceSegments | PageSectionsStart | ServiceFeature | ServiceSegment | ServiceModule | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Link | None;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../dinoplan-frontend/app/page.tsx
 // Variable: PAGE_SECTION_START_QUERY
-// Query: *[_type == "pageSectionsFaq"][0] {    _id,     title,     subTitle,    illustration,}
+// Query: *[_type == "pageSectionsStart"][0] {    _id,     title,     subTitle,    illustration,}
 export type PAGE_SECTION_START_QUERYResult = {
   _id: string;
   title: Array<{
@@ -771,7 +803,7 @@ export type PAGE_SECTION_START_QUERYResult = {
   } | null;
 } | null;
 // Variable: PAGE_SECTION_SERVICE_SEGMENTS_QUERY
-// Query: *[_type == "pageSectionsServiceSegments"][0] {    _id,     title,     description,     serviceSegments[] {        serviceSegment-> {           _id,           name,           dinoPrefix,           dinoIllustration,           description,           serviceModules[] {              serviceModule-> {                _id,                name,              }           }        }    }}
+// Query: *[_type == "pageSectionsServiceSegments"][0] {    _id,     title,     description,     serviceSegments[] {        serviceSegment-> {           _id,           name,           dinoPrefix,           illustration,           description,           serviceModules[] {              serviceModule-> {                _id,                name,              }           }        }    }}
 export type PAGE_SECTION_SERVICE_SEGMENTS_QUERYResult = {
   _id: string;
   title: Array<{
@@ -815,7 +847,7 @@ export type PAGE_SECTION_SERVICE_SEGMENTS_QUERYResult = {
       _id: string;
       name: string | null;
       dinoPrefix: string | null;
-      dinoIllustration: {
+      illustration: {
         asset?: {
           _ref: string;
           _type: "reference";
@@ -912,7 +944,7 @@ export type PAGE_SECTION_SERVICE_FEATURES_QUERYResult = {
   }> | null;
 } | null;
 // Variable: PAGE_SECTION_SERVICE_MODULES_QUERY
-// Query: *[_type == "pageSectionsServiceModules"][0] {    _id,     title,     serviceModules[] {        serviceModule-> {           _id,           name,           illustration,           name,           example,        }    }}
+// Query: *[_type == "pageSectionsServiceModules"][0] {    _id,     title,     serviceModules[] {        serviceModule-> {           _id,           name,           example,           serviceSegment-> {              illustration           }        }    }}
 export type PAGE_SECTION_SERVICE_MODULES_QUERYResult = {
   _id: string;
   title: Array<{
@@ -937,7 +969,6 @@ export type PAGE_SECTION_SERVICE_MODULES_QUERYResult = {
     serviceModule: {
       _id: string;
       name: string | null;
-      illustration: null;
       example: {
         input?: Array<{
           children?: Array<{
@@ -975,6 +1006,19 @@ export type PAGE_SECTION_SERVICE_MODULES_QUERYResult = {
           _type: "block";
           _key: string;
         }>;
+      } | null;
+      serviceSegment: {
+        illustration: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: "image";
+        } | null;
       } | null;
     } | null;
   }> | null;
@@ -1131,16 +1175,55 @@ export type PAGE_SECTION_FAQ_QUERYResult = {
     _type: "image";
   } | null;
 } | null;
+// Variable: CONTACT_QUERY
+// Query: *[_type == "contact"][0] {    _id,     email,     calendly,}
+export type CONTACT_QUERYResult = {
+  _id: string;
+  email: Link | null;
+  calendly: Link | null;
+} | null;
+
+// Source: ../dinoplan-frontend/app/rechner/page.tsx
+// Variable: SERVICE_SEGMENTS_QUERY
+// Query: *[_type == "serviceSegment"] {     _id,     dinoPrefix,     illustration,     serviceModules[] {      serviceModule-> {        _id,        name,        costCalculationForFinancialInvestment,        costPerMonthForInsurance,      }    }    }
+export type SERVICE_SEGMENTS_QUERYResult = Array<{
+  _id: string;
+  dinoPrefix: string | null;
+  illustration: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  serviceModules: Array<{
+    serviceModule: {
+      _id: string;
+      name: string | null;
+      costCalculationForFinancialInvestment: {
+        cost?: number;
+        ageAtPayout?: number;
+      } | null;
+      costPerMonthForInsurance: number | null;
+    } | null;
+  }> | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"pageSectionsFaq\"][0] {\n    _id, \n    title, \n    subTitle,\n    illustration,\n}": PAGE_SECTION_START_QUERYResult;
-    "*[_type == \"pageSectionsServiceSegments\"][0] {\n    _id, \n    title, \n    description, \n    serviceSegments[] {\n        serviceSegment-> {\n           _id,\n           name,\n           dinoPrefix,\n           dinoIllustration,\n           description,\n           serviceModules[] {\n              serviceModule-> {\n                _id,\n                name,\n              }\n           }\n        }\n    }\n}": PAGE_SECTION_SERVICE_SEGMENTS_QUERYResult;
+    "*[_type == \"pageSectionsStart\"][0] {\n    _id, \n    title, \n    subTitle,\n    illustration,\n}": PAGE_SECTION_START_QUERYResult;
+    "*[_type == \"pageSectionsServiceSegments\"][0] {\n    _id, \n    title, \n    description, \n    serviceSegments[] {\n        serviceSegment-> {\n           _id,\n           name,\n           dinoPrefix,\n           illustration,\n           description,\n           serviceModules[] {\n              serviceModule-> {\n                _id,\n                name,\n              }\n           }\n        }\n    }\n}": PAGE_SECTION_SERVICE_SEGMENTS_QUERYResult;
     "*[_type == \"pageSectionsServiceFeatures\"][0] {\n    _id, \n    title, \n    description, \n    serviceFeatures[] {\n        serviceFeature-> {\n           _id,\n           name,\n           illustration,\n        }\n    }\n}": PAGE_SECTION_SERVICE_FEATURES_QUERYResult;
-    "*[_type == \"pageSectionsServiceModules\"][0] {\n    _id, \n    title, \n    serviceModules[] {\n        serviceModule-> {\n           _id,\n           name,\n           illustration,\n           name,\n           example,\n        }\n    }\n}": PAGE_SECTION_SERVICE_MODULES_QUERYResult;
+    "*[_type == \"pageSectionsServiceModules\"][0] {\n    _id, \n    title, \n    serviceModules[] {\n        serviceModule-> {\n           _id,\n           name,\n           example,\n           serviceSegment-> {\n              illustration\n           }\n        }\n    }\n}": PAGE_SECTION_SERVICE_MODULES_QUERYResult;
     "*[_type == \"pageSectionsAbout\"][0] {\n    _id, \n    title, \n    description,\n    personalFeatures[] {\n        personalFeature-> {\n           _id,\n           name,\n           description,\n        }\n    },\n    illustration,\n}": PAGE_SECTION_ABOUT_QUERYResult;
     "*[_type == \"pageSectionsFaq\"][0] {\n    _id, \n    title, \n    subTitle,\n    questions[] {\n        question-> {\n           _id,\n           question,\n           answer,\n        }\n    },\n    illustration,\n}": PAGE_SECTION_FAQ_QUERYResult;
+    "*[_type == \"contact\"][0] {\n    _id, \n    email, \n    calendly,\n}": CONTACT_QUERYResult;
+    "*[_type == \"serviceSegment\"] {\n     _id,\n     dinoPrefix,\n     illustration,\n     serviceModules[] {\n      serviceModule-> {\n        _id,\n        name,\n        costCalculationForFinancialInvestment,\n        costPerMonthForInsurance,\n      }\n    }    \n}": SERVICE_SEGMENTS_QUERYResult;
   }
 }
