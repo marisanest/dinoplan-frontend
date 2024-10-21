@@ -9,6 +9,7 @@ export type TextProps = {
 } & ReactNodeProps
 
 const sizeToClasses: { [key: string]: string } = {
+    xs: 'font-normal text-xs',
     sm: 'font-normal text-sm',
     md: 'font-light text-md',
     lg: 'font-normal text-lg',

@@ -12,6 +12,7 @@ const config: Config = {
         blue: '#4772D2',
         'blue-faded': 'rgba(76,118,201,0.27)',
         'blue-600': '#294290',
+        'blue-600-faded': '#889bd3',
         'red-200': '#FAA19F',
         'red-200-faded': '#ffc7c6',
         orange: '#E6B45A',
