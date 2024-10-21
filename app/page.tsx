@@ -8,7 +8,13 @@ const PAGE_SECTION_START_QUERY = defineQuery(`*[_type == "pageSectionsStart"][0]
     _id, 
     title, 
     subTitle,
-    illustration,
+    illustration {
+      'height': asset->metadata.dimensions.height,
+      'width': asset->metadata.dimensions.width,
+      asset->{
+        url,
+      }
+    },
 }`);
 
 const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSectionsServiceSegments"][0] {
@@ -20,7 +26,13 @@ const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSection
            _id,
            name,
            dinoPrefix,
-           illustration,
+           illustration {
+             'height': asset->metadata.dimensions.height,
+             'width': asset->metadata.dimensions.width,
+             asset->{
+               url,
+             }
+           },
            description,
            serviceModules[] {
               serviceModule-> {
@@ -40,7 +52,13 @@ const PAGE_SECTION_SERVICE_FEATURES_QUERY = defineQuery(`*[_type == "pageSection
         serviceFeature-> {
            _id,
            name,
-           illustration,
+           illustration {
+              'height': asset->metadata.dimensions.height,
+              'width': asset->metadata.dimensions.width,
+              asset->{
+                url,
+              }
+           },
         }
     }
 }`);
@@ -55,7 +73,13 @@ const PAGE_SECTION_SERVICE_MODULES_QUERY = defineQuery(`*[_type == "pageSections
            name,
            example,
            serviceSegment-> {
-              illustration
+              illustration {
+                'height': asset->metadata.dimensions.height,
+                'width': asset->metadata.dimensions.width,
+                asset->{
+                  url,
+                }
+              },
            }
         }
     }
@@ -72,7 +96,13 @@ const PAGE_SECTION_ABOUT_QUERY = defineQuery(`*[_type == "pageSectionsAbout"][0]
            description,
         }
     },
-    illustration,
+    illustration {
+      'height': asset->metadata.dimensions.height,
+      'width': asset->metadata.dimensions.width,
+      asset->{
+        url,
+      }
+    },
 }`);
 
 const PAGE_SECTION_FAQ_QUERY = defineQuery(`*[_type == "pageSectionsFaq"][0] {
@@ -86,7 +116,13 @@ const PAGE_SECTION_FAQ_QUERY = defineQuery(`*[_type == "pageSectionsFaq"][0] {
            answer,
         }
     },
-    illustration,
+    illustration {
+      'height': asset->metadata.dimensions.height,
+      'width': asset->metadata.dimensions.width,
+      asset->{
+        url,
+      }
+    },
 }`);
 
 const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {

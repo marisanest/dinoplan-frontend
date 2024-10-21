@@ -2,6 +2,7 @@ import {ReactNodeProps} from "@/lib/types/core";
 import {useShallow} from "zustand/react/shallow";
 import useQuestionsStore from "@/lib/stores/useQuestionsStore";
 import {PortableText} from "next-sanity";
+import Text from "@/components/text/text";
 
 export default function LandingFaqQuestionAnswer({question}) {
     const { selectedQuestion } = useQuestionsStore(
@@ -14,16 +15,17 @@ export default function LandingFaqQuestionAnswer({question}) {
 
     return (
         <LandingFaqQuestionAnswerContainer>
-            <div className="flex items-center w-full justify-start font-light text-md text-blue-600">
+            <Text size="md" align="left">
                 <PortableText value={question.answer} />
-            </div>
+            </Text>
+            <div />
         </LandingFaqQuestionAnswerContainer>
     );
 }
 
 function LandingFaqQuestionAnswerContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full my-2">
+        <div className="w-full my-[1.2rem] grid grid-cols-[1fr_28px]">
             {children}
         </div>
     );

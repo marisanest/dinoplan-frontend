@@ -4,7 +4,7 @@ import Link from "@/components/link";
 
 export type ButtonProps = {
     size?: 'base' | 'sm';
-    colors?: 'default' | 'red' | 'blue' | 'orange';
+    colors?: 'default' | 'red' | 'blue' | 'orange' | 'bright';
     link?: LinkType;
     onClick?: () => void;
 } & ReactNodeProps;

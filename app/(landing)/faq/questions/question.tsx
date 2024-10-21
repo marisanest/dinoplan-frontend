@@ -1,6 +1,6 @@
 "use client"
 
-import {QuestionType, ReactNodeProps} from "@/lib/types/core";
+import {ReactNodeProps} from "@/lib/types/core";
 import RichText from "@/components/text";
 import {useShallow} from "zustand/react/shallow";
 import useQuestionsStore from "@/lib/stores/useQuestionsStore";
@@ -18,14 +18,16 @@ export default function LandingFaqQuestion({question}) {
 
     return (
         <LandingFaqQuestionContainer>
-            <div className="flex cursor-pointer" onClick={() => selectQuestion(question)}>
+            <div className="grid grid-cols-[1fr_28px] cursor-pointer my-[1rem]"
+                 onClick={() => selectQuestion(question)}>
                 <RichText key={question.id} trustedHtml={question.question} align="left" size="lg"/>
                 <div className="bg-red-200 rounded-full w-7 h-7 flex justify-center items-center">
-                    <ArrowIcon className={cn("transition-transform duration-700", selectedQuestion && selectedQuestion._id === question._id ? 'rotate-180' : 'rotate-0')} />
+                    <ArrowIcon
+                        className={cn("transition-transform duration-700", selectedQuestion && selectedQuestion._id === question._id ? 'rotate-180' : 'rotate-0')}/>
                 </div>
             </div>
-            <LandingFaqQuestionAnswer question={question} />
-            <hr className="my-3 border-[1px] border-blue-600" />
+            <LandingFaqQuestionAnswer question={question}/>
+            <hr className="my-3 border-[1px] border-blue-600"/>
         </LandingFaqQuestionContainer>
     );
 }

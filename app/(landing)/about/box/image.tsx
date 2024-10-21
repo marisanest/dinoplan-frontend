@@ -8,10 +8,10 @@ export default function LandingAboutBoxImage({aboutPageSection}: Pick<LandingPro
         <LandingAboutBoxImageContainer>
             <Image
                 src={urlFor(aboutPageSection.illustration)?.url()}
-                alt="Wir sind Dinoplan"
+                alt="Illustration"
                 className="w-full h-auto"
-                height="310"
-                width="250"
+                width={aboutPageSection.illustration.width}
+                height={aboutPageSection.illustration.height}
             />
         </LandingAboutBoxImageContainer>
     );

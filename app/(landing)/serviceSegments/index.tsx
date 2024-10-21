@@ -6,6 +6,7 @@ import LandingServiceSegmentsTopContainer from "@/app/(landing)/serviceSegments/
 import LandingServiceSegment from "@/(landing)/serviceSegments/serviceSegment";
 import LandingServiceSegmentsDescription from "@/app/(landing)/serviceSegments/serviceSegment/description";
 import {LandingProps} from "@/(landing)/landing";
+import Text from "@/components/text/text";
 
 export default function LandingServiceSegments({serviceSegmentsPageSection}: Pick<LandingProps, 'serviceSegmentsPageSection'>) {
     if (!serviceSegmentsPageSection) return null;
@@ -16,9 +17,9 @@ export default function LandingServiceSegments({serviceSegmentsPageSection}: Pic
                 <Title key="title">
                     <PortableText value={serviceSegmentsPageSection.title}/>
                 </Title>
-                <Description className="mt-y-xs">
+                <Text className="mt-y-xs" size="sm">
                     <PortableText value={serviceSegmentsPageSection.description}/>
-                </Description>
+                </Text>
                 <div className="w-full grid grid-cols-3 justify-between gap-[4rem] mt-y-s">
                     {serviceSegmentsPageSection.serviceSegments?.map((serviceSegment, index) => (
                         <LandingServiceSegment

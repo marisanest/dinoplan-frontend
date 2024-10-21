@@ -1,7 +1,6 @@
 "use client"
 
 import {AdvancedImage} from "@cloudinary/react";
-import cn from "clsx";
 import {cloudinary} from "@/lib/cloudinary";
 
 import CalculatorFirst from "@/rechner/components/first";
@@ -9,7 +8,7 @@ import {useState} from "react";
 import CalculatorSecond from "@/rechner/components/second";
 import CalculatorThird from "@/rechner/components/third";
 
-const imagePath = 'dinoplan/Dinoplan_Final_Files_Footer_gcfull';
+export const imagePath = 'dinoplan/Dinoplan_Final_Files_Footer_cropped_gcfull_pf7xn0';
 
 export default function Calculator({serviceSegments}) {
    const [stage, setStage] = useState(1)

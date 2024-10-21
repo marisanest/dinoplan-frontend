@@ -1,7 +1,7 @@
 import {ReactNodeProps} from "@/lib/types/core";
 import cn from "clsx";
 import LandingServiceSegmentImage from "@/app/(landing)/serviceSegments/serviceSegment/image";
-import LandingServiceSegmentTitle from "@/app/(landing)/serviceSegments/serviceSegment/title";
+import Title from "@/components/title";
 
 export type LandingServiceSegmentProps = {
     serviceSegment: any;
@@ -11,7 +11,9 @@ export default function LandingServiceSegment({className, serviceSegment}: Landi
     return (
         <LandingServiceSegmentContainer className={className}>
             <LandingServiceSegmentImage key="image" serviceSegment={serviceSegment} />
-            <LandingServiceSegmentTitle key="title" serviceSegment={serviceSegment} />
+            <Title key="title" className="cursor-pointer mt-auto" size="md">
+                {serviceSegment.dinoPrefix}-Dino
+            </Title>
         </LandingServiceSegmentContainer>
     );
 }

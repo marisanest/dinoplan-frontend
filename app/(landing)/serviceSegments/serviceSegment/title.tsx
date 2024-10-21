@@ -1,18 +1,10 @@
-import {ReactNodeProps} from "@/lib/types/core";
 import {LandingServiceSegmentProps} from "@/(landing)/serviceSegments/serviceSegment/index";
+import Title from "@/components/title";
 
 export default function LandingServiceSegmentTitle({serviceSegment}: LandingServiceSegmentProps) {
     return (
-        <LandingServiceSegmentTitleContainer>
+        <Title className="cursor-pointer mt-auto" size="md">
             {serviceSegment.dinoPrefix}-Dino
-        </LandingServiceSegmentTitleContainer>
-    );
-}
-
-function LandingServiceSegmentTitleContainer({children}: ReactNodeProps) {
-    return (
-        <div className="cursor-pointer mt-auto text-blue-600">
-            {children}
-        </div>
+        </Title>
     );
 }

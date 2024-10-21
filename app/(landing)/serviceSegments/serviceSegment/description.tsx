@@ -5,6 +5,8 @@ import {useShallow} from "zustand/react/shallow";
 import CheckmarkDot from "@/app/components/checkmarkDot";
 import useServiceSegmentsStore from "@/lib/stores/useServiceSegmentsStore";
 import {PortableText} from "next-sanity";
+import Title from "@/components/title";
+import Text from "@/components/text/text";
 
 const segmentNameToCheckmarkDotColor = {
     'Geldanlage': 'bg-orange',
@@ -21,12 +23,14 @@ export default function LandingServiceSegmentsDescription() {
 
     return (
         <LandingServiceSegmentsDescriptionContainer>
-            <div className="text-blue-600 font-medium text-2xl">{selectedServiceSegment?.name}</div>
+            <Title size="lg" align="left">
+                {selectedServiceSegment?.name}
+            </Title>
             <div className="grid grid-cols-2 gap-sm">
-                <div>
-                    <div className="text-blue-600 text-sm flex flex-col gap-[1rem]">
+                <div className="justify-start items-center w-full">
+                    <Text size="md" align="left" className="gap-[1rem]" isFlexCol>
                         <PortableText value={selectedServiceSegment?.description} />
-                    </div>
+                    </Text>
                 </div>
                 <div className="flex flex-col gap-[1rem] w-full">
                     {selectedServiceSegment?.serviceModules?.map((serviceModule) => (

@@ -13,10 +13,10 @@ import LandingServiceSegments from "@/app/(landing)/serviceSegments";
 import LandingServiceFeatures from "@/(landing)/serviceFeatures";
 import LandingServiceModules from "@/(landing)/serviceModules";
 import LandingStart from "@/(landing)/start";
-import FooterImage from "@/components/footer/image";
-import AppointmentButton from "@/components/buttons/appointment";
 import RichText from "@/components/text";
 import Button from "@/components/buttons";
+import LandingEnd from "@/(landing)/end";
+import Text from "@/components/text/text";
 
 export type LandingProps = {
     startPageSection: PAGE_SECTION_START_QUERYResult;
@@ -43,8 +43,9 @@ export default function Landing({
             <LandingStart startPageSection={startPageSection}
                           serviceSegmentsPageSection={serviceSegmentsPageSection} />
             <Banner className="bg-orange !justify-center gap-[2rem]">
-                <RichText className="!w-fit"
-                          trustedHtml="Lasse dich jetzt kostenlos online von unseren Experten beraten." />
+                <Text className="!w-fit" >
+                    Lasse dich jetzt kostenlos online von unseren Experten beraten.
+                </Text>
                 <Button link={contact.calendly}
                         size="sm"
                         colors="bright">
@@ -56,8 +57,7 @@ export default function Landing({
             <LandingServiceModules serviceModulesPageSection={serviceModulesPageSection} />
             <LandingAbout aboutPageSection={aboutPageSection} />
             <LandingFaq faqPageSection={faqPageSection} />
-            <FooterImage/>
+            <LandingEnd key="end" />
         </main>
-
     );
 }

@@ -9,8 +9,8 @@ export default function LandingServiceModulesExampleImage({serviceModule}) {
                 src={urlFor(serviceModule.serviceSegment.illustration)?.url()}
                 alt="Illustration"
                 className="w-full max-w-[250px]"
-                height="310"
-                width="250"
+                width={serviceModule.serviceSegment.illustration.width}
+                height={serviceModule.serviceSegment.illustration.height}
             />
         </LandingServiceModulesExampleImageContainer>
     );

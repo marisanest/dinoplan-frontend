@@ -18,8 +18,8 @@ export default function LandingServiceSegmentImage({serviceSegment}: LandingServ
                 src={urlFor(serviceSegment.illustration)?.url()}
                 alt={serviceSegment.name}
                 className="w-full max-w-[250px]"
-                height="310"
-                width="250"
+                width={serviceSegment.illustration.width}
+                height={serviceSegment.illustration.height}
             />
         </div>
     );

@@ -9,8 +9,8 @@ export default function LandingKeyPointsPointImage({serviceFeature}) {
                 src={urlFor(serviceFeature.illustration)?.url()}
                 alt={serviceFeature.name}
                 className="w-full max-w-[250px]"
-                height="310"
-                width="250"
+                width={serviceFeature.illustration.width}
+                height={serviceFeature.illustration.height}
             />
         </LandingKeyPointsPointImageContainer>
     );

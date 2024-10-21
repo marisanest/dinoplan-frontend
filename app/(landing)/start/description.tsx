@@ -4,10 +4,10 @@ import {LandingProps} from "@/(landing)/landing";
 import CheckmarkDot from "@/components/checkmarkDot";
 import RichText from "@/components/text";
 
-export default function LandingStartDescription({startPageSection, serviceSegmentsPageSection}: Pick<LandingProps, 'startPageSection' & 'serviceSegmentsPageSection'>) {
+export default function LandingStartDescription({startPageSection, serviceSegmentsPageSection}: Pick<LandingProps, 'startPageSection' | 'serviceSegmentsPageSection'>) {
     return (
         <LandingStartDescriptionContainer>
-            <div className="border-b-[2px] border-b-red-200 pb-[0.8rem] text-center w-[600px] font-normal text-lg">
+            <div className="border-b-[2px] border-b-red-200 pb-[0.8rem] text-center w-[650px] font-normal text-lg">
                 <PortableText value={startPageSection?.subTitle}/>
             </div>
             <div className="flex justify-between gap-6 pt-2">
@@ -24,8 +24,8 @@ export default function LandingStartDescription({startPageSection, serviceSegmen
 
 function LandingStartDescriptionContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full flex justify-center">
-        <div className="text-blue-600 text-lg font-light h-[15dvh] w-[600px]">
+        <div className="w-full flex justify-center pb-[5rem]">
+            <div className="text-blue-600 text-lg font-light h-[83px] w-[650px]">
                 {children}
             </div>
         </div>

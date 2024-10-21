@@ -51,13 +51,6 @@ export default function CalculatorSecond({setStage}) {
 
                 <hr className="mt-[2rem] mb-[2rem] border-b-none border-t-[1px] border-blue-faded"/>
 
-                {/*<div className="grid grid-cols-[160px_1fr] gap-x-[2rem] gap-y-[0.4rem] mb-[2rem]">*/}
-                {/*    <div/>*/}
-                {/*    <RichText align="left"*/}
-                {/*              size="xs"*/}
-                {/*              trustedHtml="Optional. Wenn du möchtest, dass wir deine Angaben bei einem Beratungsgespräch mit dir verbinden können, gebe bitte deine E-Mail Adresse an." />*/}
-                {/*</div>*/}
-
                 <div className="grid grid-cols-[160px_1fr] gap-x-[2rem] gap-y-[0.4rem] mb-y-xs">
                     <RichText align="left" trustedHtml="E-Mail-Adresse"/>
                     <input type="text"
@@ -66,24 +59,44 @@ export default function CalculatorSecond({setStage}) {
                            placeholder="E-Mail-Adresse"
                            className="h-[55px] w-full text-left px-[1rem] text-blue-600 border-[2px] border-blue-600-faded focus:border-blue bg-yellow-100"
                     />
+
+                    {state?.errors?.childDateOfBirth && (
+                        <>
+                            <div/>
+                            <RichText className="text-red-500"
+                                      size="sm"
+                                      align="left"
+                                      trustedHtml={state?.errors?.email?.join('<br/>')}/>
+                        </>
+                    )}
                     <div/>
-                    {/*<RichText align="left"*/}
-                    {/*          size="xs"*/}
-                    {/*          trustedHtml="Optional. Wenn du möchtest, dass wir deine Angaben bei einem Beratungsgespräch mit dir verbinden können, gebe bitte deine E-Mail Adresse an." />*/}
+                    <RichText align="left"
+                              size="xs"
+                              trustedHtml="Optional. Wenn du möchtest, dass wir deine Angaben bei einem Beratungsgespräch mit dir verbinden können, gebe bitte deine E-Mail Adresse an."/>
+
                 </div>
 
                 <div className="grid grid-cols-[160px_1fr] gap-x-[2rem] gap-y-[0.4rem] mb-y-xs">
-                    <RichText align="left" trustedHtml=""/>
+                    <div/>
                     <div className="flex gap-[1rem]">
                         <input type="checkbox"
-                               id="consent"
-                               name="consent"
+                               id="privacy"
+                               name="privacy"
                         />
                         <RichText align="left"
                                   size="xs"
-                                  trustedHtml="Hiermit bestätigst du, dass wir deine angegebenen personen bezogenen Daten bei einem Beratungs gespräch nutzen dürfen. Mehr dazu hier." />
+                                  trustedHtml="Hiermit bestätigst du, dass wir deine angegebenen personenbezogenen Daten bei einem Beratungsgespräch nutzen dürfen. Mehr dazu hier."/>
 
                     </div>
+                    {/*{state?.errors?.privacy && (*/}
+                    {/*    <>*/}
+                    {/*        <div/>*/}
+                    {/*        <RichText className="text-red-500"*/}
+                    {/*                  size="sm"*/}
+                    {/*                  align="left"*/}
+                    {/*                  trustedHtml={state?.errors?.privacy?.join('<br/>')}/>*/}
+                    {/*    </>*/}
+                    {/*)}*/}
                 </div>
 
                 <div className="flex flex-col justify-center items-center w-full">

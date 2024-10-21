@@ -5,6 +5,7 @@ import AppointmentButton from "@/app/components/buttons/appointment";
 import {PortableText} from "next-sanity";
 import {LandingProps} from "@/(landing)/landing";
 import LandingServiceFeature from "@/(landing)/serviceFeatures/serviceFeature";
+import Text from "@/components/text/text";
 
 export default function LandingServiceFeatures({serviceFeaturesPageSection}: Pick<LandingProps, 'serviceFeaturesPageSection'>) {
     if (!serviceFeaturesPageSection) return null;
@@ -14,9 +15,9 @@ export default function LandingServiceFeatures({serviceFeaturesPageSection}: Pic
             <Title key="title" >
                 <PortableText value={serviceFeaturesPageSection.title}/>
             </Title>
-            <Description key="description" className="mt-y-xs">
+            <Text key="description" className="mt-y-xs" size="sm">
                 <PortableText value={serviceFeaturesPageSection.description}/>
-            </Description>
+            </Text>
             <div key="features" className="grid grid-cols-3 mt-y-s" >
                 {serviceFeaturesPageSection.serviceFeatures?.map((serviceFeature) => (
                     <LandingServiceFeature key={serviceFeature.serviceFeature._id} serviceFeature={serviceFeature.serviceFeature} />

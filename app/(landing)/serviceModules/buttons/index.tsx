@@ -14,7 +14,7 @@ export default function LandingServiceModulesButtons({serviceModulesPageSection}
 
 function LandingServiceModulesButtonsContainer({children}: ReactNodeProps) {
     return (
-        <div className="py-y-s flex flex-wrap gap-[1rem] justify-center">
+        <div className="py-y-s flex flex-wrap gap-[0.8rem] justify-center">
             {children}
         </div>
     );
