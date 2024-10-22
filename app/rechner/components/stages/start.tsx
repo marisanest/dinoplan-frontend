@@ -5,7 +5,6 @@ import {createCustomer} from "@/lib/sanity/models/customer";
 import { useFormStatus } from 'react-dom'
 import { useFormState } from 'react-dom'
 import cn from "clsx";
-import RichText from "@/components/text";
 import Text from "@/components/text/text";
 import CalculatorStageSharedNextButtons from "@/rechner/components/stages/shared/buttons";
 import {useShallow} from "zustand/react/shallow";
@@ -61,10 +60,13 @@ export default function CalculatorStageStart({stage, setStageKey}) {
                     {state?.errors?.childName && (
                         <>
                             <div/>
-                            <RichText className="text-red-500"
-                                      size="sm"
-                                      align="left"
-                                      trustedHtml={state?.errors?.childName?.join('<br/>')} />
+                            {
+                                state?.errors?.childName?.map((error) => (
+                                    <Text key={error} className="text-red-500" align="left" size="sm">
+                                        {error}
+                                    </Text>
+                                ))
+                            }
                         </>
                     )}
                 </div>

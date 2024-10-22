@@ -20,7 +20,7 @@ export default function Calculator({serviceSegments, costCalculation, contact}) 
    const [stageKey, setStageKey] = useState(Object.keys(stages)[0])
 
     return (
-        <main className="bg-orange-400 min-h-[calc(100dvh-5rem)] pt-[9rem] flex flex-col justify-between items-center w-full">
+        <main className="bg-orange-400 min-h-[calc(100dvh-var(--height-banner))] pt-[9rem] flex flex-col justify-between items-center w-full">
             {stageKey === 'start' && <CalculatorStageStart stage={stages[stageKey]} setStageKey={setStageKey} />}
             {stageKey === 'furtherInfo' && <CalculatorStageFurtherInfo stage={stages[stageKey]} setStageKey={setStageKey} />}
             {stageKey === 'calculation' && <CalculatorStageCalculation stage={stages[stageKey]} setStageKey={setStageKey} serviceSegments={serviceSegments} costCalculation={costCalculation} contact={contact} />}

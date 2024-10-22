@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import {persist} from "zustand/middleware";
 
 export type useCustomerStoreProps = {
   id: string | undefined;
@@ -9,19 +8,14 @@ export type useCustomerStoreProps = {
   update: (data: any) => void;
 }
 
-const useCustomerStore = create(
-    persist(
-        (set, _) => ({
-          id: undefined,
-          childName: undefined,
-          childDateOfBirth: undefined,
-          email: undefined,
-          update: (data: any) => set({...data})
-        }),
-        {
-          name: 'customerStore',
-        },
-    )
+const useCustomerStore = create<useCustomerStoreProps>(
+    (set, _) => ({
+      id: undefined,
+      childName: undefined,
+      childDateOfBirth: undefined,
+      email: undefined,
+      update: (data: any) => set({...data})
+    }),
 );
 
 export default useCustomerStore;

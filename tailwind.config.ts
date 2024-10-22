@@ -34,6 +34,9 @@ const config: Config = {
         'sm': 'var(--max-w-sm)',
         'md': 'var(--max-w-md)'
       },
+      height: {
+        banner: 'var(--height-banner)',
+      },
       padding: {
         'x-xs': 'var(--spacing-y-xs)',
         'x-s': 'var(--spacing-y-s)',

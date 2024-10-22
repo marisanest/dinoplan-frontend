@@ -83,13 +83,18 @@ export async function updateCustomer(customArg: {customerId: string | undefined}
     let childDateOfBirth = null;
 
     const customerId = customArg.customerId
+    let month
+    let day
+    let year
 
     try {
         if (typeof formChildDateOfBirth === 'string') {
-            const [month, day, year] = formChildDateOfBirth.split('/')
-            childDateOfBirth = new Date(Date.parse(`${year}-${day}-${month}T00:00:00+0000`))
+            [month, day, year] = formChildDateOfBirth.split('/')
+            childDateOfBirth = new Date(Date.parse(`${year}-${day}-${month} 00:00:00 GMT`))
         }
-    } catch (error) {}
+    } catch (error) {
+        console.error(error)
+    }
 
     const validatedFields = updateSchema.safeParse({
         childDateOfBirth: childDateOfBirth,
@@ -112,7 +117,7 @@ export async function updateCustomer(customArg: {customerId: string | undefined}
                 "patch": {
                     "id": customerId,
                     "set": {
-                        "childDateOfBirth": `${validatedFields.data.childDateOfBirth.getUTCFullYear()}-${validatedFields.data.childDateOfBirth.getUTCMonth()}-${validatedFields.data.childDateOfBirth.getUTCDate()}`,
+                        "childDateOfBirth": `${year}-${month}-${day}`,
                         ...setEmail,
                     },
                 },
@@ -131,8 +136,6 @@ export async function updateCustomer(customArg: {customerId: string | undefined}
             method: 'POST',
         },
     ).then((response) => response.json())
-
-    console.log(result)
 
     return {status: 200, data: {childDateOfBirth: formChildDateOfBirth, email: validatedFields.data.email}}
 }

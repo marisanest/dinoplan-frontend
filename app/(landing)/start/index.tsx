@@ -22,7 +22,7 @@ export default function LandingStart({startPageSection, serviceSegmentsPageSecti
 function LandingStartContainer({children}: ReactNodeProps) {
     return (
         <div className="flex min-h-screen flex-col items-center justify-between">
-            <div className="w-screen h-[100dvh] bg-orange-200 rounded-bl-[90px] px-20 ">
+            <div className="w-screen h-[100dvh] bg-orange-200 rounded-bl-[90px] px-20">
                     {children}
             </div>
         </div>

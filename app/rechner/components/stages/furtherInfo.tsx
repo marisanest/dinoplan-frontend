@@ -16,11 +16,12 @@ const initialState = {
 }
 
 export default function CalculatorStageFurtherInfo({stage, setStageKey}) {
-    const { updateCustomerStore, customerId, childDateOfBirth } = useCustomerStore(
+    const { updateCustomerStore, customerId, childDateOfBirth, email } = useCustomerStore(
         useShallow((state) => ({
             updateCustomerStore: state.update,
             customerId: state.id,
             childDateOfBirth: state.childDateOfBirth,
+            email: state.email,
         })),
     );
 
@@ -30,6 +31,7 @@ export default function CalculatorStageFurtherInfo({stage, setStageKey}) {
     if (state?.status === 200) {
         updateCustomerStore({
             childDateOfBirth: state.data?.childDateOfBirth,
+            email: state.data?.email,
         })
         setStageKey(stage.nextKey)
     }
@@ -74,6 +76,7 @@ export default function CalculatorStageFurtherInfo({stage, setStageKey}) {
                            id="email"
                            name="email"
                            placeholder="E-Mail-Adresse"
+                           defaultValue={email}
                            className="h-[55px] w-full text-left px-[1rem] text-blue-600 border-[2px] border-blue-600-faded focus:border-blue bg-yellow-100"
                     />
 
