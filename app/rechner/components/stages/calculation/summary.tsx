@@ -2,6 +2,7 @@ import useCalculatorStore from "@/lib/stores/useCalculatorStore";
 import {useShallow} from "zustand/react/shallow";
 import Title from "@/components/title";
 import Text from "@/components/text/text";
+import useCustomerStore from "@/lib/stores/useCustomerStore";
 
 export default function CalculatorStageCalculationSummary({costCalculation}) {
     const { selectedServiceModules } = useCalculatorStore(
@@ -10,7 +11,14 @@ export default function CalculatorStageCalculationSummary({costCalculation}) {
         })),
     );
 
-    const pricesPerMonth = Object.values(selectedServiceModules).map((selectedServiceModule) => calculatePricePerMonth(selectedServiceModule, costCalculation))
+    const { childName, childDateOfBirth } = useCustomerStore(
+        useShallow((state) => ({
+            childName: state.childName,
+            childDateOfBirth: state.childDateOfBirth,
+        })),
+    );
+
+    const pricesPerMonth = Object.values(selectedServiceModules).map((selectedServiceModule) => calculatePricePerMonth(selectedServiceModule, costCalculation, childDateOfBirth))
 
     return (
         <div className="w-full flex-col flex justify-center items-center">
@@ -21,7 +29,7 @@ export default function CalculatorStageCalculationSummary({costCalculation}) {
                 Object.values(selectedServiceModules).length > 0 && (
                     <>
                         <Title className="mb-[0.5rem]" size="lg">
-                            Max's Dinoplan
+                            {childName}'s Dinoplan
                         </Title>
                         <Text className="mb-[2rem]" size="sm">
                             Folgendes würde dich unser dino-starket Paket kosten:
@@ -81,12 +89,19 @@ function round(num: number, decimal: number = 0): number {
     return Math.round((num + Number.EPSILON) * Math.pow(10, decimal)) / Math.pow(10, decimal);
 }
 
-function calculatePricePerMonth(serviceModule, costCalculation) {
+function calculatePricePerMonth(serviceModule, costCalculation, childDateOfBirth) {
     if (serviceModule.costPerMonthForInsurance) {
         return serviceModule.costPerMonthForInsurance;
     } else if (serviceModule.costCalculationForFinancialInvestment) {
-        const childAge = 3 // todo
+        const [month, day, childBirthYear] = childDateOfBirth.split('/')
+        const currentYear = new Date().getFullYear()
+        const childAge = currentYear - childBirthYear
         const nYears = serviceModule.costCalculationForFinancialInvestment.ageAtPayout - childAge;
+
+        if (nYears <= 0) {
+            return serviceModule.costCalculationForFinancialInvestment.cost;
+        }
+
         const nMonths = nYears * 12;
         const pYear = costCalculation.interestRate
         const pMonth = 100 * (Math.pow((1 + pYear / 100), 1/12) - 1)

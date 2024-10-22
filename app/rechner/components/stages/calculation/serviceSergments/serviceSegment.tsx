@@ -20,7 +20,7 @@ export default function CalculatorStageCalculationServiceSegment({className, ser
                 width={serviceSegment.illustration.width}
                 height={serviceSegment.illustration.height}
             />
-            <div className="cursor-pointer mt-auto text-blue-600">
+            <div className="mt-auto text-blue-600">
                 {serviceSegment.dinoPrefix}-Dino
             </div>
         </CalculatorStageCalculationServiceSegmentContainer>
@@ -36,7 +36,7 @@ function CalculatorStageCalculationServiceSegmentContainer({className, children,
 
     return (
         <div className="w-full" onClick={() => selectServiceSegment(serviceSegment)}>
-            <div className={cn("flex flex-col justify-center items-center gap-[1rem] h-full w-fit", className)}>
+            <div className={cn("cursor-pointer flex flex-col justify-center items-center gap-[1rem] h-full w-fit", className)}>
                 {children}
             </div>
         </div>
