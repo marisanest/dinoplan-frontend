@@ -11,7 +11,7 @@ export default function LandingServiceSegmentsContainer({children}: ReactNodePro
         })),
     );
 
-    // todo
+    // todo: 416px berechnen
     return (
         <div className={cn("bg-yellow-100 flex flex-col items-center transition-[margin] mt-y-m", selectedServiceSegment ? 'mb-[calc(416px-var(--dino-bottom-offset)+var(--spacing-y-m))]' : 'mb-y-m')}>
             <div className="w-sm max-w-sm relative z-10">{children}</div>

@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         blue: '#4772D2',
         'blue-faded': 'rgba(76,118,201,0.27)',
+        'brown-200': '#857459',
         'blue-600': '#294290',
         'blue-600-faded': '#889bd3',
         'red-200': '#FAA19F',

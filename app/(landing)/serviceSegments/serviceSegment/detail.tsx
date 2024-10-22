@@ -23,10 +23,15 @@ export default function LandingServiceSegmentDetail() {
 
     return (
         <LandingServiceSegmentDetailContainer>
-            <Title size="lg" align="left">
-                {selectedServiceSegment?.name}
-            </Title>
-            <div className="grid grid-cols-2 gap-sm">
+            <div className="">
+                <Title key="title" size="lg" align="left">
+                    {selectedServiceSegment && `${selectedServiceSegment?.dinoPrefix}-Dino`}
+                </Title>
+                <Title key="title" size="xs" align="left">
+                    {selectedServiceSegment?.name}
+                </Title>
+            </div>
+            <div className="grid grid-cols-2 gap-[6rem]">
                 <div className="justify-start items-center w-full">
                     <Text size="md" align="left" className="gap-[1rem]" isFlexCol>
                         <PortableText value={selectedServiceSegment?.description} />

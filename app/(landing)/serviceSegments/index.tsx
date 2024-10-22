@@ -1,10 +1,8 @@
 import Title from "@/app/components/title";
-import Description from "@/app/components/description";
 import {PortableText} from "next-sanity";
 import LandingServiceSegmentsContainer from "@/app/(landing)/serviceSegments/container";
 import LandingServiceSegmentsTopContainer from "@/app/(landing)/serviceSegments/topContainer";
 import LandingServiceSegment from "@/(landing)/serviceSegments/serviceSegment";
-import LandingServiceSegmentsDescription from "@/app/(landing)/serviceSegments/serviceSegment/description";
 import {LandingProps} from "@/(landing)/landing";
 import Text from "@/components/text/text";
 import LandingServiceSegmentDetail from "@/(landing)/serviceSegments/serviceSegment/detail";
@@ -18,7 +16,7 @@ export default function LandingServiceSegments({serviceSegmentsPageSection}: Pic
                 <Title key="title">
                     <PortableText value={serviceSegmentsPageSection.title}/>
                 </Title>
-                <Text className="mt-y-xs" size="sm">
+                <Text key="description" className="mt-y-xs" size="sm">
                     <PortableText value={serviceSegmentsPageSection.description}/>
                 </Text>
                 <div className="w-full grid grid-cols-3 justify-between gap-[4rem] mt-y-s">

@@ -49,7 +49,7 @@ export default function Landing({
                 <Button link={contact.calendly}
                         size="sm"
                         colors="bright">
-                    Termin vereinbaren
+                    <Text>Termin vereinbaren</Text>
                 </Button>
             </Banner>
             <LandingServiceSegments serviceSegmentsPageSection={serviceSegmentsPageSection} />
