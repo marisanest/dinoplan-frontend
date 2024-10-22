@@ -10,27 +10,27 @@ import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
 import RichText from "@/components/text";
 import Radio from '@mui/joy/Radio';
 import {RadioGroup} from "@mui/joy";
+import Text from "@/components/text/text";
 
 const initialState = {
     message: '',
 }
 
-export default function CalculatorSecond({setStage}) {
+export default function CalculatorStageFurtherInfo({stage, setStageKey}) {
     const { pending } = useFormStatus()
     const [state, formAction] = useFormState(updateCustomer, initialState)
 
     if (state?.status === 200) {
-        setStage(3)
+        setStageKey(stage.nextKey)
     }
 
     return (
         <div className="bg-orange-200 rounded-bl-[50px] rounded-tr-[50px] px-x-sm py-y-sm w-sm max-w-sm ">
             <form action={formAction}>
                 <Title>Weitere Informationen</Title>
-                <RichText className="mb-y-xs mt-[0.5rem]"
-                          size="sm"
-                          trustedHtml="Zu deinem Kind und dir"/>
-
+                <Text className="mb-y-xs mt-[0.5rem]" size="sm">
+                    Zu deinem Kind und dir
+                </Text>
                 <div className="grid grid-cols-[160px_1fr] gap-x-[2rem] gap-y-[0.4rem] mb-[2rem]">
                     <RichText align="left" trustedHtml="Geburtsdatum*"/>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -88,21 +88,14 @@ export default function CalculatorSecond({setStage}) {
                                   trustedHtml="Hiermit bestätigst du, dass wir deine angegebenen personenbezogenen Daten bei einem Beratungsgespräch nutzen dürfen. Mehr dazu hier."/>
 
                     </div>
-                    {/*{state?.errors?.privacy && (*/}
-                    {/*    <>*/}
-                    {/*        <div/>*/}
-                    {/*        <RichText className="text-red-500"*/}
-                    {/*                  size="sm"*/}
-                    {/*                  align="left"*/}
-                    {/*                  trustedHtml={state?.errors?.privacy?.join('<br/>')}/>*/}
-                    {/*    </>*/}
-                    {/*)}*/}
                 </div>
 
                 <div className="flex flex-col justify-center items-center w-full">
-                    <FormButton type="submit" disabled={pending} className="w-fit" colors="blue">Weiter</FormButton>
-                    <div className="text-blue-600 mt-[1rem]">
-                        <div className="cursor-pointer" onClick={() => setStage(1)}>Zurück</div>
+                    <FormButton type="submit" disabled={pending} className="w-fit" colors="blue">
+                        <Text size="md" color="yellow">Weiter</Text>
+                    </FormButton>
+                    <div className="cursor-pointer mt-[1rem]" onClick={() => setStageKey(stage.prevKey)}>
+                        <Text className="hover:text-blue-600-faded" size="md">Zurück</Text>
                     </div>
                 </div>
             </form>

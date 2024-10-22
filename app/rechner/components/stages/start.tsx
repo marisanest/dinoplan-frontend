@@ -7,28 +7,36 @@ import { useFormState } from 'react-dom'
 import FormButton from "@/components/buttons/formButton";
 import cn from "clsx";
 import RichText from "@/components/text";
+import InternalLink from "@/components/link/internal";
+import Text from "@/components/text/text";
 
 const initialState = {
     message: '',
 }
 
-export default function CalculatorFirst({setStage}) {
+export default function CalculatorStageStart({stage, setStageKey}) {
     const { pending } = useFormStatus()
     const [state, formAction] = useFormState(createCustomer, initialState)
 
     if (state?.status === 200) {
-        setStage(2)
+        setStageKey(stage.nextKey)
     }
 
     return (
-        <div className="bg-orange-200 rounded-bl-[50px] rounded-tr-[50px] px-x-sm py-y-sm w-sm max-w-sm ">
+        <div className="bg-orange-200 rounded-bl-[50px] rounded-tr-[50px] px-x-sm py-y-sm w-sm max-w-sm">
             <form action={formAction}>
                 <Title>Jetzt Beitrag berechnen</Title>
-                <RichText className="mb-y-xs mt-[0.5rem]"
-                          size="sm"
-                          trustedHtml="Mache eine Beispielrechnung, um zu sehen, wie viel dein<br/>individuelles Paket monatlich ungefähr kosten würde."/>
+                <Text className="mt-[0.5rem]" size="sm">
+                    Mache eine Beispielrechnung, um zu sehen, wie viel dein
+                </Text>
+                <Text className="mb-y-xs" size="sm">
+                    individuelles Paket monatlich ungefähr kosten würde.
+                </Text>
+
                 <div className="grid grid-cols-[160px_3fr] gap-x-[2rem] gap-y-[0.4rem] mb-y-xs">
-                    <Button className="!cursor-default" size="sm" colors="orange">Starte hier</Button>
+                    <Button className="!cursor-default hover:!bg-orange hover:!border-orange" size="sm" colors="orange">
+                        <Text color="yellow">Starte hier</Text>
+                    </Button>
                     <input type="text"
                            id="childName"
                            name="childName"
@@ -47,9 +55,13 @@ export default function CalculatorFirst({setStage}) {
                     )}
                 </div>
                 <div className="flex flex-col justify-center items-center w-full">
-                    <FormButton type="submit" disabled={pending} className="w-fit" colors="blue">Weiter</FormButton>
+                    <FormButton type="submit" disabled={pending} className="w-fit" colors="blue">
+                        <Text size="md" color="yellow">Weiter</Text>
+                    </FormButton>
                     <div className="text-blue-600 mt-[1rem]">
-                        <a href="/">Zurück</a>
+                        <InternalLink href="/">
+                            <Text className="hover:text-blue-600-faded" size="md">Zurück</Text>
+                        </InternalLink>
                     </div>
                 </div>
             </form>
