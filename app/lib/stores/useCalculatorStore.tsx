@@ -21,16 +21,11 @@ const useCalculatorStore = create<useCalculatorStoreProps>((set, get) => ({
   selectServiceModule: (serviceModule) => {
     const selectedServiceModules = get().selectedServiceModules;
 
-    console.log(serviceModule)
-    console.log(selectedServiceModules)
-
     if (serviceModule._id in selectedServiceModules) {
       delete selectedServiceModules[serviceModule._id]
     } else {
       selectedServiceModules[serviceModule._id] = serviceModule;
     }
-    console.log(selectedServiceModules)
-
     set({
       selectedServiceModules: {...selectedServiceModules},
     });

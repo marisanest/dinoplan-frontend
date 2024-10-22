@@ -85,8 +85,6 @@ export async function updateCustomer(_: any, formData: FormData) {
         }
     } catch (error) {}
 
-    console.log(childDateOfBirth.toUTCString())
-
     const validatedFields = updateSchema.safeParse({
         childDateOfBirth: childDateOfBirth,
         email: formData.get('email'),

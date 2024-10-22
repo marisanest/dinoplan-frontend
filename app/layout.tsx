@@ -90,7 +90,6 @@ export default async function RootLayout({
 }>) {
     const contact = await client.fetch(CONTACT_QUERY, {}, options);
 
-    console.log(contact)
     return (
       <html lang="de">
       <head>
