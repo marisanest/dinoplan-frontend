@@ -17,7 +17,7 @@ const stages = {
 }
 
 export default function Calculator({serviceSegments, costCalculation, contact}) {
-   const [stageKey, setStageKey] = useState(Object.keys(stages)[2])
+   const [stageKey, setStageKey] = useState(Object.keys(stages)[0])
 
     return (
         <main className="bg-orange-400 min-h-[calc(100dvh-5rem)] pt-[9rem] flex flex-col justify-between items-center w-full">

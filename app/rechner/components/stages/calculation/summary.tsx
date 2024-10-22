@@ -10,6 +10,8 @@ export default function CalculatorStageCalculationSummary({costCalculation}) {
         })),
     );
 
+    const pricesPerMonth = Object.values(selectedServiceModules).map((selectedServiceModule) => calculatePricePerMonth(selectedServiceModule, costCalculation))
+
     return (
         <div className="w-full flex-col flex justify-center items-center">
             <Text className="mb-[2rem]" size="sm">
@@ -34,19 +36,25 @@ export default function CalculatorStageCalculationSummary({costCalculation}) {
                                     Kosten pro Monat
                                 </Text>
                             </div>
-                            <div className="flex flex-col gap-[0.25rem]">
-                                {
-                                    Object.values(selectedServiceModules).map((selectedServiceModule) => (
-                                        <div key={selectedServiceModule._id} className="flex justify-between w-full">
-                                            <Text align="left" size="sm">
-                                                {selectedServiceModule.name}
+                            <div className="grid grid-cols-2">
+                               <div className="flex flex-col gap-[0.25rem]">
+                                   {
+                                       Object.values(selectedServiceModules).map((selectedServiceModule) => (
+                                           <Text key={selectedServiceModule.name} align="left" size="sm">
+                                               {selectedServiceModule.name}
+                                           </Text>
+                                       ))
+                                   }
+                               </div>
+                                <div className="flex flex-col gap-[0.25rem]">
+                                    {
+                                        pricesPerMonth.map((pricePerMonth) => (
+                                            <Text key={pricePerMonth} align="right" size="sm">
+                                                {pricePerMonth} €
                                             </Text>
-                                            <Text align="right" size="sm">
-                                                {calculatePricePerMonth(selectedServiceModule, costCalculation)} €
-                                            </Text>
-                                        </div>
-                                    ))
-                                }
+                                        ))
+                                    }
+                                </div>
                             </div>
                             <hr className="border-[1px] border-blue-600 my-[0.5rem]"/>
                             <div className="flex justify-between w-full">
@@ -54,7 +62,7 @@ export default function CalculatorStageCalculationSummary({costCalculation}) {
                                     Insgesamt
                                 </Text>
                                 <Text align="right" size="sm">
-                                    {Object.values(selectedServiceModules).map((selectedServiceModule) => calculatePricePerMonth(selectedServiceModule, costCalculation)).reduce((partialSum, a) => partialSum + a, 0)} €
+                                    {round(pricesPerMonth.reduce((partialSum, a) => partialSum + a, 0), 2)} €
                                 </Text>
                             </div>
                         </div>
@@ -67,6 +75,10 @@ export default function CalculatorStageCalculationSummary({costCalculation}) {
             }
         </div>
     );
+}
+
+function round(num: number, decimal: number = 0): number {
+    return Math.round((num + Number.EPSILON) * Math.pow(10, decimal)) / Math.pow(10, decimal);
 }
 
 function calculatePricePerMonth(serviceModule, costCalculation) {
@@ -82,7 +94,7 @@ function calculatePricePerMonth(serviceModule, costCalculation) {
         const e = serviceModule.costCalculationForFinancialInvestment.cost * Math.pow(1 + costCalculation.inflationRate / 100.0, nYears)
         const r = e * (q - 1) / (q * (Math.pow(q, nMonths) - 1))
 
-        return Math.round((r + Number.EPSILON) * 100) / 100;
+        return round(r, 2);
     } else {
         return 0;
     }

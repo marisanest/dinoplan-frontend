@@ -8,16 +8,30 @@ import cn from "clsx";
 import RichText from "@/components/text";
 import Text from "@/components/text/text";
 import CalculatorStageSharedNextButtons from "@/rechner/components/stages/shared/buttons";
+import {useShallow} from "zustand/react/shallow";
+import useCustomerStore from "@/lib/stores/useCustomerStore";
 
 const initialState = {
     message: '',
 }
 
 export default function CalculatorStageStart({stage, setStageKey}) {
+    const { updateCustomerStore, customerId, childName } = useCustomerStore(
+        useShallow((state) => ({
+            updateCustomerStore: state.update,
+            customerId: state.id,
+            childName: state.childName,
+        })),
+    );
+
     const { pending } = useFormStatus()
-    const [state, formAction] = useFormState(createCustomer, initialState)
+    const [state, formAction] = useFormState(createCustomer.bind(null, {customerId}), initialState)
 
     if (state?.status === 200) {
+        updateCustomerStore({
+            id: state.data?.customerId,
+            childName: state.data?.childName,
+        })
         setStageKey(stage.nextKey)
     }
 
@@ -40,6 +54,7 @@ export default function CalculatorStageStart({stage, setStageKey}) {
                            id="childName"
                            name="childName"
                            placeholder="Name deines Kindes"
+                           defaultValue={childName}
                            className={cn(
                                'w-full text-left px-[1rem] text-blue-600 border-[2px] border-blue-600-faded focus:border-blue bg-yellow-100',
                            )}/>

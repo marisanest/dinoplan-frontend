@@ -9,7 +9,7 @@ const createSchema = z.object({
     }).trim().min(1,  { message: "Name deines Kindes muss angegeben werden." }),
 })
 
-export async function createCustomer(_: any, formData: FormData) {
+export async function createCustomer(customArg: {customerId: string | undefined}, prevState: any, formData: FormData) {
     const validatedFields = createSchema.safeParse({
         childName: formData.get('childName'),
     })
@@ -20,18 +20,36 @@ export async function createCustomer(_: any, formData: FormData) {
         }
     }
 
-    const data = {
-        "mutations": [
-            {
-                "create": {
-                    "_type": "customer",
-                    "childName": validatedFields.data.childName,
+    const customerId = customArg.customerId
+    let data = {}
+
+    if (customerId) {
+        data = {
+            "mutations": [
+                {
+                    "patch": {
+                        "id": customerId,
+                        "set": {
+                            "childName": validatedFields.data.childName,
+                        },
+                    },
                 },
-            },
-        ]
+            ]
+        }
+    } else {
+        data = {
+            "mutations": [
+                {
+                    "create": {
+                        "_type": "customer",
+                        "childName": validatedFields.data.childName,
+                    },
+                },
+            ]
+        }
     }
 
-   const customerId = await fetch(
+    const result = await fetch(
         `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.SANITY_DATASET}?returnIds=true`,
         {
             body: JSON.stringify(data),
@@ -43,23 +61,10 @@ export async function createCustomer(_: any, formData: FormData) {
         },
     ) .then(function(response) {
        return response.json();
-   }).then(function(data) {
-       return data.results.map((result) => result.id); // this will be a string
-   });
+   })
 
-    cookies().set('customerId', customerId)
-
-    return {status: 200, data: {customerId}}
+    return {status: 200, data: {customerId: customerId ?? result.results.map((result) => result.id)[0], childName: validatedFields.data.childName}}
 }
-const convertDateToUTC = ( date: Date ) => new Date(
-    date.getUTCFullYear(),
-    date.getUTCMonth(),
-    date.getUTCDate(),
-    date.getUTCHours(),
-    date.getUTCMinutes(),
-    date.getUTCSeconds(),
-    date.getUTCMilliseconds(), // should also include
-)
 
 const updateSchema = z.object({
     childDateOfBirth: z.date({errorMap:  () => ({ message: "Das Geburtsdatum des Kindes muss angegeben werden." })}),
@@ -73,10 +78,11 @@ const updateSchema = z.object({
     // })
 })
 
-export async function updateCustomer(_: any, formData: FormData) {
-    const customerId = cookies().get('customerId')?.value
+export async function updateCustomer(customArg: {customerId: string | undefined}, prevState: any, formData: FormData) {
     const formChildDateOfBirth = formData.get('childDateOfBirth')
     let childDateOfBirth = null;
+
+    const customerId = customArg.customerId
 
     try {
         if (typeof formChildDateOfBirth === 'string') {
@@ -114,7 +120,7 @@ export async function updateCustomer(_: any, formData: FormData) {
         ]
     }
 
-    await fetch(
+    const result = await fetch(
         `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.SANITY_DATASET}`,
         {
             body: JSON.stringify(data),
@@ -126,5 +132,7 @@ export async function updateCustomer(_: any, formData: FormData) {
         },
     ).then((response) => response.json())
 
-    return {status: 200}
+    console.log(result)
+
+    return {status: 200, data: {childDateOfBirth: formChildDateOfBirth, email: validatedFields.data.email}}
 }

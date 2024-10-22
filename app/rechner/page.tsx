@@ -56,7 +56,5 @@ export default async function CalculatorPage() {
   const costCalculation = await client.fetch(COST_CALCULATION_QUERY, {}, options);
   const contact = await client.fetch(CONTACT_QUERY, {}, options);
 
-  console.log(pageSectionsServiceSegments)
-
   return <Calculator serviceSegments={pageSectionsServiceSegments.serviceSegments} costCalculation={costCalculation} contact={contact} />;
 }
