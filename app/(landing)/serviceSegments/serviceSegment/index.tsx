@@ -1,7 +1,8 @@
 import {ReactNodeProps} from "@/lib/types/core";
-import cn from "clsx";
-import LandingServiceSegmentImage from "@/app/(landing)/serviceSegments/serviceSegment/image";
 import Title from "@/components/title";
+import LandingServiceSegmentContainer from "@/(landing)/serviceSegments/serviceSegment/container";
+import {urlFor} from "@/lib/sanity/image";
+import Image from "next/image";
 
 export type LandingServiceSegmentProps = {
     serviceSegment: any;
@@ -9,21 +10,15 @@ export type LandingServiceSegmentProps = {
 
 export default function LandingServiceSegment({className, serviceSegment}: LandingServiceSegmentProps) {
     return (
-        <LandingServiceSegmentContainer className={className}>
-            <LandingServiceSegmentImage key="image" serviceSegment={serviceSegment} />
+        <LandingServiceSegmentContainer className={className} serviceSegment={serviceSegment}>
+            <Image className="w-full max-w-[250px]"
+                   src={urlFor(serviceSegment.illustration)?.url()}
+                   alt={serviceSegment.name}
+                   width={serviceSegment.illustration.width}
+                   height={serviceSegment.illustration.height} />
             <Title key="title" className="cursor-pointer mt-auto" size="md">
                 {serviceSegment.dinoPrefix}-Dino
             </Title>
         </LandingServiceSegmentContainer>
-    );
-}
-
-function LandingServiceSegmentContainer({className, children}: ReactNodeProps) {
-    return (
-        <div className="w-full">
-            <div className={cn("flex flex-col justify-center items-center gap-[1rem] h-full w-fit", className)}>
-                {children}
-            </div>
-        </div>
     );
 }

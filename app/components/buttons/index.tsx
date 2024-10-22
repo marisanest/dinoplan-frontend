@@ -14,7 +14,7 @@ const colorsToClasses = {
     red: 'border-red-200 bg-red-200 text-yellow-100 hover:border-red-200-faded hover:bg-red-200-faded',
     blue: 'border-blue bg-blue text-yellow-100',
     orange: 'border-orange bg-orange text-yellow-100',
-    bright: 'border-orange-200 bg-orange-200 text-blue-600'
+    bright: 'border-orange-200 bg-orange-200 text-blue-600 hover:border-orange-200-faded hover:bg-orange-200-faded'
 }
 
 const sizesToClasses = {

@@ -7,13 +7,14 @@ import LandingServiceSegment from "@/(landing)/serviceSegments/serviceSegment";
 import LandingServiceSegmentsDescription from "@/app/(landing)/serviceSegments/serviceSegment/description";
 import {LandingProps} from "@/(landing)/landing";
 import Text from "@/components/text/text";
+import LandingServiceSegmentDetail from "@/(landing)/serviceSegments/serviceSegment/detail";
 
 export default function LandingServiceSegments({serviceSegmentsPageSection}: Pick<LandingProps, 'serviceSegmentsPageSection'>) {
     if (!serviceSegmentsPageSection) return null;
 
     return (
         <LandingServiceSegmentsContainer>
-            <LandingServiceSegmentsTopContainer key="top">
+            <LandingServiceSegmentsTopContainer key="main">
                 <Title key="title">
                     <PortableText value={serviceSegmentsPageSection.title}/>
                 </Title>
@@ -29,7 +30,7 @@ export default function LandingServiceSegments({serviceSegmentsPageSection}: Pic
                     ))}
                 </div>
             </LandingServiceSegmentsTopContainer>
-            <LandingServiceSegmentsDescription key="bottom" />
+            <LandingServiceSegmentDetail key="detail" />
         </LandingServiceSegmentsContainer>
     );
 }

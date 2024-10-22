@@ -35,7 +35,7 @@ export default function LandingServiceModulesExample() {
 function LandingServiceModulesExampleContainer({
     children}: ReactNodeProps) {
     return (
-        <div className="w-full flex items-center flex-col">
+        <div className="w-full flex items-center flex-col pt-y-s">
             {children}
         </div>
     );

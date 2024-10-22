@@ -21,6 +21,7 @@ const config: Config = {
         'orange-400': '#EFE6D6',
         'orange-300': '#F3EBDF',
         'orange-200': '#F7F2EA',
+        'orange-200-faded': 'rgb(236,219,193)',
         'yellow-100': '#FFFFFA',
         'yellow-100-transparent': 'rgba(255,255,250,0.6)',
       },

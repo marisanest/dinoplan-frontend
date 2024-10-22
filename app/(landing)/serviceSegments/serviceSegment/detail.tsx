@@ -14,7 +14,7 @@ const segmentNameToCheckmarkDotColor = {
     'Zusatzversicherungen': 'bg-red-200',
 }
 
-export default function LandingServiceSegmentsDescription() {
+export default function LandingServiceSegmentDetail() {
     const { selectedServiceSegment } = useServiceSegmentsStore(
         useShallow((state) => ({
             selectedServiceSegment: state.selectedServiceSegment,
@@ -22,7 +22,7 @@ export default function LandingServiceSegmentsDescription() {
     );
 
     return (
-        <LandingServiceSegmentsDescriptionContainer>
+        <LandingServiceSegmentDetailContainer>
             <Title size="lg" align="left">
                 {selectedServiceSegment?.name}
             </Title>
@@ -41,13 +41,11 @@ export default function LandingServiceSegmentsDescription() {
                     ))}
                 </div>
             </div>
-        </LandingServiceSegmentsDescriptionContainer>
+        </LandingServiceSegmentDetailContainer>
     );
 }
 
-function LandingServiceSegmentsDescriptionContainer({
-                                                    children
-                                                }: ReactNodeProps) {
+function LandingServiceSegmentDetailContainer({children}: ReactNodeProps) {
     const {selectedServiceSegment} = useServiceSegmentsStore(
         useShallow((state) => ({
             selectedServiceSegment: state.selectedServiceSegment,
@@ -55,8 +53,7 @@ function LandingServiceSegmentsDescriptionContainer({
     );
 
     return (
-        <div
-            className={cn("rounded-bl-[50px] rounded-tr-[50px] absolute z-1 bg-orange-400 left-0 right-0 pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-sm))] pb-y-sm transition-[top] w-full flex justify-center ", selectedServiceSegment ? 'top-[calc(100%-var(--dino-bottom-offset))]' : 'top-0')}>
+        <div className={cn("rounded-bl-[50px] rounded-tr-[50px] absolute z-1 bg-orange-400 left-0 right-0 pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-sm))] pb-y-sm transition-[top] w-full flex justify-center ", selectedServiceSegment ? 'top-[calc(100%-var(--dino-bottom-offset))]' : 'top-0')}>
             <div className="w-[calc(100%-calc(2*var(--spacing-x-sm)))] max-w-[calc(var(--max-w-sm)-calc(2*var(--spacing-x-sm)))] flex flex-col gap-[1rem]">{children}</div>
         </div>
     );
