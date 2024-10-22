@@ -3,13 +3,13 @@ import Banner from "@/app/components/banner";
 import InternalLink from "@/components/link/internal";
 import Logo from "@/components/logo/logo";
 
-export default function Header() {
+export default function Header({contact}) {
     return (
         <Banner className="backdrop-blur-[10px] bg-yellow-100-transparent" fixed isHeader>
             <InternalLink href="/">
                 <Logo/>
             </InternalLink>
-            <HeaderCtas />
+            <HeaderCtas contact={contact} />
         </Banner>
     );
 }

@@ -18,8 +18,15 @@ const SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "serviceSegment"] {
     }    
 }`);
 
+const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {
+    _id, 
+    email, 
+    calendly,
+}`);
+
 export default async function CalculatorPage() {
   const serviceSegments = await client.fetch(SERVICE_SEGMENTS_QUERY, {}, options);
+  const contact = await client.fetch(CONTACT_QUERY, {}, options);
 
-  return <Calculator serviceSegments={serviceSegments} />;
+  return <Calculator serviceSegments={serviceSegments} contact={contact} />;
 }

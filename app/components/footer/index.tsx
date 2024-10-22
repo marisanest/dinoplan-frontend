@@ -3,8 +3,9 @@ import InternalLink from "@/components/link/internal";
 import Logo from "@/components/logo/logo";
 import FooterContainer from "@/components/footer/container";
 import Text from "@/components/text/text";
+import EmailLink from "@/components/link/email";
 
-export default function Footer() {
+export default function Footer({contact}) {
     return (
         <FooterContainer>
             <Banner className="bg-orange w-full flex !justify-center !items-center" isFooter>
@@ -21,9 +22,9 @@ export default function Footer() {
                     <InternalLink className="text-blue-600" href="/#faq" scroll>
                         <Text className="hover:text-brown-200 transition-colors">Fragen?</Text>
                     </InternalLink>
-                    <InternalLink className="text-blue-600" href="/kontakt">
+                    <EmailLink className="text-blue-600" href={contact.email.email}>
                         <Text className="hover:text-brown-200 transition-colors">Kontakt</Text>
-                    </InternalLink>
+                    </EmailLink>
                 </div>
             </Banner>
         </FooterContainer>

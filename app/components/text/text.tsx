@@ -3,7 +3,7 @@ import cn from "clsx";
 
 export type TextProps = {
     size?: "xs" | "sm" | "md" | "lg" | "xl";
-    color?: "default";
+    color?: "blue" | "yellow";
     align?: "left" | "center" | "right";
     isFlexCol?: boolean;
 } & ReactNodeProps
@@ -29,10 +29,11 @@ const alignToClassesFlexCol: { [key: string]: string } = {
 }
 
 const colorToClasses: { [key: string]: string } = {
-    default: 'text-blue-600',
+    blue: 'text-blue-600',
+    yellow: 'text-yellow-100 ',
 }
 
-export default function Text({className, children, size = 'lg', color = 'default', align = 'center', isFlexCol = false}: TextProps) {
+export default function Text({className, children, size = 'lg', color = 'blue', align = 'center', isFlexCol = false}: TextProps) {
     return (
         <TextContainer className={cn(className, sizeToClasses[size], colorToClasses[color], isFlexCol ? alignToClassesFlexCol[align] : alignToClasses[align], isFlexCol && 'flex-col')}>
             {children}

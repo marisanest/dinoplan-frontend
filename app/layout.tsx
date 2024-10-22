@@ -6,6 +6,8 @@ import Header from "@/components/header";
 import {ReactNode} from "react";
 import localFont from 'next/font/local';
 import Footer from "@/components/footer";
+import {defineQuery} from "groq";
+import {client} from "@/lib/sanity/client";
 
 const nunito = Nunito({
     subsets: ['latin'],
@@ -73,12 +75,23 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({
+const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {
+    _id, 
+    email, 
+    calendly,
+}`);
+
+const options = { next: { revalidate: 0 } };
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
-  return (
+    const contact = await client.fetch(CONTACT_QUERY, {}, options);
+
+    console.log(contact)
+    return (
       <html lang="de">
       <head>
           <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png"/>
@@ -101,9 +114,9 @@ export default function RootLayout({
           <link rel="manifest" href="/manifest.json"/>
       </head>
       <body className={`${nunito.variable} ${afacad.variable}`}>
-      <Header/>
+      <Header contact={contact}/>
       {children}
-      <Footer/>
+      <Footer contact={contact}/>
       </body>
       </html>
   );

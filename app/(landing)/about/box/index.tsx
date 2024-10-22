@@ -1,10 +1,11 @@
 import {ReactNodeProps} from "@/lib/types/core";
 import LandingAboutBoxImage from "@/(landing)/about/box/image";
 import LandingAboutBoxPersonalFeatures from "@/(landing)/about/box/personalFeatures";
-import AppointmentButton from "@/components/buttons/appointment";
 import {LandingProps} from "@/(landing)/landing";
+import Button from "@/components/buttons";
+import Text from "@/components/text/text";
 
-export default function LandingAboutBox({aboutPageSection}: Pick<LandingProps, 'aboutPageSection'>) {
+export default function LandingAboutBox({aboutPageSection, contact}: Pick<LandingProps, 'aboutPageSection' | 'contact'>) {
     return (
         <LandingAboutBoxContainer>
             <div className="grid grid-cols-2 gap-sm">
@@ -12,7 +13,9 @@ export default function LandingAboutBox({aboutPageSection}: Pick<LandingProps, '
                 <LandingAboutBoxImage key="image" aboutPageSection={aboutPageSection} />
             </div>
             <div className="w-fit">
-                <AppointmentButton className="mt-3" />
+                <Button key="appointment" size="sm" colors="orange" link={contact.calendly}>
+                    <Text color="yellow">Termin vereinbaren</Text>
+                </Button>
             </div>
         </LandingAboutBoxContainer>
     );

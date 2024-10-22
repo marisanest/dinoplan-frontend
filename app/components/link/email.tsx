@@ -12,7 +12,7 @@ export default function EmailLink({
 }: EmailLinkProps): ReactNode {
   return (
       <a className={className}
-         href={href}>
+         href={`mailto:${href}`}>
         {children && children}
       </a>
   );

@@ -5,7 +5,7 @@ import {LandingProps} from "@/(landing)/landing";
 import {PortableText} from "next-sanity";
 import Text from "@/components/text/text";
 
-export default function LandingAbout({aboutPageSection}: Pick<LandingProps, 'aboutPageSection'>) {
+export default function LandingAbout({aboutPageSection, contact}: Pick<LandingProps, 'aboutPageSection' | 'contact'>) {
     if (!aboutPageSection) return null;
 
     return (
@@ -16,7 +16,7 @@ export default function LandingAbout({aboutPageSection}: Pick<LandingProps, 'abo
             <Text key="description" className="mt-y-xs mb-y-s" size="sm" >
                 <PortableText value={aboutPageSection.description} />
             </Text>
-            <LandingAboutBox key="box" aboutPageSection={aboutPageSection} />
+            <LandingAboutBox key="box" aboutPageSection={aboutPageSection} contact={contact} />
         </LandingAboutContainer>
     );
 }

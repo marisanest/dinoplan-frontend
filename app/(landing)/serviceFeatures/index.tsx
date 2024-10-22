@@ -1,13 +1,12 @@
 import {ReactNodeProps} from "@/lib/types/core";
 import Title from "@/app/components/title";
-import Description from "@/app/components/description";
-import AppointmentButton from "@/app/components/buttons/appointment";
 import {PortableText} from "next-sanity";
 import {LandingProps} from "@/(landing)/landing";
 import LandingServiceFeature from "@/(landing)/serviceFeatures/serviceFeature";
 import Text from "@/components/text/text";
+import Button from "@/components/buttons";
 
-export default function LandingServiceFeatures({serviceFeaturesPageSection}: Pick<LandingProps, 'serviceFeaturesPageSection'>) {
+export default function LandingServiceFeatures({serviceFeaturesPageSection, contact}: Pick<LandingProps, 'serviceFeaturesPageSection' | 'contact'>) {
     if (!serviceFeaturesPageSection) return null;
 
     return (
@@ -23,7 +22,9 @@ export default function LandingServiceFeatures({serviceFeaturesPageSection}: Pic
                     <LandingServiceFeature key={serviceFeature.serviceFeature._id} serviceFeature={serviceFeature.serviceFeature} />
                 ))}
             </div>
-            <AppointmentButton className="mt-y-m" />
+            <Button key="appointment" className="mt-y-m" size="sm" colors="orange" link={contact.calendly}>
+                <Text color="yellow">Termin vereinbaren</Text>
+            </Button>
         </LandingServiceFeaturesContainer>
     );
 }
