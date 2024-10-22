@@ -18,15 +18,45 @@ const SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "serviceSegment"] {
     }    
 }`);
 
+const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSectionsServiceSegments"][0] {
+    serviceSegments[] {
+        serviceSegment->{
+           _id,
+           dinoPrefix,
+           illustration {
+             'height': asset->metadata.dimensions.height,
+             'width': asset->metadata.dimensions.width,
+             asset->{
+               url,
+             }
+           },
+           serviceModules[] {
+             serviceModule-> {
+               _id,
+               name,
+               costCalculationForFinancialInvestment,
+               costPerMonthForInsurance,
+             }
+           }  
+        }
+    }
+}`);
+
+const COST_CALCULATION_QUERY = defineQuery(`*[_type == "costCalculation"][0] {
+    inflationRate,
+    interestRate,
+}`);
+
 const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {
-    _id, 
-    email, 
     calendly,
 }`);
 
 export default async function CalculatorPage() {
-  const serviceSegments = await client.fetch(SERVICE_SEGMENTS_QUERY, {}, options);
+  const pageSectionsServiceSegments = await client.fetch(PAGE_SECTION_SERVICE_SEGMENTS_QUERY, {}, options);
+  const costCalculation = await client.fetch(COST_CALCULATION_QUERY, {}, options);
   const contact = await client.fetch(CONTACT_QUERY, {}, options);
 
-  return <Calculator serviceSegments={serviceSegments} contact={contact} />;
+  console.log(pageSectionsServiceSegments)
+
+  return <Calculator serviceSegments={pageSectionsServiceSegments.serviceSegments} costCalculation={costCalculation} contact={contact} />;
 }

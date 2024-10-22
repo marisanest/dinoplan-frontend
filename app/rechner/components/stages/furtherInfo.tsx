@@ -3,14 +3,10 @@ import Title from "@/components/title";
 import {updateCustomer} from "@/lib/sanity/models/customer";
 import { useFormStatus } from 'react-dom'
 import { useFormState } from 'react-dom'
-import FormButton from "@/components/buttons/formButton";
-import cn from "clsx";
 import {DateField, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
 import RichText from "@/components/text";
-import Radio from '@mui/joy/Radio';
-import {RadioGroup} from "@mui/joy";
-import Text from "@/components/text/text";
+import CalculatorStageSharedNextButtons from "@/rechner/components/stages/shared/buttons";
 
 const initialState = {
     message: '',
@@ -90,14 +86,7 @@ export default function CalculatorStageFurtherInfo({stage, setStageKey}) {
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-center items-center w-full">
-                    <FormButton type="submit" disabled={pending} className="w-fit" colors="blue">
-                        <Text size="md" color="yellow">Weiter</Text>
-                    </FormButton>
-                    <div className="cursor-pointer mt-[1rem]" onClick={() => setStageKey(stage.prevKey)}>
-                        <Text className="hover:text-blue-600-faded" size="md">Zurück</Text>
-                    </div>
-                </div>
+                <CalculatorStageSharedNextButtons pending={pending} onBackButtonClick={() => setStageKey(stage.prevKey)} />
             </form>
         </div>
     );

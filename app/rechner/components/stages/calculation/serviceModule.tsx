@@ -4,7 +4,7 @@ import RichText from "@/components/text";
 import cn from "clsx";
 import CheckmarkIcon from "@/components/icons/checkmark";
 
-export default function CalculatorServiceModule({serviceModule}) {
+export default function CalculatorStageCalculationServiceModule({serviceModule}) {
   const { selectedServiceModules, selectServiceModule } = useCalculatorStore(
     useShallow((state) => ({
         selectedServiceModules: state.selectedServiceModules,

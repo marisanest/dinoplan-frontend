@@ -4,11 +4,10 @@ import Button from "@/components/buttons";
 import {createCustomer} from "@/lib/sanity/models/customer";
 import { useFormStatus } from 'react-dom'
 import { useFormState } from 'react-dom'
-import FormButton from "@/components/buttons/formButton";
 import cn from "clsx";
 import RichText from "@/components/text";
-import InternalLink from "@/components/link/internal";
 import Text from "@/components/text/text";
+import CalculatorStageSharedNextButtons from "@/rechner/components/stages/shared/buttons";
 
 const initialState = {
     message: '',
@@ -54,16 +53,8 @@ export default function CalculatorStageStart({stage, setStageKey}) {
                         </>
                     )}
                 </div>
-                <div className="flex flex-col justify-center items-center w-full">
-                    <FormButton type="submit" disabled={pending} className="w-fit" colors="blue">
-                        <Text size="md" color="yellow">Weiter</Text>
-                    </FormButton>
-                    <div className="text-blue-600 mt-[1rem]">
-                        <InternalLink href="/">
-                            <Text className="hover:text-blue-600-faded" size="md">Zurück</Text>
-                        </InternalLink>
-                    </div>
-                </div>
+
+                <CalculatorStageSharedNextButtons pending={pending} link={{type: 'internal', url: '/'}} />
             </form>
         </div>
     );
