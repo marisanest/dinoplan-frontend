@@ -28,13 +28,10 @@
     --height-banner: 5.5rem
 }
 
-
 html,
 body {
     font-family: var(--font-nunito);
 }
-
-
 
 input[type=text]:active,
 input[type=text]:focus,
@@ -136,4 +133,3 @@ input[type="checkbox"]::before {
 input[type="checkbox"]:checked::before {
     display: block;
 }
-
