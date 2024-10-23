@@ -3,7 +3,7 @@ import CircleIcon from "@/components/icons/circle";
 import HeartIcon from "@/components/icons/heart";
 import FlexibilityIcon from "@/components/icons/flexibility";
 
-export default function LandingAboutBoxPersonalFeatureIcon({index}) {
+export default function LandingAboutBoxPersonalFeatureSymbol({index}) {
     let icon;
     if (index === 0) {
         icon =  <HeartIcon />;
@@ -14,13 +14,13 @@ export default function LandingAboutBoxPersonalFeatureIcon({index}) {
     }
 
     return (
-        <LandingAboutBoxPersonalFeatureIconContainer>
+        <LandingAboutBoxPersonalFeatureSymbolContainer>
             {icon}
-        </LandingAboutBoxPersonalFeatureIconContainer>
+        </LandingAboutBoxPersonalFeatureSymbolContainer>
     );
 }
 
-function LandingAboutBoxPersonalFeatureIconContainer({children}: ReactNodeProps) {
+function LandingAboutBoxPersonalFeatureSymbolContainer({children}: ReactNodeProps) {
     return (
         <div className="bg-yellow-100 rounded-full w-fit h-fit p-2.5">
             {children}

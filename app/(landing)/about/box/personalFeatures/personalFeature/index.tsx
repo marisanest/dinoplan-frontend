@@ -1,12 +1,12 @@
 import {ReactNodeProps} from "@/lib/types/core";
 import Title from "@/components/title";
-import LandingAboutBoxPersonalFeatureIcon from "@/(landing)/about/box/personalFeatures/personalFeature/icon";
+import LandingAboutBoxPersonalFeatureSymbol from "@/(landing)/about/box/personalFeatures/personalFeature/symbol";
 import {PortableText} from "next-sanity";
 
 export default function LandingAboutBoxPersonalFeature({personalFeature, index}) {
     return (
         <LandingAboutBoxPersonalFeatureContainer>
-            <LandingAboutBoxPersonalFeatureIcon personalFeature={personalFeature} index={index} />
+            <LandingAboutBoxPersonalFeatureSymbol personalFeature={personalFeature} index={index} />
             <div>
                 <Title key="title" size="sm" align="left">
                     {personalFeature.name}

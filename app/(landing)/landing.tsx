@@ -13,7 +13,6 @@ import LandingServiceSegments from "@/app/(landing)/serviceSegments";
 import LandingServiceFeatures from "@/(landing)/serviceFeatures";
 import LandingServiceModules from "@/(landing)/serviceModules";
 import LandingStart from "@/(landing)/start";
-import RichText from "@/components/text";
 import Button from "@/components/buttons";
 import LandingEnd from "@/(landing)/end";
 import Text from "@/components/text/text";
