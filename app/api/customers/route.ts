@@ -1,6 +1,13 @@
 import { NextResponse } from 'next/server';
+import {getSession} from "@/lib/signIn";
+import {redirect} from "next/navigation";
 
 export async function POST(req: Request) {
+    const session = await getSession();
+    if (!session.hasAccess) {
+        redirect('/login')
+    }
+
     try {
         const body = await req.json();
         const { email } = body;

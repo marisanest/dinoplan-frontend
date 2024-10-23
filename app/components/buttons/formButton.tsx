@@ -3,10 +3,11 @@ import cn from "clsx";
 import Link from "@/components/link";
 
 export type ButtonProps = {
+    size?: 'base' | 'sm';
     colors?: 'default' | 'red' | 'blue' | 'orange';
     link?: LinkType;
-    type: string
-    disabled: boolean;
+    type?: string
+    disabled?: boolean;
     onClick?: () => void;
 } & ReactNodeProps;
 
@@ -14,16 +15,22 @@ const colorsToClasses = {
     default: 'border-blue-600 text-blue-600 hover:border-red-200 hover:bg-red-200 hover:text-yellow-100',
     red: 'border-red-200 bg-red-200 text-yellow-100 hover:border-red-200-faded hover:bg-red-200-faded',
     blue: 'border-blue bg-blue text-yellow-100 hover:bg-blue-600-faded hover:border-blue-600-faded',
-    orange: 'border-orange bg-orange text-yellow-100',
+    orange: 'border-orange bg-orange text-yellow-100 hover:bg-orange-faded hover:border-orange-faded',
 }
 
-export default function FormButton({ className, children, colors = 'default', link, type, disabled = false, onClick }: ButtonProps) {
+const sizesToClasses = {
+    base: 'h-[60px] border-[3px] text-lg',
+    sm: 'h-[55px] border-[3px] text-lg',
+}
+
+export default function FormButton({ className, children, size = 'base', colors = 'default', link, type = 'submit', disabled = false, onClick }: ButtonProps) {
     const containerClassName = cn(
-        "rounded-full h-[60px] border-[3px] text-lg cursor-pointer transition-colors",
+        "rounded-full border-[3px] text-lg cursor-pointer transition-colors",
+        sizesToClasses[size],
         colorsToClasses[colors],
         className
     )
-    const childrenClassName = "px-[2rem] h-full flex justify-center items-center";
+    const childrenClassName = "px-[2rem] flex justify-center items-center";
 
     if (link) {
         children = <Link className={childrenClassName} link={link}>{children}</Link>

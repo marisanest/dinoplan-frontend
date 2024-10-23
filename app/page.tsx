@@ -1,6 +1,8 @@
 import Landing from "@/app/(landing)/landing"
 import {client} from "@/lib/sanity/client";
 import {defineQuery} from "groq";
+import {getSession} from "@/lib/signIn";
+import {redirect} from "next/navigation";
 
 const options = { next: { revalidate: 0 } };
 
@@ -132,6 +134,11 @@ const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {
 }`);
 
 export default async function LandingPage() {
+  const session = await getSession();
+  if (!session.hasAccess) {
+    redirect('/login')
+  }
+
   const startPageSection = await client.fetch(PAGE_SECTION_START_QUERY, {}, options);
   const serviceSegmentsPageSection = await client.fetch(PAGE_SECTION_SERVICE_SEGMENTS_QUERY, {}, options);
   const serviceFeaturesPageSection = await client.fetch(PAGE_SECTION_SERVICE_FEATURES_QUERY, {}, options);
