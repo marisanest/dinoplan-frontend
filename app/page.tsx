@@ -136,7 +136,7 @@ export default async function LandingPage() {
   const serviceSegmentsPageSection = await client.fetch(PAGE_SECTION_SERVICE_SEGMENTS_QUERY, {}, options);
   const serviceFeaturesPageSection = await client.fetch(PAGE_SECTION_SERVICE_FEATURES_QUERY, {}, options);
   const serviceModulesPageSection = await client.fetch(PAGE_SECTION_SERVICE_MODULES_QUERY, {}, options);
-  // const aboutPageSection = await client.fetch(PAGE_SECTION_ABOUT_QUERY, {}, options);
+  const aboutPageSection = await client.fetch(PAGE_SECTION_ABOUT_QUERY, {}, options);
   const faqPageSection = await client.fetch(PAGE_SECTION_FAQ_QUERY, {}, options);
   const contact = await client.fetch(CONTACT_QUERY, {}, options);
 
@@ -145,7 +145,7 @@ export default async function LandingPage() {
                serviceSegmentsPageSection={serviceSegmentsPageSection}
                serviceFeaturesPageSection={serviceFeaturesPageSection}
                serviceModulesPageSection={serviceModulesPageSection}
-               // aboutPageSection={aboutPageSection}
+               aboutPageSection={aboutPageSection}
                faqPageSection={faqPageSection}
                contact={contact} />
   );
