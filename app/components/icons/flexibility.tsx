@@ -45,6 +45,5 @@ export default function FlexibilityIcon({ color = '#294290' }: FlexibilityIconPr
                 </g>
             </g>
         </svg>
-
     );
 }
