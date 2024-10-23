@@ -23,7 +23,7 @@ export default function LandingServiceSegmentDetail() {
 
     return (
         <LandingServiceSegmentDetailContainer>
-            <div className="">
+            <div>
                 <Title key="title" size="lg" align="left">
                     {selectedServiceSegment && `${selectedServiceSegment?.dinoPrefix}-Dino`}
                 </Title>
@@ -31,8 +31,8 @@ export default function LandingServiceSegmentDetail() {
                     {selectedServiceSegment?.name}
                 </Title>
             </div>
-            <div className="grid grid-cols-2 gap-[6rem]">
-                <div className="justify-start items-center w-full">
+            <div className="flex flex-col sm:grid sm:grid-cols-2 gap-[2rem] sm:gap-[6rem]">
+                <div className="flex justify-start items-center w-full">
                     <Text size="md" align="left" className="gap-[1rem]" isFlexCol>
                         <PortableText value={selectedServiceSegment?.description} />
                     </Text>
@@ -58,8 +58,10 @@ function LandingServiceSegmentDetailContainer({children}: ReactNodeProps) {
     );
 
     return (
-        <div className={cn("rounded-bl-[50px] rounded-tr-[50px] absolute z-1 bg-orange-400 left-0 right-0 pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-sm))] pb-y-sm transition-[top] w-full flex justify-center ", selectedServiceSegment ? 'top-[calc(100%-var(--dino-bottom-offset))]' : 'top-0')}>
-            <div className="w-[calc(100%-calc(2*var(--spacing-x-sm)))] max-w-[calc(var(--max-w-sm)-calc(2*var(--spacing-x-sm)))] flex flex-col gap-[1rem]">{children}</div>
+        <div className={cn("rounded-bl-md rounded-tr-md absolute z-1 bg-orange-400 left-0 right-0 pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-sm))] pb-y-sm transition-[top] w-full flex justify-center", selectedServiceSegment ? 'top-[calc(100%-var(--dino-bottom-offset))]' : 'top-0')}>
+            <div className="w-[calc(100%-calc(2*var(--spacing-x-s)))] flex flex-col gap-[1rem]">
+                {children}
+            </div>
         </div>
     );
 }

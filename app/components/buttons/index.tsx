@@ -7,6 +7,7 @@ export type ButtonProps = {
     colors?: 'default' | 'red' | 'blue' | 'orange' | 'bright';
     link?: LinkType;
     onClick?: () => void;
+    unresponsive?: boolean;
 } & ReactNodeProps;
 
 const colorsToClasses = {
@@ -17,9 +18,19 @@ const colorsToClasses = {
     bright: 'border-orange-200 bg-orange-200 text-blue-600 hover:border-orange-200-faded hover:bg-orange-200-faded'
 }
 
-const sizesToClasses = {
-    base: 'h-[60px] border-[3px] text-lg',
+const  responsiveSizesToClasses = {
+    base: 'h-[45px] sm:h-[60px] border-[2px] sm:border-[3px] text-base sm:text-lg',
     sm: 'h-[55px] border-[3px] text-lg',
+}
+
+const sizesToClasses = {
+    base: 'h-[60px] border-[3px] text-base',
+    sm: 'h-[55px] border-[3px] text-lg',
+}
+
+const responsiveToChildrenClasses = {
+    base: 'px-[1rem] sm:px-[2rem]',
+    sm: 'px-[2rem]',
 }
 
 const sizesToChildrenClasses = {
@@ -27,14 +38,14 @@ const sizesToChildrenClasses = {
     sm: 'px-[2rem]',
 }
 
-export default function Button({ className, children, size = 'base', colors = 'default', link, onClick }: ButtonProps) {
+export default function Button({ className, children, size = 'base', colors = 'default', link, onClick, unresponsive = false }: ButtonProps) {
     const containerClassName = cn(
         "rounded-full cursor-pointer transition-colors",
-        sizesToClasses[size],
+        unresponsive ? sizesToClasses[size] : responsiveSizesToClasses[size],
         colorsToClasses[colors],
         className
     )
-    const childrenClassName = cn("h-full flex justify-center items-center", sizesToChildrenClasses[size]);
+    const childrenClassName = cn("h-full flex justify-center items-center", unresponsive ? sizesToChildrenClasses[size] : responsiveToChildrenClasses[size]);
 
     if (link) {
         children = <Link className={childrenClassName} link={link} >{children}</Link>

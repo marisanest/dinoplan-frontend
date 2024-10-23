@@ -2,12 +2,16 @@
     --max-w-sm: 1000px;
     --max-w-md: 1200px;
 
+    --spacing-x-s: 4rem;
     --spacing-x-sm: 5rem;
+    --spacing-x-outer: 5rem;
 
     --spacing-y-xs: 2rem;
     --spacing-y-s: 3.5rem;
     --spacing-y-sm: 4.5rem;
     --spacing-y-m: 6rem;
+    --spacing-y-outer: 4rem;
+    --spacing-y-start-image: 3rem;
 
     --gap-sm: 5rem;
 
@@ -25,16 +29,35 @@
     --orange-200: #F7F2EA;
     --yellow-100: #FFFFF;
 
-    --height-banner: 5.5rem
+    --height-banner: 5.5rem;
+    --height-start-description: 5.75rem;
 }
 
+@media only screen and (max-width: 600px) {
+    :root {
+        --spacing-x-xs: 1rem;
+        --spacing-x-s: 2rem;
+        --spacing-x-sm: 3.5rem;
+        --spacing-x-outer: 2rem;
+
+        --spacing-y-xs: 1rem;
+        --spacing-y-s: 2rem;
+        --spacing-y-sm: 3.5rem;
+        --spacing-y-m: 4rem;
+        --spacing-y-outer: 6rem;
+        --spacing-y-start-image: 3rem;
+
+        --height-start-description: 93px;
+    }
+}
 
 html,
 body {
     font-family: var(--font-nunito);
+
+    max-width: 100dvw;
+    overflow-x: hidden!important;
 }
-
-
 
 input[type=text]:active,
 input[type=text]:focus,

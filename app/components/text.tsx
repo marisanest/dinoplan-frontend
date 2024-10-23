@@ -11,7 +11,7 @@ export type TextProps = {
 const sizeToClasses: { [key: string]: string } = {
     xs: 'font-normal text-xs',
     sm: 'font-normal text-sm',
-    md: 'font-light text-md',
+    md: 'font-light text-base',
     lg: 'font-normal text-lg',
     xl: 'font-normal text-xl',
 }

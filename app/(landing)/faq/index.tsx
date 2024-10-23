@@ -25,7 +25,7 @@ export default function LandingFaq({faqPageSection}: Pick<LandingProps, 'faqPage
 function LandingFaqContainer({children}: ReactNodeProps) {
     return (
         <div className="flex flex-col items-center mt-y-m">
-            <div className="w-sm max-w-sm">{children}</div>
+            <div className="w-[calc(100dvw-calc(2*var(--spacing-x-outer)))] sm:w-sm sm:max-w-sm">{children}</div>
         </div>
     );
 }

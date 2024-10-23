@@ -21,7 +21,7 @@ export default function LandingAboutBoxPersonalFeature({personalFeature, index})
 
 function LandingAboutBoxPersonalFeatureContainer({children}: ReactNodeProps) {
     return (
-        <div className="flex gap-6">
+        <div className="flex gap-[1rem] sm:gap-[1.5rem]">
             {children}
         </div>
     );

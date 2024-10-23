@@ -36,36 +36,38 @@ const config: Config = {
       },
       height: {
         banner: 'var(--height-banner)',
+        'start-description': 'var(--height-start-description)'
       },
-      padding: {
-        'x-xs': 'var(--spacing-y-xs)',
-        'x-s': 'var(--spacing-y-s)',
-        'x-sm': 'var(--spacing-y-sm)',
-        'x-m': 'var(--spacing-y-m)',
+      spacing: {
+        'x-xs': 'var(--spacing-x-xs)',
+        'x-s': 'var(--spacing-x-s)',
+        'x-sm': 'var(--spacing-x-sm)',
+        'x-m': 'var(--spacing-x-m)',
+        'x-outer': 'var(--spacing-x-outer)',
 
         'y-xs': 'var(--spacing-y-xs)',
         'y-s': 'var(--spacing-y-s)',
         'y-sm': 'var(--spacing-y-sm)',
         'y-m': 'var(--spacing-y-m)',
+        'y-outer': 'var(--spacing-y-outer)',
       },
-     margin: {
-       'x-xs': 'var(--spacing-y-xs)',
-       'x-s': 'var(--spacing-y-s)',
-       'x-sm': 'var(--spacing-y-sm)',
-       'x-m': 'var(--spacing-y-m)',
-
-       'y-xs': 'var(--spacing-y-xs)',
-       'y-s': 'var(--spacing-y-s)',
-       'y-sm': 'var(--spacing-y-sm)',
-       'y-m': 'var(--spacing-y-m)',
-     },
       gap: {
         sm: 'var(--gap-sm)',
+      },
+      borderRadius: {
+        lg: '90px',
+        md: '50px',
       }
     },
     fontFamily: {
       nunito: ['var(--font-nunito)'],
       afacad: ['var(--font-afacad)'],
+    },
+    screens: {
+      lg: '1245px',
+      sm: '1045px',
+      xs: '470px',
+      xxs: '405px',
     },
   },
   plugins: [],

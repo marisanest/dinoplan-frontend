@@ -7,9 +7,10 @@ export default function Header({contact}) {
     return (
         <Banner className="backdrop-blur-[10px] bg-yellow-100-transparent" fixed isHeader>
             <InternalLink href="/">
-                <Logo/>
+                <div className="sm:hidden"><Logo scale={0.75}/></div>
+                <div className="hidden sm:inline"><Logo scale={1.0}/></div>
             </InternalLink>
-            <HeaderCtas contact={contact} />
+            <HeaderCtas contact={contact}/>
         </Banner>
     );
 }

@@ -11,7 +11,7 @@ export default function LandingStartBackground({startPageSection}: Pick<LandingP
             <Image
                 src={urlFor(startPageSection.illustration)?.url()}
                 alt="Illustration"
-                className="ml-auto max-h-[calc(100dvh-18rem-83px)] w-auto"
+                className="max-w-[calc(100dvw-calc(2*var(--spacing-x-outer)))] h-auto sm:ml-auto sm:max-h-[calc(100dvh-var(--height-banner)-var(--spacing-y-outer)-var(--height-start-description)-var(--spacing-y-outer)-var(--spacing-y-start-image)-var(--spacing-y-start-image))] sm:w-auto"
                 width={startPageSection.illustration.width}
                 height={startPageSection.illustration.height}
             />
@@ -21,7 +21,7 @@ export default function LandingStartBackground({startPageSection}: Pick<LandingP
 
 function LandingStartBackgroundContainer({children}: ReactNodeProps) {
     return (
-        <div className="absolute right-0 left-0 top-0 bottom-0 px-20 pt-[9rem] pb-[calc(9rem+83px)] flex flex-col items-center justify-center">
+        <div className="absolute right-0 left-0 top-0 bottom-0 px-x-outer sm:pt-[calc(var(--height-banner)+var(--spacing-y-outer)+var(--spacing-y-start-image))] pb-[calc(var(--height-start-description)+var(--spacing-y-outer)+var(--spacing-y-start-image))] flex flex-col items-center justify-end sm:justify-center">
             {children}
         </div>
     );

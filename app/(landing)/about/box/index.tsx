@@ -8,7 +8,7 @@ import Text from "@/components/text/text";
 export default function LandingAboutBox({aboutPageSection, contact}: Pick<LandingProps, 'aboutPageSection' | 'contact'>) {
     return (
         <LandingAboutBoxContainer>
-            <div className="grid grid-cols-2 gap-sm">
+            <div className="sm:grid sm:grid-cols-2 sm:gap-sm">
                 <LandingAboutBoxPersonalFeatures key="personalFeatures" aboutPageSection={aboutPageSection} />
                 <LandingAboutBoxImage key="image" aboutPageSection={aboutPageSection} />
             </div>
@@ -23,7 +23,7 @@ export default function LandingAboutBox({aboutPageSection, contact}: Pick<Landin
 
 function LandingAboutBoxContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full bg-orange-200 rounded-3xl py-y-s px-x-s flex flex-col items-center">
+        <div className="w-full bg-orange-200 rounded-3xl py-y-s px-x-s sm:px-x-s flex flex-col items-center">
             {children}
         </div>
     );

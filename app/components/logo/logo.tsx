@@ -1,13 +1,10 @@
-import {ReactNodeProps} from "@/lib/types/core";
+export type LogoProps = {
+    scale?: number;
+}
 
-export type ArrowIconProps = {
-    color?: string;
-} & ReactNodeProps
-
-export default function Logo({ className, color = '#294290' }: ArrowIconProps) {
+export default function Logo({ scale = 0.75 }: LogoProps) {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="189.156"
-             height="45.637" viewBox="0 0 189.156 45.637">
+        <svg xmlns="http://www.w3.org/2000/svg" width={scale * 189.156} height={scale * 45.637} viewBox="0 0 189.156 45.637">
             <defs>
                 <clipPath>
                     <rect width="189.156" height="45.637" fill="#294290"/>

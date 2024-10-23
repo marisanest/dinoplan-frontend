@@ -16,7 +16,7 @@ export default function LandingAboutBoxPersonalFeatures({aboutPageSection}: Pick
 
 function LandingAboutBoxPersonalFeaturesContainer({children}: ReactNodeProps) {
     return (
-        <div className="flex flex-col gap-8 w-full h-full justify-center items-start">
+        <div className="flex flex-col gap-[1.5rem] sm:gap-[2rem] w-full h-full justify-center items-start">
             {children}
         </div>
     );

@@ -38,7 +38,7 @@ export default function Landing({
                                 }: LandingProps) {
 
     return (
-        <main>
+        <main className="max-w-[100dvw] overflow-x-hidden">
             <LandingStart startPageSection={startPageSection}
                           serviceSegmentsPageSection={serviceSegmentsPageSection} />
             <Banner className="bg-orange !justify-center gap-[2rem]">

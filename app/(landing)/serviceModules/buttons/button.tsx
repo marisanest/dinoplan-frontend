@@ -13,9 +13,8 @@ export default function LandingServiceModulesButton({serviceModule}) {
     );
 
     return (
-        <Button
-            className={selectedServiceModule?._id === serviceModule._id ? '!border-red-200 !bg-red-200 !text-yellow-100' : ''}
-            onClick={() => selectServiceModule(serviceModule)}>
+        <Button className={selectedServiceModule?._id === serviceModule._id ? '!border-red-200 !bg-red-200 !text-yellow-100' : ''}
+                onClick={() => selectServiceModule(serviceModule)}>
             {serviceModule.name}
         </Button>
     )

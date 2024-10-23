@@ -11,21 +11,21 @@ export type TextProps = {
 const sizeToClasses: { [key: string]: string } = {
     xs: 'font-normal text-xs',
     sm: 'font-normal text-sm',
-    md: 'font-normal text-md',
-    lg: 'font-normal text-lg',
+    md: 'font-normal text-sm sm:text-base',
+    lg: 'font-normal text-sm xs:text-base sm:text-lg',
     xl: 'font-normal text-xl',
 }
 
 const alignToClasses: { [key: string]: string } = {
-    left: 'justify-start items-center',
+    left: 'justify-start items-center text-left',
     center: 'justify-center text-center items-center',
-    right: 'justify-end items-center',
+    right: 'justify-end items-center text-right',
 }
 
 const alignToClassesFlexCol: { [key: string]: string } = {
-    left: 'items-start justify-center',
+    left: 'items-start justify-center text-left',
     center: 'items-center justify-center text-center',
-    right: 'items-end justify-center',
+    right: 'items-end justify-center text-right',
 }
 
 const colorToClasses: { [key: string]: string } = {

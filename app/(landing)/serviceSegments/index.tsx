@@ -19,7 +19,7 @@ export default function LandingServiceSegments({serviceSegmentsPageSection}: Pic
                 <Text key="description" className="mt-y-xs" size="sm">
                     <PortableText value={serviceSegmentsPageSection.description}/>
                 </Text>
-                <div className="w-full grid grid-cols-3 justify-between gap-[4rem] mt-y-s">
+                <div className="w-full grid grid-cols-3 justify-between gap-[1.5rem] sm:gap-[4rem] mt-y-s">
                     {serviceSegmentsPageSection.serviceSegments?.map((serviceSegment, index) => (
                         <LandingServiceSegment
                             key={serviceSegment.serviceSegment?._id}

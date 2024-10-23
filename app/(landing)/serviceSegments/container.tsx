@@ -11,10 +11,10 @@ export default function LandingServiceSegmentsContainer({children}: ReactNodePro
         })),
     );
 
-    // todo: 416px berechnen
+    // todo: 466px berechnen
     return (
-        <div className={cn("bg-yellow-100 flex flex-col items-center transition-[margin] mt-y-m", selectedServiceSegment ? 'mb-[calc(466px-var(--dino-bottom-offset)+var(--spacing-y-m))]' : 'mb-y-m')}>
-            <div className="w-sm max-w-sm relative z-10">{children}</div>
+        <div className={cn("bg-yellow-100 flex flex-col items-center transition-[margin] mt-y-m", selectedServiceSegment ? 'mb-[calc(666px-var(--dino-bottom-offset)+var(--spacing-y-m))]' : 'mb-y-m')}>
+            <div className="relative z-10 w-[calc(100dvw-calc(2*var(--spacing-x-outer)))] sm:w-sm sm:max-w-sm">{children}</div>
         </div>
     );
 }

@@ -10,12 +10,14 @@ export default function LandingAbout({aboutPageSection, contact}: Pick<LandingPr
 
     return (
         <LandingAboutContainer>
-            <Title key="title">
+            <Title key="title" className="px-x-xs">
                 <PortableText value={aboutPageSection.title} />
             </Title>
-            <Text key="description" className="mt-y-xs mb-y-s" size="sm" >
-                <PortableText value={aboutPageSection.description} />
-            </Text>
+            <div className="w-full flex justify-center">
+                <Text key="description" className="mt-y-xs mb-y-s px-x-xs sm:max-w-[55%]" size="sm" >
+                    <PortableText value={aboutPageSection.description} />
+                </Text>
+            </div>
             <LandingAboutBox key="box" aboutPageSection={aboutPageSection} contact={contact} />
         </LandingAboutContainer>
     );
@@ -24,7 +26,7 @@ export default function LandingAbout({aboutPageSection, contact}: Pick<LandingPr
 function LandingAboutContainer({children}: ReactNodeProps) {
     return (
         <div className="bg-yellow-100 flex flex-col items-center my-y-m">
-            <div className="w-sm max-w-sm">{children}</div>
+            <div className="w-[calc(100dvw-calc(2*var(--spacing-x-outer)))] sm:w-sm sm:max-w-sm">{children}</div>
             <div id="faq"></div>
         </div>
     );
