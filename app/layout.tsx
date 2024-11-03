@@ -9,6 +9,7 @@ import Footer from "@/components/footer";
 import {defineQuery} from "groq";
 import {client} from "@/lib/sanity/client";
 import {getSession} from "@/lib/signIn";
+import OverlayMenu from "@/components/overlayMenu";
 
 const nunito = Nunito({
     subsets: ['latin'],
@@ -126,9 +127,10 @@ async function AuthenticatedLayout({
             <link rel="manifest" href="/manifest.json"/>
         </head>
         <body className={`${nunito.variable} ${afacad.variable}`}>
-        <Header contact={contact}/>
+        <OverlayMenu contact={contact} />
+        <Header contact={contact} />
         {children}
-        <Footer contact={contact}/>
+        <Footer contact={contact} />
         </body>
         </html>
     );

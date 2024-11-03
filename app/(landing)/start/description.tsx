@@ -29,8 +29,7 @@ export default function LandingStartDescription({startPageSection, serviceSegmen
 function LandingStartDescriptionContainer({children}: ReactNodeProps) {
     return (
         <div className="w-full flex justify-center pb-y-outer">
-            <div
-                className="h-start-description grid grid-cols-[1fr_2px_1fr] gap-[0.6rem] xs:gap-[1rem] sm:flex sm:flex-col sm:justify-between sm:px-[1.75rem]">
+            <div className="h-start-description grid grid-cols-[1fr_2px_1fr] gap-[0.6rem] xs:gap-[1rem] sm:flex sm:flex-col sm:justify-between sm:px-[1.75rem]">
                 {children}
             </div>
         </div>

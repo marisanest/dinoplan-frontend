@@ -51,6 +51,18 @@
     }
 }
 
+
+@media only screen and (max-width: 405px) {
+    :root {
+        --spacing-y-start-image: 1rem;
+
+        --spacing-y-m: 2rem;
+        --spacing-y-outer: 2.5rem;
+
+        --height-banner: 4.5rem;
+    }
+}
+
 html,
 body {
     font-family: var(--font-nunito);

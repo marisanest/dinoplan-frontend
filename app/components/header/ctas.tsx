@@ -21,7 +21,7 @@ export default function HeaderCtas({contact}) {
 
 function HeaderCtasContainer({ children }: ReactNodeProps) {
     return (
-        <div className="flex gap-[2rem] items-center">
+        <div className="gap-[2rem] items-center hidden xs:flex">
             {children}
         </div>
     );

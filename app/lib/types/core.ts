@@ -10,6 +10,9 @@ export type WindowSizeType = {
     height: number;
 };
 
+export type ScreenSizeType = {
+    isXxs: boolean;
+};
 
 export type DinoSegmentType = {
     id: number,

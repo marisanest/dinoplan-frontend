@@ -20,7 +20,7 @@ const colorsToClasses = {
 
 const  responsiveSizesToClasses = {
     base: 'h-[45px] sm:h-[60px] border-[2px] sm:border-[3px] text-base sm:text-lg',
-    sm: 'h-[55px] border-[3px] text-lg',
+    sm: 'h-[50px] xs:h-[55px] border-[3px] text-lg',
 }
 
 const sizesToClasses = {
@@ -30,7 +30,7 @@ const sizesToClasses = {
 
 const responsiveToChildrenClasses = {
     base: 'px-[1rem] sm:px-[2rem]',
-    sm: 'px-[2rem]',
+    sm: 'px-[1rem] sm:px-[2rem]',
 }
 
 const sizesToChildrenClasses = {

@@ -41,13 +41,15 @@ export default function Landing({
         <main className="max-w-[100dvw] overflow-x-hidden">
             <LandingStart startPageSection={startPageSection}
                           serviceSegmentsPageSection={serviceSegmentsPageSection} />
-            <Banner className="bg-orange !justify-center gap-[2rem]">
-                <Text className="!w-fit" >
+            <Banner className="bg-orange !justify-center gap-[1rem] xs:gap-[2rem]">
+                <Text className="!w-fit">
                     Lasse dich jetzt kostenlos online von unseren Experten beraten.
                 </Text>
-                <Button link={contact.calendly}
+                <Button className="!h-[50px] xs:!h-[55px]"
+                        link={contact.calendly}
                         size="sm"
-                        colors="bright">
+                        colors="bright"
+                        unresponsive>
                     <Text>Termin vereinbaren</Text>
                 </Button>
             </Banner>

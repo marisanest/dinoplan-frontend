@@ -1,34 +1,70 @@
+"use client"
+
 import Title from "@/app/components/title";
 import {PortableText} from "next-sanity";
-import LandingServiceSegmentsContainer from "@/app/(landing)/serviceSegments/container";
-import LandingServiceSegmentsTopContainer from "@/app/(landing)/serviceSegments/topContainer";
-import LandingServiceSegment from "@/(landing)/serviceSegments/serviceSegment";
 import {LandingProps} from "@/(landing)/landing";
 import Text from "@/components/text/text";
-import LandingServiceSegmentDetail from "@/(landing)/serviceSegments/serviceSegment/detail";
+import {
+    ServiceSegmentsProvider,
+    useServiceSegmentsContext
+} from "@/lib/stores/serviceSegments/context";
+import {ReactNodeProps} from "@/lib/types/core";
+import {useShallow} from "zustand/react/shallow";
+import cn from "clsx";
+import LandingServiceSegmentsCarousel from "@/(landing)/serviceSegments/serviceSegmentsCarousel";
+import LandingServiceSegmentsGrid from "@/(landing)/serviceSegments/grid";
+import LandingServiceSegmentDetail from "@/(landing)/serviceSegments/serviceSegmentDetail";
+import useScreenSizes from "@/lib/hooks/useScreenSizes";
+import {useState} from "react";
 
 export default function LandingServiceSegments({serviceSegmentsPageSection}: Pick<LandingProps, 'serviceSegmentsPageSection'>) {
-    if (!serviceSegmentsPageSection) return null;
+    const [height, setHeight] = useState(0)
+    const screenSizes = useScreenSizes()
+    if (!serviceSegmentsPageSection?.serviceSegments || !Array.isArray(serviceSegmentsPageSection.serviceSegments) || serviceSegmentsPageSection.serviceSegments.length === 0 || !screenSizes) return null;
+
+    console.log(height);
 
     return (
-        <LandingServiceSegmentsContainer>
-            <LandingServiceSegmentsTopContainer key="main">
-                <Title key="title">
-                    <PortableText value={serviceSegmentsPageSection.title}/>
-                </Title>
-                <Text key="description" className="mt-y-xs" size="sm">
-                    <PortableText value={serviceSegmentsPageSection.description}/>
-                </Text>
-                <div className="w-full grid grid-cols-3 justify-between gap-[1.5rem] sm:gap-[4rem] mt-y-s">
-                    {serviceSegmentsPageSection.serviceSegments?.map((serviceSegment, index) => (
-                        <LandingServiceSegment
-                            key={serviceSegment.serviceSegment?._id}
-                            className={index === 1 ? 'mx-auto' : (index === 2 ? 'ml-auto' : '')}
-                            serviceSegment={serviceSegment.serviceSegment} />
-                    ))}
-                </div>
-            </LandingServiceSegmentsTopContainer>
-            <LandingServiceSegmentDetail key="detail" />
-        </LandingServiceSegmentsContainer>
+        <ServiceSegmentsProvider showServiceSegmentDetails={screenSizes.isXxs}
+                                 serviceSegments={serviceSegmentsPageSection.serviceSegments.map(serviceSegment => serviceSegment.serviceSegment)}>
+            <LandingServiceSegmentsContainer height={height}>
+                <LandingServiceSegmentsInnerContainer key="main">
+                    <Title key="title">
+                        <PortableText value={serviceSegmentsPageSection.title}/>
+                    </Title>
+                    <Text key="description" className="mt-y-xs" size="sm">
+                        <PortableText value={serviceSegmentsPageSection.description}/>
+                    </Text>
+                    <LandingServiceSegmentsGrid key="grid" />
+                    <LandingServiceSegmentsCarousel key="carousel" />
+                </LandingServiceSegmentsInnerContainer>
+                <LandingServiceSegmentDetail key="detail" setHeight={setHeight} />
+            </LandingServiceSegmentsContainer>
+        </ServiceSegmentsProvider>
     );
 }
+
+function LandingServiceSegmentsContainer({children, height}) {
+    const showServiceSegmentDetails = useServiceSegmentsContext(useShallow((s) => s.showServiceSegmentDetails))
+
+    return (
+        <div className={cn("mt-y-m", showServiceSegmentDetails ? 'mb-[calc(var(--spacing-y-m)-var(--dino-bottom-offset))]' : 'mb-y-m')}>
+            <div className="bg-yellow-100 flex flex-col items-center">
+                <div className="relative z-10 w-[calc(100dvw-calc(2*var(--spacing-x-outer)))] sm:w-sm sm:max-w-sm">{children}</div>
+            </div>
+            <div className="transition-[height]" style={{height: height}}></div>
+        </div>
+    );
+}
+
+function LandingServiceSegmentsInnerContainer({children}: ReactNodeProps) {
+    const showServiceSegmentDetails = useServiceSegmentsContext(useShallow((s) => s.showServiceSegmentDetails))
+
+    return (
+        <div
+            className={cn("relative z-10 bg-orange-200 rounded-bl-md rounded-tr-md transition-[box-shadow] px-x-s py-y-sm", showServiceSegmentDetails ? 'shadow-[0px_6px_10px_-10px_black]' : 'shadow-[0px_0px_0px_0px_black]')}>
+            {children}
+        </div>
+    );
+}
+
