@@ -2,18 +2,20 @@ import { useEffect, useState } from 'react';
 import {ScreenSizeType} from "@/lib/types/core";
 import useWindowSize from "@/lib/hooks/useWindowSize";
 
+const XXS = 475
+
 const useScreenSizes = () => {
   const windowSize = useWindowSize()
   const [screenSizes, setScreenSizes] = useState<ScreenSizeType | undefined>(undefined);
 
   // lg: '1245px',
   // sm: '1045px',
-  //     xs: '470px',
-  //     xxs: '405px',
+  // xs: '470px',
+  // xxs: '405px',
 
   useEffect(() => {
     if (windowSize) {
-      if (windowSize.width < 405) {
+      if (windowSize.width < XXS) {
         setScreenSizes({isXxs: true})
       } else {
         setScreenSizes({isXxs: false})

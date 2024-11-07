@@ -10,13 +10,10 @@ export default function LandingStart({startPageSection, serviceSegmentsPageSecti
 
     return (
         <LandingStartContainer>
-            <div className="relative z-10 pt-[var(--height-banner)]">
-                <div className="pt-[var(--spacing-y-outer)] h-[calc(100dvh-var(--height-banner)-var(--spacing-y-outer)-var(--height-start-description))] flex flex-col justify-start sm:justify-center">
-                    <Title size="7xl" align="left">
-                        <PortableText value={startPageSection?.title}/>
-                    </Title>
-                </div>
-
+            <div className="relative z-10 h-full flex flex-col">
+                <Title size="7xl" align="left">
+                    <PortableText value={startPageSection?.title}/>
+                </Title>
                 <LandingStartDescription startPageSection={startPageSection} serviceSegmentsPageSection={serviceSegmentsPageSection}/>
             </div>
             <LandingStartBackground key="background" startPageSection={startPageSection}/>
@@ -26,8 +23,10 @@ export default function LandingStart({startPageSection, serviceSegmentsPageSecti
 
 function LandingStartContainer({children}: ReactNodeProps) {
     return (
-        <div className="relative z-10 w-[100dvw] h-[100dvh] bg-orange-200 rounded-bl-lg px-x-outer">
-            {children}
+        <div className="w-full bg-orange-200 px-x-outer pt-[calc(var(--height-banner)+var(--spacing-y-outer))] pb-y-outer flex justify-center">
+            <div className="relative max-w-md w-md h-[625px]">
+                {children}
+            </div>
         </div>
     );
 }

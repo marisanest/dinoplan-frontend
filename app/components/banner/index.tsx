@@ -8,24 +8,30 @@ type BannerProps = {
 }
 
 export default function Banner({ className = "bg-yellow-100", fixed = false, isHeader = false, isFooter = false, children }: BannerProps & ReactNodeProps) {
-    className = cn('h-banner px-[2rem] sm:px-[4rem] rounded-full flex justify-between items-center w-[100dvw] max-w-[100dvw] overflow-x-hidden', className, fixed ? 'z-50 fixed left-0 right-0 top-0' : '')
+    className = cn('w-[100dvw] max-w-[100dvw] overflow-x-hidden flex justify-center rounded-full', className, fixed ? 'z-50 fixed left-0 right-0 top-0' : '')
 
     if (isHeader) {
         return (
             <header className={className}>
-                {children}
+                <div className="sm:w-md sm:max-w-md h-banner flex justify-between items-center">
+                    {children}
+                </div>
             </header>
-        )
+    )
     } else if (isFooter) {
         return (
             <footer className={className}>
-                {children}
+                <div className="sm:w-md sm:max-w-md h-banner flex justify-between items-center">
+                    {children}
+                </div>
             </footer>
-        )
+    )
     } else {
         return (
             <div className={className}>
-            {children}
+            <div className="sm:w-md sm:max-w-md h-banner">
+                    {children}
+                </div>
             </div>
         )
     }

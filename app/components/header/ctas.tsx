@@ -7,13 +7,13 @@ export default function HeaderCtas({contact}) {
     return (
         <HeaderCtasContainer>
             <InternalLink className="hidden sm:inline-block" href="/rechner" scroll>
-                <Text className="hover:text-blue-600-faded transition-colors">Beitrag berechnen</Text>
+                <Text className="hover:text-blue-600-faded transition-colors" size="md">Beitrag berechnen</Text>
             </InternalLink>
-            <Button key="appointment" size="sm" colors="orange" link={contact.calendly}>
-                <Text color="yellow">Termin vereinbaren</Text>
+            <Button key="appointment" size="xs" colors="orange" link={contact.calendly}>
+                <Text color="yellow" size="md">Termin vereinbaren</Text>
             </Button>
             <InternalLink className="hidden sm:inline-block" href="/#faq" scroll>
-                <Text className="hover:text-blue-600-faded transition-colors">Fragen?</Text>
+                <Text className="hover:text-blue-600-faded transition-colors" size="md">Fragen?</Text>
             </InternalLink>
         </HeaderCtasContainer>
     );
@@ -21,7 +21,7 @@ export default function HeaderCtas({contact}) {
 
 function HeaderCtasContainer({ children }: ReactNodeProps) {
     return (
-        <div className="gap-[2rem] items-center hidden xs:flex">
+        <div className="gap-[1rem] items-center hidden xs:flex">
             {children}
         </div>
     );

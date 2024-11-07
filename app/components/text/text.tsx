@@ -3,7 +3,7 @@ import cn from "clsx";
 
 export type TextProps = {
     size?: "xs" | "sm" | "md" | "lg" | "xl";
-    color?: "blue" | "yellow" | "red";
+    color?: "blue" | "yellow" | "red" | "none";
     align?: "left" | "center" | "right";
     isFlexCol?: boolean;
 } & ReactNodeProps

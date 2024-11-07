@@ -8,7 +8,7 @@ export type TitleProps = {
 } & ReactNodeProps
 
 const sizeToClasses: { [key: string]: string } = {
-    '7xl': 'text-[2.75rem] leading-[1] xs:text-6xl sm:text-7xl font-medium',
+    '7xl': 'text-[2.75rem] leading-[1] xs:text-6xl sm:text-[4.25rem] font-medium',
     xl: 'text-4xl sm:text-5xl font-medium',
     lg: 'text-2xl sm:text-3xl font-medium',
     md: 'text-xl font-medium',

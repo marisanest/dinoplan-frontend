@@ -9,7 +9,7 @@ const imagePath = 'dinoplan/Dinoplan_Final_Files_Footer_cropped_gcfull_pf7xn0';
 export default function LandingEnd() {
     return (
         <LandingEndContainer>
-            <AdvancedImage className="w-full max-w-[1500px] h-auto pointer-events-none mt-[-95px] sm:mt-[-50px]"
+            <AdvancedImage className="w-full max-w-[1150px] h-auto pointer-events-none mt-[-95px] sm:mt-[-65px]"
                            cldImg={cloudinary.image(imagePath)} />
         </LandingEndContainer>
     );

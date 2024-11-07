@@ -2,18 +2,19 @@ import {ReactNodeProps} from "@/lib/types/core";
 import Title from "@/components/title";
 import LandingAboutBoxPersonalFeatureSymbol from "@/(landing)/about/box/personalFeatures/personalFeature/symbol";
 import {PortableText} from "next-sanity";
+import Text from "@/components/text/text";
 
 export default function LandingAboutBoxPersonalFeature({personalFeature, index}) {
     return (
         <LandingAboutBoxPersonalFeatureContainer>
             <LandingAboutBoxPersonalFeatureSymbol personalFeature={personalFeature} index={index} />
             <div>
-                <Title key="title" size="sm" align="left">
+                <Title key="title" size="md" align="left">
                     {personalFeature.name}
                 </Title>
-                <div key="description" className="flex items-center w-full mt-2 font-normal text-sm justify-start text-blue-600" >
+                <Text key="description" className="mt-2 text-[0.9rem]" size="sm" align="left">
                     <PortableText value={personalFeature.description} />
-                </div>
+                </Text>
             </div>
         </LandingAboutBoxPersonalFeatureContainer>
     );

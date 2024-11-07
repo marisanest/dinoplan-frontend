@@ -17,13 +17,13 @@ export default function LandingServiceFeatures({serviceFeaturesPageSection, cont
             <Text key="description" className="mt-y-xs" size="sm">
                 <PortableText value={serviceFeaturesPageSection.description}/>
             </Text>
-            <div key="features" className="grid grid-cols-2 sm:grid-cols-3 gap-[1rem] sm:gap-[2rem] mt-y-s">
+            <div key="features" className="grid grid-cols-2 sm:grid-cols-3 gap-[1rem] sm:gap-[2rem] mt-y-s mx-[5rem]">
                 {serviceFeaturesPageSection.serviceFeatures?.map((serviceFeature) => (
                     <LandingServiceFeature key={serviceFeature.serviceFeature._id} serviceFeature={serviceFeature.serviceFeature} />
                 ))}
             </div>
-            <Button key="appointment" className="mt-y-m" size="sm" colors="orange" link={contact.calendly}>
-                <Text color="yellow">Termin vereinbaren</Text>
+            <Button key="appointment" className="mt-y-s" size="sm" colors="orange" link={contact.calendly}>
+                <Text color="none">Termin vereinbaren</Text>
             </Button>
         </LandingServiceFeaturesContainer>
     );
@@ -31,8 +31,8 @@ export default function LandingServiceFeatures({serviceFeaturesPageSection, cont
 
 function LandingServiceFeaturesContainer({children}: ReactNodeProps) {
     return (
-        <div className="flex items-center justify-center mb-y-m">
-            <div className="w-[calc(100dvw-calc(2*var(--spacing-x-outer)))] sm:w-sm px-x-xs flex flex-col items-center justify-center">
+        <div className="w-full flex justify-center pb-y-m">
+            <div className="w-[calc(100dvw-calc(2*var(--spacing-x-outer)))] sm:w-sm sm:max-w-sm flex flex-col items-center">
                 {children}
             </div>
         </div>

@@ -27,12 +27,12 @@ const config: Config = {
         'yellow-100-transparent': 'rgba(255,255,250,0.6)',
       },
       width: {
-        sm: 'calc(100dvw - 20rem)',
-        md: 'calc(100dvw - 10rem)',
+        sm: 'var(--max-w-sm)',
+        md: 'var(--max-w-md)',
       },
       maxWidth: {
         'sm': 'var(--max-w-sm)',
-        'md': 'var(--max-w-md)'
+        'md': 'var(--max-w-md)',
       },
       height: {
         banner: 'var(--height-banner)',

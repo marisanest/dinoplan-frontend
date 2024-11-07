@@ -11,7 +11,7 @@ export default function LandingFaqImage({faqPageSection}: Pick<LandingProps, 'fa
             <Image
                 src={urlFor(faqPageSection.illustration)?.url()}
                 alt="Illustration"
-                className="w-[80%] sm:w-[45%] h-auto"
+                className="w-[80%] sm:w-[350px] h-auto"
                 width={faqPageSection.illustration.width}
                 height={faqPageSection.illustration.height}
             />
@@ -21,7 +21,7 @@ export default function LandingFaqImage({faqPageSection}: Pick<LandingProps, 'fa
 
 function LandingFaqImageContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full flex justify-center items-center">
+        <div className="w-full flex justify-center">
             {children}
         </div>
     );

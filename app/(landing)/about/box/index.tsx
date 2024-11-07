@@ -8,13 +8,13 @@ import Text from "@/components/text/text";
 export default function LandingAboutBox({aboutPageSection, contact}: Pick<LandingProps, 'aboutPageSection' | 'contact'>) {
     return (
         <LandingAboutBoxContainer>
-            <div className="sm:grid sm:grid-cols-2 sm:gap-sm">
+            <div className="sm:grid sm:grid-cols-2 sm:gap-x-sm">
                 <LandingAboutBoxPersonalFeatures key="personalFeatures" aboutPageSection={aboutPageSection} />
                 <LandingAboutBoxImage key="image" aboutPageSection={aboutPageSection} />
             </div>
-            <div className="w-fit">
+            <div className="w-fit pt-y-xs">
                 <Button key="appointment" size="sm" colors="orange" link={contact.calendly}>
-                    <Text color="yellow">Termin vereinbaren</Text>
+                    <Text color="none">Termin vereinbaren</Text>
                 </Button>
             </div>
         </LandingAboutBoxContainer>

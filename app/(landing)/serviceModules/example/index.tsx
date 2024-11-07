@@ -19,13 +19,13 @@ export default function LandingServiceModulesExample() {
 
     return (
         <LandingServiceModulesExampleContainer>
-            <div className="grid grid-cols-[3fr_2fr] gap-[1rem] sm:gap-[4rem] w-full">
+            <div className="grid grid-cols-[4fr_2fr] gap-[1rem] sm:gap-[4rem] w-full">
                 <LandingServiceModulesExampleText key="text" serviceModule={selectedServiceModule}/>
                 <LandingServiceModulesExampleImage key="image" serviceModule={selectedServiceModule}/>
             </div>
-            <div className="w-fit pt-y-s">
-                <Button colors="red" link={{type: 'internal', url: '/rechner'}} unresponsive>
-                    <Text color="yellow">Beitrag berechnen</Text>
+            <div className="w-fit pt-y-xs">
+                <Button colors="red" link={{type: 'internal', url: '/rechner'}} size="sm">
+                    <Text color="none">Beitrag berechnen</Text>
                 </Button>
             </div>
         </LandingServiceModulesExampleContainer>

@@ -1,6 +1,6 @@
 :root {
-    --max-w-sm: 1000px;
-    --max-w-md: 1200px;
+    --max-w-sm: 900px;
+    --max-w-md: 1150px;
 
     --spacing-x-s: 4rem;
     --spacing-x-sm: 5rem;
@@ -9,8 +9,8 @@
     --spacing-y-xs: 2rem;
     --spacing-y-s: 3.5rem;
     --spacing-y-sm: 4.5rem;
-    --spacing-y-m: 6rem;
-    --spacing-y-outer: 4rem;
+    --spacing-y-m: 4.5rem;
+    --spacing-y-outer: 6rem;
     --spacing-y-start-image: 3rem;
 
     --gap-sm: 5rem;
@@ -29,7 +29,7 @@
     --orange-200: #F7F2EA;
     --yellow-100: #FFFFF;
 
-    --height-banner: 5.5rem;
+    --height-banner: 4.5rem;
     --height-start-description: 5.75rem;
 }
 

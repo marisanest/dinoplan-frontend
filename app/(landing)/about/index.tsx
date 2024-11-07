@@ -25,7 +25,7 @@ export default function LandingAbout({aboutPageSection, contact}: Pick<LandingPr
 
 function LandingAboutContainer({children}: ReactNodeProps) {
     return (
-        <div className="bg-yellow-100 flex flex-col items-center my-y-m">
+        <div className="w-full flex flex-col items-center">
             <div className="w-[calc(100dvw-calc(2*var(--spacing-x-outer)))] sm:w-sm sm:max-w-sm">{children}</div>
             <div id="faq"></div>
         </div>

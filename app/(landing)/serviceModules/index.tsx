@@ -21,7 +21,7 @@ export default function LandingServiceModules({serviceModulesPageSection}: Pick<
 
 function LandingServiceModulesContainer({children}: ReactNodeProps) {
     return (
-        <div className="flex items-center justify-center mb-y-m">
+        <div className="flex justify-center pt-[1rem] pb-y-m">
             <div className="w-[calc(100dvw-calc(2*var(--spacing-x-outer)))] sm:w-sm sm:max-w-sm flex flex-col items-center justify-center">
                 {children}
             </div>

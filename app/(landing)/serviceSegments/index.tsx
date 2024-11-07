@@ -22,8 +22,6 @@ export default function LandingServiceSegments({serviceSegmentsPageSection}: Pic
     const screenSizes = useScreenSizes()
     if (!serviceSegmentsPageSection?.serviceSegments || !Array.isArray(serviceSegmentsPageSection.serviceSegments) || serviceSegmentsPageSection.serviceSegments.length === 0 || !screenSizes) return null;
 
-    console.log(height);
-
     return (
         <ServiceSegmentsProvider showServiceSegmentDetails={screenSizes.isXxs}
                                  serviceSegments={serviceSegmentsPageSection.serviceSegments.map(serviceSegment => serviceSegment.serviceSegment)}>
@@ -46,13 +44,14 @@ export default function LandingServiceSegments({serviceSegmentsPageSection}: Pic
 
 function LandingServiceSegmentsContainer({children, height}) {
     const showServiceSegmentDetails = useServiceSegmentsContext(useShallow((s) => s.showServiceSegmentDetails))
+    // w-[calc(100dvw-calc(2*var(--spacing-x-outer)))]
 
     return (
-        <div className={cn("mt-y-m", showServiceSegmentDetails ? 'mb-[calc(var(--spacing-y-m)-var(--dino-bottom-offset))]' : 'mb-y-m')}>
-            <div className="bg-yellow-100 flex flex-col items-center">
-                <div className="relative z-10 w-[calc(100dvw-calc(2*var(--spacing-x-outer)))] sm:w-sm sm:max-w-sm">{children}</div>
+        <div className={cn("w-full bg-yellow-100 flex flex-col items-center pt-y-m transition-[margin] duration-1000", showServiceSegmentDetails ? 'pb-[calc(var(--spacing-y-m)-var(--dino-bottom-offset))]' : 'pb-y-m')}>
+            <div className="relative z-10 sm:w-sm sm:max-w-sm">
+                {children}
             </div>
-            <div className="transition-[height]" style={{height: height}}></div>
+            <div className="transition-[height] duration-1000" style={{height: showServiceSegmentDetails ? height : 0}}/>
         </div>
     );
 }

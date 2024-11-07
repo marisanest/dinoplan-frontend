@@ -19,7 +19,7 @@ export default function LandingAboutBoxImage({aboutPageSection}: Pick<LandingPro
 
 function LandingAboutBoxImageContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full h-full flex justify-center items-center my-y-xs">
+        <div className="w-full h-full flex justify-end items-center">
             {children}
         </div>
     );

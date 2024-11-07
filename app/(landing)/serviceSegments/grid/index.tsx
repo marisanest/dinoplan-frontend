@@ -12,7 +12,7 @@ export default function LandingServiceSegmentsGrid() {
     if (!screenSizes || screenSizes.isXxs) return null;
 
     return (
-        <div className="w-full grid grid-cols-3 justify-between gap-[1.5rem] sm:gap-[4rem] mt-y-s">
+        <div className="w-full grid grid-cols-3 justify-between gap-[1.5rem] sm:gap-[4rem] mt-y-s px-[1rem]">
             {serviceSegments.map((serviceSegment, index) => (
                 <LandingServiceSegment
                     key={serviceSegment._id}

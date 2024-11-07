@@ -5,6 +5,7 @@ import Image from "next/image";
 import {useShallow} from "zustand/react/shallow";
 import cn from "clsx";
 import {useServiceSegmentsContext} from "@/lib/stores/serviceSegments/context";
+import Text from "@/components/text/text";
 
 export type LandingServiceSegmentProps = {
     index: number;
@@ -14,12 +15,12 @@ export type LandingServiceSegmentProps = {
 export default function LandingServiceSegment({className, index, serviceSegment}: LandingServiceSegmentProps) {
     return (
         <LandingServiceSegmentContainer className={className} index={index}>
-            <Image className="w-full max-w-[250px]"
+            <Image className="w-full "
                    src={urlFor(serviceSegment.illustration)?.url()}
                    alt={serviceSegment.name}
                    width={serviceSegment.illustration.width}
                    height={serviceSegment.illustration.height} />
-            <Title key="title" className="cursor-pointer mt-auto" size="md">
+            <Title key="title" className="cursor-pointer mt-auto !text-[1.5rem]" size="md">
                 {serviceSegment.dinoPrefix}-Dino
             </Title>
         </LandingServiceSegmentContainer>

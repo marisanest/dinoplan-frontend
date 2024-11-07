@@ -18,7 +18,7 @@ export default function LandingServiceModulesExampleImage({serviceModule}) {
 
 function LandingServiceModulesExampleImageContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full h-full flex justify-center items-center mt-2">
+        <div className="w-full h-full flex justify-end items-center">
             {children}
         </div>
     );
