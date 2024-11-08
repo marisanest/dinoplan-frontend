@@ -9,7 +9,7 @@ const createSchema = z.object({
     }).trim().min(1,  { message: "Name deines Kindes muss angegeben werden." }),
 })
 
-export async function createCustomer(customArg: {customerId: string | undefined}, prevState: any, formData: FormData) {
+export async function createCustomer(_: any, formData: FormData) {
     const validatedFields = createSchema.safeParse({
         childName: formData.get('childName'),
     })
@@ -20,50 +20,37 @@ export async function createCustomer(customArg: {customerId: string | undefined}
         }
     }
 
-    const customerId = customArg.customerId
-    let data = {}
-
-    if (customerId) {
-        data = {
-            "mutations": [
-                {
-                    "patch": {
-                        "id": customerId,
-                        "set": {
+    const response = await fetch(
+        `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.SANITY_DATASET}?returnIds=true`,
+        {
+            body: JSON.stringify( {
+                "mutations": [
+                    {
+                        "create": {
+                            "_type": "customer",
                             "childName": validatedFields.data.childName,
                         },
                     },
-                },
-            ]
-        }
-    } else {
-        data = {
-            "mutations": [
-                {
-                    "create": {
-                        "_type": "customer",
-                        "childName": validatedFields.data.childName,
-                    },
-                },
-            ]
-        }
-    }
-
-    const result = await fetch(
-        `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.SANITY_DATASET}?returnIds=true`,
-        {
-            body: JSON.stringify(data),
+                ]
+            }),
             headers: {
                 Authorization: `Bearer ${process.env.SANITY_TOKEN}`,
                 'Content-Type': 'application/json',
             },
             method: 'POST',
         },
-    ) .then(function(response) {
-       return response.json();
-   })
+    ).then((response)=> {
+        return response.json();
+    })
 
-    return {status: 200, data: {customerId: customerId ?? result.results.map((result) => result.id)[0], childName: validatedFields.data.childName}}
+    if (response && typeof response === 'object' && response.results && Array.isArray(response.results) && response.results.length > 0 && response.results[0].id) {
+        const customerId = response.results[0].id;
+        cookies().set('customerId', customerId)
+
+        return {status: 200, data: {customerId}}
+    } else {
+        return {status: 500, errors: []}
+    }
 }
 
 const updateSchema = z.object({
@@ -73,16 +60,14 @@ const updateSchema = z.object({
         z.string().email({ message: "Es muss eine korrekte E-Mail-Adresse angegeben werden." }),
     ]),
     privacy: z.coerce.boolean(),
-    // privacy: z.coerce.boolean().refine(bool => bool, {
-    //     message: 'Du musst unsere Datenschutzerklärung akzeptieren.'
-    // })
 })
 
-export async function updateCustomer(customArg: {customerId: string | undefined}, prevState: any, formData: FormData) {
+export async function updateCustomer(_: any, formData: FormData) {
+    const customerId = cookies().get('customerId')?.value
+
     const formChildDateOfBirth = formData.get('childDateOfBirth')
     let childDateOfBirth = null;
 
-    const customerId = customArg.customerId
     let month
     let day
     let year

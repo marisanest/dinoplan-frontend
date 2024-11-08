@@ -20,16 +20,16 @@ export default function Banner({ className = "bg-yellow-100", fixed = false, isH
     )
     } else if (isFooter) {
         return (
-            <footer className={className}>
+            <div className={className}>
                 <div className="sm:w-md sm:max-w-md h-banner flex justify-between items-center">
                     {children}
                 </div>
-            </footer>
+            </div>
     )
     } else {
         return (
             <div className={className}>
-            <div className="sm:w-md sm:max-w-md h-banner">
+                <div className="sm:w-md sm:max-w-md h-banner">
                     {children}
                 </div>
             </div>

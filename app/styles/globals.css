@@ -13,6 +13,8 @@
     --spacing-y-outer: 6rem;
     --spacing-y-start-image: 3rem;
 
+    --spacing-footer-image-currection: 65px;
+
     --gap-sm: 5rem;
 
     --dino-bottom-offset: 2.5rem;
@@ -31,6 +33,7 @@
 
     --height-banner: 4.5rem;
     --height-start-description: 5.75rem;
+    --height-footer-image: 457px;
 }
 
 @media only screen and (max-width: 600px) {

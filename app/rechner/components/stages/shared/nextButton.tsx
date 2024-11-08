@@ -7,8 +7,8 @@ export type CalculatorStageSharedNextButtonProps = {
 
 export default function CalculatorStageSharedNextButton({pending}: CalculatorStageSharedNextButtonProps) {
     return (
-        <FormButton type="submit" disabled={pending} className="w-fit" colors="blue">
-            <Text size="md" color="yellow">Weiter</Text>
+        <FormButton disabled={pending} className="w-fit" colors="blue" size="sm">
+            <Text color="none">Weiter</Text>
         </FormButton>
     )
 }

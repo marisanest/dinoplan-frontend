@@ -3,12 +3,13 @@ import cn from "clsx";
 import Link from "@/components/link";
 
 export type ButtonProps = {
-    size?: 'base' | 'sm';
-    colors?: 'default' | 'red' | 'blue' | 'orange';
+    size?: 'md' | 'sm' | 'xs';
+    colors?: 'default' | 'red' | 'blue' | 'orange' | 'bright';
     link?: LinkType;
     type?: string
     disabled?: boolean;
     onClick?: () => void;
+    unresponsive?: boolean;
 } & ReactNodeProps;
 
 const colorsToClasses = {
@@ -16,21 +17,43 @@ const colorsToClasses = {
     red: 'border-red-200 bg-red-200 text-yellow-100 hover:border-red-200-faded hover:bg-red-200-faded',
     blue: 'border-blue bg-blue text-yellow-100 hover:bg-blue-600-faded hover:border-blue-600-faded',
     orange: 'border-orange bg-orange text-yellow-100 hover:bg-orange-faded hover:border-orange-faded',
+    bright: 'border-orange-200 bg-orange-200 text-blue-600 hover:border-orange-200-faded hover:bg-orange-200-faded'
+}
+
+const  responsiveSizesToClasses = {
+    md: 'h-[45px] sm:h-[60px] border-[2px] sm:border-[3px]',
+    sm: 'h-[48px] xs:h-[48px] border-[2px]',
+    xs: 'h-[40px] xs:h-[45px] border-[2px]',
 }
 
 const sizesToClasses = {
-    base: 'h-[60px] border-[3px] text-lg',
-    sm: 'h-[55px] border-[3px] text-lg',
+    md: 'h-[60px] border-[3px]',
+    sm: 'h-[55px] border-[3px]',
+    xs: 'h-[45px] border-[3px]',
 }
 
-export default function FormButton({ className, children, size = 'base', colors = 'default', link, type = 'submit', disabled = false, onClick }: ButtonProps) {
+const responsiveToChildrenClasses = {
+    md: 'px-[1rem] sm:px-[2rem]',
+    sm: 'px-[1rem] sm:px-[1.5rem]',
+    xs: 'px-[1rem] sm:px-[1.25rem]',
+}
+
+const sizesToChildrenClasses = {
+    md: 'px-[2rem]',
+    sm: 'px-[1.75rem]',
+    xs: 'px-[1.2rem]',
+}
+
+
+export default function FormButton({ className, children, size = 'md', colors = 'default', link, type = 'submit', disabled = false, onClick, unresponsive = false }: ButtonProps) {
     const containerClassName = cn(
         "rounded-full border-[3px] text-lg cursor-pointer transition-colors",
-        sizesToClasses[size],
+        unresponsive ? sizesToClasses[size] : responsiveSizesToClasses[size],
         colorsToClasses[colors],
         className
     )
-    const childrenClassName = "px-[2rem] flex justify-center items-center";
+
+    const childrenClassName = cn("h-full flex justify-center items-center", unresponsive ? sizesToChildrenClasses[size] : responsiveToChildrenClasses[size]);
 
     if (link) {
         children = <Link className={childrenClassName} link={link}>{children}</Link>

@@ -6,8 +6,8 @@ import cn from "clsx";
 export default function FooterContainer({ children }: ReactNodeProps) {
     const pathname = usePathname()
     return (
-        <div className={cn(pathname === '/' ? '' : 'bg-orange-300')}>
+        <footer className={cn(pathname === '/' ? '' : 'bg-orange-400')}>
             {children}
-        </div>
+        </footer>
     );
 }

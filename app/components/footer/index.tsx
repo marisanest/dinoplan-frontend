@@ -4,10 +4,12 @@ import Logo from "@/components/logo/logo";
 import FooterContainer from "@/components/footer/container";
 import Text from "@/components/text/text";
 import EmailLink from "@/components/link/email";
+import FooterImage from "@/components/footer/image";
 
 export default function Footer({contact}) {
     return (
         <FooterContainer>
+            <FooterImage />
             <Banner className="bg-orange" isFooter>
                 <div className="w-full flex items-center justify-center gap-[1.5rem] sm:gap-[3rem]">
                     <InternalLink className="text-blue-600" href="/impressum">

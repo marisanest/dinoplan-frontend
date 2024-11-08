@@ -14,8 +14,8 @@ import LandingServiceFeatures from "@/(landing)/serviceFeatures";
 import LandingServiceModules from "@/(landing)/serviceModules";
 import LandingStart from "@/(landing)/start";
 import Button from "@/components/buttons";
-import LandingEnd from "@/(landing)/end";
 import Text from "@/components/text/text";
+import FooterImage from "@/components/footer/image";
 
 export type LandingProps = {
     startPageSection: PAGE_SECTION_START_QUERYResult;
@@ -56,7 +56,6 @@ export default function Landing({
             <LandingServiceModules serviceModulesPageSection={serviceModulesPageSection} />
             <LandingAbout aboutPageSection={aboutPageSection} contact={contact} />
             <LandingFaq faqPageSection={faqPageSection} />
-            <LandingEnd key="end" />
         </main>
     );
 }
