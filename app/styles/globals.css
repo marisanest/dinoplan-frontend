@@ -2,6 +2,7 @@
     --max-w-sm: 900px;
     --max-w-md: 1150px;
 
+    --spacing-x-xs: 3rem;
     --spacing-x-s: 4rem;
     --spacing-x-sm: 5rem;
     --spacing-x-outer: 5rem;
@@ -40,7 +41,7 @@
 
 @media only screen and (max-width: 600px) {
     :root {
-        --spacing-x-xs: 1rem;
+        /*--spacing-x-xs: 1rem;*/
         --spacing-x-s: 2rem;
         --spacing-x-sm: 3.5rem;
         --spacing-x-outer: 2rem;
@@ -59,6 +60,7 @@
 
 @media only screen and (max-width: 405px) {
     :root {
+        --spacing-x-xs: 2rem;
         --spacing-y-start-image: 1rem;
 
         --spacing-y-m: 2rem;

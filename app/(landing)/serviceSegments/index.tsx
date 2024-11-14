@@ -47,8 +47,8 @@ function LandingServiceSegmentsContainer({children, height}) {
     // w-[calc(100dvw-calc(2*var(--spacing-x-outer)))]
 
     return (
-        <div className={cn("w-full bg-yellow-100 flex flex-col items-center pt-y-m transition-[margin] duration-1000", showServiceSegmentDetails ? 'pb-[calc(var(--spacing-y-m)-var(--dino-bottom-offset))]' : 'pb-y-m')}>
-            <div className="relative z-10 sm:w-sm sm:max-w-sm">
+        <div className={cn("w-full flex flex-col items-center pt-y-m transition-[margin] duration-1000 px-x-xs", showServiceSegmentDetails ? 'pb-[calc(var(--spacing-y-m)-var(--dino-bottom-offset))]' : 'pb-y-m')}>
+            <div className="relative z-10 w-full sm:w-sm sm:max-w-sm">
                 {children}
             </div>
             <div className="transition-[height] duration-1000" style={{height: showServiceSegmentDetails ? height : 0}}/>

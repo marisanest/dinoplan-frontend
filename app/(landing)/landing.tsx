@@ -15,7 +15,6 @@ import LandingServiceModules from "@/(landing)/serviceModules";
 import LandingStart from "@/(landing)/start";
 import Button from "@/components/buttons";
 import Text from "@/components/text/text";
-import FooterImage from "@/components/footer/image";
 
 export type LandingProps = {
     startPageSection: PAGE_SECTION_START_QUERYResult;
@@ -38,7 +37,7 @@ export default function Landing({
                                 }: LandingProps) {
 
     return (
-        <main className="min-w-[100dvw] w-[100dvw] max-w-[100dvw] overflow-x-hidden">
+        <main className="min-w-[100dvw] w-[100dvw] max-w-[100dvw] overflow-x-hidden flex flex-col items-center justify-center bg-yellow-100">
             <LandingStart startPageSection={startPageSection}
                           serviceSegmentsPageSection={serviceSegmentsPageSection} />
             <Banner className="bg-orange">
