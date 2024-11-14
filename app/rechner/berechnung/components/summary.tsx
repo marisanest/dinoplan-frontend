@@ -1,24 +1,19 @@
+"use client"
+
 import useCalculatorStore from "@/lib/stores/useCalculatorStore";
 import {useShallow} from "zustand/react/shallow";
 import Title from "@/components/title";
 import Text from "@/components/text/text";
-import useCustomerStore from "@/lib/stores/useCustomerStore";
 
-export default function CalculatorStageCalculationSummary({costCalculation}) {
+export default function CalculatorCalculationSummary({customer, costCalculation}: any) {
     const { selectedServiceModules } = useCalculatorStore(
         useShallow((state) => ({
             selectedServiceModules: state.selectedServiceModules,
         })),
     );
 
-    const { childName, childDateOfBirth } = useCustomerStore(
-        useShallow((state) => ({
-            childName: state.childName,
-            childDateOfBirth: state.childDateOfBirth,
-        })),
-    );
 
-    const pricesPerMonth = Object.values(selectedServiceModules).map((selectedServiceModule) => calculatePricePerMonth(selectedServiceModule, costCalculation, childDateOfBirth))
+    const pricesPerMonth = Object.values(selectedServiceModules).map((selectedServiceModule) => calculatePricePerMonth(selectedServiceModule, costCalculation, customer.childDateOfBirth))
 
     return (
         <div className="w-full flex-col flex justify-center items-center">
@@ -29,7 +24,7 @@ export default function CalculatorStageCalculationSummary({costCalculation}) {
                 Object.values(selectedServiceModules).length > 0 && (
                     <>
                         <Title className="mb-[0.5rem]" size="lg">
-                            {childName}'s Dinoplan
+                            {customer.childName}'s Dinoplan
                         </Title>
                         <Text className="mb-[2rem]" size="sm">
                             Folgendes würde dich unser dino-starket Paket kosten:
@@ -93,7 +88,7 @@ function calculatePricePerMonth(serviceModule, costCalculation, childDateOfBirth
     if (serviceModule.costPerMonthForInsurance) {
         return serviceModule.costPerMonthForInsurance;
     } else if (serviceModule.costCalculationForFinancialInvestment) {
-        const [month, day, childBirthYear] = childDateOfBirth.split('/')
+        const [month, day, childBirthYear] = childDateOfBirth.split('-')
         const currentYear = new Date().getFullYear()
         const childAge = currentYear - childBirthYear
         const nYears = serviceModule.costCalculationForFinancialInvestment.ageAtPayout - childAge;

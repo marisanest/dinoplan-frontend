@@ -9,12 +9,12 @@ export type CalculatorServiceSegmentProps = {
     serviceSegment: any;
 } & ReactNodeProps
 
-export default function CalculatorStageCalculationServiceSegment({className, serviceSegment}: CalculatorServiceSegmentProps) {
+export default function CalculatorCalculationServiceSegment({className, serviceSegment}: CalculatorServiceSegmentProps) {
     return (
-        <CalculatorStageCalculationServiceSegmentContainer className={className} serviceSegment={serviceSegment}>
+        <CalculatorCalculationServiceSegmentContainer className={className} serviceSegment={serviceSegment}>
             <Image
                 key="image"
-                className="w-full max-w-[250px]"
+                className="w-[204px] h-[204px]"
                 src={urlFor(serviceSegment.illustration)?.url()}
                 alt="Illustration"
                 width={serviceSegment.illustration.width}
@@ -23,11 +23,11 @@ export default function CalculatorStageCalculationServiceSegment({className, ser
             <div className="mt-auto text-blue-600">
                 {serviceSegment.dinoPrefix}-Dino
             </div>
-        </CalculatorStageCalculationServiceSegmentContainer>
+        </CalculatorCalculationServiceSegmentContainer>
     );
 }
 
-function CalculatorStageCalculationServiceSegmentContainer({className, children, serviceSegment}: ReactNodeProps & {serviceSegment: any}) {
+function CalculatorCalculationServiceSegmentContainer({className, children, serviceSegment}: ReactNodeProps & {serviceSegment: any}) {
     const { selectServiceSegment } = useCalculatorStore(
         useShallow((state) => ({
             selectServiceSegment: state.selectServiceSegment,
