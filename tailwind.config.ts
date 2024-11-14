@@ -29,6 +29,7 @@ const config: Config = {
       width: {
         sm: 'var(--max-w-sm)',
         md: 'var(--max-w-md)',
+        'footer-image': 'var(--width-footer-image)',
       },
       maxWidth: {
         'sm': 'var(--max-w-sm)',
@@ -36,7 +37,8 @@ const config: Config = {
       },
       height: {
         banner: 'var(--height-banner)',
-        'start-description': 'var(--height-start-description)'
+        'start-description': 'var(--height-start-description)',
+        'footer-image': 'var(--height-footer-image)',
       },
       spacing: {
         'x-xs': 'var(--spacing-x-xs)',

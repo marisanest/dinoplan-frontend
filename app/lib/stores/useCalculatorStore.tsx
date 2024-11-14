@@ -2,6 +2,7 @@ import { create } from 'zustand';
 
 interface useCalculatorStoreProps {
   selectedServiceSegment: null | undefined | any;
+  prevSelectedServiceSegment: null | undefined | any;
   selectedServiceModules: any;
   selectServiceSegment: (serviceSegment: any) => void;
   selectServiceModule: (serviceModule: any) => void;
@@ -9,6 +10,7 @@ interface useCalculatorStoreProps {
 
 const useCalculatorStore = create<useCalculatorStoreProps>((set, get) => ({
   selectedServiceSegment: null,
+  prevSelectedServiceSegment: null,
   selectedServiceModules: {},
   selectServiceSegment: (serviceSegment) => {
     const currentSelectedServiceSegment = get().selectedServiceSegment;
@@ -16,6 +18,7 @@ const useCalculatorStore = create<useCalculatorStoreProps>((set, get) => ({
 
     set({
       selectedServiceSegment,
+      prevSelectedServiceSegment: currentSelectedServiceSegment,
     });
   },
   selectServiceModule: (serviceModule) => {

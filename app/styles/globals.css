@@ -34,6 +34,8 @@
     --height-banner: 4.5rem;
     --height-start-description: 5.75rem;
     --height-footer-image: 457px;
+
+    --width-footer-image: 1150px;
 }
 
 @media only screen and (max-width: 600px) {

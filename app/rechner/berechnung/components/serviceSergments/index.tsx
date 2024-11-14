@@ -36,12 +36,11 @@ function CalculatorCalculationServiceSegmentsContainer({children}: ReactNodeProp
     );
 
     return (
-        <div className={cn("bg-orange-300", selectedServiceSegment ? "pb-y-sm" : "")}>
-            <div
-                className={cn("bg-orange-200 rounded-tr-[50px] px-x-sm py-y-sm w-sm max-w-sm", selectedServiceSegment ? "rounded-bl-[50px] shadow-[0px_6px_10px_-10px_black]" : "shadow-[0px_0px_0px_0px_black]")}>
-                {children}
-            </div>
+        <div className={cn(
+            "relative z-10 bg-orange-200 rounded-tr-md px-x-sm py-y-sm shadow-[0px_0px_0px_0px_black] transition-[border-radius] duration-1000",
+            selectedServiceSegment ? "rounded-bl-md !shadow-[0px_6px_10px_-10px_black]" : 'shadow-[0px_0px_0px_0px_black]'
+        )}>
+            {children}
         </div>
-
     );
 }
