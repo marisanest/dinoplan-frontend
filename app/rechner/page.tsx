@@ -5,6 +5,7 @@ import {getSession} from "@/lib/signIn";
 pending besser nutzen
 gewählte bausteine an sanity übermitteln
 smoothes ausklappen der bausteine
+generelle back ding läd daten nicht neu
  */
 
 export default async function CalculatorPage() {

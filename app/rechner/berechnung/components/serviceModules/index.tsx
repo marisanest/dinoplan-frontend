@@ -1,47 +1,42 @@
 "use client"
-
-import useCalculatorStore from "@/lib/stores/useCalculatorStore";
 import { useShallow } from "zustand/react/shallow";
-import cn from "clsx";
 import CalculatorCalculationServiceModule from "@/rechner/berechnung/components/serviceModules/serviceModule";
+import {useServiceSegmentsContext} from "@/lib/stores/serviceSegments/context";
+import cn from "clsx";
+import {ReactNodeProps} from "@/lib/types/core";
 
-export default function CalculatorCalculationServiceModules({setHeight}) {
-  const { selectedServiceSegment, prevSelectedServiceSegment } = useCalculatorStore(
-    useShallow((state) => ({
-        selectedServiceSegment: state.selectedServiceSegment,
-        prevSelectedServiceSegment: state.prevSelectedServiceSegment,
-    })),
-  );
-
-  const serviceSegment = selectedServiceSegment ?? prevSelectedServiceSegment;
-
-  return (
-      <CalculatorCalculationServiceModulesContainer setHeight={setHeight}>
-          <div className="w-fit flex flex-col gap-[0.75rem]">
-              {serviceSegment?.serviceModules.map((serviceModule: any) => (
-                  <CalculatorCalculationServiceModule key={serviceModule.serviceModule._id}
-                                                      serviceModule={serviceModule.serviceModule}/>
-              ))}
-          </div>
-      </CalculatorCalculationServiceModulesContainer>
-  );
-}
-
-function CalculatorCalculationServiceModulesContainer({children, setHeight}) {
-    const {selectedServiceSegment} = useCalculatorStore(
-        useShallow((state) => ({
-            selectedServiceSegment: state.selectedServiceSegment,
-        })),
-    );
+export default function CalculatorCalculationServiceModules() {
+    const {selectedServiceSegmentIndex, prevSelectedServiceSegmentIndex, serviceSegments} = useServiceSegmentsContext(useShallow((s) => ({
+        selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
+        prevSelectedServiceSegmentIndex: s.prevSelectedServiceSegmentIndex,
+        serviceSegments: s.serviceSegments,
+    })))
+    const selectedServiceSegment = serviceSegments[(selectedServiceSegmentIndex || selectedServiceSegmentIndex === 0 ? selectedServiceSegmentIndex : prevSelectedServiceSegmentIndex )];
 
     return (
-        <div ref={el => setHeight(el?.clientHeight)}
-             className={cn(
-                 "absolute z-1 left-0 right-0 bg-orange-300 pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-s))] pb-y-s transition-[transform,border-radius] duration-1000 w-full flex justify-center",
-                 selectedServiceSegment ? 'rounded-bl-md translate-y-[calc(-1*var(--dino-bottom-offset))] shadow-[0px_6px_10px_-10px_black]' : 'rounded-bl-0 translate-y-[-100%] shadow-[0px_0px_0px_0px_black]'
-             )}>
-            <div className="w-full px-x-s flex justify-center">
-                {children}
+        <CalculatorCalculationServiceModulesContainer>
+            {selectedServiceSegment?.serviceModules.map((serviceModule: any) => <CalculatorCalculationServiceModule key={serviceModule.serviceModule._id} serviceModule={serviceModule.serviceModule}/>)}
+        </CalculatorCalculationServiceModulesContainer>
+    );
+}
+
+function CalculatorCalculationServiceModulesContainer({children}: ReactNodeProps) {
+    const {showServiceSegmentDetails} = useServiceSegmentsContext(useShallow((s) => ({
+        showServiceSegmentDetails: s.showServiceSegmentDetails,
+    })))
+
+    return (
+        <div className="w-full flex justify-center px-x-sm sm:px-0">
+            <div
+                className={cn("w-full sm:w-sm sm:max-w-sm bg-orange-200 transition-[transform] duration-1000", showServiceSegmentDetails ? 'translate-y-[calc(-1*var(--dino-bottom-offset))]' : 'translate-y-[-100%]')}>
+                <div className={cn(
+                    "w-full flex justify-center px-x-s bg-orange-300 pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-s))] pb-y-s transition-[border-radius] duration-1000",
+                    showServiceSegmentDetails ? 'rounded-bl-md translate shadow-[0px_6px_10px_-10px_black]' : 'rounded-bl-0 shadow-[0px_0px_0px_0px_black]'
+                )}>
+                    <div className="w-fit flex flex-col gap-[0.75rem]">
+                        {children}
+                    </div>
+                </div>
             </div>
         </div>
     );

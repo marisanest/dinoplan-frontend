@@ -15,12 +15,13 @@ export type LandingServiceSegmentProps = {
 export default function LandingServiceSegment({className, index, serviceSegment}: LandingServiceSegmentProps) {
     return (
         <LandingServiceSegmentContainer className={className} index={index}>
-            <Image className="w-full "
+            <Image key="image"
+                   className="w-[194px] h-[194px]"
                    src={urlFor(serviceSegment.illustration)?.url()}
-                   alt={serviceSegment.name}
+                   alt="Illustration"
                    width={serviceSegment.illustration.width}
                    height={serviceSegment.illustration.height} />
-            <Title key="title" className="cursor-pointer mt-auto !text-[1.5rem]" size="md">
+            <Title key="title" className="mt-auto !text-[1.5rem]" size="md">
                 {serviceSegment.dinoPrefix}-Dino
             </Title>
         </LandingServiceSegmentContainer>
@@ -31,9 +32,8 @@ function LandingServiceSegmentContainer({className, children, index}: Pick<Landi
     const selectServiceSegment = useServiceSegmentsContext(useShallow((s) => s.selectServiceSegment))
 
     return (
-        <div className="w-full">
-            <div className={cn("flex flex-col justify-center items-center gap-[1rem] h-full w-fit cursor-pointer", className)}
-                 onClick={() => selectServiceSegment(index)}>
+        <div className="w-full cursor-pointer" onClick={() => selectServiceSegment(index)}>
+            <div className={cn("flex flex-col justify-center items-center gap-[1rem] h-full w-fit", className)}>
                 {children}
             </div>
         </div>

@@ -7,7 +7,7 @@ const updateSchema = z.object({
     email: z.union([
         z.literal(''),
         z.string().email({ message: "Es muss eine korrekte E-Mail-Adresse angegeben werden." }),
-    ]),
+    ]).optional(),
     consentsToThePrivacyPolicy: z.coerce.boolean(),
 })
 
@@ -56,8 +56,8 @@ export async function updateCustomer(customArg: {customer: any}, _: any, formDat
 
     const setFields: {
         childDateOfBirth?: string,
-        email?: string,
-        consentsToThePrivacyPolicy?: boolean
+        email?: string | null,
+        consentsToThePrivacyPolicy?: boolean | null
     } = {}
 
     const childDateOfBirthSanityString = extractChildDateOfBirthSanityString(formData)
@@ -66,17 +66,18 @@ export async function updateCustomer(customArg: {customer: any}, _: any, formDat
         setFields.childDateOfBirth = childDateOfBirthSanityString
     }
 
-    if (validatedFields.data.email && validatedFields.data.email !== customer.email) {
-        setFields.email = validatedFields.data.email;
+    const email =  typeof validatedFields.data.email === 'string' ? validatedFields.data.email : null;
+
+    if (email !== customer.email) {
+        setFields.email = email;
     }
 
-    if (validatedFields.data.consentsToThePrivacyPolicy && validatedFields.data.consentsToThePrivacyPolicy !== customer.consentsToThePrivacyPolicy) {
+    if (validatedFields.data.consentsToThePrivacyPolicy !== customer.consentsToThePrivacyPolicy) {
         setFields.consentsToThePrivacyPolicy = validatedFields.data.consentsToThePrivacyPolicy;
     }
 
     if (Object.keys(setFields).length > 0) {
-        console.log("fetch")
-        await fetch(
+        const response = await fetch(
             `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.SANITY_DATASET}`,
             {
                 body: JSON.stringify(updateStatement({id: customer._id, setFields,})),
@@ -86,7 +87,12 @@ export async function updateCustomer(customArg: {customer: any}, _: any, formDat
                 },
                 method: 'POST',
             },
-        )
+        ).then(res => res.json())
+
+        if (response.error) {
+            console.error(response.error)
+            return {status: 500}
+        }
     }
 
     return {status: 200}

@@ -11,7 +11,7 @@ export default function CalculatorInfoFormChildDateOfBirthInput({customer, state
             <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <DateField name="childDateOfBirth"
                            label="Geburtsdatum des Kindes"
-                           defaultValue={new Date(customer.childDateOfBirth)}/>
+                           defaultValue={customer.childDateOfBirth ? new Date(customer.childDateOfBirth) : null}/>
             </LocalizationProvider>
 
             {state?.errors?.childDateOfBirth && (

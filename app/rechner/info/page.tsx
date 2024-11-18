@@ -19,6 +19,7 @@ export default async function CalculatorInfoPage() {
   }
 
   const customerQuery = defineQuery(`*[_type == "customer" && _id == "${customerId}"][0]{
+    _id,
     childDateOfBirth,
     email,
     consentsToThePrivacyPolicy,

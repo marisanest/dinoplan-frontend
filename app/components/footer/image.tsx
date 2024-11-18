@@ -18,7 +18,7 @@ export default function FooterImage() {
 
 function FooterImageContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full h-footer-image flex justify-center mt-[calc(-1*var(--spacing-footer-image-currection))]">
+        <div className="relative z-10 w-full h-footer-image flex justify-center mt-[calc(-1*var(--spacing-footer-image-currection))]">
             {children}
         </div>
     );
