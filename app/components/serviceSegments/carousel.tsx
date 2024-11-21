@@ -51,7 +51,7 @@ export default function ServiceSegmentsCarousel() {
 
 function ServiceSegmentsCarouselContainer({children}: ReactNodeProps) {
     return (
-        <div className="flex flex-col gap-y-y-xs">
+        <div className="flex xs:hidden flex-col gap-y-y-xs">
             {children}
         </div>
     );

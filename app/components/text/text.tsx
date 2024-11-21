@@ -12,7 +12,7 @@ const sizeToClasses: { [key: string]: string } = {
     xs: 'font-normal text-xs',
     sm: 'font-normal text-sm',
     md: 'font-normal text-sm sm:text-base',
-    lg: 'font-normal text-xs xs:text-base sm:text-lg',
+    lg: 'font-normal text-base sm:text-lg',
     xl: 'font-normal text-xl',
 }
 

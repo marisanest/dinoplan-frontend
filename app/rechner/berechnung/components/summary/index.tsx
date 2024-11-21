@@ -50,8 +50,8 @@ function CalculatorCalculationSummaryContainer({children}: ReactNodeProps) {
     })))
 
     return (
-        <div className="w-full flex justify-center px-x-sm sm:px-0">
-            <div className={cn("w-full sm:w-sm sm:max-w-sm flex flex-col justify-center items-center px-x-sm transition-[padding] duration-1000 bg-orange-200", showServiceSegmentDetails ? "pt-x-sm" : "pt-[0px]")}>
+        <div className="w-full flex justify-center px-x-s xs:px-x-sm sm:px-0">
+            <div className={cn("w-full sm:w-sm sm:max-w-sm flex flex-col justify-center items-center px-x-s s:px-x-sm transition-[padding] duration-1000 bg-orange-200", showServiceSegmentDetails ? "pt-x-sm" : "pt-[0px]")}>
                 {children}
             </div>
         </div>

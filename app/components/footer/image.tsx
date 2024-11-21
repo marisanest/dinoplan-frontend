@@ -10,7 +10,7 @@ const imagePath = 'dinoplan/Dinoplan_Final_Files_Footer_cropped_gcfull_pf7xn0';
 export default function FooterImage() {
     return (
         <FooterImageContainer>
-            <AdvancedImage className="w-footer-image h-footer-image pointer-events-none "
+            <AdvancedImage className="min-w-footer-image w-footer-image h-footer-image pointer-events-none"
                            cldImg={cloudinary.image(imagePath).resize(scale().width(1150))} />
         </FooterImageContainer>
     );
@@ -18,7 +18,7 @@ export default function FooterImage() {
 
 function FooterImageContainer({children}: ReactNodeProps) {
     return (
-        <div className="relative z-10 w-full h-footer-image flex justify-center mt-[calc(-1*var(--spacing-footer-image-currection))]">
+        <div className="relative z-10 w-full h-footer-image flex justify-center mt-[calc(-1*var(--spacing-footer-image-currection))] pointer-events-none">
             {children}
         </div>
     );

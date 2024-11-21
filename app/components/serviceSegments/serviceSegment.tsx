@@ -4,7 +4,7 @@ import {useShallow} from "zustand/react/shallow";
 import Image from "next/image";
 import {urlFor} from "@/lib/sanity/image";
 import {useServiceSegmentsContext} from "@/lib/stores/serviceSegments/context";
-import Title from "@/components/title";
+import Text from "@/components/text/text";
 
 export type CalculatorServiceSegmentProps = {
     serviceSegment: any;
@@ -21,12 +21,7 @@ export default function ServiceSegment({className, index, serviceSegment}: Calcu
                    width={serviceSegment.illustration.width}
                    height={serviceSegment.illustration.height}
             />
-            {/*<Title key="title" className="cursor-pointer mt-auto !text-[1.5rem]" size="md">*/}
-            {/*    {serviceSegment.dinoPrefix}-Dino*/}
-            {/*</Title>*/}
-            <div className="mt-auto text-blue-600">
-                {serviceSegment.dinoPrefix}-Dino
-            </div>
+            <Text>{serviceSegment.dinoPrefix}-Dino</Text>
         </ServiceSegmentContainer>
     );
 }

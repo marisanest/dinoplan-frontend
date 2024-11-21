@@ -34,6 +34,12 @@ const config: Config = {
       maxWidth: {
         'sm': 'var(--max-w-sm)',
         'md': 'var(--max-w-md)',
+        'footer-image': 'var(--width-footer-image)',
+      },
+      minWidth: {
+        'sm': 'var(--max-w-sm)',
+        'md': 'var(--max-w-md)',
+        'footer-image': 'var(--width-footer-image)',
       },
       height: {
         banner: 'var(--height-banner)',
@@ -52,6 +58,8 @@ const config: Config = {
         'y-sm': 'var(--spacing-y-sm)',
         'y-m': 'var(--spacing-y-m)',
         'y-outer': 'var(--spacing-y-outer)',
+
+        circle: 'var(--spacing-circle)',
       },
       gap: {
         sm: 'var(--gap-sm)',
@@ -67,8 +75,10 @@ const config: Config = {
     },
     screens: {
       lg: '1245px',
+      md: '1150px',
       sm: '1045px',
       s: '980px',
+      ss: '900px',
       xs: '470px',
       xxs: '405px',
     },

@@ -13,12 +13,12 @@ export default function CalculatorCalculation({serviceSegments, customer, costCa
                 <ServiceSegments key="service-segments"
                                  title="Wähle deine Bausteine"
                                  description="Du kannst mehrere Optionen wählen, die in dein Paket einfließen sollen." />
-                {/*<ServiceSegmentsDetails key="service-segments-details">*/}
-                {/*    <CalculatorCalculationServiceModules />*/}
-                {/*</ServiceSegmentsDetails>*/}
+                <ServiceSegmentsDetails key="service-segments-details">
+                    <CalculatorCalculationServiceModules />
+                </ServiceSegmentsDetails>
 
-                {/*<CalculatorCalculationSummary key="summery" customer={customer} costCalculation={costCalculation} />*/}
-                {/*<CalculatorCalculationButtons key="buttons" contact={contact} />*/}
+                <CalculatorCalculationSummary key="summery" customer={customer} costCalculation={costCalculation} />
+                <CalculatorCalculationButtons key="buttons" contact={contact} />
             </CalculatorCalculationContainer>
         </CalculatorCalculationProviderContainer>
     );

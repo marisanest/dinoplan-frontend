@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {ScreenSizeType} from "@/lib/types/core";
 import useWindowSize from "@/lib/hooks/useWindowSize";
 
-const XXS = 475
+const XXS = 470
 
 const useScreenSizes = () => {
   const windowSize = useWindowSize()

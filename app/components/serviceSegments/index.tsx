@@ -13,7 +13,7 @@ export default function ServiceSegments({title, description}: ServiceSegmentsPro
     return (
         <ServiceSegmentsContainer>
             <Title>{title}</Title>
-            <Text className="mb-y-xs mt-[0.5rem]" size="sm">{description}</Text>
+            <Text className="pb-y-[30px] xs:pb-y-xs pt-[10px]" size="sm">{description}</Text>
 
             <ServiceSegmentsGrid />
             <ServiceSegmentsCarousel />

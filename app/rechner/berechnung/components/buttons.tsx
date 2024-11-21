@@ -17,8 +17,8 @@ export default function CalculatorCalculationButtons({contact}: any) {
 
 function CalculatorCalculationButtonsContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full flex justify-center px-x-sm sm:px-0">
-            <div className="w-full sm:w-sm sm:max-w-sm flex flex-col items-center px-x-sm pb-y-sm bg-orange-200 rounded-bl-md">
+        <div className="w-full flex justify-center px-x-s xs:px-x-sm sm:px-0">
+            <div className="w-full sm:w-sm sm:max-w-sm flex flex-col items-center px-x-s s:px-x-sm pb-y-sm bg-orange-200 rounded-bl-md">
                 {children}
             </div>
         </div>
