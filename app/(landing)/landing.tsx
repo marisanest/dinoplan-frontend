@@ -50,9 +50,9 @@ export default function Landing({
                    </Button>
                </div>
             </Banner>
-            {/*<LandingServiceSegments serviceSegmentsPageSection={serviceSegmentsPageSection} />*/}
-            {/*<LandingServiceFeatures serviceFeaturesPageSection={serviceFeaturesPageSection} contact={contact} />*/}
-            {/*<LandingServiceModules serviceModulesPageSection={serviceModulesPageSection} />*/}
+            <LandingServiceSegments serviceSegmentsPageSection={serviceSegmentsPageSection} />
+            <LandingServiceFeatures serviceFeaturesPageSection={serviceFeaturesPageSection} contact={contact} />
+            <LandingServiceModules serviceModulesPageSection={serviceModulesPageSection} />
             {/*<LandingAbout aboutPageSection={aboutPageSection} contact={contact} />*/}
             {/*<LandingFaq faqPageSection={faqPageSection} />*/}
         </main>

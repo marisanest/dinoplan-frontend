@@ -28,8 +28,8 @@ export default function LandingStart({
 
 function LandingStartInnerContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full flex justify-center px-x-outer py-y-sections">
-            <div className="w-full max-w-md h-[calc(100dvh-2*var(--spacing-y-sections)-var(--height-banner))] ss:h-start">
+        <div className="w-full flex justify-center px-x-outer py-y-block">
+            <div className="w-full max-w-md h-[calc(100dvh-2*var(--spacing-y-block)-var(--height-banner))] ss:h-start">
                 {children}
             </div>
         </div>

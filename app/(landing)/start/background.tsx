@@ -24,8 +24,8 @@ export default function LandingStartBackground({startPageSection}: Pick<LandingP
 
 function LandingStartBackgroundContainer({children}: ReactNodeProps) {
     return (
-        <div className="absolute w-full flex justify-center px-x-outer py-y-sections bg-orange-200">
-            <div className="w-full max-w-md h-[calc(100dvh-2*var(--spacing-y-sections)-var(--height-banner))] ss:h-start flex items-center ss:items-start">
+        <div className="absolute w-full flex justify-center px-x-outer py-y-block bg-orange-200">
+            <div className="w-full max-w-md h-[calc(100dvh-2*var(--spacing-y-block)-var(--height-banner))] ss:h-start flex items-center ss:items-start">
                 {children}
             </div>
         </div>

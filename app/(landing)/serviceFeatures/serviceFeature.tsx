@@ -1,11 +1,18 @@
 import {ReactNodeProps} from "@/lib/types/core";
-import LandingServiceFeatureImage from "@/app/(landing)/serviceFeatures/serviceFeature/image";
 import Text from "@/components/text/text";
+import Image from "next/image";
+import {urlFor} from "@/lib/sanity/image";
 
 export default function LandingServiceFeature({serviceFeature}) {
     return (
         <LandingServiceFeatureContainer>
-            <LandingServiceFeatureImage key="image" serviceFeature={serviceFeature} />
+            <Image
+                src={urlFor(serviceFeature.illustration)?.url()}
+                alt={serviceFeature.name}
+                className="w-full ss:w-[182px] max-w-[182px] h-auto"
+                width={serviceFeature.illustration.width}
+                height={serviceFeature.illustration.height}
+            />
             <Text key="name" size="md">{serviceFeature.name}</Text>
         </LandingServiceFeatureContainer>
     );
@@ -13,7 +20,7 @@ export default function LandingServiceFeature({serviceFeature}) {
 
 function LandingServiceFeatureContainer({children}: ReactNodeProps) {
     return (
-        <div>
+        <div className="w-full flex flex-col items-center">
             {children}
         </div>
     );

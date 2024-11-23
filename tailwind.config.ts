@@ -58,8 +58,11 @@ const config: Config = {
         'y-s': 'var(--spacing-y-s)',
         'y-sm': 'var(--spacing-y-sm)',
         'y-m': 'var(--spacing-y-m)',
+
         'y-outer': 'var(--spacing-y-outer)',
-        'y-sections': 'var(--spacing-y-sections)',
+        'y-block': 'var(--spacing-y-block)',
+        'y-section': 'var(--spacing-y-section)',
+        'y-paragraph': 'var(--spacing-y-paragraph)',
 
         circle: 'var(--spacing-circle)',
         banner: 'var(--height-banner)',

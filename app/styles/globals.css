@@ -11,8 +11,11 @@
     --spacing-y-s: 3.5rem;
     --spacing-y-sm: 4.5rem;
     --spacing-y-m: 4.5rem;
+
     --spacing-y-outer: 6rem;
-    --spacing-y-sections: 4.5rem;
+    --spacing-y-block: 4.5rem;
+    --spacing-y-section: 3.5rem;
+    --spacing-y-paragraph: 2rem;
 
     --spacing-y-start-image: 3rem;
 
@@ -78,6 +81,9 @@
         --spacing-y-outer: 6rem;
         --spacing-y-start-image: 3rem;
 
+        --spacing-y-section: 2rem;
+        --spacing-y-paragraph: 1rem;
+
         --height-start-description: 93px;
     }
 }
@@ -85,7 +91,7 @@
 @media only screen and (max-width: 470px) {
     :root {
         --spacing-x-outer: 1.5rem;
-        --spacing-y-sections: 2.5rem;
+        --spacing-y-block: 2.5rem;
     }
 }
 
