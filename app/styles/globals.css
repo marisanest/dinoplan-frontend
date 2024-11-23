@@ -12,6 +12,8 @@
     --spacing-y-sm: 4.5rem;
     --spacing-y-m: 4.5rem;
     --spacing-y-outer: 6rem;
+    --spacing-y-sections: 4.5rem;
+
     --spacing-y-start-image: 3rem;
 
     --spacing-footer-image-currection: 65px;
@@ -34,6 +36,7 @@
     --yellow-100: #FFFFF;
 
     --height-banner: 4.5rem;
+    --height-start: 625px;
     --height-start-description: 5.75rem;
     --height-footer-image: 457px;
 
@@ -43,6 +46,13 @@
 @media only screen and (max-width: 980px) {
     :root {
         --spacing-circle: 28px;
+    }
+}
+
+/* screen size ss */
+@media only screen and (max-width: 819px) {
+    :root {
+        --spacing-x-outer: 4rem;
     }
 }
 
@@ -69,6 +79,13 @@
         --spacing-y-start-image: 3rem;
 
         --height-start-description: 93px;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    :root {
+        --spacing-x-outer: 1.5rem;
+        --spacing-y-sections: 2.5rem;
     }
 }
 

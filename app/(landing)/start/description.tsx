@@ -8,7 +8,7 @@ export default function LandingStartDescription({startPageSection, serviceSegmen
     return (
         <LandingStartDescriptionContainer>
             <Text key="sub-title" className="sm:justify-center sm:text-center" size="lg" align="right">
-                <PortableText value={startPageSection?.subTitle}/>
+                {startPageSection && <PortableText value={startPageSection?.subTitle}/>}
             </Text>
             <hr key="line" className="hidden sm:block border border-red-200"/>
             <div className="border-l-[2px] border-red-200 sm:hidden" />

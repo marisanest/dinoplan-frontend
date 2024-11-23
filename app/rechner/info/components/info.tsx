@@ -19,8 +19,8 @@ export default function CalculatorInfo({customer}: {customer: any}) {
 
 function CalculatorInfoContainer({children}: ReactNodeProps) {
     return (
-        <main className="w-full min-h-[calc(100dvh-var(--height-banner)-var(--height-footer-image))] flex justify-center pt-[9rem] bg-orange-400">
-            <div className="bg-orange-200 rounded-bl-[50px] rounded-tr-[50px] px-x-sm py-y-sm w-sm max-w-sm ">
+        <main className="w-full min-h-[calc(100dvh-var(--height-banner)-var(--height-footer-image)+var(--spacing-footer-image-currection))] flex flex-col items-center px-x-s xs:px-x-sm sm:px-0 pt-[calc(var(--height-banner)+var(--spacing-y-sm))] bg-orange-400">
+            <div className="grow w-full max-w-sm px-x-xs ss:px-x-s s:px-x-sm py-y-sm bg-orange-200 rounded-bl-md rounded-tr-md">
                 {children}
             </div>
         </main>

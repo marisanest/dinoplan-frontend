@@ -43,6 +43,7 @@ const config: Config = {
       },
       height: {
         banner: 'var(--height-banner)',
+        start: 'var(--height-start)',
         'start-description': 'var(--height-start-description)',
         'footer-image': 'var(--height-footer-image)',
       },
@@ -58,8 +59,10 @@ const config: Config = {
         'y-sm': 'var(--spacing-y-sm)',
         'y-m': 'var(--spacing-y-m)',
         'y-outer': 'var(--spacing-y-outer)',
+        'y-sections': 'var(--spacing-y-sections)',
 
         circle: 'var(--spacing-circle)',
+        banner: 'var(--height-banner)',
       },
       gap: {
         sm: 'var(--gap-sm)',
@@ -78,7 +81,7 @@ const config: Config = {
       md: '1150px',
       sm: '1045px',
       s: '980px',
-      ss: '900px',
+      ss: '820px',
       xs: '470px',
       xxs: '405px',
     },

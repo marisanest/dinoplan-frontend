@@ -15,7 +15,7 @@ export default function ServiceSegmentsDetails({children}: ReactNodeProps) {
 
     return (
         <>
-            <div ref={el => setHeight(el?.clientHeight ?? 0)} className="absolute z-1 left-0 right-0">
+            <div ref={el => setHeight(el?.clientHeight ?? 0)} className="absolute z-1 left-0 right-0 pointer-events-none">
                 {children}
             </div>
             <div key="details-placeholder" className="transition-[height] duration-1000 flex justify-center px-x-s xs:px-x-sm sm:px-0" style={{height: showServiceSegmentDetails ? `calc(${height}px - var(--dino-bottom-offset))` : 0}}>

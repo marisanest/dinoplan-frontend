@@ -1,9 +1,10 @@
 import Text from "@/components/text/text";
 import InternalLink from "@/components/link/internal";
+import {ReactNodeProps} from "@/lib/types/core";
 
 export default function CalculatorInfoFormConsentsToThePrivacyPolicyInput({customer}) {
     return (
-        <div className="grid grid-cols-[160px_1fr] gap-x-[2rem] gap-y-[0.4rem] mb-y-xs">
+        <CalculatorInfoFormConsentsToThePrivacyPolicyInputContainer>
             <div/>
             <div className="flex gap-[1rem]">
                 <input type="checkbox"
@@ -16,6 +17,14 @@ export default function CalculatorInfoFormConsentsToThePrivacyPolicyInput({custo
                     </div>
                 </Text>
             </div>
+        </CalculatorInfoFormConsentsToThePrivacyPolicyInputContainer>
+    );
+}
+
+function CalculatorInfoFormConsentsToThePrivacyPolicyInputContainer({children}: ReactNodeProps) {
+    return (
+        <div className="ss:grid ss:grid-cols-[160px_1fr] ss:gap-x-[2rem] ss:gap-y-[0.4rem] mb-y-xs">
+            {children}
         </div>
     );
 }

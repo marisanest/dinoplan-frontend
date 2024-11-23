@@ -27,8 +27,10 @@ function CalculatorCalculationServiceModulesContainer({children}: ReactNodeProps
 
     return (
         <div className="w-full flex justify-center px-x-s xs:px-x-sm sm:px-0">
-            <div
-                className={cn("w-full sm:w-sm sm:max-w-sm bg-orange-200 transition-[transform] duration-1000", showServiceSegmentDetails ? 'translate-y-[calc(-1*var(--dino-bottom-offset))]' : 'translate-y-[-100%]')}>
+            <div className={cn(
+                "w-full sm:w-sm sm:max-w-sm bg-orange-200 transition-[transform] duration-1000 pointer-events-auto",
+                showServiceSegmentDetails ? 'translate-y-[calc(-1*var(--dino-bottom-offset))]' : 'translate-y-[-100%]'
+            )}>
                 <div className={cn(
                     "w-full flex justify-center px-x-s xs:px-x-sm bg-orange-300 pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-sm))] pb-y-sm transition-[border-radius] duration-1000",
                     showServiceSegmentDetails ? 'rounded-bl-md translate shadow-[0px_6px_10px_-10px_black]' : 'rounded-bl-0 shadow-[0px_0px_0px_0px_black]'
