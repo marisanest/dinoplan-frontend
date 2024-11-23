@@ -40,16 +40,16 @@ export default function Landing({
         <main className="relative min-w-[100dvw] w-[100dvw] max-w-[100dvw] overflow-x-hidden flex flex-col items-center bg-yellow-100">
             <LandingStart startPageSection={startPageSection}
                           serviceSegmentsPageSection={serviceSegmentsPageSection} />
-            {/*<Banner className="bg-orange">*/}
-            {/*   <div className="flex w-full h-full justify-center items-center gap-[1rem]">*/}
-            {/*       <Text className="!w-fit" size="md">*/}
-            {/*           Lasse dich jetzt kostenlos online von unseren Experten beraten.*/}
-            {/*       </Text>*/}
-            {/*       <Button link={contact.calendly} size="xs" colors="bright">*/}
-            {/*           <Text size="md">Termin vereinbaren</Text>*/}
-            {/*       </Button>*/}
-            {/*   </div>*/}
-            {/*</Banner>*/}
+            <Banner className="bg-orange">
+               <div className="flex w-full h-full justify-center items-center gap-[1rem]">
+                   <Text className="!w-fit" size="md">
+                       Lasse dich jetzt kostenlos online von unseren Experten beraten.
+                   </Text>
+                   <Button link={contact.calendly} size="xs" colors="bright">
+                       <Text size="md">Termin vereinbaren</Text>
+                   </Button>
+               </div>
+            </Banner>
             {/*<LandingServiceSegments serviceSegmentsPageSection={serviceSegmentsPageSection} />*/}
             {/*<LandingServiceFeatures serviceFeaturesPageSection={serviceFeaturesPageSection} contact={contact} />*/}
             {/*<LandingServiceModules serviceModulesPageSection={serviceModulesPageSection} />*/}

@@ -7,12 +7,13 @@ type BannerProps = {
 }
 
 export default function Banner({ className = "bg-yellow-100", isHeader = false, isFooter = false, children }: BannerProps & ReactNodeProps) {
-    className = cn('w-[100dvw] max-w-[100dvw] overflow-x-hidden flex justify-center rounded-full', className)
+    className = cn('w-[100dvw] max-w-[100dvw] overflow-x-hidden flex justify-center rounded-full px-x-outer', className)
+    const innerClassName = "w-full max-w-md h-banner flex justify-between items-center"
 
     if (isHeader) {
         return (
             <header className={cn(className, 'z-50 fixed left-0 right-0 top-0')}>
-                <div className="w-full sm:w-md sm:max-w-md h-banner flex justify-between items-center px-x-xs">
+                <div className={innerClassName}>
                     {children}
                 </div>
             </header>
@@ -20,7 +21,7 @@ export default function Banner({ className = "bg-yellow-100", isHeader = false, 
     } else if (isFooter) {
         return (
             <div className={className}>
-                <div className="w-full sm:w-md sm:max-w-md h-banner flex justify-between items-center px-x-xs">
+                <div className={innerClassName}>
                     {children}
                 </div>
             </div>
@@ -28,7 +29,7 @@ export default function Banner({ className = "bg-yellow-100", isHeader = false, 
     } else {
         return (
             <div className={className}>
-                <div className="w-full sm:w-md sm:max-w-md h-banner px-x-xs">
+                <div className="w-full max-w-md h-banner">
                     {children}
                 </div>
             </div>

@@ -14,7 +14,7 @@ export default function LandingStart({
             <LandingStartBackground key="background" startPageSection={startPageSection}/>
 
             <LandingStartInnerContainer>
-                <div className="relative z-10 h-[calc(100dvh-2*var(--spacing-y-sections)-var(--height-banner))] ss:h-full flex flex-col">
+                <div className="relative z-10 h-full flex flex-col">
                     <Title size="7xl" align="left">
                         {startPageSection && <PortableText value={startPageSection?.title}/>}
                     </Title>
@@ -29,7 +29,7 @@ export default function LandingStart({
 function LandingStartInnerContainer({children}: ReactNodeProps) {
     return (
         <div className="w-full flex justify-center px-x-outer py-y-sections">
-            <div className="w-full max-w-md h-start">
+            <div className="w-full max-w-md h-[calc(100dvh-2*var(--spacing-y-sections)-var(--height-banner))] ss:h-start">
                 {children}
             </div>
         </div>
