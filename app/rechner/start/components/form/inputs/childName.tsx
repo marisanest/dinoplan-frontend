@@ -6,7 +6,7 @@ import {ReactNodeProps} from "@/lib/types/core";
 export default function CalculatorStartFormChildNameInput({state}: { state: CreateCustomerState }) {
     return (
         <CalculatorStartFormChildNameInputContainer>
-            <Button className="!cursor-default hover:!bg-orange hover:!border-orange"
+            <Button className="hidden ss:inline-block !cursor-default hover:!bg-orange hover:!border-orange"
                     size="sm"
                     colors="orange">
 
@@ -17,7 +17,7 @@ export default function CalculatorStartFormChildNameInput({state}: { state: Crea
                    id="childName"
                    name="childName"
                    placeholder="Name deines Kindes"
-                   className="w-full text-left px-[1rem] text-blue-600 border-[2px] border-blue-600-faded focus:border-blue bg-yellow-100" />
+                   className="w-full h-[48px] text-left px-[1rem] text-blue-600 border-[2px] border-blue-600-faded focus:border-blue bg-yellow-100" />
 
             {state?.errors?.childName && (
                 <>
@@ -37,7 +37,7 @@ export default function CalculatorStartFormChildNameInput({state}: { state: Crea
 
 function CalculatorStartFormChildNameInputContainer({children}: ReactNodeProps) {
     return (
-        <div className="grid grid-cols-[160px_3fr] gap-x-[2rem] gap-y-[0.4rem] mb-y-xs min-w-full w-full">
+        <div className="w-full flex flex-col items-center ss:grid ss:grid-cols-[160px_3fr] gap-y-y-paragraph ss:gap-x-[2rem] ss:gap-y-[0.4rem] pb-y-paragraph">
             {children}
         </div>
     );
