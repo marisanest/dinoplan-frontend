@@ -53,8 +53,8 @@ export default function Landing({
             <LandingServiceSegments serviceSegmentsPageSection={serviceSegmentsPageSection} />
             <LandingServiceFeatures serviceFeaturesPageSection={serviceFeaturesPageSection} contact={contact} />
             <LandingServiceModules serviceModulesPageSection={serviceModulesPageSection} />
-            {/*<LandingAbout aboutPageSection={aboutPageSection} contact={contact} />*/}
-            {/*<LandingFaq faqPageSection={faqPageSection} />*/}
+            <LandingAbout aboutPageSection={aboutPageSection} contact={contact} />
+            <LandingFaq faqPageSection={faqPageSection} />
         </main>
     );
 }

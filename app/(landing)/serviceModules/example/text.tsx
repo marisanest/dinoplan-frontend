@@ -11,12 +11,15 @@ export type LandingServiceModulesExampleTextProps = {
 export default function LandingServiceModulesExampleText({serviceModule}: LandingServiceModulesExampleTextProps) {
     return (
         <LandingServiceModulesExampleTextContainer>
-            <Title className="mb-[1rem] sm:mb-[1.5rem] !text-3xl" size='lg' align="left">{serviceModule.name}</Title>
-            <Text align="left" size="lg">
+            <Title className="pb-[1rem] sm:pb-[1.5rem] !text-3xl xs:justify-start xs:text-left" size='lg'>{serviceModule.name}</Title>
+
+            <Text className="xs:justify-start xs:text-left" size="lg">
                 <PortableText value={serviceModule.example?.input}/>
             </Text>
+
             <hr className="my-[0.5rem] sm:my-[0.75rem] border-[1px] border-blue-600"/>
-            <Text align="left" size="lg">
+
+            <Text className="xs:justify-start xs:text-left" size="lg">
                 <PortableText value={serviceModule.example?.output}/>
             </Text>
         </LandingServiceModulesExampleTextContainer>

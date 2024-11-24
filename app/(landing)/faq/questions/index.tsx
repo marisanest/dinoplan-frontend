@@ -12,7 +12,7 @@ export default function LandingFaqQuestions({faqPageSection}: Pick<LandingProps,
 
 function LandingFaqQuestionsContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full py-y-xs px-[6rem]">
+        <div className="w-full py-y-paragraph px-[2rem] ss:px-[6rem]">
             {children}
         </div>
     );

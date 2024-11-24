@@ -19,11 +19,11 @@ export default function LandingServiceModulesExample() {
 
     return (
         <LandingServiceModulesExampleContainer>
-            <div className="grid grid-cols-[4fr_2fr] gap-[1rem] sm:gap-[4rem] w-full">
+            <div className="w-full flex flex-col-reverse xs:grid xs:grid-cols-[4fr_2fr] gap-[1rem] ss:gap-[4rem]">
                 <LandingServiceModulesExampleText key="text" serviceModule={selectedServiceModule}/>
                 <LandingServiceModulesExampleImage key="image" serviceModule={selectedServiceModule}/>
             </div>
-            <div className="w-fit pt-y-xs">
+            <div className="w-fit pt-y-paragraph">
                 <Button colors="red" link={{type: 'internal', url: '/rechner'}} size="sm">
                     <Text color="none">Beitrag berechnen</Text>
                 </Button>
@@ -32,10 +32,9 @@ export default function LandingServiceModulesExample() {
 );
 }
 
-function LandingServiceModulesExampleContainer({
-    children}: ReactNodeProps) {
+function LandingServiceModulesExampleContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full flex items-center flex-col pt-y-s px-x-xs">
+        <div className="w-full flex flex-col items-center pt-y-section">
             {children}
         </div>
     );

@@ -11,7 +11,7 @@ export default function LandingFaqImage({faqPageSection}: Pick<LandingProps, 'fa
             <Image
                 src={urlFor(faqPageSection.illustration)?.url()}
                 alt="Illustration"
-                className="w-[80%] sm:w-[350px] h-auto"
+                className="w-[70%] ss:w-[350px] max-w-[350px] h-auto"
                 width={faqPageSection.illustration.width}
                 height={faqPageSection.illustration.height}
             />

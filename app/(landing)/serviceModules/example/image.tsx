@@ -8,7 +8,7 @@ export default function LandingServiceModulesExampleImage({serviceModule}) {
             <Image
                 src={urlFor(serviceModule.serviceSegment.illustration)?.url()}
                 alt="Illustration"
-                className="w-full max-w-[250px]"
+                className="w-[150px] h-auto xs:w-full xs:max-w-[250px]"
                 width={serviceModule.serviceSegment.illustration.width}
                 height={serviceModule.serviceSegment.illustration.height}
             />
@@ -18,7 +18,7 @@ export default function LandingServiceModulesExampleImage({serviceModule}) {
 
 function LandingServiceModulesExampleImageContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full h-full flex justify-end items-center">
+        <div className="w-full xs:h-full flex justify-center xs:justify-end xs:items-center">
             {children}
         </div>
     );

@@ -9,7 +9,7 @@ export default function LandingAboutBoxImage({aboutPageSection}: Pick<LandingPro
             <Image
                 src={urlFor(aboutPageSection.illustration)?.url()}
                 alt="Illustration"
-                className="px-[2rem] sm:px-0 w-[400px] sm:w-full h-auto"
+                className="max-w-[300px] w-full h-auto px-[2rem] ss:px-0 pt-y-paragraph ss:pt-y-0"
                 width={aboutPageSection.illustration.width}
                 height={aboutPageSection.illustration.height}
             />
@@ -19,7 +19,7 @@ export default function LandingAboutBoxImage({aboutPageSection}: Pick<LandingPro
 
 function LandingAboutBoxImageContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full h-full flex justify-end items-center">
+        <div className="w-full h-fit ss:h-full flex justify-center ss:justify-end items-center">
             {children}
         </div>
     );

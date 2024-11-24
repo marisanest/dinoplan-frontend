@@ -4,6 +4,7 @@ import LandingFaqImage from "@/(landing)/faq/image";
 import LandingFaqQuestions from "@/(landing)/faq/questions";
 import {LandingProps} from "@/(landing)/landing";
 import {PortableText} from "next-sanity";
+import Text from "@/components/text/text";
 
 export default function LandingFaq({faqPageSection}: Pick<LandingProps, 'faqPageSection'>) {
     if (!faqPageSection) return null;
@@ -13,9 +14,9 @@ export default function LandingFaq({faqPageSection}: Pick<LandingProps, 'faqPage
             <Title key="title">
                 <PortableText value={faqPageSection.title} />
             </Title>
-            <div key="sub-title" className="mt-3 text-blue-600 flex items-center w-full justify-center text-center font-normal text-xl">
+            <Text key="sub-title" className="pt-[0.5rem]" size="xl">
                 <PortableText value={faqPageSection.subTitle} />
-            </div>
+            </Text>
             <LandingFaqImage key="image" faqPageSection={faqPageSection} />
             <LandingFaqQuestions key="questions" faqPageSection={faqPageSection} />
         </LandingFaqContainer>
@@ -24,8 +25,8 @@ export default function LandingFaq({faqPageSection}: Pick<LandingProps, 'faqPage
 
 function LandingFaqContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full flex justify-center mt-y-m">
-            <div className="w-[calc(100dvw-calc(2*var(--spacing-x-outer)))] sm:w-sm sm:max-w-sm">{children}</div>
+        <div className="w-full flex justify-center px-x-outer">
+            <div className="w-full max-w-sm flex flex-col items-center">{children}</div>
         </div>
     );
 }
