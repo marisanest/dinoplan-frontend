@@ -13,7 +13,7 @@ export default function HeaderBurgerIcon() {
     );
 
     return (
-        <div className="ml-auto flex h-full items-center ">
+        <div className="flex ss:hidden h-full items-center">
             <BurgerIcon isActive={isOpen} toggleActive={toggleOpen}/>
         </div>
     );

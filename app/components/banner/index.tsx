@@ -8,7 +8,7 @@ type BannerProps = {
 
 export default function Banner({ className = "bg-yellow-100", isHeader = false, isFooter = false, children }: BannerProps & ReactNodeProps) {
     className = cn('w-[100dvw] max-w-[100dvw] overflow-x-hidden flex justify-center rounded-full px-x-outer', className)
-    const innerClassName = "w-full max-w-md h-banner flex justify-between items-center"
+    const innerClassName = "w-full max-w-md min-h-banner h-banner flex justify-between items-center"
 
     if (isHeader) {
         return (

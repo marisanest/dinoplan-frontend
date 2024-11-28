@@ -30,7 +30,7 @@ export default function ServiceSegmentsGrid() {
 
 function ServiceSegmentsGridContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full hidden xs:grid xs:grid-cols-3 justify-between gap-[1.5rem] sm:gap-[4rem] mt-y-s sm:px-[15px]">
+        <div className="w-full hidden xs:grid xs:grid-cols-3 justify-between gap-[1.5rem] sm:gap-[4rem] sm:px-[15px]">
             {children}
         </div>
     );

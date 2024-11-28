@@ -126,7 +126,7 @@ async function AuthenticatedLayout({
             <link rel="icon" type="image/x-icon" sizes="any" href="/favicon.ico"/>
             <link rel="manifest" href="/manifest.json"/>
         </head>
-        <body className={`${nunito.variable} ${afacad.variable}`}>
+        <body className={`${nunito.variable} ${afacad.variable} bg-yellow-100`}>
         <OverlayMenu contact={contact} />
         <Header contact={contact} />
         {children}

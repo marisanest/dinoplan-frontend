@@ -108,12 +108,23 @@
     }
 }
 
-html,
+html {
+    /*min-width: 100dvw;*/
+    /*width: 100dvw;*/
+    /*max-width: 100dvw;*/
+    /*overflow-x: hidden!important;*/
+
+    /*max-height: 100dvh;*/
+    /*overflow-y: scroll;*/
+    height: 100%;
+}
+
 body {
     font-family: var(--font-nunito);
 
-    max-width: 100dvw;
-    overflow-x: hidden!important;
+    /*max-height: 100dvh;*/
+    /*overflow-y: scroll;*/
+    height: 100%;
 }
 
 input[type=text]:active,

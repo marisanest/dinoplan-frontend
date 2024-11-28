@@ -1,3 +1,5 @@
+"use client"
+
 import {ReactNodeProps} from "@/lib/types/core";
 import cn from "clsx";
 import {useShallow} from "zustand/react/shallow";
@@ -6,7 +8,6 @@ import {PortableText} from "next-sanity";
 import Title from "@/components/title";
 import Text from "@/components/text/text";
 import {useServiceSegmentsContext} from "@/lib/stores/serviceSegments/context";
-import useScreenSizes from "@/lib/hooks/useScreenSizes";
 
 const segmentNameToCheckmarkDotColor: {[key: string]: string} = {
     'Geldanlage': 'bg-orange border-orange',
@@ -14,22 +15,17 @@ const segmentNameToCheckmarkDotColor: {[key: string]: string} = {
     'Zusatzversicherungen': 'bg-red-200 border-red-200',
 }
 
-export default function LandingServiceSegmentDetail({setHeight}) {
-    const screenSizes = useScreenSizes()
-    const {isInitial, selectedServiceSegmentIndex, prevSelectedServiceSegmentIndex, serviceSegments} = useServiceSegmentsContext(useShallow((s) => ({
-        isInitial: s.isInitial,
+export default function LandingServiceSegmentDetail() {
+    const {selectedServiceSegmentIndex, prevSelectedServiceSegmentIndex, serviceSegments} = useServiceSegmentsContext(useShallow((s) => ({
         selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
         prevSelectedServiceSegmentIndex: s.prevSelectedServiceSegmentIndex,
         serviceSegments: s.serviceSegments,
     })))
-
-    // if (!screenSizes || (!screenSizes.isXxs && isInitial) || (!selectedServiceSegmentIndex && selectedServiceSegmentIndex !== 0)) return null;
     const selectedServiceSegment = serviceSegments[(selectedServiceSegmentIndex || selectedServiceSegmentIndex === 0 ? selectedServiceSegmentIndex : prevSelectedServiceSegmentIndex )];
-
     const checkmarkDotBackgroundColor = selectedServiceSegment.name in segmentNameToCheckmarkDotColor ? segmentNameToCheckmarkDotColor[selectedServiceSegment.name] : 'bg-orange'
 
     return (
-        <LandingServiceSegmentDetailContainer setHeight={setHeight}>
+        <LandingServiceSegmentDetailContainer>
             <div>
                 <Title key="title" className="!text-[2rem]" size="lg" align="left">
                     {selectedServiceSegment && `${selectedServiceSegment?.dinoPrefix}-Dino`}
@@ -57,13 +53,20 @@ export default function LandingServiceSegmentDetail({setHeight}) {
     );
 }
 
-function LandingServiceSegmentDetailContainer({children, setHeight}) {
-    const showServiceSegmentDetails = useServiceSegmentsContext(useShallow((s) => s.showServiceSegmentDetails));
+function LandingServiceSegmentDetailContainer({children}: ReactNodeProps) {
+    const {showServiceSegmentDetails} = useServiceSegmentsContext(useShallow((s) => ({
+        showServiceSegmentDetails: s.showServiceSegmentDetails,
+    })))
 
     return (
-        <div ref={el => setHeight(el?.clientHeight)} className={cn("absolute left-0 right-0 rounded-bl-md rounded-tr-md bg-orange-400 pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-s))] pb-y-s transition-transform duration-1000 translate-y-[-100%] w-full flex justify-center", showServiceSegmentDetails ? 'translate-y-[calc(-1*var(--dino-bottom-offset))]' : 'translate-y-[-100%]')}>
-            <div className="w-[calc(100%-calc(2*var(--spacing-x-s)))] flex flex-col gap-[1rem]">
-                {children}
+        <div className="w-full flex justify-center px-x-s xs:px-x-sm sm:px-0">
+            <div className={cn(
+                "w-full sm:w-sm sm:max-w-sm flex justify-center px-x-s xs:px-x-sm pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-sm))] pb-y-sm rounded-bl-md bg-orange-400 transition-[transform] duration-1000 pointer-events-auto",
+                showServiceSegmentDetails ? 'translate-y-[calc(-1*var(--dino-bottom-offset))]' : 'translate-y-[-100%]'
+            )}>
+                <div className="w-fit flex flex-col gap-[0.75rem]">
+                    {children}
+                </div>
             </div>
         </div>
     );

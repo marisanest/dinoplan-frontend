@@ -6,13 +6,13 @@ import Button from "@/components/buttons";
 export default function HeaderCtas({contact}) {
     return (
         <HeaderCtasContainer>
-            <InternalLink className="hidden sm:inline-block" href="/rechner" scroll>
+            <InternalLink className="hidden ss:inline-block" href="/rechner" scroll>
                 <Text className="hover:text-blue-600-faded transition-colors" size="md">Beitrag berechnen</Text>
             </InternalLink>
             <Button key="appointment" size="xs" colors="orange" link={contact.calendly}>
                 <Text color="yellow" size="md">Termin vereinbaren</Text>
             </Button>
-            <InternalLink className="hidden sm:inline-block" href="/#faq" scroll>
+            <InternalLink className="hidden ss:inline-block" href="/#faq" scroll>
                 <Text className="hover:text-blue-600-faded transition-colors" size="md">Fragen?</Text>
             </InternalLink>
         </HeaderCtasContainer>
@@ -21,7 +21,7 @@ export default function HeaderCtas({contact}) {
 
 function HeaderCtasContainer({ children }: ReactNodeProps) {
     return (
-        <div className="gap-[1rem] items-center hidden xs:flex">
+        <div className="w-full hidden xs:flex xs:justify-end xs:items-center xs:gap-[1rem] pr-[30px] ss:pr-0">
             {children}
         </div>
     );

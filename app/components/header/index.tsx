@@ -7,13 +7,12 @@ import HeaderBurgerIcon from "@/components/header/burger";
 export default function Header({contact}) {
 
     return (
-        <Banner className="backdrop-blur-[10px] bg-yellow-100-transparent" fixed isHeader>
+        <Banner className="backdrop-blur-[10px] bg-yellow-100-transparent" isHeader>
             <InternalLink href="/">
-                <div className="sm:hidden"><Logo scale={0.75}/></div>
-                <div className="hidden sm:inline"><Logo scale={0.75}/></div>
+                <Logo scale={0.75}/>
             </InternalLink>
             <HeaderCtas contact={contact} />
-            {/*<HeaderBurgerIcon />*/}
+            <HeaderBurgerIcon />
         </Banner>
     );
 }

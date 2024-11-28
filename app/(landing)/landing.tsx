@@ -37,7 +37,7 @@ export default function Landing({
                                 }: LandingProps) {
 
     return (
-        <main className="relative min-w-[100dvw] w-[100dvw] max-w-[100dvw] overflow-x-hidden flex flex-col items-center bg-yellow-100">
+        <main className="relative flex flex-col">
             <LandingStart startPageSection={startPageSection}
                           serviceSegmentsPageSection={serviceSegmentsPageSection} />
             <Banner className="bg-orange">

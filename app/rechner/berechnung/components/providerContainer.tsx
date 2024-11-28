@@ -7,7 +7,7 @@ export default function CalculatorCalculationProviderContainer({serviceSegments,
 
     return (
         <ServiceSegmentsProvider showServiceSegmentDetails={screenSizes?.isXxs}
-                                 serviceSegments={serviceSegments.map((s: any) => s.serviceSegment)}>
+                                 serviceSegments={serviceSegments?.map((s: any) => s.serviceSegment)}>
             {children}
         </ServiceSegmentsProvider>
     );

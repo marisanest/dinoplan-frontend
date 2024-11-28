@@ -8,6 +8,7 @@ import InternalLink from "@/components/link/internal";
 import EmailLink from "@/components/link/email";
 import Text from "@/components/text/text";
 import Button from "@/components/buttons";
+import {useEffect} from "react";
 
 export type OverlayMenuProps = {
     contact: any;
@@ -20,6 +21,17 @@ export default function OverlayMenu({contact}: OverlayMenuProps) {
           toggleOpen: state.toggleOpen,
       })),
   );
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            // document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
 
   return (
       <motion.div
