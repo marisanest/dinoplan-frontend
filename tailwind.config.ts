@@ -27,18 +27,21 @@ const config: Config = {
         'yellow-100-transparent': 'rgba(255,255,250,0.6)',
       },
       width: {
-        sm: 'var(--max-w-sm)',
-        md: 'var(--max-w-md)',
+        sm: 'var(--width-sm)',
+        md: 'var(--width-md)',
+        'text': 'var(--width-text)',
         'footer-image': 'var(--width-footer-image)',
       },
       maxWidth: {
-        'sm': 'var(--max-w-sm)',
-        'md': 'var(--max-w-md)',
+        sm: 'var(--width-sm)',
+        md: 'var(--width-md)',
+        'text': 'var(--width-text)',
         'footer-image': 'var(--width-footer-image)',
       },
       minWidth: {
-        'sm': 'var(--max-w-sm)',
-        'md': 'var(--max-w-md)',
+        sm: 'var(--width-sm)',
+        md: 'var(--width-md)',
+        'text': 'var(--width-text)',
         'footer-image': 'var(--width-footer-image)',
       },
       height: {

@@ -1,7 +1,4 @@
 :root {
-    --max-w-sm: 900px;
-    --max-w-md: 1150px;
-
     --spacing-x-xs: 3rem;
     --spacing-x-s: 4rem;
     --spacing-x-sm: 5rem;
@@ -26,6 +23,16 @@
 
     --dino-bottom-offset: 2.5rem;
 
+    --height-banner: 4.5rem;
+    --height-start: 625px;
+    --height-start-description: 5.75rem;
+    --height-footer-image: 457px;
+
+    --width-sm: 900px;
+    --width-md: 1150px;
+    --width-text: 550px;
+    --width-footer-image: 1150px;
+
     --blue: #4772D2;
     --blue-600: #294290;
     --blue-600-faded: #889bd3;
@@ -37,13 +44,6 @@
     --orange-400: #EFE6D6;
     --orange-200: #F7F2EA;
     --yellow-100: #FFFFF;
-
-    --height-banner: 4.5rem;
-    --height-start: 625px;
-    --height-start-description: 5.75rem;
-    --height-footer-image: 457px;
-
-    --width-footer-image: 1150px;
 }
 
 @media only screen and (max-width: 980px) {

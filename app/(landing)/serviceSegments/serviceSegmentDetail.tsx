@@ -62,7 +62,7 @@ function LandingServiceSegmentDetailContainer({children}: ReactNodeProps) {
         <div className="w-full flex justify-center px-x-s xs:px-x-sm sm:px-0">
             <div className={cn(
                 "w-full sm:w-sm sm:max-w-sm flex justify-center px-x-s xs:px-x-sm pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-sm))] pb-y-sm rounded-bl-md bg-orange-400 transition-[transform] duration-1000 pointer-events-auto",
-                showServiceSegmentDetails ? 'translate-y-[calc(-1*var(--dino-bottom-offset))]' : 'translate-y-[-100%]'
+                showServiceSegmentDetails ? 'translate-y-[calc(-1*var(--dino-bottom-offset))]' : 'translate-y-[-100%] rounded-tr-md'
             )}>
                 <div className="w-fit flex flex-col gap-[0.75rem]">
                     {children}

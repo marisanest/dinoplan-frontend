@@ -14,10 +14,10 @@ type ServiceSegmentsProps = {
 export default function ServiceSegments({className, title, description}: ServiceSegmentsProps) {
     return (
         <ServiceSegmentsContainer className={className}>
-            <Title>
+            <Title className="max-w-text">
                 <PortableText value={title}/>
             </Title>
-            <Text className="pb-y-[30px] xs:pb-y-s pt-[10px]" size="sm">
+            <Text className="max-w-text pb-y-[30px] xs:pb-y-s pt-[10px]" size="sm">
                 <PortableText value={description}/>
             </Text>
 
