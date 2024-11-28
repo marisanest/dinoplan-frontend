@@ -6,20 +6,18 @@ import CalculatorCalculationProviderContainer from "@/rechner/berechnung/compone
 import ServiceSegmentsDetails from "@/components/serviceSegments/details";
 
 export default function LandingServiceSegments({serviceSegmentsPageSection}: Pick<LandingProps, 'serviceSegmentsPageSection'>) {
-
     return (
-        <CalculatorCalculationProviderContainer serviceSegments={serviceSegmentsPageSection?.serviceSegments}>
-            <LandingServiceSegmentsContainer>
+        <LandingServiceSegmentsContainer>
+            <CalculatorCalculationProviderContainer serviceSegments={serviceSegmentsPageSection?.serviceSegments}>
                 <ServiceSegments key="service-segments"
                                  className="rounded-bl-md"
                                  title={serviceSegmentsPageSection?.title}
                                  description={serviceSegmentsPageSection?.description} />
-
                 <ServiceSegmentsDetails key="service-segments-details">
                     <LandingServiceSegmentDetail key="detail" />
                 </ServiceSegmentsDetails>
-            </LandingServiceSegmentsContainer>
-        </CalculatorCalculationProviderContainer>
+            </CalculatorCalculationProviderContainer>
+        </LandingServiceSegmentsContainer>
     );
 }
 

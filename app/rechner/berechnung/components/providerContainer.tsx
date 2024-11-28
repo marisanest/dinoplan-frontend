@@ -4,6 +4,7 @@ import useScreenSizes from "@/lib/hooks/useScreenSizes";
 
 export default function CalculatorCalculationProviderContainer({serviceSegments, children}: any) {
     const screenSizes = useScreenSizes()
+    if (!screenSizes) return null;
 
     return (
         <ServiceSegmentsProvider showServiceSegmentDetails={screenSizes?.isXxs}
