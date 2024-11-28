@@ -6,7 +6,7 @@ import Button from "@/components/buttons";
 export default function HeaderCtas({contact}) {
     return (
         <HeaderCtasContainer>
-            <InternalLink className="hidden ss:inline-block" href="/rechner" scroll>
+            <InternalLink className="hidden ss:inline-block" href="/rechner/start" scroll>
                 <Text className="hover:text-blue-600-faded transition-colors" size="md">Beitrag berechnen</Text>
             </InternalLink>
             <Button key="appointment" size="xs" colors="orange" link={contact.calendly}>

@@ -52,7 +52,7 @@ export default function OverlayMenu({contact}: OverlayMenuProps) {
                       </InternalLink>
                   </div>
                   <div onClick={toggleOpen}>
-                      <InternalLink href="/rechner" scroll>
+                      <InternalLink href="/rechner/start" scroll>
                           <Text size="xl" align="left">Beitrag berechnen</Text>
                       </InternalLink>
                   </div>
