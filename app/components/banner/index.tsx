@@ -29,7 +29,7 @@ export default function Banner({ className = "bg-yellow-100", isHeader = false, 
     } else {
         return (
             <div className={className}>
-                <div className="w-full max-w-md h-banner">
+                <div className={innerClassName}>
                     {children}
                 </div>
             </div>

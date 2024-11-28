@@ -11,18 +11,18 @@ export default function Footer({contact}) {
         <FooterContainer>
             <FooterImage />
             <Banner className="bg-orange" isFooter>
-                <div className="w-full flex items-center justify-center gap-[1.5rem] sm:gap-[3rem]">
+                <div className="w-full flex items-center justify-center gap-[1rem] xs:gap-[1.5rem] ss:gap-[3rem]">
                     <InternalLink className="text-blue-600" href="/impressum">
                         <Text size="md" className="hover:text-brown-200 transition-colors">Impressum</Text>
                     </InternalLink>
                     <InternalLink className="text-blue-600" href="/datenschutz">
                         <Text size="md" className="hover:text-brown-200 transition-colors">Datenschutz</Text>
                     </InternalLink>
-                    <InternalLink className="hidden sm:inline-block text-blue-600" href="/">
-                        <div className="sm:hidden">
+                    <InternalLink className="hidden ss:inline-block text-blue-600" href="/">
+                        <div className="ss:hidden">
                             <Logo scale={0.75}/>
                         </div>
-                        <div className="hidden sm:inline">
+                        <div className="hidden ss:inline">
                             <Logo scale={0.75}/>
                         </div>
                     </InternalLink>
