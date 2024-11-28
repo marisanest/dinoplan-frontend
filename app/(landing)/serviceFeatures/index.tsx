@@ -11,10 +11,10 @@ export default function LandingServiceFeatures({serviceFeaturesPageSection, cont
 
     return (
         <LandingServiceFeaturesContainer>
-            <Title key="title">
+            <Title key="title" className="max-w-text">
                 <PortableText value={serviceFeaturesPageSection.title}/>
             </Title>
-            <Text key="description" className="pt-y-paragraph" size="sm">
+            <Text key="description" className="pt-y-paragraph max-w-text" size="sm">
                 <PortableText value={serviceFeaturesPageSection.description}/>
             </Text>
             <div key="features" className="grid grid-cols-2 ss:grid-cols-3 py-y-section gap-x-[1rem] gap-y-[0.75rem] ss:gap-[2rem]">

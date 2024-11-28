@@ -11,10 +11,10 @@ export default function LandingFaq({faqPageSection}: Pick<LandingProps, 'faqPage
 
     return (
         <LandingFaqContainer>
-            <Title key="title">
+            <Title key="title" className="max-w-text">
                 <PortableText value={faqPageSection.title} />
             </Title>
-            <Text key="sub-title" className="pt-[0.5rem]" size="xl">
+            <Text key="sub-title" className="pt-[0.5rem] max-w-text" size="xl">
                 <PortableText value={faqPageSection.subTitle} />
             </Text>
             <LandingFaqImage key="image" faqPageSection={faqPageSection} />

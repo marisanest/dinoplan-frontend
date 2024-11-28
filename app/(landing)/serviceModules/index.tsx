@@ -10,7 +10,7 @@ export default function LandingServiceModules({serviceModulesPageSection}: Pick<
 
     return (
         <LandingServiceModulesContainer>
-            <Title key="title">
+            <Title key="title" className="max-w-text-lg">
                 <PortableText value={serviceModulesPageSection.title} />
             </Title>
             <LandingServiceModulesButtons key="buttons" serviceModulesPageSection={serviceModulesPageSection} />

@@ -29,19 +29,22 @@ const config: Config = {
       width: {
         sm: 'var(--width-sm)',
         md: 'var(--width-md)',
-        'text': 'var(--width-text)',
+        text: 'var(--width-text)',
+        'text-lg': 'var(--width-text-lg)',
         'footer-image': 'var(--width-footer-image)',
       },
       maxWidth: {
         sm: 'var(--width-sm)',
         md: 'var(--width-md)',
-        'text': 'var(--width-text)',
+        text: 'var(--width-text)',
+        'text-lg': 'var(--width-text-lg)',
         'footer-image': 'var(--width-footer-image)',
       },
       minWidth: {
         sm: 'var(--width-sm)',
         md: 'var(--width-md)',
-        'text': 'var(--width-text)',
+        text: 'var(--width-text)',
+        'text-lg': 'var(--width-text-lg)',
         'footer-image': 'var(--width-footer-image)',
       },
       height: {

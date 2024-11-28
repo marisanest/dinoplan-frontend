@@ -38,7 +38,7 @@ function LandingStartInnerContainer({children}: ReactNodeProps) {
 
 function LandingStartContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full relative pt-banner bg-orange-200">
+        <div className="w-full relative z-10 pt-banner bg-orange-200">
             {children}
         </div>
     );

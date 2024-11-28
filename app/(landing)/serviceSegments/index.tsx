@@ -24,8 +24,9 @@ export default function LandingServiceSegments({serviceSegmentsPageSection}: Pic
 
 function LandingServiceSegmentsContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full flex flex-col items-center py-y-block">
-            <div className="w-full relative z-10">
+        <div className="w-full flex flex-col items-center pb-y-block">
+            <div className="w-full relative">
+                <div className="relative z-10 pt-y-block bg-yellow-100"></div>
                 {children}
             </div>
         </div>

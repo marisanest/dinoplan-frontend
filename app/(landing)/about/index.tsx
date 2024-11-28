@@ -10,11 +10,11 @@ export default function LandingAbout({aboutPageSection, contact}: Pick<LandingPr
 
     return (
         <LandingAboutContainer>
-            <Title key="title" className="px-x-xs">
+            <Title key="title" className="max-w-text">
                 <PortableText value={aboutPageSection.title} />
             </Title>
             <div className="w-full flex justify-center">
-                <Text key="description" className="pt-y-paragraph pb-y-section px-x-xs ss:max-w-[70%]" size="sm" >
+                <Text key="description" className="pt-y-paragraph pb-y-section max-w-text" size="sm" >
                     <PortableText value={aboutPageSection.description} />
                 </Text>
             </div>

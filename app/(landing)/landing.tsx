@@ -37,10 +37,10 @@ export default function Landing({
                                 }: LandingProps) {
 
     return (
-        <main className="relative flex flex-col">
+        <main>
             <LandingStart startPageSection={startPageSection}
                           serviceSegmentsPageSection={serviceSegmentsPageSection} />
-            <Banner className="bg-orange">
+            <Banner className="relative z-10 bg-orange">
                <div className="flex w-full h-full justify-center items-center gap-[1rem]">
                    <Text className="!w-fit" size="md">
                        Lasse dich jetzt kostenlos online von unseren Experten beraten.
