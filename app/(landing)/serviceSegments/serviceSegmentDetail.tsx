@@ -8,6 +8,7 @@ import {PortableText} from "next-sanity";
 import Title from "@/components/title";
 import Text from "@/components/text/text";
 import {useServiceSegmentsContext} from "@/lib/stores/serviceSegments/context";
+import useScreenSizes from "@/lib/hooks/useScreenSizes";
 
 const segmentNameToCheckmarkDotColor: {[key: string]: string} = {
     'Geldanlage': 'bg-orange border-orange',
@@ -21,7 +22,11 @@ export default function LandingServiceSegmentDetail() {
         prevSelectedServiceSegmentIndex: s.prevSelectedServiceSegmentIndex,
         serviceSegments: s.serviceSegments,
     })))
-    const selectedServiceSegment = serviceSegments[(selectedServiceSegmentIndex || selectedServiceSegmentIndex === 0 ? selectedServiceSegmentIndex : prevSelectedServiceSegmentIndex )];
+
+    let serviceSegmentIndex = typeof selectedServiceSegmentIndex === 'number' ? selectedServiceSegmentIndex : undefined
+    if (!(typeof serviceSegmentIndex === 'number')) serviceSegmentIndex = typeof prevSelectedServiceSegmentIndex === 'number' ? prevSelectedServiceSegmentIndex : 0
+
+    const selectedServiceSegment = serviceSegments[serviceSegmentIndex];
     const checkmarkDotBackgroundColor = selectedServiceSegment.name in segmentNameToCheckmarkDotColor ? segmentNameToCheckmarkDotColor[selectedServiceSegment.name] : 'bg-orange'
 
     return (
@@ -54,15 +59,16 @@ export default function LandingServiceSegmentDetail() {
 }
 
 function LandingServiceSegmentDetailContainer({children}: ReactNodeProps) {
-    const {showServiceSegmentDetails} = useServiceSegmentsContext(useShallow((s) => ({
-        showServiceSegmentDetails: s.showServiceSegmentDetails,
+    const screenSizes = useScreenSizes()
+    const {selectedServiceSegmentIndex} = useServiceSegmentsContext(useShallow((s) => ({
+        selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
     })))
 
     return (
         <div className="w-full flex justify-center px-x-s xs:px-x-sm sm:px-0">
             <div className={cn(
                 "w-full sm:w-sm sm:max-w-sm flex justify-center px-x-s xs:px-x-sm pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-s))] pb-y-s rounded-bl-md bg-orange-400 transition-[transform] duration-1000 pointer-events-auto",
-                showServiceSegmentDetails ? 'translate-y-[calc(-1*var(--dino-bottom-offset))]' : 'translate-y-[-100%] rounded-tr-md'
+                typeof selectedServiceSegmentIndex === 'number' || screenSizes?.isXs ? 'translate-y-[calc(-1*var(--dino-bottom-offset))]' : 'translate-y-[-100%] rounded-tr-md'
             )}>
                 <div className="w-fit flex flex-col gap-[0.75rem]">
                     {children}

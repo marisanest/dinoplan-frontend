@@ -22,7 +22,7 @@ export default function LandingFaqQuestion({question}) {
             <div className="grid grid-cols-[1fr_30px] cursor-pointer my-[0.75rem] sm:my-[1rem]"
                  onClick={() => selectQuestion(question)}>
                 <Text align="left" size="lg">{question.question} </Text>
-                <div className="bg-red-200 rounded-full w-[30px] h-[30px] flex justify-center items-center">
+                <div className="min-w-[27px] w-[27px] min-h-[27px] h-[27px] xs:min-w-[30px] xs:w-[30px] xs:min-h-[30px] xs:h-[30px] flex justify-center items-center rounded-full bg-red-200">
                     <ArrowIcon className={cn("transition-transform duration-700", selectedQuestion && selectedQuestion._id === question._id ? 'rotate-180' : 'rotate-0')}/>
                 </div>
             </div>

@@ -18,14 +18,13 @@ export default function ServiceSegmentsCarousel() {
         selectNextServiceSegment: s.selectNextServiceSegment,
     })))
 
-    if (screenSizes && !screenSizes.isXxs) return null;
-    if (!selectedServiceSegmentIndex && selectedServiceSegmentIndex !== 0) return null;
-    const selectedServiceSegment = serviceSegments[selectedServiceSegmentIndex];
+    if (screenSizes && !screenSizes.isXs) return null;
+    const selectedServiceSegment = serviceSegments[typeof selectedServiceSegmentIndex === 'number' ? selectedServiceSegmentIndex : 0];
 
     return (
         <ServiceSegmentsCarouselContainer>
             <ServiceSegmentsCarouselInnerContainer key="illustration">
-                <div className="cursor-pointer border-red-200 bg-red-200 flex justify-center items-center min-w-[1.75rem] w-[1.75rem] min-h-[1.75rem] h-[1.75rem] rounded-full p-[0.175rem] border-[2px]"
+                <div className="min-w-[27px] w-[27px] min-h-[27px] h-[27px] xs:min-w-[30px] xs:w-[30px] xs:min-h-[30px] xs:h-[30px] flex justify-center items-center rounded-full bg-red-200 cursor-pointer"
                      onClick={selectPrevServiceSegment}>
                     <ArrowIcon className="rotate-90" scale={0.8} />
                 </div>
@@ -36,7 +35,7 @@ export default function ServiceSegmentsCarousel() {
                        width={selectedServiceSegment.illustration.width}
                        height={selectedServiceSegment.illustration.height} />
 
-                <div className="cursor-pointer border-red-200 bg-red-200 flex justify-center items-center min-w-[1.75rem] w-[1.75rem] min-h-[1.75rem] h-[1.75rem] rounded-full p-[0.175rem] border-[2px]"
+                <div className="min-w-[27px] w-[27px] min-h-[27px] h-[27px] xs:min-w-[30px] xs:w-[30px] xs:min-h-[30px] xs:h-[30px] flex justify-center items-center rounded-full bg-red-200 cursor-pointer"
                      onClick={selectNextServiceSegment}>
                     <ArrowIcon className="-rotate-90" scale={0.8}/>
                 </div>
@@ -51,7 +50,7 @@ export default function ServiceSegmentsCarousel() {
 
 function ServiceSegmentsCarouselContainer({children}: ReactNodeProps) {
     return (
-        <div className="flex xs:hidden flex-col gap-y-y-xs">
+        <div className="flex ss:hidden flex-col gap-y-y-xs">
             {children}
         </div>
     );

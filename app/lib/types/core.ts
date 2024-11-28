@@ -11,7 +11,7 @@ export type WindowSizeType = {
 };
 
 export type ScreenSizeType = {
-    isXxs: boolean;
+    isXs: boolean;
 };
 
 export type DinoSegmentType = {

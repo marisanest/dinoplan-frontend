@@ -2,21 +2,22 @@ import {LandingProps} from "@/(landing)/landing";
 import {ReactNodeProps} from "@/lib/types/core";
 import LandingServiceSegmentDetail from "@/(landing)/serviceSegments/serviceSegmentDetail";
 import ServiceSegments from "@/components/serviceSegments";
-import CalculatorCalculationProviderContainer from "@/rechner/berechnung/components/providerContainer";
 import ServiceSegmentsDetails from "@/components/serviceSegments/details";
+import ServiceSegmentsProviderContainer from "@/components/serviceSegments/providerContainer";
 
 export default function LandingServiceSegments({serviceSegmentsPageSection}: Pick<LandingProps, 'serviceSegmentsPageSection'>) {
     return (
         <LandingServiceSegmentsContainer>
-            <CalculatorCalculationProviderContainer serviceSegments={serviceSegmentsPageSection?.serviceSegments}>
+            <ServiceSegmentsProviderContainer serviceSegments={serviceSegmentsPageSection?.serviceSegments}>
                 <ServiceSegments key="service-segments"
                                  className="rounded-bl-md"
                                  title={serviceSegmentsPageSection?.title}
                                  description={serviceSegmentsPageSection?.description} />
+
                 <ServiceSegmentsDetails key="service-segments-details">
                     <LandingServiceSegmentDetail key="detail" />
                 </ServiceSegmentsDetails>
-            </CalculatorCalculationProviderContainer>
+            </ServiceSegmentsProviderContainer>
         </LandingServiceSegmentsContainer>
     );
 }

@@ -13,7 +13,7 @@ export default function ServiceSegmentsGrid() {
         serviceSegments: s.serviceSegments,
     })))
 
-    if (screenSizes?.isXxs) return null;
+    if (screenSizes?.isXs) return null;
 
     return (
         <ServiceSegmentsGridContainer>
@@ -30,7 +30,7 @@ export default function ServiceSegmentsGrid() {
 
 function ServiceSegmentsGridContainer({children}: ReactNodeProps) {
     return (
-        <div className="w-full hidden xs:grid xs:grid-cols-3 justify-between gap-[1.5rem] sm:gap-[4rem] sm:px-[15px]">
+        <div className="w-full hidden ss:grid ss:grid-cols-3 ss:justify-between ss:gap-[1.5rem] sm:gap-[4rem] sm:px-[15px]">
             {children}
         </div>
     );

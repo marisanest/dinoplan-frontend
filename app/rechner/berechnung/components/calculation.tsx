@@ -1,18 +1,20 @@
+"use client"
 import {ReactNodeProps} from "@/lib/types/core";
 import CalculatorCalculationServiceModules from "@/rechner/berechnung/components/serviceModules";
 import CalculatorCalculationSummary from "@/rechner/berechnung/components/summary";
 import CalculatorCalculationButtons from "@/rechner/berechnung/components/buttons";
-import CalculatorCalculationProviderContainer from "@/rechner/berechnung/components/providerContainer";
 import ServiceSegments from "@/components/serviceSegments";
 import ServiceSegmentsDetails from "@/components/serviceSegments/details";
+import {ServiceSegmentsProvider} from "@/lib/stores/serviceSegments/context";
 
 export default function CalculatorCalculation({serviceSegments, customer, costCalculation, contact}: any) {
     return (
-        <CalculatorCalculationProviderContainer serviceSegments={serviceSegments}>
+        <ServiceSegmentsProvider serviceSegments={serviceSegments?.map((s: any) => s.serviceSegment)}>
             <CalculatorCalculationContainer>
                 <ServiceSegments key="service-segments"
                                  title="Wähle deine Bausteine"
-                                 description="Du kannst mehrere Optionen wählen, die in dein Paket einfließen sollen." />
+                                 description="Du kannst mehrere Optionen wählen, die in dein Paket einfließen sollen."
+                                 bgColor="bg-orange-400" />
                 <ServiceSegmentsDetails key="service-segments-details">
                     <CalculatorCalculationServiceModules />
                 </ServiceSegmentsDetails>
@@ -20,7 +22,7 @@ export default function CalculatorCalculation({serviceSegments, customer, costCa
                 <CalculatorCalculationSummary key="summery" customer={customer} costCalculation={costCalculation} />
                 <CalculatorCalculationButtons key="buttons" contact={contact} />
             </CalculatorCalculationContainer>
-        </CalculatorCalculationProviderContainer>
+        </ServiceSegmentsProvider>
     );
 }
 

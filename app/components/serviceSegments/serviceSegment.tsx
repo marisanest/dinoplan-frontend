@@ -15,7 +15,7 @@ export default function ServiceSegment({className, index, serviceSegment}: Calcu
     return (
         <ServiceSegmentContainer className={className} index={index}>
             <Image key="image"
-                   className="w-full h-auto s:w-[194px] s:h-[194px]"
+                   className="w-full h-auto ss:max-w-[204px] ss:max-h-[204]"
                    src={urlFor(serviceSegment.illustration)?.url()}
                    alt="Illustration"
                    width={serviceSegment.illustration.width}

@@ -1,11 +1,9 @@
 import { createStore } from 'zustand'
 
 export interface ServiceSegmentsProps {
-  isInitial: boolean;
-  showServiceSegmentDetails: boolean;
   serviceSegments: any[];
   selectedServiceSegmentIndex: number | undefined;
-  prevSelectedServiceSegmentIndex: number;
+  prevSelectedServiceSegmentIndex: number | undefined;
 }
 
 export interface ServiceSegmentsActions {
@@ -20,11 +18,9 @@ export type ServiceSegmentsStore = ReturnType<typeof createServiceSegmentsStore>
 
 export const createServiceSegmentsStore = (initProps?: Partial<ServiceSegmentsProps>) => {
   const DEFAULT_PROPS: ServiceSegmentsProps = {
-    isInitial: true,
-    showServiceSegmentDetails: false,
     serviceSegments: [],
-    selectedServiceSegmentIndex: 0,
-    prevSelectedServiceSegmentIndex: 0
+    selectedServiceSegmentIndex: undefined,
+    prevSelectedServiceSegmentIndex: undefined,
   }
 
   return createStore<ServiceSegmentsState>()((set, get) => ({
@@ -33,34 +29,47 @@ export const createServiceSegmentsStore = (initProps?: Partial<ServiceSegmentsPr
 
     selectServiceSegment: (serviceSegmentIndex) => {
       const currentSelectedServiceSegmentIndex = get().selectedServiceSegmentIndex;
-      const isInitial = get().isInitial;
 
       set({
-        isInitial: false,
-        showServiceSegmentDetails: isInitial ? true : currentSelectedServiceSegmentIndex !== serviceSegmentIndex,
-        selectedServiceSegmentIndex: isInitial ? serviceSegmentIndex : (currentSelectedServiceSegmentIndex === serviceSegmentIndex ? undefined : serviceSegmentIndex),
+        selectedServiceSegmentIndex: currentSelectedServiceSegmentIndex === serviceSegmentIndex ? undefined : serviceSegmentIndex,
         prevSelectedServiceSegmentIndex: currentSelectedServiceSegmentIndex,
       });
     },
     selectPrevServiceSegment: () => {
       const currentSelectedServiceSegmentIndex = get().selectedServiceSegmentIndex;
-      if (currentSelectedServiceSegmentIndex === undefined) return;
+      let setProps;
 
-      set({
-        isInitial: false,
-        selectedServiceSegmentIndex: currentSelectedServiceSegmentIndex === 0 ? get().serviceSegments.length - 1 : currentSelectedServiceSegmentIndex - 1,
-        prevSelectedServiceSegmentIndex: currentSelectedServiceSegmentIndex,
-      });
+      if (currentSelectedServiceSegmentIndex === undefined) {
+        setProps = {
+          selectedServiceSegmentIndex: get().serviceSegments.length - 1,
+          prevSelectedServiceSegmentIndex: 0,
+        };
+      } else {
+        setProps = {
+          selectedServiceSegmentIndex: currentSelectedServiceSegmentIndex === 0 ? get().serviceSegments.length - 1 : currentSelectedServiceSegmentIndex - 1,
+          prevSelectedServiceSegmentIndex: currentSelectedServiceSegmentIndex,
+        };
+      }
+
+      set(setProps);
     },
     selectNextServiceSegment: () => {
       const currentSelectedServiceSegmentIndex = get().selectedServiceSegmentIndex;
-      if (currentSelectedServiceSegmentIndex === undefined) return;
+      let setProps;
 
-      set({
-        isInitial: false,
-        selectedServiceSegmentIndex: currentSelectedServiceSegmentIndex === get().serviceSegments.length - 1 ? 0 : currentSelectedServiceSegmentIndex + 1,
-        prevSelectedServiceSegmentIndex: currentSelectedServiceSegmentIndex,
-      });
+      if (currentSelectedServiceSegmentIndex === undefined) {
+        setProps = {
+          selectedServiceSegmentIndex: 1,
+          prevSelectedServiceSegmentIndex: 0,
+        };
+      } else {
+        setProps = {
+          selectedServiceSegmentIndex: currentSelectedServiceSegmentIndex === get().serviceSegments.length - 1 ? 0 : currentSelectedServiceSegmentIndex + 1,
+          prevSelectedServiceSegmentIndex: currentSelectedServiceSegmentIndex,
+        };
+      }
+
+      set(setProps);
     },
   }))
 }
