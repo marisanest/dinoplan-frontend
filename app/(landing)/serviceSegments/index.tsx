@@ -14,6 +14,7 @@ export default function LandingServiceSegments({serviceSegmentsPageSection}: Pic
                                  className="rounded-bl-md"
                                  title={serviceSegmentsPageSection?.title}
                                  description={serviceSegmentsPageSection?.description} />
+
                 <ServiceSegmentsDetails key="service-segments-details">
                     <LandingServiceSegmentDetail key="detail" />
                 </ServiceSegmentsDetails>

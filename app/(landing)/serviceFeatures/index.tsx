@@ -17,7 +17,7 @@ export default function LandingServiceFeatures({serviceFeaturesPageSection, cont
             <Text key="description" className="pt-y-paragraph max-w-text" size="sm">
                 <PortableText value={serviceFeaturesPageSection.description}/>
             </Text>
-            <div key="features" className="grid grid-cols-2 ss:grid-cols-3 py-y-section gap-x-[1rem] gap-y-[0.75rem] ss:gap-[2rem]">
+            <div key="features" className="grid grid-cols-2 ss:grid-cols-3 px-x-xs ss:px-0 py-y-section gap-x-[1.5rem] gap-y-paragraph ss:gap-x-[1.5rem] ss:gap-y-paragraph">
                 {serviceFeaturesPageSection.serviceFeatures?.map((serviceFeature) => (
                     <LandingServiceFeature key={serviceFeature.serviceFeature._id} serviceFeature={serviceFeature.serviceFeature} />
                 ))}
@@ -32,7 +32,7 @@ export default function LandingServiceFeatures({serviceFeaturesPageSection, cont
 function LandingServiceFeaturesContainer({children}: ReactNodeProps) {
     return (
         <div className="w-full flex justify-center px-x-outer pb-y-block">
-            <div className="w-full max-w-sm flex flex-col items-center px-[0.5rem]">
+            <div className="w-full max-w-sm flex flex-col items-center">
                 {children}
             </div>
         </div>
