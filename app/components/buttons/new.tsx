@@ -10,7 +10,7 @@ type ButtonProps = {
     size?: 'md' | 'sm' | 'xs';
     unresponsive?: boolean;
     selected?: boolean;
-    theme?: 'primary' | 'module' | 'calculate' | 'orange' | 'blue';
+    theme?: 'primary' | 'module' | 'calculate' | 'orange' | 'bright' | 'blue';
     textTheme?: 'small' | 'medium';
     type?: 'div' | 'submit-button';
     onClick?: () => void;
@@ -92,7 +92,13 @@ export default function Button({
                 'border-orange bg-orange text-yellow-100',
                 disabled ? '' : 'hover:bg-orange-faded hover:border-orange-faded',
             )
-            onClickClass = '!border-orange-faded-2 !bg-orange-faded-2' // todo
+            onClickClass = '!border-orange-faded-2 !bg-orange-faded-2'
+    } else if (theme === 'bright') {
+        themeClassName = cn(
+            'border-orange-200 bg-orange-200 text-blue-600',
+            disabled ? '' : 'hover:border-orange-200-faded hover:bg-orange-200-faded',
+        )
+        onClickClass = '' // todo
     } else if (theme === 'blue') {
         themeClassName = cn('border-blue bg-blue text-yellow-100', disabled ? '' : 'hover:bg-blue-600-faded hover:border-blue-600-faded')
         onClickClass = ''

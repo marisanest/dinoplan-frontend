@@ -25,6 +25,8 @@ export interface AppStoreProps {
   serviceModules: ServiceModule[];
   selectedServiceModuleIndex: number | undefined;
   prevSelectedServiceModuleIndex: number;
+
+  contact: any;
 }
 
 export interface AppStoreActions {
@@ -39,7 +41,7 @@ export interface AppStoreState extends AppStoreProps, AppStoreActions {}
 
 export type AppStore = ReturnType<typeof createAppStore>
 
-export const createAppStore = (initProps: Pick<AppStoreProps, 'startPageSection' | 'serviceSegmentsPageSection' | 'serviceFeaturesPageSection' | 'serviceModulesPageSection' | 'aboutPageSection' | 'faqPageSection'>) => {
+export const createAppStore = (initProps: Pick<AppStoreProps, 'startPageSection' | 'serviceSegmentsPageSection' | 'serviceFeaturesPageSection' | 'serviceModulesPageSection' | 'aboutPageSection' | 'faqPageSection' | 'contact'>) => {
   const DEFAULT_PROPS: AppStoreProps = {
     serviceSegments: initProps.serviceSegmentsPageSection?.serviceSegments ? initProps.serviceSegmentsPageSection.serviceSegments.map((s: any) => s?.serviceSegment).filter(Boolean) : [],
     selectedServiceSegmentIndex: 0,

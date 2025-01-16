@@ -10,7 +10,7 @@ import {
 import { useStore } from 'zustand'
 import {AppStore, AppStoreProps, AppStoreState, createAppStore} from "@/lib/stores/app/store";
 
-type AppProviderProps = PropsWithChildren<Pick<AppStoreProps, 'startPageSection' | 'serviceSegmentsPageSection' | 'serviceFeaturesPageSection' | 'serviceModulesPageSection' | 'aboutPageSection' | 'faqPageSection'>>
+type AppProviderProps = PropsWithChildren<Pick<AppStoreProps, 'startPageSection' | 'serviceSegmentsPageSection' | 'serviceFeaturesPageSection' | 'serviceModulesPageSection' | 'aboutPageSection' | 'faqPageSection' | 'contact'>>
 const AppContext = createContext<AppStore | null>(null)
 
 export const AppProvider = ({children, ...props}: AppProviderProps) =>{

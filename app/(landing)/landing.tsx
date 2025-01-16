@@ -40,15 +40,16 @@ export default function Landing({
                      serviceFeaturesPageSection={serviceFeaturesPageSection}
                      serviceModulesPageSection={serviceModulesPageSection}
                      aboutPageSection={aboutPageSection}
-                     faqPageSection={faqPageSection}>
+                     faqPageSection={faqPageSection}
+                     contact={contact}>
             <main>
                 <LandingStart key="start"/>
-                <LandingTopBanner key="top-banner" contact={contact} />
+                <LandingTopBanner key="top-banner" />
                 <LandingServiceSegments key="segments" />
-                <LandingServiceFeatures key="features" contact={contact}/>
+                <LandingServiceFeatures key="features"/>
                 <LandingServiceModules key="modules" />
-                <LandingAbout aboutPageSection={aboutPageSection} contact={contact}/>
-                <LandingFaq faqPageSection={faqPageSection}/>
+                <LandingAbout key="about"/>
+                <LandingFaq key="faq"/>
             </main>
         </AppProvider>
     );

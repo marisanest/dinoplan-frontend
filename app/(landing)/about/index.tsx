@@ -1,26 +1,20 @@
-import Title from "@/app/components/title";
 import LandingAboutBox from "@/(landing)/about/box";
-import {LandingProps} from "@/(landing)/landing";
-import {PortableText} from "next-sanity";
-import Text from "@/components/text/text";
+import LandingAboutTitle from "@/(landing)/about/title";
+import LandingAboutDescription from "@/(landing)/about/description";
 
-export default function LandingAbout({aboutPageSection, contact}: Pick<LandingProps, 'aboutPageSection' | 'contact'>) {
-    if (!aboutPageSection) return null;
-
+export default function LandingAbout() {
     return (
         <div className="w-full flex justify-center px-x-outer pb-y-block">
             <div className="w-full max-w-sm flex flex-col items-center">
-                <Title key="title" className="max-w-text">
-                    {aboutPageSection.title && <PortableText value={aboutPageSection.title}/>}
-                </Title>
+                <LandingAboutTitle key="title" />
+
                 <div className="w-full flex justify-center">
-                    <Text key="description" className="pt-y-paragraph pb-y-section max-w-text" size="sm">
-                        {aboutPageSection.description && <PortableText value={aboutPageSection.description}/>}
-                    </Text>
+                    <LandingAboutDescription key="description" />
                 </div>
-                <LandingAboutBox key="box" aboutPageSection={aboutPageSection} contact={contact}/>
+
+                <LandingAboutBox key="box"/>
             </div>
-            <div id="faq"></div>
+            <div id="faq"/>
         </div>
     );
 }

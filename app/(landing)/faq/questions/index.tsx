@@ -1,19 +1,16 @@
-import {ReactNodeProps} from "@/lib/types/core";
+"use client"
+
 import LandingFaqQuestion from "@/(landing)/faq/questions/question";
-import {LandingProps} from "@/(landing)/landing";
+import {useAppContext} from "@/lib/stores/app/context";
+import {useShallow} from "zustand/react/shallow";
 
-export default function LandingFaqQuestions({faqPageSection}: Pick<LandingProps, 'faqPageSection'>) {
-    return (
-        <LandingFaqQuestionsContainer>
-            {faqPageSection?.questions?.map((question) => <LandingFaqQuestion key={question.question?._id} question={question.question} />)}
-        </LandingFaqQuestionsContainer>
-    );
-}
+export default function LandingFaqQuestions() {
+    const faqPageSection = useAppContext(useShallow((s) => s.faqPageSection));
 
-function LandingFaqQuestionsContainer({children}: ReactNodeProps) {
     return (
         <div className="w-full py-y-paragraph px-[2rem] ss:px-[6rem]">
-            {children}
+            {faqPageSection?.questions?.map((question) => <LandingFaqQuestion key={question.question?._id}
+                                                                              question={question.question}/>)}
         </div>
     );
 }
