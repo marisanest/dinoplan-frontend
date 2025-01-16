@@ -5,6 +5,7 @@ import FooterContainer from "@/components/footer/container";
 import Text from "@/components/text/text";
 import EmailLink from "@/components/link/email";
 import FooterImage from "@/components/footer/image";
+import FooterFaq from "@/components/footer/faq";
 
 export default function Footer({contact}) {
     return (
@@ -26,9 +27,9 @@ export default function Footer({contact}) {
                             <Logo scale={0.75}/>
                         </div>
                     </InternalLink>
-                    <InternalLink className="text-blue-600" href="/#faq" scroll>
-                        <Text size="md" className="hover:text-brown-200 transition-colors">Fragen?</Text>
-                    </InternalLink>
+
+                    <FooterFaq key="faq" />
+
                     <EmailLink className="text-blue-600" href={contact.email.email}>
                         <Text size="md" className="hover:text-brown-200 transition-colors">Kontakt</Text>
                     </EmailLink>
