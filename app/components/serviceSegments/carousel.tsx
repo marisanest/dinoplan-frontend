@@ -5,13 +5,13 @@ import {useShallow} from "zustand/react/shallow";
 import Image from "next/image";
 import {urlFor} from "@/lib/sanity/image";
 import Title from "@/components/title";
-import {useServiceSegmentsContext} from "@/lib/stores/serviceSegments/context";
 import ArrowIcon from "@/components/icons/arrow";
 import useScreenSizes from "@/lib/hooks/useScreenSizes";
+import {useAppContext} from "@/lib/stores/app/context";
 
 export default function ServiceSegmentsCarousel() {
     const screenSizes = useScreenSizes()
-    const {selectedServiceSegmentIndex, serviceSegments, selectPrevServiceSegment, selectNextServiceSegment} = useServiceSegmentsContext(useShallow((s) => ({
+    const {selectedServiceSegmentIndex, serviceSegments, selectPrevServiceSegment, selectNextServiceSegment} = useAppContext(useShallow((s) => ({
         selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
         serviceSegments: s.serviceSegments,
         selectPrevServiceSegment: s.selectPrevServiceSegment,

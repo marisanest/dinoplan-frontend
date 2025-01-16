@@ -1,15 +1,15 @@
 "use client"
 
-import {useServiceSegmentsContext} from "@/lib/stores/serviceSegments/context";
 import {useShallow} from "zustand/react/shallow";
 import useScreenSizes from "@/lib/hooks/useScreenSizes";
 import ServiceSegment from "@/components/serviceSegments/serviceSegment";
 import {ReactNodeProps} from "@/lib/types/core";
+import {useAppContext} from "@/lib/stores/app/context";
 
 export default function ServiceSegmentsGrid() {
     const screenSizes = useScreenSizes()
 
-    const {serviceSegments} = useServiceSegmentsContext(useShallow((s) => ({
+    const {serviceSegments} = useAppContext(useShallow((s) => ({
         serviceSegments: s.serviceSegments,
     })))
 

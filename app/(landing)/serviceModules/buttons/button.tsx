@@ -1,22 +1,22 @@
-"use client"
-
-import Button from "@/app/components/buttons";
+import Button from "@/app/components/buttons/new";
 import {useShallow} from "zustand/react/shallow";
-import useServiceModulesStore from "@/lib/stores/useServiceModulesStore";
 import Text from "@/components/text/text";
+import {useAppContext} from "@/lib/stores/app/context";
 
-export default function LandingServiceModulesButton({serviceModule}) {
-    const { selectedServiceModule, selectServiceModule } = useServiceModulesStore(
+export default function LandingServiceModulesButton({serviceModule, index}: {serviceModule: any, index: number}) {
+    const { selectedServiceModuleIndex, selectServiceModule } = useAppContext(
         useShallow((state) => ({
-            selectedServiceModule: state.selectedServiceModule,
+            selectedServiceModuleIndex: state.selectedServiceModuleIndex,
             selectServiceModule: state.selectServiceModule,
         })),
     );
 
     return (
-        <Button className={selectedServiceModule?._id === serviceModule._id ? '!border-red-200 !bg-red-200 !text-yellow-100' : ''}
-                onClick={() => selectServiceModule(serviceModule)}
-                size="sm">
+        <Button theme="module"
+                size="sm"
+                selected={selectedServiceModuleIndex === index}
+                onClick={() => selectServiceModule(index)}
+        >
             <Text className="" size="lg" color="none">{serviceModule.name}</Text>
         </Button>
     )

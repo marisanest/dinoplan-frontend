@@ -1,23 +1,31 @@
 "use client"
-import {ReactNodeProps} from "@/lib/types/core";
 
-import {LandingProps} from "@/(landing)/landing";
+import {ReactNodeProps} from "@/lib/types/core";
 import Image from "next/image";
 import {urlFor} from "@/lib/sanity/image";
+import {useAppContext} from "@/lib/stores/app/context";
+import {useShallow} from "zustand/react/shallow";
 
-export default function LandingStartBackground({startPageSection}: Pick<LandingProps, 'startPageSection'>) {
+export default function LandingStartBackground() {
+    const {startPageSection} = useAppContext(
+        useShallow((s) => ({
+            startPageSection: s.startPageSection,
+        }))
+    )
+
     return (
-        <LandingStartBackgroundContainer>{
-            startPageSection && (
-                <Image
-                    src={urlFor(startPageSection.illustration)?.height(startPageSection.illustration.height * 0.5).url()}
-                    alt="Illustration"
-                    className="ml-auto w-full h-auto ss:h-[475px] ss:w-auto text-blue-600 text-right"
-                    width={startPageSection.illustration.width}
-                    height={startPageSection.illustration.height}
-                />
-            )
-        }
+        <LandingStartBackgroundContainer>
+            {
+                startPageSection && (
+                    <Image
+                        src={urlFor(startPageSection.illustration)?.height(startPageSection.illustration?.height * 0.5).url()}
+                        alt="Illustration"
+                        className="ml-auto w-full h-auto ss:h-[475px] ss:w-auto text-blue-600 text-right"
+                        width={startPageSection.illustration?.width}
+                        height={startPageSection.illustration?.height}
+                    />
+                )
+            }
         </LandingStartBackgroundContainer>
     );
 }

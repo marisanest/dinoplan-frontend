@@ -3,15 +3,17 @@
 import { useShallow } from "zustand/react/shallow";
 import {useState} from "react";
 import {ReactNodeProps} from "@/lib/types/core";
-import {useServiceSegmentsContext} from "@/lib/stores/serviceSegments/context";
 import cn from "clsx";
 import useScreenSizes from "@/lib/hooks/useScreenSizes";
+import {useAppContext} from "@/lib/stores/app/context";
 
 export default function ServiceSegmentsDetails({children, bgColor = ''}: ReactNodeProps & {bgColor?: string}) {
     const screenSizes = useScreenSizes()
-    const {selectedServiceSegmentIndex} = useServiceSegmentsContext(useShallow((s) => ({
-        selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
-    })))
+    const {selectedServiceSegmentIndex} = useAppContext(
+        useShallow((s) => ({
+            selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
+        }))
+    )
 
     const [height, setHeight] = useState<number>(0)
 

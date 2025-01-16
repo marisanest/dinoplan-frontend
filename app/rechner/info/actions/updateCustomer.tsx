@@ -47,7 +47,6 @@ export async function updateCustomer(customArg: {customer: any}, _: any, formDat
         consentsToThePrivacyPolicy: formData.get('consentsToThePrivacyPolicy'),
     })
 
-    console.log(validatedFields.error)
     if (!validatedFields.success) {
         return {
             status: 500,

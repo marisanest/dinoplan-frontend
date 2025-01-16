@@ -15,6 +15,7 @@ import LandingServiceModules from "@/(landing)/serviceModules";
 import LandingStart from "@/(landing)/start";
 import Button from "@/components/buttons";
 import Text from "@/components/text/text";
+import {AppProvider} from "@/lib/stores/app/context";
 
 export type LandingProps = {
     startPageSection: PAGE_SECTION_START_QUERYResult;
@@ -35,26 +36,31 @@ export default function Landing({
                                     faqPageSection,
                                     contact,
                                 }: LandingProps) {
-
     return (
-        <main>
-            <LandingStart startPageSection={startPageSection}
-                          serviceSegmentsPageSection={serviceSegmentsPageSection} />
-            <Banner className="relative z-10 bg-orange">
-               <div className="flex w-full h-full justify-center items-center gap-[1rem]">
-                   <Text className="!w-fit" size="md">
-                       Lasse dich jetzt kostenlos online von unseren Experten beraten.
-                   </Text>
-                   <Button link={contact.calendly} size="xs" colors="bright">
-                       <Text size="md">Termin vereinbaren</Text>
-                   </Button>
-               </div>
-            </Banner>
-            <LandingServiceSegments serviceSegmentsPageSection={serviceSegmentsPageSection} />
-            <LandingServiceFeatures serviceFeaturesPageSection={serviceFeaturesPageSection} contact={contact} />
-            <LandingServiceModules serviceModulesPageSection={serviceModulesPageSection} />
-            <LandingAbout aboutPageSection={aboutPageSection} contact={contact} />
-            <LandingFaq faqPageSection={faqPageSection} />
-        </main>
+        <AppProvider startPageSection={startPageSection}
+                     serviceSegmentsPageSection={serviceSegmentsPageSection}
+                     serviceFeaturesPageSection={serviceFeaturesPageSection}
+                     serviceModulesPageSection={serviceModulesPageSection}
+                     aboutPageSection={aboutPageSection}
+                     faqPageSection={faqPageSection}>
+            <main>
+                <LandingStart key="start"/>
+                <Banner key="banner" className="relative z-10 bg-orange">
+                    <div className="flex w-full h-full justify-center items-center gap-[1rem]">
+                        <Text className="!w-fit" size="md">
+                            Lasse dich jetzt kostenlos online von unseren Experten beraten.
+                        </Text>
+                        <Button link={contact.calendly} size="xs" colors="bright">
+                            <Text size="md">Termin vereinbaren</Text>
+                        </Button>
+                    </div>
+                </Banner>
+                <LandingServiceSegments key="service-segments" />
+                <LandingServiceFeatures serviceFeaturesPageSection={serviceFeaturesPageSection} contact={contact}/>
+                <LandingServiceModules />
+                <LandingAbout aboutPageSection={aboutPageSection} contact={contact}/>
+                <LandingFaq faqPageSection={faqPageSection}/>
+            </main>
+        </AppProvider>
     );
 }

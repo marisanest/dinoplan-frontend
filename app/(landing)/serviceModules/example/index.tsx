@@ -1,41 +1,28 @@
 "use client"
 
-import {ReactNodeProps} from "@/lib/types/core";
-import useServiceModulesStore from "@/lib/stores/useServiceModulesStore";
 import {useShallow} from "zustand/react/shallow";
 import LandingServiceModulesExampleText from "@/(landing)/serviceModules/example/text";
-import Button from "@/components/buttons";
 import LandingServiceModulesExampleImage from "@/(landing)/serviceModules/example/image";
-import Text from "@/components/text/text";
+import cn from "clsx";
+import {useAppContext} from "@/lib/stores/app/context";
 
 export default function LandingServiceModulesExample() {
-    const { selectedServiceModule } = useServiceModulesStore(
+    const { serviceModules, selectedServiceModuleIndex, prevSelectedServiceModuleIndex } = useAppContext(
         useShallow((state) => ({
-            selectedServiceModule: state.selectedServiceModule,
+            serviceModules: state.serviceModules,
+            selectedServiceModuleIndex: state.selectedServiceModuleIndex,
+            prevSelectedServiceModuleIndex: state.prevSelectedServiceModuleIndex,
         })),
     );
 
-    if (!selectedServiceModule) return null;
+    const selectedServiceModule = serviceModules[selectedServiceModuleIndex !== undefined ? selectedServiceModuleIndex : prevSelectedServiceModuleIndex];
 
     return (
-        <LandingServiceModulesExampleContainer>
-            <div className="w-full flex flex-col-reverse xs:grid xs:grid-cols-[4fr_2fr] gap-[1rem] ss:gap-[4rem]">
-                <LandingServiceModulesExampleText key="text" serviceModule={selectedServiceModule}/>
-                <LandingServiceModulesExampleImage key="image" serviceModule={selectedServiceModule}/>
+        <div className={cn("w-full flex flex-col items-center pt-y-section transition-[height] duration-700 overflow-y-hidden", selectedServiceModuleIndex !== undefined ? 'h-[338px]' : 'h-0')}>
+            <div className="w-full flex flex-col-reverse xs:grid xs:grid-cols-[4fr_2fr] gap-[1rem] ss:gap-[4rem] pb-y-paragraph">
+                <LandingServiceModulesExampleText key="text" selectedServiceModule={selectedServiceModule}/>
+                <LandingServiceModulesExampleImage key="image" selectedServiceModule={selectedServiceModule}/>
             </div>
-            <div className="w-fit pt-y-paragraph">
-                <Button colors="red" link={{type: 'internal', url: '/rechner'}} size="sm">
-                    <Text color="none">Beitrag berechnen</Text>
-                </Button>
-            </div>
-        </LandingServiceModulesExampleContainer>
-);
-}
-
-function LandingServiceModulesExampleContainer({children}: ReactNodeProps) {
-    return (
-        <div className="w-full flex flex-col items-center pt-y-section">
-            {children}
         </div>
     );
 }

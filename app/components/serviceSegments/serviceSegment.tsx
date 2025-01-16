@@ -3,8 +3,8 @@ import cn from "clsx";
 import {useShallow} from "zustand/react/shallow";
 import Image from "next/image";
 import {urlFor} from "@/lib/sanity/image";
-import {useServiceSegmentsContext} from "@/lib/stores/serviceSegments/context";
 import Text from "@/components/text/text";
+import {useAppContext} from "@/lib/stores/app/context";
 
 export type CalculatorServiceSegmentProps = {
     serviceSegment: any;
@@ -27,7 +27,7 @@ export default function ServiceSegment({className, index, serviceSegment}: Calcu
 }
 
 function ServiceSegmentContainer({className, children, index}: ReactNodeProps & {index: number}) {
-    const selectServiceSegment = useServiceSegmentsContext(useShallow((s) => s.selectServiceSegment))
+    const selectServiceSegment = useAppContext(useShallow((s) => s.selectServiceSegment))
 
     return (
         <div className="w-full cursor-pointer" onClick={() => selectServiceSegment(index)}>

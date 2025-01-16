@@ -1,29 +1,16 @@
-import {ReactNodeProps} from "@/lib/types/core";
-import Title from "@/app/components/title";
 import LandingServiceModulesExample from "@/(landing)/serviceModules/example";
 import LandingServiceModulesButtons from "@/(landing)/serviceModules/buttons";
-import {LandingProps} from "@/(landing)/landing";
-import {PortableText} from "next-sanity";
+import LandingServiceModulesTitle from "@/(landing)/serviceModules/title";
+import LandingServiceModulesCalculateButton from "@/(landing)/serviceModules/calculateButton";
 
-export default function LandingServiceModules({serviceModulesPageSection}: Pick<LandingProps, 'serviceModulesPageSection'>) {
-    if (!serviceModulesPageSection) return null;
-
-    return (
-        <LandingServiceModulesContainer>
-            <Title key="title" className="max-w-text-lg">
-                <PortableText value={serviceModulesPageSection.title} />
-            </Title>
-            <LandingServiceModulesButtons key="buttons" serviceModulesPageSection={serviceModulesPageSection} />
-            <LandingServiceModulesExample key="example" />
-        </LandingServiceModulesContainer>
-    );
-}
-
-function LandingServiceModulesContainer({children}: ReactNodeProps) {
+export default function LandingServiceModules() {
     return (
         <div className="w-full flex justify-center px-x-outer pb-y-block">
             <div className="w-full max-w-sm flex flex-col items-center">
-                {children}
+                <LandingServiceModulesTitle key="title"/>
+                <LandingServiceModulesButtons key="buttons"/>
+                <LandingServiceModulesExample key="example"/>
+                <LandingServiceModulesCalculateButton key="calculate-button" />
             </div>
         </div>
     );

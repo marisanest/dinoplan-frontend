@@ -9,22 +9,29 @@ import { useContext } from 'react'
 import { useStore } from 'zustand'
 
 type ServiceSegmentsProviderProps = PropsWithChildren<Partial<ServiceSegmentsProps>>
-export const Context = createContext<ServiceSegmentsStore | null>(null)
+export const ServiceSegmentsContext = createContext<ServiceSegmentsStore | null>(null)
 
 export function ServiceSegmentsProvider({ children, ...props }: ServiceSegmentsProviderProps) {
   const storeRef = useRef<ServiceSegmentsStore>()
   if (!storeRef.current) {
     storeRef.current = createServiceSegmentsStore(props)
   }
+
   return (
-      <Context.Provider value={storeRef.current}>
+      <ServiceSegmentsContext.Provider value={storeRef.current}>
         {children}
-      </Context.Provider>
+      </ServiceSegmentsContext.Provider>
   )
 }
 
 export function useServiceSegmentsContext<T>(selector: (state: ServiceSegmentsState) => T): T {
-  const store = useContext(Context)
-  if (!store) throw new Error('Missing ServiceSegmentsContext.Provider in the tree')
+  const store = useContext(ServiceSegmentsContext)
+
+  if (!store) {
+    throw new Error(
+        'useServiceSegmentsContext must be used within an ServiceSegmentsContext.Provider in the tree'
+    )
+  }
+
   return useStore(store, selector)
 }

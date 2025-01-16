@@ -1,21 +1,9 @@
-import {ReactNodeProps} from "@/lib/types/core";
-import LandingServiceModulesButton from "@/(landing)/serviceModules/buttons/button";
-import {LandingProps} from "@/(landing)/landing";
+import LandingServiceModulesButtonsList from "@/(landing)/serviceModules/buttons/list";
 
-export default function LandingServiceModulesButtons({serviceModulesPageSection}: Pick<LandingProps, 'serviceModulesPageSection'>) {
-    return (
-        <LandingServiceModulesButtonsContainer>
-            {serviceModulesPageSection.serviceModules?.map((serviceModule) => (
-                <LandingServiceModulesButton key={serviceModule.serviceModule._id} serviceModule={serviceModule.serviceModule} />
-            ))}
-        </LandingServiceModulesButtonsContainer>
-    );
-}
-
-function LandingServiceModulesButtonsContainer({children}: ReactNodeProps) {
+export default function LandingServiceModulesButtons() {
     return (
         <div className="pt-y-s flex flex-wrap gap-y-[0.5rem] gap-x-[0.25rem] sm:gap-y-[0.65rem] sm:gap-x-[0.5rem] justify-center">
-            {children}
+            <LandingServiceModulesButtonsList />
         </div>
     );
 }
