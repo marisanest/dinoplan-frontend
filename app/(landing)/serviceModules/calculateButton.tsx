@@ -8,7 +8,7 @@ export default function LandingServiceModulesCalculateButton() {
         <div className="w-fit">
             <Button theme="calculate"
                     size="sm"
-                    // link={{type: 'internal', url: '/rechner/start'}}
+                    link={{type: 'internal', url: '/rechner/start'}}
             >
                 <Text color="none">Beitrag berechnen</Text>
             </Button>

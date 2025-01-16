@@ -5,7 +5,7 @@ import {
   PAGE_SECTION_SERVICE_FEATURES_QUERYResult,
   PAGE_SECTION_SERVICE_MODULES_QUERYResult,
   PAGE_SECTION_SERVICE_SEGMENTS_QUERYResult,
-  PAGE_SECTION_START_QUERYResult, ServiceModule, ServiceSegment
+  PAGE_SECTION_START_QUERYResult, ServiceFeature, ServiceModule, ServiceSegment
 } from "@/lib/types/sanity-types";
 
 export interface AppStoreProps {
@@ -19,6 +19,8 @@ export interface AppStoreProps {
   serviceSegments: ServiceSegment[];
   selectedServiceSegmentIndex: number | undefined;
   prevSelectedServiceSegmentIndex: number | undefined;
+
+  serviceFeatures: ServiceFeature[];
 
   serviceModules: ServiceModule[];
   selectedServiceModuleIndex: number | undefined;
@@ -42,6 +44,8 @@ export const createAppStore = (initProps: Pick<AppStoreProps, 'startPageSection'
     serviceSegments: initProps.serviceSegmentsPageSection?.serviceSegments ? initProps.serviceSegmentsPageSection.serviceSegments.map((s: any) => s?.serviceSegment).filter(Boolean) : [],
     selectedServiceSegmentIndex: 0,
     prevSelectedServiceSegmentIndex: 0,
+
+    serviceFeatures: initProps.serviceFeaturesPageSection?.serviceFeatures ? initProps.serviceFeaturesPageSection?.serviceFeatures.map((s: any) => s?.serviceFeature).filter(Boolean) : [],
 
     serviceModules: initProps.serviceModulesPageSection?.serviceModules ? initProps.serviceModulesPageSection?.serviceModules.map((s: any) => s?.serviceModule).filter(Boolean) : [],
     selectedServiceModuleIndex: 0,

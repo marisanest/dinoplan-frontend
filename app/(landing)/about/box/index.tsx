@@ -2,7 +2,7 @@ import {ReactNodeProps} from "@/lib/types/core";
 import LandingAboutBoxImage from "@/(landing)/about/box/image";
 import LandingAboutBoxPersonalFeatures from "@/(landing)/about/box/personalFeatures";
 import {LandingProps} from "@/(landing)/landing";
-import LandingAboutBoxAppointmentButton from "@/(landing)/about/box/appointmentButton";
+import LandingAppointmentButton from "@/(landing)/components/appointmentButton";
 
 export default function LandingAboutBox({aboutPageSection, contact}: Pick<LandingProps, 'aboutPageSection' | 'contact'>) {
     return (
@@ -12,7 +12,7 @@ export default function LandingAboutBox({aboutPageSection, contact}: Pick<Landin
                 <LandingAboutBoxImage key="image" aboutPageSection={aboutPageSection} />
             </div>
             <div className="w-fit pt-y-paragraph">
-                <LandingAboutBoxAppointmentButton contact={contact} />
+                <LandingAppointmentButton key="appointment-button" contact={contact} />
             </div>
         </LandingAboutBoxContainer>
     );
