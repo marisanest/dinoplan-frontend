@@ -1,32 +1,37 @@
-import { createStore } from 'zustand'
+import {createStore} from 'zustand'
+import {
+  ServiceSegment
+} from "@/lib/types/sanity-types";
 
-export interface ServiceSegmentsProps {
-  serviceSegments: any[];
+export interface CalculatorStoreProps {
+  serviceSegments: ServiceSegment[];
   selectedServiceSegmentIndex: number | undefined;
   prevSelectedServiceSegmentIndex: number | undefined;
+  selectedServiceModules: any;
 }
 
-export interface ServiceSegmentsActions {
+export interface CalculatorStoreActions {
   selectServiceSegment: (serviceSegmentIndex: number) => void;
   selectPrevServiceSegment: () => void;
   selectNextServiceSegment: () => void;
+  selectServiceModule: (serviceModule: any) => void;
 }
 
-export interface ServiceSegmentsState extends ServiceSegmentsProps, ServiceSegmentsActions {}
+export interface CalculatorStoreState extends CalculatorStoreProps, CalculatorStoreActions {}
 
-export type ServiceSegmentsStore = ReturnType<typeof createServiceSegmentsStore>
+export type CalculatorStore = ReturnType<typeof createCalculatorStore>
 
-export const createServiceSegmentsStore = (initProps?: Partial<ServiceSegmentsProps>) => {
-  const DEFAULT_PROPS: ServiceSegmentsProps = {
-    serviceSegments: [],
-    selectedServiceSegmentIndex: undefined,
-    prevSelectedServiceSegmentIndex: undefined,
+export const createCalculatorStore = (initProps: Pick<CalculatorStoreProps, 'serviceSegments'>) => {
+  const DEFAULT_PROPS: CalculatorStoreProps = {
+    selectedServiceSegmentIndex: 0,
+    prevSelectedServiceSegmentIndex: 0,
+    selectedServiceModules: {},
+    ...initProps,
+    serviceSegments: initProps.serviceSegments ? initProps.serviceSegments.map((s: any) => s.serviceSegment) : [],
   }
 
-  return createStore<ServiceSegmentsState>()((set, get) => ({
+  return createStore<CalculatorStoreState>()((set, get) => ({
     ...DEFAULT_PROPS,
-    ...initProps,
-
     selectServiceSegment: (serviceSegmentIndex) => {
       const currentSelectedServiceSegmentIndex = get().selectedServiceSegmentIndex;
 
@@ -70,6 +75,18 @@ export const createServiceSegmentsStore = (initProps?: Partial<ServiceSegmentsPr
       }
 
       set(setProps);
+    },
+    selectServiceModule: (serviceModule) => {
+      const selectedServiceModules = get().selectedServiceModules;
+
+      if (serviceModule._id in selectedServiceModules) {
+        delete selectedServiceModules[serviceModule._id]
+      } else {
+        selectedServiceModules[serviceModule._id] = serviceModule;
+      }
+      set({
+        selectedServiceModules: {...selectedServiceModules},
+      });
     },
   }))
 }

@@ -1,9 +1,9 @@
-import useCalculatorStore from "@/lib/stores/useCalculatorStore";
 import {useShallow} from "zustand/react/shallow";
 import CalculatorCalculationSummaryTableHeader from "@/rechner/berechnung/components/summary/table/header";
 import CalculatorCalculationSummaryTableSum from "@/rechner/berechnung/components/summary/table/sum";
 import CalculatorCalculationSummaryTableValues from "@/rechner/berechnung/components/summary/table/values";
 import {round} from "@/lib/math";
+import {useCalculatorContext} from "@/lib/stores/calculator/context";
 
 export type CalculatorCalculationSummaryTableValueType = {
     name: string;
@@ -11,7 +11,7 @@ export type CalculatorCalculationSummaryTableValueType = {
 }
 
 export default function CalculatorCalculationSummaryTable({customer, costCalculation}: any) {
-    const { selectedServiceModules } = useCalculatorStore(
+    const { selectedServiceModules } = useCalculatorContext(
         useShallow((state) => ({
             selectedServiceModules: state.selectedServiceModules,
         })),

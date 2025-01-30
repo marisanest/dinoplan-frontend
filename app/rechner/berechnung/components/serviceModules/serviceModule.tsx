@@ -1,10 +1,10 @@
-import useCalculatorStore from "@/lib/stores/useCalculatorStore";
 import { useShallow } from "zustand/react/shallow";
 import Text from "@/components/text/text";
 import CheckmarkIcon from "@/components/icons/checkmark";
+import {useCalculatorContext} from "@/lib/stores/calculator/context";
 
 export default function CalculatorCalculationServiceModule({serviceModule}: any) {
-  const { selectedServiceModules, selectServiceModule } = useCalculatorStore(
+  const { selectedServiceModules, selectServiceModule } = useCalculatorContext(
     useShallow((state) => ({
         selectedServiceModules: state.selectedServiceModules,
         selectServiceModule: state.selectServiceModule,

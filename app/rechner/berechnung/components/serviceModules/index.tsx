@@ -1,13 +1,13 @@
 "use client"
 import { useShallow } from "zustand/react/shallow";
 import CalculatorCalculationServiceModule from "@/rechner/berechnung/components/serviceModules/serviceModule";
-import {useServiceSegmentsContext} from "@/lib/stores/serviceSegments/context";
 import cn from "clsx";
 import {ReactNodeProps} from "@/lib/types/core";
 import useScreenSizes from "@/lib/hooks/useScreenSizes";
+import {useCalculatorContext} from "@/lib/stores/calculator/context";
 
 export default function CalculatorCalculationServiceModules() {
-    const {selectedServiceSegmentIndex, prevSelectedServiceSegmentIndex, serviceSegments} = useServiceSegmentsContext(useShallow((s) => ({
+    const {selectedServiceSegmentIndex, prevSelectedServiceSegmentIndex, serviceSegments} = useCalculatorContext(useShallow((s) => ({
         selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
         prevSelectedServiceSegmentIndex: s.prevSelectedServiceSegmentIndex,
         serviceSegments: s.serviceSegments,
@@ -25,7 +25,7 @@ export default function CalculatorCalculationServiceModules() {
 
 function CalculatorCalculationServiceModulesContainer({children}: ReactNodeProps) {
     const screenSizes = useScreenSizes()
-    const {selectedServiceSegmentIndex} = useServiceSegmentsContext(useShallow((s) => ({
+    const {selectedServiceSegmentIndex} = useCalculatorContext(useShallow((s) => ({
         selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
     })))
 

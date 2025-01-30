@@ -1,17 +1,16 @@
 "use client"
 
-import useCalculatorStore from "@/lib/stores/useCalculatorStore";
 import {useShallow} from "zustand/react/shallow";
 import Title from "@/components/title";
 import Text from "@/components/text/text";
 import cn from "clsx";
 import CalculatorCalculationSummaryTable from "@/rechner/berechnung/components/summary/table";
-import {useServiceSegmentsContext} from "@/lib/stores/serviceSegments/context";
 import {ReactNodeProps} from "@/lib/types/core";
 import useScreenSizes from "@/lib/hooks/useScreenSizes";
+import {useCalculatorContext} from "@/lib/stores/calculator/context";
 
 export default function CalculatorCalculationSummary({customer, costCalculation}: any) {
-    const { selectedServiceModules } = useCalculatorStore(
+    const { selectedServiceModules } = useCalculatorContext(
         useShallow((state) => ({
             selectedServiceModules: state.selectedServiceModules,
         })),
@@ -47,7 +46,7 @@ export default function CalculatorCalculationSummary({customer, costCalculation}
 
 function CalculatorCalculationSummaryContainer({children}: ReactNodeProps) {
     const screenSizes = useScreenSizes()
-    const {selectedServiceSegmentIndex} = useServiceSegmentsContext(useShallow((s) => ({
+    const {selectedServiceSegmentIndex} = useCalculatorContext(useShallow((s) => ({
         selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
     })))
 
