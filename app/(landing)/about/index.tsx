@@ -14,7 +14,6 @@ export default function LandingAbout() {
 
                 <LandingAboutBox key="box"/>
             </div>
-            <div id="faq"/>
         </div>
     );
 }
