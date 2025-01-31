@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 const TOP_OFFSET = 1;
 const WIDTH = 24;

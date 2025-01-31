@@ -1,13 +1,11 @@
 "use client"
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import useOverlayMenu from "@/lib/stores/useOverlayMenuStore";
 import {useShallow} from "zustand/react/shallow";
-import ExternalLink from "@/components/link/external";
 import InternalLink from "@/components/link/internal";
 import EmailLink from "@/components/link/email";
 import Text from "@/components/text/text";
-import Button from "@/components/buttons";
 import {useEffect} from "react";
 
 export type OverlayMenuProps = {
