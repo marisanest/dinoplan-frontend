@@ -10,6 +10,7 @@ import {defineQuery} from "groq";
 import {client} from "@/lib/sanity/client";
 import {getSession} from "@/lib/signIn";
 import OverlayMenu from "@/components/overlayMenu";
+import { Analytics } from '@vercel/analytics/next';
 
 const nunito = Nunito({
     subsets: ['latin'],
@@ -131,6 +132,7 @@ async function AuthenticatedLayout({
         <Header contact={contact} />
         {children}
         <Footer contact={contact} />
+        <Analytics key="analytics" />
         </body>
         </html>
     );
@@ -143,6 +145,7 @@ function UnauthenticatedLayout({children}: Readonly<{children: ReactNode;}>) {
         <html lang="de">
         <body className={`${nunito.variable} ${afacad.variable}`}>
         {children}
+        <Analytics key="analytics" />
         </body>
         </html>
     );
