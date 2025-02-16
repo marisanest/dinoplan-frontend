@@ -11,7 +11,7 @@
     "make-session-secret": "node ./scripts/make-session-secret.js"
   },
   "engines": {
-    "node": "20.11.1"
+    "node": "22"
   },
   "dependencies": {
     "@cloudinary/react": "^1.13.0",
