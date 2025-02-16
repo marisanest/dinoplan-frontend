@@ -9,7 +9,7 @@ export default function CalculatorCalculation({serviceSegments, customer, costCa
     return (
         <CalculatorProvider serviceSegments={serviceSegments}>
             <main
-                className="w-full min-h-[calc(100dvh-var(--height-banner)-var(--height-footer-image)+var(--spacing-footer-image-currection))] flex flex-col items-center pt-[calc(var(--height-banner)+var(--spacing-y-sm))] bg-orange-400">
+                className="w-full min-h-[calc(100dvh-var(--height-banner)-var(--height-footer-image)+var(--spacing-footer-image-correction))] flex flex-col items-center pt-[calc(var(--height-banner)+var(--spacing-y-sm))] bg-orange-400">
                 <div className="w-full relative z-10 grow">
                     <CalculatorCalculationServiceSegments key="service-segments"/>
 

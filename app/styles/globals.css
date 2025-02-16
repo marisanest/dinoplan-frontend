@@ -16,7 +16,7 @@
 
     --spacing-y-start-image: 3rem;
 
-    --spacing-footer-image-currection: 65px;
+    --spacing-footer-image-correction: 65px;
     --spacing-circle: 32px;
 
     --gap-sm: 5rem;
@@ -46,7 +46,7 @@
     --orange-600: #CAA263;
     --orange-400: #EFE6D6;
     --orange-200: #F7F2EA;
-    --yellow-100: #FFFFF;
+    --yellow-100: #FFFFFA;
 }
 
 @media only screen and (max-width: 980px) {
@@ -64,7 +64,7 @@
 
 @media only screen and (max-width: 700px) {
     :root {
-        --spacing-footer-image-currection: 75px;
+        --spacing-footer-image-correction: 75px;
         --height-footer-image: 318px;
         --width-footer-image: 800px;
     }
@@ -131,8 +131,8 @@ body {
 }
 
 ::selection {
-    color: unset;
-    background-color: unset;
+    color: var(--orange-400);
+    background-color: var(--blue);
 }
 
 input[type=text]:active,

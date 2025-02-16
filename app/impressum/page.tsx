@@ -4,7 +4,7 @@ import {client} from "@/lib/sanity/client";
 import {getSession} from "@/lib/signIn";
 import {redirect} from "next/navigation";
 
-const options = { next: { revalidate: 0 } };
+const options = { next: { revalidate: 3600 } };
 
 const IMPRINT_QUERY = defineQuery(`*[_type == "pageSectionsImprint"][0] {
     _id,

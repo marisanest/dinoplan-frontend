@@ -85,7 +85,7 @@ const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {
     calendly,
 }`);
 
-const options = { next: { revalidate: 0 } };
+const options = { next: { revalidate: 3600 } };
 
 export default async function RootLayout({
   children,

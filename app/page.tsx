@@ -4,7 +4,7 @@ import {defineQuery} from "groq";
 import {getSession} from "@/lib/signIn";
 import {redirect} from "next/navigation";
 
-const options = { next: { revalidate: 0 } };
+const options = { next: { revalidate: 3600 } };
 
 const PAGE_SECTION_START_QUERY = defineQuery(`*[_type == "pageSectionsStart"][0] {
     _id, 
@@ -132,6 +132,8 @@ const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {
     email, 
     calendly,
 }`);
+
+export const revalidate = 0
 
 export default async function LandingPage() {
   const session = await getSession();

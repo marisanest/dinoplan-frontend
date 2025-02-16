@@ -10,3 +10,4 @@
 * Bei den Modulen: Mobile ein Button mit "Mehr", so dass mehr angezeigt wird, sonst nir drei Module oder so
 * alle Mobile größen verhöltnisse noch mal checken
 * Video
+* Auf der Error-Page die E-mal anpassen

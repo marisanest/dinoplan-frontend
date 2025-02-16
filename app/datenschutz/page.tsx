@@ -4,7 +4,7 @@ import Privacy from "@/datenschutz/components/privacy";
 import {getSession} from "@/lib/signIn";
 import {redirect} from "next/navigation";
 
-const options = { next: { revalidate: 0 } };
+const options = { next: { revalidate: 3600 } };
 
 const PRIVACY_QUERY = defineQuery(`*[_type == "pageSectionsPrivacy"][0] {
     _id,
