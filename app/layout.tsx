@@ -127,13 +127,12 @@ async function AuthenticatedLayout({
             <link rel="icon" type="image/x-icon" sizes="any" href="/favicon.ico"/>
             <link rel="manifest" href="/manifest.json"/>
         </head>
-        <body className={`${nunito.variable} ${afacad.variable} bg-yellow-100`}>
-        <OverlayMenu contact={contact} />
-        <Header contact={contact} />
-        {children}
-        <Footer contact={contact} />
-        <Analytics key="analytics" />
-        </body>
+        <BasicBodyLayout>
+            <OverlayMenu contact={contact} />
+            <Header contact={contact} />
+            {children}
+            <Footer contact={contact} />
+        </BasicBodyLayout>
         </html>
     );
 }
@@ -143,10 +142,17 @@ async function AuthenticatedLayout({
 function UnauthenticatedLayout({children}: Readonly<{children: ReactNode;}>) {
     return (
         <html lang="de">
+        <BasicBodyLayout>{children}</BasicBodyLayout>
+        </html>
+    );
+}
+
+
+function BasicBodyLayout({children}: Readonly<{children: ReactNode;}>) {
+    return (
         <body className={`${nunito.variable} ${afacad.variable}`}>
         {children}
         <Analytics key="analytics" />
         </body>
-        </html>
     );
 }
