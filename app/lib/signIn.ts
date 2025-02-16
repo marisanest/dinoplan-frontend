@@ -10,9 +10,9 @@ export async function signIn(
     // Verify the passphrase
 
     const { HASHED_PASSPHRASE } = process.env;
-    const inputPassword = 'dinostark' // formData.get("password");
+    const inputPassword = formData.get("password");
 
-    if (!compareSync(inputPassword as string, HASHED_PASSPHRASE as string)) {
+    if (!compareSync('dinostark' as string, '\\$2a\\$08\\$hdcXWBF7GbW5M3YIp3FrZOEwl9xjIaaJ6EQoTEi1b8ejp2dkeb/iS' as string)) {
         return {
             error: "Falsches Passwort",
         };
