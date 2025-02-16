@@ -2,13 +2,13 @@ import LandingFaqImage from "@/(landing)/faq/image";
 import LandingFaqQuestions from "@/(landing)/faq/questions";
 import LandingFaqTitle from "@/(landing)/faq/title";
 import LandingFaqSubTitle from "@/(landing)/faq/subTitle";
-import LandingFaqContainer from "@/(landing)/faq/container";
 import InViewMotion from "@/components/inViewMotion";
+import LandingFaqScrollContainer from "@/(landing)/faq/scrollContainer";
 
 export default function LandingFaq() {
     return (
         <InViewMotion>
-            <LandingFaqContainer>
+            <LandingFaqScrollContainer>
                 <div className="w-full flex justify-center px-x-outer">
                     <div className="w-full max-w-sm flex flex-col items-center">
                         <LandingFaqTitle key="title"/>
@@ -17,7 +17,7 @@ export default function LandingFaq() {
                         <LandingFaqQuestions key="questions"/>
                     </div>
                 </div>
-            </LandingFaqContainer>
+            </LandingFaqScrollContainer>
         </InViewMotion>
     );
 }

@@ -5,7 +5,7 @@ import {ReactNode, useEffect} from "react";
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {delay} from "@/lib/utils";
 
-export default function LandingFaqContainer({children}: {children: ReactNode}) {
+export default function LandingFaqScrollContainer({children}: {children: ReactNode}) {
     const router = useRouter();
     const pathname = usePathname()
     const searchParams = useSearchParams()

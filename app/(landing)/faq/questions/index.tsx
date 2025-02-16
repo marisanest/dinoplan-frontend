@@ -9,8 +9,10 @@ export default function LandingFaqQuestions() {
 
     return (
         <div className="w-full py-y-paragraph px-[2rem] ss:px-[6rem]">
-            {faqPageSection?.questions?.map((question) => <LandingFaqQuestion key={question.question?._id}
-                                                                              question={question.question}/>)}
+            {faqPageSection?.questions?.map((question) => (
+                <LandingFaqQuestion key={question.question?._id}
+                                    question={question.question}/>
+            ))}
         </div>
     );
 }
