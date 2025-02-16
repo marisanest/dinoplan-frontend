@@ -3,15 +3,16 @@ import Text from "@/components/text/text";
 export default function CalculatorInfoFormEmailInput({customer, state}) {
     return (
         <CalculatorInfoFormEmailInputContainer>
-            <Text align="left" size="lg">
+            <Text className="pb-[8px] ss:pt-0" align="left" size="lg">
                 E-Mail-Adresse
             </Text>
+
             <input type="text"
                    id="email"
                    name="email"
                    placeholder="E-Mail-Adresse"
                    defaultValue={customer.email}
-                   className="h-[55px] w-full text-left px-[1rem] text-blue-600 border-[2px] border-blue-600-faded focus:border-blue bg-yellow-100" />
+                   className="h-[55px] w-full text-left px-[1rem] !rounded-none text-blue-600 border-[2px] border-blue-600-faded focus:border-blue bg-yellow-100" />
 
             {state?.errors?.email && <div className="pt-[8px] ss:pt-0"/>}
             {
@@ -21,13 +22,6 @@ export default function CalculatorInfoFormEmailInput({customer, state}) {
                     </Text>
                 ))
             }
-
-            {/*<div/>*/}
-
-            {/*<Text align="left" size="xs">*/}
-            {/*    Optional. Wenn du möchtest, dass wir deine Angaben bei einem Beratungsgespräch mit dir verbinden*/}
-            {/*    können, gebe bitte deine E-Mail Adresse an.*/}
-            {/*</Text>*/}
         </CalculatorInfoFormEmailInputContainer>
     );
 }

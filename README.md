@@ -11,3 +11,4 @@
 * alle Mobile größen verhöltnisse noch mal checken
 * Video
 * Auf der Error-Page die E-mal anpassen
+* wenn ein form feld abgesendet wird: alles disablen, so dass man versteht was passiert

@@ -11,7 +11,7 @@
     "make-session-secret": "node ./scripts/make-session-secret.js"
   },
   "engines": {
-    "node": "22"
+    "node": "20"
   },
   "dependencies": {
     "@cloudinary/react": "^1.13.0",
@@ -19,7 +19,6 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/joy": "^5.0.0-beta.48",
-    "@mui/x-date-pickers": "^7.20.0",
     "@reflowhq/auth-next": "^2.0.6",
     "@sanity/image-url": "^1.0.2",
     "@vercel/analytics": "^1.5.0",
@@ -31,6 +30,7 @@
     "react": "^18",
     "react-dom": "^18.3.1",
     "react-scroll": "^1.9.0",
+    "rsuite": "^5.77.1",
     "server-only": "^0.0.1",
     "zustand": "^4.5.5"
   },

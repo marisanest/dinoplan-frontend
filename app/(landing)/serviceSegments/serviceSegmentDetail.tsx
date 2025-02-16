@@ -9,11 +9,11 @@ import Text from "@/components/text/text";
 import useScreenSizes from "@/lib/hooks/useScreenSizes";
 import {useAppContext} from "@/lib/stores/app/context";
 
-const segmentNameToCheckmarkDotColor: {[key: string]: string} = {
-    'Geldanlage': 'bg-orange border-orange',
-    'Ernstfallabsicherung': 'bg-blue border-blue',
-    'Zusatzversicherungen': 'bg-red-200 border-red-200',
-}
+const checkmarkDotColors: string[] = [
+    'bg-orange border-orange',
+    'bg-blue border-blue',
+    'bg-red-200 border-red-200',
+]
 
 export default function LandingServiceSegmentDetail() {
     const screenSizes = useScreenSizes()
@@ -28,7 +28,7 @@ export default function LandingServiceSegmentDetail() {
     if (!(typeof serviceSegmentIndex === 'number')) serviceSegmentIndex = typeof prevSelectedServiceSegmentIndex === 'number' ? prevSelectedServiceSegmentIndex : 0
 
     const selectedServiceSegment = serviceSegments[serviceSegmentIndex];
-    const checkmarkDotBackgroundColor = selectedServiceSegment.name in segmentNameToCheckmarkDotColor ? segmentNameToCheckmarkDotColor[selectedServiceSegment.name] : 'bg-orange'
+    const checkmarkDotBackgroundColor = checkmarkDotColors[serviceSegmentIndex]
 
     return (
         <div className="w-full flex justify-center px-x-s xs:px-x-sm sm:px-0">

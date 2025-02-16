@@ -1,12 +1,19 @@
 "use client"
 import { usePathname } from 'next/navigation'
 import {ReactNodeProps} from "@/lib/types/core";
-import cn from "clsx";
 
 export default function FooterContainer({ children }: ReactNodeProps) {
     const pathname = usePathname()
+    let bgColor = ""
+
+    if (pathname.includes('rechner/')) {
+        bgColor = 'bg-orange-400'
+    } else if (pathname.includes('impressum') || pathname.includes('datenschutz')) {
+        bgColor = 'bg-orange-300'
+    }
+
     return (
-        <footer className={cn(pathname === '/' ? '' : 'bg-orange-300')}>
+        <footer className={bgColor}>
             {children}
         </footer>
     );

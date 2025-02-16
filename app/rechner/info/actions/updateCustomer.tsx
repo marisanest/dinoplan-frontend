@@ -30,6 +30,8 @@ function extractChildDateOfBirth(formData: any) {
 function extractChildDateOfBirthSanityString(formData: any) {
     const childDateOfBirth = formData.get('childDateOfBirth')
 
+    console.log(childDateOfBirth)
+
     if (typeof childDateOfBirth === 'string') {
         const [month, day, year] = childDateOfBirth.split('/')
         return `${year}-${month}-${day}`

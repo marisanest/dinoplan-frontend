@@ -9,7 +9,10 @@ export default function CalculatorInfoFormConsentsToThePrivacyPolicyInput({custo
             <div className="flex gap-[1rem]">
                 <input type="checkbox"
                        id="consentsToThePrivacyPolicy"
-                       name="consentsToThePrivacyPolicy" defaultChecked={customer.consentsToThePrivacyPolicy}/>
+                       className="!rounded-none"
+                       name="consentsToThePrivacyPolicy"
+                       defaultChecked={customer.consentsToThePrivacyPolicy}/>
+
                 <Text align="left" size="xs">
                     <div>
                         Hiermit bestätigst du, dass wir deine Angaben speichern und bei einem Beratungsgespräch

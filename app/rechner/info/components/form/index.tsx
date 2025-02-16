@@ -23,7 +23,7 @@ export default function CalculatorInfoForm({customer}: any) {
     return (
         <form action={formAction}>
             <CalculatorInfoFormChildDateOfBirthInput customer={customer} state={state} />
-            <hr className="mt-[2rem] mb-[1rem] ss:mt-[4rem] ss:mb-[2rem] border-b-none border-t-[1px] border-blue-faded"/>
+            <hr className="my-[1rem] ss:my-[2rem] border-b-none border-t-[1px] border-blue"/>
             <CalculatorInfoFormEmailInput customer={customer} state={state} />
             <CalculatorInfoFormConsentsToThePrivacyPolicyInput customer={customer} />
             <CalculatorButtons pending={pending} prevLink={{type: 'internal', url: '/rechner/start'}}/>

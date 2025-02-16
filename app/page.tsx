@@ -3,7 +3,6 @@ import {client} from "@/lib/sanity/client";
 import {defineQuery} from "groq";
 import {getSession} from "@/lib/signIn";
 import {redirect} from "next/navigation";
-import {delay} from "@/lib/utils";
 
 const options = { next: { revalidate: 3600 } };
 
@@ -65,7 +64,6 @@ const PAGE_SECTION_SERVICE_FEATURES_QUERY = defineQuery(`*[_type == "pageSection
         }
     }
 }`);
-
 
 const PAGE_SECTION_SERVICE_MODULES_QUERY = defineQuery(`*[_type == "pageSectionsServiceModules"][0] {
     _id, 
@@ -133,8 +131,6 @@ const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {
     email, 
     calendly,
 }`);
-
-export const revalidate = 0
 
 export default async function LandingPage() {
   const session = await getSession();
