@@ -4,7 +4,7 @@ import Text from "@/components/text/text";
 
 export default function CalculatorStart() {
     return (
-        <main className="min-w-[100dvw] w-[100dvw] max-w-[100dvw] overflow-x-hidden flex justify-center pt-banner bg-orange-400">
+        <main className="min-w-[100dvw] w-[100dvw] max-w-[100dvw] overflow-x-hidden flex justify-center pt-banner bg-orange-300">
             <div className="w-full flex justify-center px-x-outer pt-y-block">
                 <div className="w-full max-w-sm min-h-[calc(100dvh-var(--height-footer-image)-var(--height-banner)-var(--height-banner)-var(--spacing-y-block)+var(--spacing-footer-image-correction))] flex flex-col justify-center py-y-section px-x-s bg-orange-200 rounded-bl-md rounded-tr-md">
 

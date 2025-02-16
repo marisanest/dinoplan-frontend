@@ -5,6 +5,12 @@ import Text from "@/components/text/text";
 import Button from "@/components/buttons";
 import Title from "@/components/title";
 import ArrowIcon from "@/components/icons/arrow";
+import type {Metadata} from "next";
+import {getMetadata} from "@/lib/metadata";
+
+export const metadata: Metadata = getMetadata(
+    "Dinoplan | Seite konnte nicht gefunden werden"
+);
 
 export default function NotFound() {
     const pathname = usePathname()

@@ -4,8 +4,15 @@ import CalculatorInfo from "@/rechner/info/components/info";
 import {cookies} from "next/headers";
 import {defineQuery} from "groq";
 import {client} from "@/lib/sanity/client";
+import type {Metadata} from "next";
+import {getMetadata} from "@/lib/metadata";
 
-const options = { next: { revalidate: 0 } };
+const options = { next: { revalidate: 3600 } };
+
+export const metadata: Metadata = getMetadata(
+  "Dinoplan | Rechner - Info",
+  "Berechne jetzt deinen Beitrag!",
+);
 
 export default async function CalculatorInfoPage() {
   const session = await getSession();

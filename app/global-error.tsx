@@ -17,6 +17,12 @@ import FooterBannerLogo from "@/components/footer/banner/logo";
 import FooterFaq from "@/components/footer/faq";
 import FooterBannerContact from "@/components/footer/banner/contact";
 import FooterBannerContainer from "@/components/footer/banner/container";
+import type {Metadata} from "next";
+import {getMetadata} from "@/lib/metadata";
+
+export const metadata: Metadata = getMetadata(
+    "Dinoplan | Error"
+);
 
 export default function GlobalError() {
     const pathname = usePathname()

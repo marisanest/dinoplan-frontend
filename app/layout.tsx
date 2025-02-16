@@ -11,6 +11,7 @@ import {client} from "@/lib/sanity/client";
 import {getSession} from "@/lib/signIn";
 import OverlayMenu from "@/components/overlayMenu";
 import { Analytics } from '@vercel/analytics/next';
+import {getMetadata} from "@/lib/metadata";
 
 const nunito = Nunito({
     subsets: ['latin'],
@@ -64,20 +65,7 @@ const afacad = localFont({
     variable: '--font-afacad'
 })
 
-export const metadata: Metadata = {
-    title: "Dinoplan",
-    description: "Dinoplan",
-    openGraph: {
-        type: "website",
-        url: "https://dinoplan.de",
-        title: "Dinoplan",
-        description: "",
-        siteName: "Dinoplan",
-        images: [{
-            url: "https://dinoplan.de/ogn.png",
-        }],
-    },
-};
+export const metadata: Metadata = getMetadata();
 
 const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {
     _id, 

@@ -7,6 +7,12 @@ import Text from "@/components/text/text";
 import Button from "@/components/buttons";
 import ArrowIcon from "@/components/icons/arrow";
 import EmailLink from "@/components/link/email";
+import type {Metadata} from "next";
+import {getMetadata} from "@/lib/metadata";
+
+export const metadata: Metadata = getMetadata(
+    "Dinoplan | Error"
+);
 
 export default function Error() {
     const pathname = usePathname()

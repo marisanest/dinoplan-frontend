@@ -4,8 +4,15 @@ import {cookies} from "next/headers";
 import {defineQuery} from "groq";
 import {client} from "@/lib/sanity/client";
 import CalculatorCalculation from "@/rechner/berechnung/components/calculation";
+import type {Metadata} from "next";
+import {getMetadata} from "@/lib/metadata";
 
-const options = { next: { revalidate: 0 } };
+const options = { next: { revalidate: 3600 } };
+
+export const metadata: Metadata = getMetadata(
+  "Dinoplan | Rechner - Berechnung",
+  "Berechne jetzt deinen Beitrag!",
+);
 
 const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSectionsServiceSegments"][0] {
     serviceSegments[] {
