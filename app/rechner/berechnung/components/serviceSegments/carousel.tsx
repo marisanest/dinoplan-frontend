@@ -28,7 +28,7 @@ export default function CalculatorCalculationServiceSegmentsCarousel() {
                     <ArrowIcon className="rotate-90" scale={0.8} />
                 </div>
 
-                <Image className="w-full max-w-[250px] h-auto"
+                <Image className="w-[calc(100%-2*27px-2*1.5rem)] xs:w-[calc(100%-2*30px-2*1.5rem)] max-w-[250px] h-auto"
                        src={urlFor(selectedServiceSegment.illustration)?.url()}
                        alt={selectedServiceSegment.name}
                        width={selectedServiceSegment.illustration.width}
