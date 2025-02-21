@@ -135,54 +135,30 @@ body {
     background-color: var(--blue);
 }
 
-input[type=text] {
-    text-align: left;
-    color: var(--blue-600);
-    padding: 0 1rem 0 1rem;
-    min-height: 55px!important;
-    height: 55px!important;
-    width: 100%!important;
-    border: 2px solid var(--blue-600-faded)!important;
-    border-radius: 0!important;
+
+a:visited {
+    color: var(--blue-600)!important;
 }
 
-input[type=text]:active,
-input[type=text]:focus,
-input[type=text]:focus-visible {
+a {
+    text-decoration: none!important;
+}
+
+input:active,
+input:focus,
+input:focus-visible {
     box-shadow: none;
     outline: none;
 }
 
-input[type=text]::placeholder {
+input::placeholder {
     text-align: left;
     color: var(--blue-600-faded);
     opacity: 1;
 }
 
-input[type=text]::-ms-input-placeholder {
+input::-ms-input-placeholder {
     color: var(--blue);
-}
-
-label[data-shrink="false"] + .MuiInputBase-formControl .css-1dune0f-MuiInputBase-input-MuiOutlinedInput-input::placeholder {
-    opacity: 100!important;
-}
-
-input[type="checkbox"] {
-    appearance: none;
-    background-color: var(--yellow-100);
-    margin: 0;
-    color: var(--blue-600);
-    width: 19px;
-    min-width: 19px;
-    height: 19px;
-    min-height: 19px;
-    border: 2px solid var(--blue-600-faded);
-    border-radius: 0;
-    display: grid;
-    place-content: center;
-    font-size: 16px;
-    padding-bottom: 2px;
-    cursor: pointer;
 }
 
 input[type="checkbox"]::before {
@@ -193,73 +169,3 @@ input[type="checkbox"]::before {
 input[type="checkbox"]:checked::before {
     display: block;
 }
-
-.date-picker-input-group {
-    height: 55px!important;
-    border: 2px solid var(--blue-600-faded)!important;
-    border-radius: 0!important;
-    color: var(--blue-600)!important;
-}
-
-.date-picker-input {
-    color: var(--blue-600)!important;
-}
-
-.date-picker-input::placeholder {
-   color: var(--blue-600-faded)!important;
-}
-.date-picker-input:focus {}
-
-.date-picker-indicator::before {
-    background-color: var(--blue-600-faded)!important;
-}
-
-.date-picker-cleaner::before {
-    background-color: var(--blue-600-faded)!important;
-}
-
-.date-picker.show .date-picker-input-group {
-    box-shadow: none!important;
-}
-
-a:visited {
-    color: var(--blue-600)!important;
-}
-
-a {
-    text-decoration: none!important;
-}
-
-.calendar-nav-date .btn:hover {
-    color: var(--blue)!important;
-}
-
-.calendar-nav-date .btn {
-    color: var(--blue-600)!important;
-}
-
-.calendar-header-cell-inner {
-    color: var(--blue-600)!important;
-}
-
-.calendar-cell-inner {
-    color: var(--blue-600)!important;
-}
-
-.calendar-cell.previous > .calendar-cell-inner {
-    color: var(--blue-600-faded)!important;
-}
-
-.calendar-cell.next > .calendar-cell-inner {
-    color: var(--blue-600-faded)!important;
-}
-
-.calendar-cell.selected > .calendar-cell-inner {
-    color: var(--red-200)!important;
-    background-color: unset!important;
-}
-
-.rs-input {
-
-}
-

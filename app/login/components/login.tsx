@@ -1,11 +1,12 @@
 "use client"
 import {signIn} from "@/lib/signIn";
-import {useFormState} from "react-dom";
+import {useFormState, useFormStatus} from "react-dom";
 import Text from "@/components/text/text";
 import FormButton from "@/components/buttons/formButton";
 import {redirect} from "next/navigation";
 
 export default function Login() {
+    const { pending } = useFormStatus()
     const [state, formAction] = useFormState<{
         success?: boolean;
         error?: string;
@@ -36,7 +37,7 @@ export default function Login() {
                         )}
                     </div>
 
-                    <FormButton size="sm" colors="orange">
+                    <FormButton size="sm" color="orange" disabled={pending}>
                         Anmelden
                     </FormButton>
                 </div>

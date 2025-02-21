@@ -2,7 +2,7 @@ import CalculatorStartForm from "@/rechner/start/components/form";
 import Title from "@/components/title";
 import Text from "@/components/text/text";
 
-export default function CalculatorStart() {
+export default function CalculatorStart({customer}: {customer: any}) {
     return (
         <main className="min-w-[100dvw] w-[100dvw] max-w-[100dvw] overflow-x-hidden flex justify-center pt-banner bg-orange-400">
             <div className="w-full flex justify-center px-x-outer pt-y-block">
@@ -15,7 +15,7 @@ export default function CalculatorStart() {
                         </p>
                     </Text>
 
-                    <CalculatorStartForm/>
+                    <CalculatorStartForm customer={customer}/>
                 </div>
             </div>
         </main>

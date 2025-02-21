@@ -4,7 +4,7 @@ import Link from "@/components/link";
 
 export type ButtonProps = {
     size?: 'md' | 'sm' | 'xs';
-    colors?: 'default' | 'red' | 'blue' | 'orange' | 'bright';
+    color?: 'default' | 'red' | 'blue' | 'orange' | 'bright';
     link?: LinkType;
     type?: string
     disabled?: boolean;
@@ -12,12 +12,27 @@ export type ButtonProps = {
     unresponsive?: boolean;
 } & ReactNodeProps;
 
-const colorsToClasses = {
-    default: 'border-blue-600 text-blue-600 hover:border-red-200 hover:bg-red-200 hover:text-yellow-100',
-    red: 'border-red-200 bg-red-200 text-yellow-100 hover:border-red-200-faded hover:bg-red-200-faded',
-    blue: 'border-blue bg-blue text-yellow-100 hover:bg-blue-600-faded hover:border-blue-600-faded',
-    orange: 'border-orange bg-orange text-yellow-100 hover:bg-orange-faded hover:border-orange-faded',
-    bright: 'border-orange-200 bg-orange-200 text-blue-600 hover:border-orange-200-faded hover:bg-orange-200-faded'
+const colorToClasses = {
+    default: {
+        enabled: 'border-blue-600 text-blue-600 hover:border-red-200 hover:bg-red-200 hover:text-yellow-100',
+        disabled: 'border-red-200 bg-red-200 text-yellow-100',
+    },
+    red: {
+        enabled: 'border-red-200 bg-red-200 text-yellow-100 hover:border-red-200-faded hover:bg-red-200-faded',
+        disabled: 'border-red-200-faded bg-red-200-faded text-yellow-100',
+    },
+    blue: {
+        enabled: 'border-blue bg-blue text-yellow-100 hover:bg-blue-600-faded hover:border-blue-600-faded',
+        disabled: 'bg-blue-600-faded border-blue-600-faded text-yellow-100',
+    },
+    orange: {
+        enabled: 'border-orange bg-orange text-yellow-100 hover:bg-orange-faded hover:border-orange-faded',
+        disabled: 'bg-orange-faded border-orange-faded text-yellow-100',
+    },
+    bright: {
+        enabled: 'border-orange-200 bg-orange-200 text-blue-600 hover:border-orange-200-faded hover:bg-orange-200-faded',
+        disabled: 'border-orange-200-faded bg-orange-200-faded text-blue-600',
+    },
 }
 
 const  responsiveSizesToClasses = {
@@ -45,11 +60,11 @@ const sizesToChildrenClasses = {
 }
 
 
-export default function FormButton({ className, children, size = 'md', colors = 'default', link, type = 'submit', disabled = false, onClick, unresponsive = false }: ButtonProps) {
+export default function FormButton({ className, children, size = 'md', color = 'default', link, type = 'submit', disabled = false, onClick, unresponsive = false }: ButtonProps) {
     const containerClassName = cn(
         "rounded-full border-[3px] text-lg cursor-pointer transition-colors",
         unresponsive ? sizesToClasses[size] : responsiveSizesToClasses[size],
-        colorsToClasses[colors],
+        colorToClasses[color][disabled ? 'disabled' : 'enabled'],
         className
     )
 

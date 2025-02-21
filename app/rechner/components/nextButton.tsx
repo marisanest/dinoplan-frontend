@@ -7,7 +7,7 @@ export type CalculatorNextButtonProps = {
 
 export default function CalculatorNextButton({pending}: CalculatorNextButtonProps) {
     return (
-        <FormButton disabled={pending} className="w-fit" colors="blue" size="sm">
+        <FormButton disabled={pending} className="w-fit" color="blue" size="sm">
             <Text color="none">Weiter</Text>
         </FormButton>
     )

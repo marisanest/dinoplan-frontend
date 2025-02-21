@@ -14,9 +14,19 @@ export const metadata: Metadata = getMetadata(
 
 export default function NotFound() {
     const pathname = usePathname()
+    let bgColor = ""
+
+    if (pathname.includes('rechner/')) {
+        bgColor = 'bg-orange-400'
+    } else if (pathname.includes('impressum') || pathname.includes('datenschutz')) {
+        bgColor = 'bg-orange-300'
+    }
 
     return (
-        <div className={cn("min-h-[calc(100dvh-var(--height-banner)-var(--height-footer-image)+var(--spacing-footer-image-correction))] h-fit pt-[calc(var(--height-banner)+var(--spacing-y-block))] pb-[var(--spacing-y-block)] px-x-outer flex flex-col justify-center items-center w-full", pathname === '/' ? '' : 'bg-orange-300')}>
+        <div className={cn(
+            "min-h-[calc(100dvh-var(--height-banner)-var(--height-footer-image)+var(--spacing-footer-image-correction))] h-fit pt-[calc(var(--height-banner)+var(--spacing-y-block))] pb-[var(--spacing-y-block)] px-x-outer flex flex-col justify-center items-center w-full",
+            bgColor
+        )}>
             <Title className="pb-[10px]">Ups, wie bist du den hier gelandet?</Title>
 
             <Text className="pb-[24px]">

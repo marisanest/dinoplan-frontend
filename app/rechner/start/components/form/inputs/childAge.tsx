@@ -3,25 +3,26 @@ import {FieldError} from "react-hook-form";
 import React from "react";
 import DinoplanFormTextInput from "@/components/form/inputs/text";
 
-type CalculatorStartFormChildNameInputProps = {
+type CalculatorStartFormChildAgeInputProps = {
     register: any;
     error: FieldError | undefined | null;
     pending: boolean;
     customer: any;
 }
 
-export default function CalculatorStartFormChildNameInput({register, error, pending, customer}: CalculatorStartFormChildNameInputProps) {
+
+export default function CalculatorStartFormChildAgeInput({register, error, pending, customer}: CalculatorStartFormChildAgeInputProps) {
     return (
         <div className="ss:flex ss:flex-col ss:gap-y-[0.4rem]">
-            {/*<Text className="!w-fit pb-[8px] ss:pt-0" align="left" size="md">*/}
-            {/*    Name*/}
+            {/*<Text className="pb-[8px] ss:pt-0" align="left" size="md">*/}
+            {/*    /!*Alter*!/*/}
             {/*</Text>*/}
 
-            <DinoplanFormTextInput name="childName"
-                                   placeholder="Name des Kindes"
+            <DinoplanFormTextInput name="childAge"
+                                   placeholder="Alter des Kindes"
                                    register={register}
                                    pending={pending}
-                                   defaultValue={customer.childName} />
+                                   defaultValue={customer.childAge} />
 
             {error && (
                 <Text className="text-red-500" align="left" size="sm">
