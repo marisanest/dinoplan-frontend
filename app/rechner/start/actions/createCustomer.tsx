@@ -38,6 +38,7 @@ export async function createCustomer(customer: any, data: CreateCustomerSchema):
             ).then(res => res.json())
 
             revalidatePath('/rechner/start')
+            revalidatePath('/rechner/berechnung')
 
             if (response.error) {
                 console.error(response.error)

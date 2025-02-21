@@ -5,19 +5,26 @@ import Title from "@/components/title";
 import Text from "@/components/text/text";
 import cn from "clsx";
 import CalculatorCalculationSummaryTable from "@/rechner/berechnung/components/summary/table";
-import {ReactNodeProps} from "@/lib/types/core";
 import useScreenSizes from "@/lib/hooks/useScreenSizes";
 import {useCalculatorContext} from "@/lib/stores/calculator/context";
 
 export default function CalculatorCalculationSummary({customer, costCalculation}: any) {
-    const { selectedServiceModules } = useCalculatorContext(
+    const { selectedServiceModules, selectedServiceSegmentIndex } = useCalculatorContext(
         useShallow((state) => ({
             selectedServiceModules: state.selectedServiceModules,
+            selectedServiceSegmentIndex: state.selectedServiceSegmentIndex,
         })),
     );
 
+    const screenSizes = useScreenSizes()
+
     return (
-        <CalculatorCalculationSummaryContainer>
+        <div className="w-full flex justify-center px-x-s xs:px-x-sm sm:px-0">
+            <div className={cn(
+                "w-full sm:w-sm sm:max-w-sm flex flex-col justify-center items-center px-x-s s:px-x-sm transition-[padding] duration-1000 bg-orange-200",
+                typeof selectedServiceSegmentIndex === 'number' || screenSizes?.isXs ? "pt-x-sm" : "pt-[0px]"
+            )}>
+
             <Text className="mb-[2rem]" size="sm">
                 Du hast {Object.values(selectedServiceModules).length} Baustein(e) ausgewählt.
             </Text>
@@ -29,7 +36,7 @@ export default function CalculatorCalculationSummary({customer, costCalculation}
                             {customer.childName}'s Dinoplan
                         </Title>
                         <Text className="mb-[2rem]" size="sm">
-                            Folgendes würde dich unser dino-starket Paket kosten:
+                            Folgendes würde dich unser dino-starkes Paket kosten:
                         </Text>
 
                         <CalculatorCalculationSummaryTable customer={customer} costCalculation={costCalculation}/>
@@ -40,20 +47,6 @@ export default function CalculatorCalculationSummary({customer, costCalculation}
                     </>
                 )
             }
-        </CalculatorCalculationSummaryContainer>
-    );
-}
-
-function CalculatorCalculationSummaryContainer({children}: ReactNodeProps) {
-    const screenSizes = useScreenSizes()
-    const {selectedServiceSegmentIndex} = useCalculatorContext(useShallow((s) => ({
-        selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
-    })))
-
-    return (
-        <div className="w-full flex justify-center px-x-s xs:px-x-sm sm:px-0">
-            <div className={cn("w-full sm:w-sm sm:max-w-sm flex flex-col justify-center items-center px-x-s s:px-x-sm transition-[padding] duration-1000 bg-orange-200", typeof selectedServiceSegmentIndex === 'number' || screenSizes?.isXs ? "pt-x-sm" : "pt-[0px]")}>
-                {children}
             </div>
         </div>
     );

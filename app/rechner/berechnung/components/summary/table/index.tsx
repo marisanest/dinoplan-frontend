@@ -44,7 +44,7 @@ function calculatePricePerMonth(serviceModule, costCalculation, customer) {
         return calculatePricePerMonthForFinancialInvestment({
             cost: serviceModule.costCalculationForFinancialInvestment.cost,
             ageAtPayout: serviceModule.costCalculationForFinancialInvestment.ageAtPayout,
-            childDateOfBirth: customer.childDateOfBirth,
+            childAge: customer.childAge,
             interestRate: costCalculation.interestRate,
             inflationRate: costCalculation.inflationRate,
         });
@@ -56,20 +56,16 @@ function calculatePricePerMonth(serviceModule, costCalculation, customer) {
 function calculatePricePerMonthForFinancialInvestment({
     cost,
     ageAtPayout,
-    childDateOfBirth,
+                                                          childAge,
     interestRate,
     inflationRate,
 }: {
     cost: number,
     ageAtPayout: number,
-    childDateOfBirth: string,
+    childAge: number,
     interestRate: number,
     inflationRate: number,
 }) {
-    const [month, day, childBirthYear] = childDateOfBirth.split('-')
-
-    const currentYear = new Date().getFullYear()
-    const childAge = currentYear - parseInt(childBirthYear)
     const nYears = ageAtPayout - childAge;
 
     if (nYears <= 0) {

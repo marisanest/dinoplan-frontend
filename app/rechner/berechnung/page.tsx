@@ -7,12 +7,13 @@ import CalculatorCalculation from "@/rechner/berechnung/components/calculation";
 import type {Metadata} from "next";
 import {getMetadata} from "@/lib/metadata";
 
-const options = { next: { revalidate: 3600 } };
-
 export const metadata: Metadata = getMetadata(
   "Dinoplan | Rechner - Berechnung",
   "Berechne jetzt deinen Beitrag!",
 );
+
+const options = { next: { revalidate: 3600 } };
+const revalidate = 3600
 
 const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSectionsServiceSegments"][0] {
     serviceSegments[] {
@@ -60,7 +61,7 @@ export default async function CalculatorCalculationPage() {
 
   const query = defineQuery(`*[_type == "customer" && _id == "${customerId}"][0]{
     childName,
-    childDateOfBirth,
+    childAge,
   }`);
 
   const customer = await client.fetch(query, {}, options);

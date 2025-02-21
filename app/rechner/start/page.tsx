@@ -12,8 +12,8 @@ export const metadata: Metadata = getMetadata(
   "Berechne jetzt deinen Beitrag!",
 );
 
-const options = { next: { revalidate: 0 } };
-const revalidate = 0
+const options = { next: { revalidate: 3600 } };
+const revalidate = 3600
 
 export default async function CalculatorStartPage() {
   const session = await getSession();

@@ -18,3 +18,9 @@ export function dateToString(date: Date): string {
 export function zeroPad(num: number, places: number = 2): string {
     return String(num).padStart(places, '0');
 }
+
+export function toMonetary(num: number, places: number = 2): string {
+    const [euros, cents] = String(num).split('.')
+
+    return `${euros},${typeof cents === "string" ? cents.padEnd(2, '0') : '00'}`;
+}
