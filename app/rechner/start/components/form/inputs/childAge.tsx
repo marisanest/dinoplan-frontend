@@ -22,7 +22,7 @@ export default function CalculatorStartFormChildAgeInput({register, error, pendi
                                    placeholder="Alter des Kindes"
                                    register={register}
                                    pending={pending}
-                                   defaultValue={customer.childAge} />
+                                   defaultValue={customer?.childAge} />
 
             {error && (
                 <Text className="text-red-500" align="left" size="sm">

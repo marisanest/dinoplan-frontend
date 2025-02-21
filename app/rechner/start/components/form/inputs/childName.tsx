@@ -21,7 +21,7 @@ export default function CalculatorStartFormChildNameInput({register, error, pend
                                    placeholder="Name des Kindes"
                                    register={register}
                                    pending={pending}
-                                   defaultValue={customer.childName} />
+                                   defaultValue={customer?.childName} />
 
             {error && (
                 <Text className="text-red-500" align="left" size="sm">
