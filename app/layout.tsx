@@ -10,7 +10,7 @@ import {defineQuery} from "groq";
 import {client} from "@/lib/sanity/client";
 import {getSession} from "@/lib/signIn";
 import OverlayMenu from "@/components/overlayMenu";
-import { Analytics } from '@vercel/analytics/next';
+// import { Analytics } from '@vercel/analytics/next';
 import {getMetadata} from "@/lib/metadata";
 
 const nunito = Nunito({
@@ -140,7 +140,7 @@ function BasicBodyLayout({children}: Readonly<{children: ReactNode;}>) {
     return (
         <body className={`${nunito.variable} ${afacad.variable}`}>
         {children}
-        <Analytics key="analytics" />
+        {/*<Analytics key="analytics" />*/}
         </body>
     );
 }
