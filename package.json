@@ -21,6 +21,7 @@
     "@mui/joy": "^5.0.0-beta.48",
     "@reflowhq/auth-next": "^2.0.6",
     "@sanity/image-url": "^1.0.2",
+    "@uidotdev/usehooks": "^2.4.1",
     "@vercel/analytics": "^1.5.0",
     "bcryptjs": "^2.4.3",
     "clsx": "^2.1.1",
