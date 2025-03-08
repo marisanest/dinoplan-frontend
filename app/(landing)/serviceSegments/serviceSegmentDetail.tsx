@@ -42,7 +42,7 @@ export default function LandingServiceSegmentDetail() {
                             {selectedServiceSegment && `${selectedServiceSegment?.dinoPrefix}-Dino`}
                         </Title>
                         <Text key="title" size="xl" align="left">
-                            {selectedServiceSegment?.name}
+                            {selectedServiceSegment?.dinoSubtitle}
                         </Text>
                     </div>
                     <div className="flex flex-col sm:grid sm:grid-cols-2 gap-[2rem] sm:gap-[6rem]">

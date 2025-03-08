@@ -20,13 +20,14 @@ const PAGE_SECTION_START_QUERY = defineQuery(`*[_type == "pageSectionsStart"][0]
 }`);
 
 const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSectionsServiceSegments"][0] {
-    _id, 
-    title, 
-    description, 
+    _id,
+    title,
+    description,
     serviceSegments[] {
         serviceSegment-> {
            _id,
            name,
+           listName,
            dinoPrefix,
            illustration {
              'height': asset->metadata.dimensions.height,
@@ -35,6 +36,7 @@ const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSection
                url,
              }
            },
+           dinoSubtitle,
            description,
            serviceModules[] {
               serviceModule-> {
@@ -74,6 +76,7 @@ const PAGE_SECTION_SERVICE_MODULES_QUERY = defineQuery(`*[_type == "pageSections
            name,
            example,
            serviceSegment-> {
+              _id,
               illustration {
                 'height': asset->metadata.dimensions.height,
                 'width': asset->metadata.dimensions.width,

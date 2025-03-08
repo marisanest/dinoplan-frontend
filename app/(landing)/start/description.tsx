@@ -28,7 +28,7 @@ export default function LandingStartDescription() {
                         <div key={serviceSegment.serviceSegment?._id} className="flex items-center gap-[0.5rem]">
                             <CheckmarkDot key="checkmark" className="bg-none border-blue-600" strokeColor="#294290"/>
                             <Text key="name" className="sm:items-center sm:justify-center sm:text-center" size="lg" align="left">
-                                {serviceSegment.serviceSegment?.name}
+                                {serviceSegment.serviceSegment?.listName}
                             </Text>
                         </div>
                     ))}
