@@ -11,7 +11,7 @@ export default function CalculatorCalculationServiceSegmentsContainer({children}
     const selectedServiceSegmentIndex = useCalculatorContext(useShallow((s) => s.selectedServiceSegmentIndex));
 
     return (
-        <div className="relative z-10 w-full flex justify-center px-x-s xs:px-x-sm sm:px-0">
+        <div className="relative z-10 w-full flex justify-center px-x-outer">
             <div className="w-full max-w-sm rounded-bl-md bg-orange-400">
                 <div className={cn(
                     "w-full max-w-sm px-x-s py-y-sm bg-orange-200 rounded-tr-md shadow-[0px_0px_0px_0px_black] transition-[border-radius] duration-1000 flex flex-col items-center",

@@ -30,7 +30,7 @@ function CalculatorCalculationServiceModulesContainer({children}: ReactNodeProps
     })))
 
     return (
-        <div className="w-full flex justify-center px-x-s xs:px-x-sm sm:px-0">
+        <div className="w-full flex justify-center px-x-outer">
             <div className={cn(
                 "w-full sm:w-sm sm:max-w-sm bg-orange-200 transition-[transform] duration-1000 pointer-events-auto",
                 typeof selectedServiceSegmentIndex === 'number' || screenSizes?.isXs ? 'translate-y-[calc(-1*var(--dino-bottom-offset))]' : 'translate-y-[-100%]'

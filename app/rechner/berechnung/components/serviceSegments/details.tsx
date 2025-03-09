@@ -21,7 +21,7 @@ export default function CalculatorCalculationServiceSegmentsDetails({children}: 
             <div key="details" ref={el => setHeight(el?.clientHeight ?? 0)} className="absolute z-1 left-0 right-0 pointer-events-none">
                 {children}
             </div>
-            <div key="details-placeholder" className="transition-[height] duration-1000 flex justify-center px-x-s xs:px-x-sm sm:px-0" style={{height: typeof selectedServiceSegmentIndex === 'number' || screenSizes?.isXs ? `calc(${height}px - var(--dino-bottom-offset))` : 0}}>
+            <div key="details-placeholder" className="transition-[height] duration-1000 flex justify-center px-x-outer" style={{height: typeof selectedServiceSegmentIndex === 'number' || screenSizes?.isXs ? `calc(${height}px - var(--dino-bottom-offset))` : 0}}>
                 <div className="w-full max-w-sm h-full" />
             </div>
         </>
