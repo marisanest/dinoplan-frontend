@@ -31,8 +31,8 @@ export function calculatePricePerMonthForFinancialInvestment({
 
 export function calculatePricePerMonthForForInsurance({serviceModule, customer}: {serviceModule: any; customer: any}): number {
     if (customer.childAge <= 18) {
-        return serviceModule.extractedCostPerMonthForInsurance[customer.childAge - 1]
+        return serviceModule.extractedCostPerMonthForInsurance[customer.childAge]
     } else {
-        return serviceModule.extractedCostPerMonthForInsurance[17]
+        return serviceModule.extractedCostPerMonthForInsurance[18]
     }
 }
