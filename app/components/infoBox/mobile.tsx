@@ -41,7 +41,7 @@ export default function InfoBoxMobile() {
                                 Information
                             </Text>
                         </div>
-                        <div className="border border-blue-600 rounded-full p-[4px] cursor-pointer"
+                        <div className="border-[2px] border-blue-600 rounded-full p-[4px] cursor-pointer"
                              onClick={closeInfoBox}>
                             <CrossIcon/>
                         </div>
