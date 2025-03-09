@@ -7,7 +7,7 @@ import CalculatorCalculationServiceSegmentsDetails from "@/rechner/berechnung/co
 import {InfoBoxProvider} from "@/lib/stores/infoBox/context";
 import InfoBox from "@/components/infoBox";
 
-export default function CalculatorCalculation({serviceSegments, customer, costCalculation, contact}: any) {
+export default function CalculatorCalculation({serviceSegments, customer, costCalculation}: any) {
     return (
         <CalculatorProvider serviceSegments={serviceSegments}>
             <InfoBoxProvider>
@@ -22,7 +22,7 @@ export default function CalculatorCalculation({serviceSegments, customer, costCa
                         </CalculatorCalculationServiceSegmentsDetails>
 
                         <CalculatorCalculationSummary key="summery" customer={customer} costCalculation={costCalculation} />
-                        <CalculatorCalculationButtons key="buttons" contact={contact} />
+                        <CalculatorCalculationButtons key="buttons" />
                     </div>
                     <InfoBox/>
                 </main>

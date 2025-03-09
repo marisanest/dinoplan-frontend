@@ -73,7 +73,6 @@
 
 @media only screen and (max-width: 600px) {
     :root {
-        /*--spacing-x-xs: 1rem;*/
         --spacing-x-s: 2rem;
         --spacing-x-sm: 3.5rem;
         --spacing-x-outer: 2rem;
@@ -112,23 +111,19 @@
     }
 }
 
-html {
-    /*min-width: 100dvw;*/
-    /*width: 100dvw;*/
-    /*max-width: 100dvw;*/
-    /*overflow-x: hidden!important;*/
-
-    /*max-height: 100dvh;*/
-    /*overflow-y: scroll;*/
+html,
+body {
+    font-family: var(--font-nunito);
     height: 100%;
 }
 
-body {
-    font-family: var(--font-nunito);
+* {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
 
-    /*max-height: 100dvh;*/
-    /*overflow-y: scroll;*/
-    height: 100%;
+::-webkit-scrollbar {
+    display: none;
 }
 
 ::selection {
@@ -136,6 +131,10 @@ body {
     background-color: var(--blue);
 }
 
+iframe:focus-visible,
+iframe:focus {
+    outline: none!important;
+}
 
 a:visited {
     color: var(--blue-600)!important;

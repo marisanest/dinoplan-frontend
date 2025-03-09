@@ -45,7 +45,7 @@ export default function OverlayMenu({contact}: OverlayMenuProps) {
           <div className="flex flex-col">
               <div className="flex flex-col gap-[0.125rem]">
                   <div onClick={toggleOpen}>
-                      <InternalLink href={contact.calendly.url}>
+                      <InternalLink href="/kalender">
                           <Text size="xl" align="left">Termin vereinbaren</Text>
                       </InternalLink>
                   </div>

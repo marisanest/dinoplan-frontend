@@ -70,7 +70,6 @@ export const metadata: Metadata = getMetadata();
 const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {
     _id, 
     email, 
-    calendly,
 }`);
 
 const options = { next: { revalidate: 3600 } };
@@ -117,7 +116,7 @@ async function AuthenticatedLayout({
         </head>
         <BasicBodyLayout>
             <OverlayMenu contact={contact} />
-            <Header contact={contact} />
+            <Header />
             {children}
             <Footer contact={contact} />
         </BasicBodyLayout>

@@ -13,7 +13,6 @@ export const metadata: Metadata = getMetadata(
 );
 
 const options = { next: { revalidate: 3600 } };
-const revalidate = 3600
 
 const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSectionsServiceSegments"][0] {
     serviceSegments[] {
@@ -45,10 +44,6 @@ const COST_CALCULATION_QUERY = defineQuery(`*[_type == "costCalculation"][0] {
     interestRate,
 }`);
 
-const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {
-    calendly,
-}`);
-
 export default async function CalculatorCalculationPage() {
   const session = await getSession();
   if (!session.hasAccess) {
@@ -73,9 +68,8 @@ export default async function CalculatorCalculationPage() {
 
   const pageSectionsServiceSegments = await client.fetch(PAGE_SECTION_SERVICE_SEGMENTS_QUERY, {}, options);
   const costCalculation = await client.fetch(COST_CALCULATION_QUERY, {}, options);
-  const contact = await client.fetch(CONTACT_QUERY, {}, options);
 
   return <CalculatorCalculation serviceSegments={pageSectionsServiceSegments.serviceSegments}
                                 customer={customer}
-                                costCalculation={costCalculation} contact={contact} />;
+                                costCalculation={costCalculation} />;
 }

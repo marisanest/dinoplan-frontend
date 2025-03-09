@@ -13,7 +13,7 @@ export default function InternalLink({
   className,
   href,
   replace = false,
-  scroll = false,
+  scroll = true,
   prefetch = true,
   children,
 }: InternalLinkProps): ReactNode {

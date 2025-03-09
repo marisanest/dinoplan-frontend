@@ -1,6 +1,6 @@
 import Text from "@/components/text/text";
 import {CalculatorCalculationSummaryTableValueType} from "@/rechner/berechnung/components/summary/table";
-import {toMonetary, zeroPad} from "@/lib/utils";
+import {toMonetary} from "@/lib/utils";
 
 export default function CalculatorCalculationSummaryTableValue({value}: {value: CalculatorCalculationSummaryTableValueType}) {
     return (
