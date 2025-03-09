@@ -14,6 +14,8 @@ import LandingServiceModules from "@/(landing)/serviceModules";
 import LandingStart from "@/(landing)/start";
 import {AppProvider} from "@/lib/stores/app/context";
 import LandingTopBanner from "@/(landing)/topBanner";
+import {InfoBoxProvider} from "@/lib/stores/infoBox/context";
+import InfoBox from "@/components/infoBox";
 
 export type LandingProps = {
     startPageSection: PAGE_SECTION_START_QUERYResult;
@@ -42,15 +44,18 @@ export default function Landing({
                      aboutPageSection={aboutPageSection}
                      faqPageSection={faqPageSection}
                      contact={contact}>
-            <main>
-                <LandingStart key="start"/>
-                <LandingTopBanner key="top-banner" />
-                <LandingServiceSegments key="segments" />
-                <LandingServiceFeatures key="features"/>
-                <LandingServiceModules key="modules" />
-                <LandingAbout key="about"/>
-                <LandingFaq key="faq"/>
-            </main>
+            <InfoBoxProvider>
+                <main>
+                    <LandingStart key="start"/>
+                    <LandingTopBanner key="top-banner" />
+                    <LandingServiceSegments key="segments" />
+                    <LandingServiceFeatures key="features"/>
+                    <LandingServiceModules key="modules" />
+                    <LandingAbout key="about"/>
+                    <LandingFaq key="faq"/>
+                    <InfoBox/>
+                </main>
+            </InfoBoxProvider>
         </AppProvider>
     );
 }

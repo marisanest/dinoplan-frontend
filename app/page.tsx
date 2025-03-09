@@ -75,6 +75,7 @@ const PAGE_SECTION_SERVICE_MODULES_QUERY = defineQuery(`*[_type == "pageSections
            _id,
            name,
            example,
+           costCalculationDescription,
            serviceSegment-> {
               _id,
               illustration {

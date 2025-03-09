@@ -3,6 +3,8 @@ import Text from "@/components/text/text";
 import CheckmarkIcon from "@/components/icons/checkmark";
 import {useCalculatorContext} from "@/lib/stores/calculator/context";
 
+import InfoBoxToggle from "@/components/infoBox/toggle";
+
 export default function CalculatorCalculationServiceModule({serviceModule}: any) {
   const { selectedServiceModules, selectServiceModule } = useCalculatorContext(
     useShallow((state) => ({
@@ -12,11 +14,16 @@ export default function CalculatorCalculationServiceModule({serviceModule}: any)
   );
 
   return (
-      <div className="flex justify-center items-center gap-[0.75rem] cursor-pointer" onClick={() => selectServiceModule(serviceModule)}>
-          <div className="min-w-circle w-circle min-h-circle h-circle rounded-full p-[2px] xs:p-[3px] border-blue-600 border-[2px]">
-              {serviceModule._id in selectedServiceModules && <CheckmarkIcon strokeColor="#294290"/>}
+      <div className="flex">
+          <div className="flex justify-center items-center gap-[0.75rem] cursor-pointer"
+               onClick={() => selectServiceModule(serviceModule)}
+          >
+              <div className="min-w-circle w-circle min-h-circle h-circle rounded-full p-[2px] xs:p-[3px] border-blue-600 border-[2px]">
+                  {serviceModule._id in selectedServiceModules && <CheckmarkIcon strokeColor="#294290"/>}
+              </div>
+              <Text className="break-all" size="lg" align="left">{serviceModule.name}</Text>
           </div>
-          <Text className="break-all" size="lg" align="left">{serviceModule.name}</Text>
+          {serviceModule.costCalculationDescription && <InfoBoxToggle text={serviceModule.costCalculationDescription} />}
       </div>
   );
 }

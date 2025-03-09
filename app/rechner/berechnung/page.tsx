@@ -31,6 +31,7 @@ const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSection
              serviceModule-> {
                _id,
                name,
+               costCalculationDescription,
                costCalculationForFinancialInvestment,
                costPerMonthForInsurance,
              }

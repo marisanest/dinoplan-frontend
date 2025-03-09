@@ -4,7 +4,10 @@ import Text from "@/components/text/text";
 import {useAppContext} from "@/lib/stores/app/context";
 
 export default function LandingServiceModulesButton({serviceModule, index}: {serviceModule: any, index: number}) {
-    const { selectedServiceModuleIndex, selectServiceModule } = useAppContext(
+    const {
+        selectedServiceModuleIndex,
+        selectServiceModule,
+    } = useAppContext(
         useShallow((state) => ({
             selectedServiceModuleIndex: state.selectedServiceModuleIndex,
             selectServiceModule: state.selectServiceModule,

@@ -1,3 +1,5 @@
+import {useEffect} from "react";
+
 export const delay = (milliseconds: number) => new Promise(resolve => setTimeout(resolve, milliseconds));
 
 export function stringDateToDate(formDate: string): Date | null {
@@ -53,4 +55,25 @@ export function getResponsiveSizeIdentifier(width: number | null | undefined): s
     } else {
         return 'xxxs'
     }
+}
+
+export function useOutsideClickHandler(refs: any[], onOutsideClick: () => void) {
+    useEffect(() => {
+        function handleClickOutside(event: any) {
+            let isOutsideClick = true
+
+            refs.forEach(ref => {
+                if (ref?.current && ref.current.contains(event.target))
+                    isOutsideClick = false
+            })
+
+            if (isOutsideClick)
+                onOutsideClick()
+        }
+
+        document.addEventListener("pointerdown", handleClickOutside);
+        return () => {
+            document.removeEventListener("pointerdown", handleClickOutside);
+        };
+    }, [refs]);
 }
