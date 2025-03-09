@@ -15,10 +15,14 @@ export default function InfoBoxToggle({text}: {text?: any | null}) {
         toggleInfoBoxIsOpen,
         setToggleRef,
         setInfoBoxText,
+        closeInfoBox,
+        openInfoBox,
     } = useInfoBoxContext(useShallow((s) => ({
         toggleInfoBoxIsOpen: s.toggleInfoBoxIsOpen,
         setToggleRef: s.setToggleRef,
-        setInfoBoxText: s.setInfoBoxText
+        setInfoBoxText: s.setInfoBoxText,
+        closeInfoBox: s.closeInfoBox,
+        openInfoBox: s.openInfoBox,
     })));
 
     useEffect(() => {
@@ -31,8 +35,18 @@ export default function InfoBoxToggle({text}: {text?: any | null}) {
                  toggleInfoBoxIsOpen()
                  setInfoBoxText(text)
              }}
-            // onMouseEnter={() => width && width > RESPONSIVE_SIZE_BREAKPOINT_SS && setIsVisible(true)}
-            // onMouseLeave={() => width && width > RESPONSIVE_SIZE_BREAKPOINT_SS && setIsVisible(false)}
+            onMouseEnter={() => {
+                if (width && width > RESPONSIVE_SIZE_BREAKPOINT_SS) {
+                    openInfoBox()
+                    setInfoBoxText(text)
+                }
+            }}
+            onMouseLeave={() => {
+                if (width && width > RESPONSIVE_SIZE_BREAKPOINT_SS) {
+                    closeInfoBox()
+                    setInfoBoxText(text)
+                }
+            }}
         >
             <InfoIcon/>
         </div>
