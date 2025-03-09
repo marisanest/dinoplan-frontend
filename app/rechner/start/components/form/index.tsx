@@ -16,7 +16,6 @@ const schema = z.object({
         invalid_type_error: 'Der Name deines Kindes muss angegeben werden.',
     }).trim().min(1,  { message: "Der Name deines Kindes muss angegeben werden." }),
     childAge: z.string().transform((value, ctx): number => {
-        console.log(value)
         if (value === null || value === '' || value === undefined) {
             ctx.addIssue({
                 code: "invalid_type",
