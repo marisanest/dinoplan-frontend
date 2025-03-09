@@ -14,10 +14,6 @@ type CalculatorStartFormChildAgeInputProps = {
 export default function CalculatorStartFormChildAgeInput({register, error, pending, customer}: CalculatorStartFormChildAgeInputProps) {
     return (
         <div className="ss:flex ss:flex-col ss:gap-y-[0.4rem]">
-            {/*<Text className="pb-[8px] ss:pt-0" align="left" size="md">*/}
-            {/*    /!*Alter*!/*/}
-            {/*</Text>*/}
-
             <DinoplanFormTextInput name="childAge"
                                    placeholder="Alter des Kindes"
                                    register={register}

@@ -27,7 +27,7 @@ export const createCalculatorStore = (initProps: Pick<CalculatorStoreProps, 'ser
     prevSelectedServiceSegmentIndex: 0,
     selectedServiceModules: {},
     ...initProps,
-    serviceSegments: initProps.serviceSegments ? initProps.serviceSegments.map((s: any) => s.serviceSegment) : [],
+    serviceSegments: initProps.serviceSegments ? extractCostPerMonthForInsurance(initProps.serviceSegments.map((s: any) => s.serviceSegment)) : [],
   }
 
   return createStore<CalculatorStoreState>()((set, get) => ({
@@ -90,3 +90,23 @@ export const createCalculatorStore = (initProps: Pick<CalculatorStoreProps, 'ser
     },
   }))
 }
+
+function extractCostPerMonthForInsurance(serviceSegments: any) {
+
+  serviceSegments.map((serviceSegment: any) => {
+    serviceSegment.serviceModules.map((serviceModule: any) => {
+      const costPerMonthForInsurance = {}
+      if (serviceModule.serviceModule.costPerMonthForInsurance) {
+        Object.entries(serviceModule.serviceModule.costPerMonthForInsurance).forEach(([key, cost]) => {
+          const age = key.split('_')[1]
+          costPerMonthForInsurance[age] = cost
+        })
+
+        serviceModule.serviceModule.extractedCostPerMonthForInsurance = costPerMonthForInsurance
+      }
+    })
+  })
+
+  return serviceSegments
+}
+

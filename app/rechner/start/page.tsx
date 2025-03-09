@@ -13,7 +13,6 @@ export const metadata: Metadata = getMetadata(
 );
 
 const options = { next: { revalidate: 3600 } };
-const revalidate = 3600
 
 export default async function CalculatorStartPage() {
   const session = await getSession();

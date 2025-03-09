@@ -4,6 +4,7 @@ import CalculatorCalculationSummaryTableSum from "@/rechner/berechnung/component
 import CalculatorCalculationSummaryTableValues from "@/rechner/berechnung/components/summary/table/values";
 import {round} from "@/lib/math";
 import {useCalculatorContext} from "@/lib/stores/calculator/context";
+import {calculatePricePerMonthForFinancialInvestment, calculatePricePerMonthForForInsurance} from "@/lib/calculation";
 
 export type CalculatorCalculationSummaryTableValueType = {
     name: string;
@@ -39,7 +40,7 @@ export default function CalculatorCalculationSummaryTable({customer, costCalcula
 
 function calculatePricePerMonth(serviceModule, costCalculation, customer) {
     if (serviceModule.costPerMonthForInsurance) {
-        return serviceModule.costPerMonthForInsurance;
+        return calculatePricePerMonthForForInsurance({serviceModule, customer});
     } else if (serviceModule.costCalculationForFinancialInvestment) {
         return calculatePricePerMonthForFinancialInvestment({
             cost: serviceModule.costCalculationForFinancialInvestment.cost,
@@ -51,33 +52,4 @@ function calculatePricePerMonth(serviceModule, costCalculation, customer) {
     } else {
         return 0;
     }
-}
-
-function calculatePricePerMonthForFinancialInvestment({
-    cost,
-    ageAtPayout,
-                                                          childAge,
-    interestRate,
-    inflationRate,
-}: {
-    cost: number,
-    ageAtPayout: number,
-    childAge: number,
-    interestRate: number,
-    inflationRate: number,
-}) {
-    const nYears = ageAtPayout - childAge;
-
-    if (nYears <= 0) {
-        return cost;
-    }
-
-    const nMonths = nYears * 12;
-    const pYear = interestRate
-    const pMonth = 100 * (Math.pow((1 + pYear / 100), 1 / 12) - 1)
-    const q = 1.0 + (pMonth / 100.0)
-    const e = cost * Math.pow(1 + inflationRate / 100.0, nYears)
-    const r = e * (q - 1) / (q * (Math.pow(q, nMonths) - 1))
-
-    return round(r, 2);
 }
