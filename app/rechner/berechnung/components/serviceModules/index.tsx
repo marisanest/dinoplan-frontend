@@ -39,7 +39,7 @@ function CalculatorCalculationServiceModulesContainer({children}: ReactNodeProps
                     "w-full flex justify-center px-x-s xs:px-x-sm bg-orange-300 pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-sm))] pb-y-sm transition-[border-radius] duration-1000",
                     typeof selectedServiceSegmentIndex === 'number' || screenSizes?.isXs ? 'rounded-bl-md translate shadow-[0px_6px_10px_-10px_black]' : 'rounded-bl-0 shadow-[0px_0px_0px_0px_black]'
                 )}>
-                    <div className="w-fit flex flex-col gap-[0.75rem]">
+                    <div className="w-fit flex flex-col gap-[8px]">
                         {children}
                     </div>
                 </div>

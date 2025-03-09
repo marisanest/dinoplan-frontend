@@ -15,7 +15,7 @@ export default function CalculatorCalculationServiceModule({serviceModule}: any)
 
   return (
       <div className="flex">
-          <div className="flex justify-center items-center gap-[0.75rem] cursor-pointer"
+          <div className="flex justify-center items-center gap-[12px] cursor-pointer pt-[6px]"
                onClick={() => selectServiceModule(serviceModule)}
           >
               <div className="min-w-circle w-circle min-h-circle h-circle rounded-full p-[2px] xs:p-[3px] border-blue-600 border-[2px]">
