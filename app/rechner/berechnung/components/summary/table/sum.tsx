@@ -9,7 +9,7 @@ export default function CalculatorCalculationSummaryTableSum({values}: {values: 
     return (
         <div className="w-full grid grid-cols-2">
             <Text align="left" size="sm">Insgesamt</Text>
-            <Text align="right" size="sm">{toMonetary(round(sum, 2))} €</Text>
+            <Text align="right" size="sm">{toMonetary(round(sum, 2))} €*</Text>
         </div>
     );
 }

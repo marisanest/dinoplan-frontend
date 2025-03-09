@@ -12,7 +12,7 @@ export const metadata: Metadata = getMetadata(
   "Berechne jetzt deinen Beitrag!",
 );
 
-const options = { next: { revalidate: 3600 } };
+const options = { next: { revalidate: 0 } };
 
 const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSectionsServiceSegments"][0] {
     serviceSegments[] {
@@ -39,9 +39,10 @@ const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSection
     }
 }`);
 
-const COST_CALCULATION_QUERY = defineQuery(`*[_type == "costCalculation"][0] {
+const COST_CALCULATION_QUERY = defineQuery(`*[_type == "costCalculation"] | order(_createdAt desc)[0] {
     inflationRate,
     interestRate,
+    generalNote,
 }`);
 
 export default async function CalculatorCalculationPage() {

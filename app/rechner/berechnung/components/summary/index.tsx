@@ -7,6 +7,7 @@ import cn from "clsx";
 import CalculatorCalculationSummaryTable from "@/rechner/berechnung/components/summary/table";
 import useScreenSizes from "@/lib/hooks/useScreenSizes";
 import {useCalculatorContext} from "@/lib/stores/calculator/context";
+import {PortableText} from "next-sanity";
 
 export default function CalculatorCalculationSummary({customer, costCalculation}: any) {
     const { selectedServiceModules, selectedServiceSegmentIndex } = useCalculatorContext(
@@ -41,8 +42,12 @@ export default function CalculatorCalculationSummary({customer, costCalculation}
 
                         <CalculatorCalculationSummaryTable customer={customer} costCalculation={costCalculation}/>
 
-                        <Text className="my-y-xs" size="sm">
+                        <Text className="mt-y-xs" size="sm">
                             Vereinbare jetzt einen Termin mit uns und lass dich umfangreich zu deinem Paket beraten.
+                        </Text>
+
+                        <Text className="mb-y-xs mt-[6px]" size="xs">
+                            *&nbsp;<PortableText value={costCalculation.generalNote}/>
                         </Text>
                     </>
                 )
