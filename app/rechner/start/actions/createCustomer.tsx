@@ -50,7 +50,7 @@ export async function createCustomer(customer: any, data: CreateCustomerSchema):
 
     } else {
         const response = await fetch(
-            `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.SANITY_DATASET}?returnIds=true`,
+            `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.NEXT_PUBLIC_SANITY_DATASET}?returnIds=true`,
             {
                 body: JSON.stringify( {
                     "mutations": [
