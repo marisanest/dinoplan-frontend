@@ -25,26 +25,25 @@ export default function InfoBoxToggle({text}: {text?: any | null}) {
         openInfoBox: s.openInfoBox,
     })));
 
-    useEffect(() => {
-        setToggleRef(ref)
-    }, [ref])
-
     return (
         <div ref={ref} className="cursor-pointer px-[4px] pb-[4px]"
              onClick={() => {
                  toggleInfoBoxIsOpen()
                  setInfoBoxText(text)
+                 setToggleRef(ref)
              }}
             onMouseEnter={() => {
                 if (width && width > RESPONSIVE_SIZE_BREAKPOINT_SS) {
                     openInfoBox()
                     setInfoBoxText(text)
+                    setToggleRef(ref)
                 }
             }}
             onMouseLeave={() => {
                 if (width && width > RESPONSIVE_SIZE_BREAKPOINT_SS) {
                     closeInfoBox()
                     setInfoBoxText(text)
+                    setToggleRef(ref)
                 }
             }}
         >

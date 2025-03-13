@@ -7,11 +7,16 @@ import useScreenSizes from "@/lib/hooks/useScreenSizes";
 import {useCalculatorContext} from "@/lib/stores/calculator/context";
 
 export default function CalculatorCalculationServiceModules() {
-    const {selectedServiceSegmentIndex, prevSelectedServiceSegmentIndex, serviceSegments} = useCalculatorContext(useShallow((s) => ({
+    const {
+        selectedServiceSegmentIndex,
+        prevSelectedServiceSegmentIndex,
+        serviceSegments
+    } = useCalculatorContext(useShallow((s) => ({
         selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
         prevSelectedServiceSegmentIndex: s.prevSelectedServiceSegmentIndex,
         serviceSegments: s.serviceSegments,
     })))
+
     let serviceSegmentIndex = typeof selectedServiceSegmentIndex === 'number' ? selectedServiceSegmentIndex : undefined
     if (!(typeof serviceSegmentIndex === 'number')) serviceSegmentIndex = typeof prevSelectedServiceSegmentIndex === 'number' ? prevSelectedServiceSegmentIndex : 0
     const selectedServiceSegment = serviceSegments[serviceSegmentIndex];
@@ -25,7 +30,9 @@ export default function CalculatorCalculationServiceModules() {
 
 function CalculatorCalculationServiceModulesContainer({children}: ReactNodeProps) {
     const screenSizes = useScreenSizes()
-    const {selectedServiceSegmentIndex} = useCalculatorContext(useShallow((s) => ({
+    const {
+        selectedServiceSegmentIndex
+    } = useCalculatorContext(useShallow((s) => ({
         selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
     })))
 

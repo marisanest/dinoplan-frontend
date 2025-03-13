@@ -23,7 +23,7 @@ export default function CalculatorCalculationServiceModule({serviceModule}: any)
               </div>
               <Text className="break-all" size="lg" align="left">{serviceModule.name}</Text>
           </div>
-          {serviceModule.costCalculationDescription && <InfoBoxToggle text={serviceModule.costCalculationDescription} />}
+          {serviceModule.costCalculationDescription && <InfoBoxToggle key={serviceModule._id} text={serviceModule.costCalculationDescription} />}
       </div>
   );
 }
