@@ -47,8 +47,6 @@ export async function updateServiceModules(customer: Customer, serviceModule: Se
         },
     )
 
-    console.log(res)
-
     return {
         status: 200,
         customer: {

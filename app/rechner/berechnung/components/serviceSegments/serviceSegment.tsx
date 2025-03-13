@@ -14,8 +14,6 @@ export type CalculatorServiceSegmentProps = {
 export default function CalculatorCalculationServiceSegment({className, index, serviceSegment}: CalculatorServiceSegmentProps) {
     const selectServiceSegment = useCalculatorContext(useShallow((s) => s.selectServiceSegment))
 
-    console.log("serviceSegment: ", serviceSegment.illustration)
-
     return (
         <div className="w-full cursor-pointer"
              onClick={() => selectServiceSegment(index)}
