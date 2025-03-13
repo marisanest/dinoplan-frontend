@@ -8,11 +8,15 @@ import FooterBannerLogo from "@/components/footer/banner/logo";
 export default function FooterBanner({contact}: {contact: any}) {
     return (
         <FooterBannerContainer>
-            <FooterBannerImprint />
-            <FooterBannerPrivacy />
+            <div className="flex items-center justify-end gap-x-[16px] xs:gap-x-[24px] ss:gap-x-[48px]">
+                <FooterBannerImprint />
+                <FooterBannerPrivacy />
+            </div>
             <FooterBannerLogo />
-            <FooterFaq key="faq" />
-            <FooterBannerContact email={contact.email.email} />
+            <div className="flex items-center justify-start gap-x-[16px] xs:gap-x-[24px] ss:gap-x-[48px]">
+                <FooterFaq key="faq" />
+                <FooterBannerContact email={contact.email.email} />
+            </div>
         </FooterBannerContainer>
     );
 }
