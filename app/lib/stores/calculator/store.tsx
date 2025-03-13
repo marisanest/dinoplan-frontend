@@ -1,11 +1,17 @@
 import {createStore} from 'zustand'
 import {
+  CostCalculation,
+  Customer,
   ServiceSegment
 } from "@/lib/types/sanity-types";
 import {WindowSizeType} from "@/lib/types/core";
 
 export interface CalculatorStoreProps {
   windowSize: WindowSizeType;
+
+  customer: Customer | undefined;
+  costCalculation: CostCalculation | undefined;
+
   serviceSegments: ServiceSegment[];
   selectedServiceSegmentIndex: number | undefined;
   prevSelectedServiceSegmentIndex: number | undefined;
@@ -14,6 +20,7 @@ export interface CalculatorStoreProps {
 
 export interface CalculatorStoreActions {
   setWindowSize: (windowSize: WindowSizeType) => void;
+  setCustomer: (customer: Customer) => void;
   selectServiceSegment: (serviceSegmentIndex: number) => void;
   selectPrevServiceSegment: () => void;
   selectNextServiceSegment: () => void;
@@ -24,18 +31,23 @@ export interface CalculatorStoreState extends CalculatorStoreProps, CalculatorSt
 
 export type CalculatorStore = ReturnType<typeof createCalculatorStore>
 
-export const createCalculatorStore = (initProps: Pick<CalculatorStoreProps, 'serviceSegments' | 'windowSize'>) => {
+export const createCalculatorStore = (initProps: CalculatorStoreProps) => {
   const DEFAULT_PROPS: CalculatorStoreProps = {
+    windowSize: {width: null, height: null},
+    customer: undefined,
+    costCalculation: undefined,
     selectedServiceSegmentIndex: 0,
     prevSelectedServiceSegmentIndex: 0,
     selectedServiceModules: {},
-    ...initProps,
-    serviceSegments: initProps.serviceSegments ? extractCostPerMonthForInsurance(initProps.serviceSegments.map((s: any) => s.serviceSegment)) : [],
+    serviceSegments: [],
   }
 
   return createStore<CalculatorStoreState>()((set, get) => ({
     ...DEFAULT_PROPS,
+    ...initProps,
+    serviceSegments: initProps.serviceSegments ? extractCostPerMonthForInsurance(initProps.serviceSegments.map((s: any) => s.serviceSegment)) : [],
     setWindowSize: (windowSize: WindowSizeType) => set({windowSize}),
+    setCustomer: (customer: Customer) => set({customer}),
     selectServiceSegment: (serviceSegmentIndex) => {
       const currentSelectedServiceSegmentIndex = get().selectedServiceSegmentIndex;
 

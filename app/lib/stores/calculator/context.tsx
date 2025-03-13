@@ -11,7 +11,7 @@ import { useStore } from 'zustand'
 import {CalculatorStore, CalculatorStoreProps, CalculatorStoreState, createCalculatorStore} from "@/lib/stores/calculator/store";
 import {useWindowSize} from "@uidotdev/usehooks";
 
-type CalculatorProviderProps = PropsWithChildren<Pick<CalculatorStoreProps, 'serviceSegments'>>
+type CalculatorProviderProps = PropsWithChildren<CalculatorStoreProps>
 const CalculatorContext = createContext<CalculatorStore | null>(null)
 
 export const CalculatorProvider = ({children, ...props}: CalculatorProviderProps) =>{

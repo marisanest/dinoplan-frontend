@@ -2,21 +2,25 @@ import {useShallow} from "zustand/react/shallow";
 import CalculatorCalculationSummaryTableHeader from "@/rechner/berechnung/components/summary/table/header";
 import CalculatorCalculationSummaryTableSum from "@/rechner/berechnung/components/summary/table/sum";
 import CalculatorCalculationSummaryTableValues from "@/rechner/berechnung/components/summary/table/values";
-import {round} from "@/lib/math";
 import {useCalculatorContext} from "@/lib/stores/calculator/context";
 import {calculatePricePerMonthForFinancialInvestment, calculatePricePerMonthForForInsurance} from "@/lib/calculation";
+import {CostCalculation, Customer} from "@/lib/types/sanity-types";
 
 export type CalculatorCalculationSummaryTableValueType = {
     name: string;
     costPerMonth: number;
 }
 
-export default function CalculatorCalculationSummaryTable({customer, costCalculation}: any) {
-    const { selectedServiceModules } = useCalculatorContext(
-        useShallow((state) => ({
-            selectedServiceModules: state.selectedServiceModules,
-        })),
-    );
+export default function CalculatorCalculationSummaryTable() {
+    const {
+        selectedServiceModules,
+        customer,
+        costCalculation,
+    } = useCalculatorContext(useShallow((s) => ({
+        selectedServiceModules: s.selectedServiceModules,
+        customer: s.customer,
+        costCalculation: s.costCalculation,
+    })));
 
     if (Object.values(selectedServiceModules).length === 0) {
         return null;
@@ -38,7 +42,7 @@ export default function CalculatorCalculationSummaryTable({customer, costCalcula
     );
 }
 
-function calculatePricePerMonth(serviceModule, costCalculation, customer) {
+function calculatePricePerMonth(serviceModule: any, costCalculation: CostCalculation, customer: Customer) {
     if (serviceModule.costPerMonthForInsurance) {
         return calculatePricePerMonthForForInsurance({serviceModule, customer});
     } else if (serviceModule.costCalculationForFinancialInvestment) {

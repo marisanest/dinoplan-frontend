@@ -7,13 +7,9 @@ const updateSchema = z.object({
 })
 
 export async function updatePhoneNumber(customer: any, phoneNumber: string) {
-
-    console.log(customer)
     const validatedFields = updateSchema.safeParse({
         phoneNumber
     })
-
-    console.log(validatedFields)
 
     if (!validatedFields.success) {
         return {

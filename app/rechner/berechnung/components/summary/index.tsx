@@ -9,13 +9,18 @@ import useScreenSizes from "@/lib/hooks/useScreenSizes";
 import {useCalculatorContext} from "@/lib/stores/calculator/context";
 import {PortableText} from "next-sanity";
 
-export default function CalculatorCalculationSummary({customer, costCalculation}: any) {
-    const { selectedServiceModules, selectedServiceSegmentIndex } = useCalculatorContext(
-        useShallow((state) => ({
-            selectedServiceModules: state.selectedServiceModules,
-            selectedServiceSegmentIndex: state.selectedServiceSegmentIndex,
-        })),
-    );
+export default function CalculatorCalculationSummary() {
+    const {
+        selectedServiceModules,
+        selectedServiceSegmentIndex,
+        customer,
+        costCalculation,
+    } = useCalculatorContext(useShallow((s) => ({
+        selectedServiceModules: s.selectedServiceModules,
+        selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
+        customer: s.customer,
+        costCalculation: s.costCalculation,
+    })));
 
     const screenSizes = useScreenSizes()
 
@@ -34,20 +39,20 @@ export default function CalculatorCalculationSummary({customer, costCalculation}
                 Object.values(selectedServiceModules).length > 0 && (
                     <>
                         <Title className="mb-[0.5rem]" size="lg">
-                            {customer.childName}'s Dinoplan
+                            {customer?.childName}'s Dinoplan
                         </Title>
                         <Text className="mb-[2rem]" size="sm">
                             Folgendes würde dich unser dino-starkes Paket kosten:
                         </Text>
 
-                        <CalculatorCalculationSummaryTable customer={customer} costCalculation={costCalculation}/>
+                        <CalculatorCalculationSummaryTable/>
 
                         <Text className="mt-y-xs" size="sm">
                             Vereinbare jetzt einen Termin mit uns und lass dich umfangreich zu deinem Paket beraten.
                         </Text>
 
                         <Text className="mb-y-xs mt-[6px]" size="xs">
-                            *&nbsp;<PortableText value={costCalculation.generalNote}/>
+                            *&nbsp;<PortableText value={costCalculation?.generalNote}/>
                         </Text>
                     </>
                 )

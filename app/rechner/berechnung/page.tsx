@@ -65,6 +65,7 @@ export default async function CalculatorCalculationPage() {
     _id,
     childName,
     childAge,
+    serviceModules,
   }`);
 
   const customer = await sanityClient.fetch(query, {}, options);

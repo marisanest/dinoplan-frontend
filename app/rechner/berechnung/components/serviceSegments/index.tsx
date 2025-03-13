@@ -15,7 +15,7 @@ export default function CalculatorCalculationServiceSegments() {
             </Text>
 
             <CalculatorCalculationServiceSegmentsGrid />
-            <CalculatorCalculationServiceSegmentsCarousel />
+            {/*<CalculatorCalculationServiceSegmentsCarousel />*/}
         </CalculatorCalculationServiceSegmentsContainer>
     );
 }

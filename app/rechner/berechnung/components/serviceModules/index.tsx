@@ -23,7 +23,10 @@ export default function CalculatorCalculationServiceModules() {
 
     return (
         <CalculatorCalculationServiceModulesContainer>
-            {selectedServiceSegment?.serviceModules.map((serviceModule: any) => <CalculatorCalculationServiceModule key={serviceModule.serviceModule._id} serviceModule={serviceModule.serviceModule}/>)}
+            {selectedServiceSegment?.serviceModules.map((serviceModule: any) => (
+                <CalculatorCalculationServiceModule key={serviceModule.serviceModule._id}
+                                                    serviceModule={serviceModule.serviceModule}/>
+            ))}
         </CalculatorCalculationServiceModulesContainer>
     );
 }

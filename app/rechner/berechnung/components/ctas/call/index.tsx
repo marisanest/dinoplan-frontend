@@ -5,14 +5,20 @@ import Button from "@/components/buttons";
 import PhoneInput from 'react-phone-number-input'
 import {useState} from "react";
 import {updatePhoneNumber} from "@/rechner/berechnung/actions/updatePhoneNumber";
+import {useCalculatorContext} from "@/lib/stores/calculator/context";
+import {useShallow} from "zustand/react/shallow";
 
-export default function CalculatorCalculationCallCta({customer}: {customer: any}) {
+export default function CalculatorCalculationCallCta() {
+    const {
+        customer,
+    } = useCalculatorContext(useShallow((s) => ({
+        customer: s.customer,
+    })));
+
     const [value, setValue] = useState<undefined | string>(undefined)
     const [isVisible, setIsVisible] = useState(false)
     const [height, setHeight] = useState<number>(0)
     const [state, setState] = useState<{message?: string; status?: number}>({})
-
-    console.log(state)
 
     return (
         <div className="flex flex-col items-center">
@@ -44,7 +50,6 @@ export default function CalculatorCalculationCallCta({customer}: {customer: any}
 
                     <div className="cursor-pointer"
                          onClick={async () => {
-                             console.log(value)
                              if (value === null || value === undefined || value === "") {
                                  setState({ message: "Es muss eine Telefonnummer angegeben werden.",  status: -1 })
                              } else {
