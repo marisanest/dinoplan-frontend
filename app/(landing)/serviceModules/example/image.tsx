@@ -1,4 +1,4 @@
-import {urlFor} from "@/lib/sanity/image";
+import {getImageUrlBuilder} from "@/lib/sanity/image";
 import Image from "next/image";
 
 export default function LandingServiceModulesExampleImage({selectedServiceModule}: {selectedServiceModule: any}) {
@@ -6,7 +6,7 @@ export default function LandingServiceModulesExampleImage({selectedServiceModule
         <div className="w-full xs:h-full flex justify-center xs:justify-end xs:items-center">
             {selectedServiceModule && (
                 <Image
-                    src={urlFor(selectedServiceModule.serviceSegment?.illustration)?.url()}
+                    src={getImageUrlBuilder(selectedServiceModule.serviceSegment?.illustration)?.url()}
                     alt="Illustration"
                     className="w-[150px] h-auto xs:w-full xs:max-w-[250px]"
                     width={selectedServiceModule.serviceSegment?.illustration.width}

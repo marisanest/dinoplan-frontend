@@ -1,5 +1,5 @@
 import Landing from "@/app/(landing)/landing"
-import {client} from "@/lib/sanity/client";
+import {sanityClient} from "@/lib/sanity/client";
 import {defineQuery} from "groq";
 import {getSession} from "@/lib/signIn";
 import {redirect} from "next/navigation";
@@ -142,13 +142,13 @@ export default async function LandingPage() {
     redirect('/login')
   }
 
-  const startPageSection = await client.fetch(PAGE_SECTION_START_QUERY, {}, options);
-  const serviceSegmentsPageSection = await client.fetch(PAGE_SECTION_SERVICE_SEGMENTS_QUERY, {}, options);
-  const serviceFeaturesPageSection = await client.fetch(PAGE_SECTION_SERVICE_FEATURES_QUERY, {}, options);
-  const serviceModulesPageSection = await client.fetch(PAGE_SECTION_SERVICE_MODULES_QUERY, {}, options);
-  const aboutPageSection = await client.fetch(PAGE_SECTION_ABOUT_QUERY, {}, options);
-  const faqPageSection = await client.fetch(PAGE_SECTION_FAQ_QUERY, {}, options);
-  const contact = await client.fetch(CONTACT_QUERY, {}, options);
+  const startPageSection = await sanityClient.fetch(PAGE_SECTION_START_QUERY, {}, options);
+  const serviceSegmentsPageSection = await sanityClient.fetch(PAGE_SECTION_SERVICE_SEGMENTS_QUERY, {}, options);
+  const serviceFeaturesPageSection = await sanityClient.fetch(PAGE_SECTION_SERVICE_FEATURES_QUERY, {}, options);
+  const serviceModulesPageSection = await sanityClient.fetch(PAGE_SECTION_SERVICE_MODULES_QUERY, {}, options);
+  const aboutPageSection = await sanityClient.fetch(PAGE_SECTION_ABOUT_QUERY, {}, options);
+  const faqPageSection = await sanityClient.fetch(PAGE_SECTION_FAQ_QUERY, {}, options);
+  const contact = await sanityClient.fetch(CONTACT_QUERY, {}, options);
 
   return (
       <Landing startPageSection={startPageSection}

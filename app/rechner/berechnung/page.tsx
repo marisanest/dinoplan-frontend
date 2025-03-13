@@ -2,7 +2,7 @@ import {getSession} from "@/lib/signIn";
 import {redirect} from "next/navigation";
 import {cookies} from "next/headers";
 import {defineQuery} from "groq";
-import {client} from "@/lib/sanity/client";
+import {sanityClient} from "@/lib/sanity/client";
 import CalculatorCalculation from "@/rechner/berechnung/components/calculation";
 import type {Metadata} from "next";
 import {getMetadata} from "@/lib/metadata";
@@ -20,10 +20,15 @@ const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSection
            _id,
            dinoPrefix,
            illustration {
-             'height': asset->metadata.dimensions.height,
-             'width': asset->metadata.dimensions.width,
+       
              asset->{
                url,
+               metadata {
+                 dimensions {
+                    width,
+                    height,
+                 }
+               }
              }
            },
            serviceModules[] {
@@ -57,18 +62,21 @@ export default async function CalculatorCalculationPage() {
   }
 
   const query = defineQuery(`*[_type == "customer" && _id == "${customerId}"][0]{
+    _id,
     childName,
     childAge,
   }`);
 
-  const customer = await client.fetch(query, {}, options);
+  const customer = await sanityClient.fetch(query, {}, options);
 
   if (!customer) {
     redirect('/rechner/start')
   }
 
-  const pageSectionsServiceSegments = await client.fetch(PAGE_SECTION_SERVICE_SEGMENTS_QUERY, {}, options);
-  const costCalculation = await client.fetch(COST_CALCULATION_QUERY, {}, options);
+  const [pageSectionsServiceSegments, costCalculation] = await Promise.all([
+    sanityClient.fetch(PAGE_SECTION_SERVICE_SEGMENTS_QUERY, {}, options),
+    sanityClient.fetch(COST_CALCULATION_QUERY, {}, options)
+  ])
 
   return <CalculatorCalculation serviceSegments={pageSectionsServiceSegments.serviceSegments}
                                 customer={customer}

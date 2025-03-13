@@ -5,11 +5,6 @@ export type ReactNodeProps = {
     children?: ReactNode;
 }
 
-export type WindowSizeType = {
-    width: number;
-    height: number;
-};
-
 export type ScreenSizeType = {
     isXs: boolean;
 };
@@ -70,3 +65,8 @@ export type QuestionType = {
 }
 
 export type ArrayElement<A> = A extends readonly (infer T)[] ? T : never
+
+export interface WindowSizeType {
+    width: number | null;
+    height: number | null;
+}

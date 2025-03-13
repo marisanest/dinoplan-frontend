@@ -2,7 +2,7 @@
 
 import {useShallow} from "zustand/react/shallow";
 import Image from "next/image";
-import {urlFor} from "@/lib/sanity/image";
+import {getImageUrlBuilder} from "@/lib/sanity/image";
 import Title from "@/components/title";
 import ArrowIcon from "@/components/icons/arrow";
 import useScreenSizes from "@/lib/hooks/useScreenSizes";
@@ -29,10 +29,11 @@ export default function CalculatorCalculationServiceSegmentsCarousel() {
                 </div>
 
                 <Image className="w-[calc(100%-2*27px-2*1.5rem)] xs:w-[calc(100%-2*30px-2*1.5rem)] max-w-[250px] h-auto"
-                       src={urlFor(selectedServiceSegment.illustration)?.url()}
-                       alt={selectedServiceSegment.name}
-                       width={selectedServiceSegment.illustration.width}
-                       height={selectedServiceSegment.illustration.height} />
+                       src={getImageUrlBuilder(selectedServiceSegment.illustration)?.url()}
+                       alt={selectedServiceSegment.name ?? ''}
+                       width={selectedServiceSegment.illustration.asset.metadata.dimensions.width}
+                       height={selectedServiceSegment.illustration.asset.metadata.dimensions.height}
+                />
 
                 <div className="min-w-[27px] w-[27px] min-h-[27px] h-[27px] xs:min-w-[30px] xs:w-[30px] xs:min-h-[30px] xs:h-[30px] flex justify-center items-center rounded-full bg-red-200 cursor-pointer"
                      onClick={selectNextServiceSegment}>

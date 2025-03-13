@@ -4,21 +4,27 @@ import {
     createContext,
     useContext,
     useRef,
-    PropsWithChildren,
+    PropsWithChildren, useEffect,
 } from 'react';
 
 import { useStore } from 'zustand'
 import {CalculatorStore, CalculatorStoreProps, CalculatorStoreState, createCalculatorStore} from "@/lib/stores/calculator/store";
+import {useWindowSize} from "@uidotdev/usehooks";
 
 type CalculatorProviderProps = PropsWithChildren<Pick<CalculatorStoreProps, 'serviceSegments'>>
 const CalculatorContext = createContext<CalculatorStore | null>(null)
 
 export const CalculatorProvider = ({children, ...props}: CalculatorProviderProps) =>{
-
     const storeRef = useRef<CalculatorStore>()
+    const windowSize = useWindowSize()
+
     if (!storeRef.current) {
-        storeRef.current = createCalculatorStore({...props});
+        storeRef.current = createCalculatorStore({...props, windowSize});
     }
+
+    useEffect(() => {
+        storeRef?.current?.getState().setWindowSize(windowSize)
+    }, [windowSize]);
 
     return (
         <CalculatorContext.Provider value={storeRef.current}>

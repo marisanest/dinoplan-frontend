@@ -1,13 +1,16 @@
 import { createStore } from 'zustand'
 import {RefObject} from "react";
+import {WindowSizeType} from "@/lib/types/core";
 
 export interface InfoBoxProps {
+  windowSize: WindowSizeType;
   isInfoBoxOpen: boolean;
   toggleRef: null | RefObject<any>;
   infoBoxText: any | null | undefined;
 }
 
 export interface InfoBoxPropsActions {
+  setWindowSize: (newWindowSize: WindowSizeType) => void;
   closeInfoBox: () => void;
   openInfoBox: () => void;
   toggleInfoBoxIsOpen: () => void;
@@ -21,6 +24,7 @@ export type InfoBoxStore = ReturnType<typeof createInfoBoxStore>
 
 export const createInfoBoxStore = (initProps?: Partial<InfoBoxProps>) => {
   const DEFAULT_PROPS: InfoBoxProps = {
+    windowSize: {width: null, height: null},
     isInfoBoxOpen: false,
     toggleRef: null,
     infoBoxText: undefined,
@@ -29,6 +33,7 @@ export const createInfoBoxStore = (initProps?: Partial<InfoBoxProps>) => {
   return createStore<InfoBoxState>()((set, get) => ({
     ...DEFAULT_PROPS,
     ...initProps,
+    setWindowSize: (windowSize) => set({ windowSize }),
     closeInfoBox: () => set({ isInfoBoxOpen: false }),
     openInfoBox: () => set({ isInfoBoxOpen: true }),
     toggleInfoBoxIsOpen: () => set(({isInfoBoxOpen}) => ({isInfoBoxOpen: !isInfoBoxOpen})),

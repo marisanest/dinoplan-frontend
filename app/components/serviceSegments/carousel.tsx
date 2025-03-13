@@ -2,7 +2,7 @@
 
 import {useShallow} from "zustand/react/shallow";
 import Image from "next/image";
-import {urlFor} from "@/lib/sanity/image";
+import {getImageUrlBuilder} from "@/lib/sanity/image";
 import Title from "@/components/title";
 import ArrowIcon from "@/components/icons/arrow";
 import useScreenSizes from "@/lib/hooks/useScreenSizes";
@@ -29,7 +29,7 @@ export default function ServiceSegmentsCarousel() {
                 </div>
 
                 <Image className="w-[calc(100%-2*27px-2*1.5rem)] xs:w-[calc(100%-2*30px-2*1.5rem)] max-w-[250px] h-auto"
-                       src={urlFor(selectedServiceSegment.illustration)?.url()}
+                       src={getImageUrlBuilder(selectedServiceSegment.illustration)?.url()}
                        alt={selectedServiceSegment.name}
                        width={selectedServiceSegment.illustration.width}
                        height={selectedServiceSegment.illustration.height} />

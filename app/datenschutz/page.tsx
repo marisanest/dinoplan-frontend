@@ -1,5 +1,5 @@
 import {defineQuery} from "groq";
-import {client} from "@/lib/sanity/client";
+import {sanityClient} from "@/lib/sanity/client";
 import Privacy from "@/datenschutz/components/privacy";
 import {getSession} from "@/lib/signIn";
 import {redirect} from "next/navigation";
@@ -24,7 +24,7 @@ export default async function PrivacyPage() {
     redirect('/login')
   }
 
-  const privacyPageSection = await client.fetch(PRIVACY_QUERY, {}, options);
+  const privacyPageSection = await sanityClient.fetch(PRIVACY_QUERY, {}, options);
 
   return <Privacy privacyPageSection={privacyPageSection} />;
 }

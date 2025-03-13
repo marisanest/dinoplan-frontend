@@ -2,7 +2,7 @@ import {getSession} from "@/lib/signIn";
 import {redirect} from "next/navigation";
 import Calendar from "@/kalender/components/calendar";
 import {defineQuery} from "groq";
-import {client} from "@/lib/sanity/client";
+import {sanityClient} from "@/lib/sanity/client";
 import type {Metadata} from "next";
 import {getMetadata} from "@/lib/metadata";
 
@@ -24,7 +24,7 @@ export default async function LandingPage() {
     redirect('/login')
   }
 
-  const contact = await client.fetch(CONTACT_QUERY, {}, options);
+  const contact = await sanityClient.fetch(CONTACT_QUERY, {}, options);
 
   return (
       <Calendar contact={contact}/>

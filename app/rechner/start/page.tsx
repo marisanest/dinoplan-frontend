@@ -5,7 +5,7 @@ import type {Metadata} from "next";
 import {getMetadata} from "@/lib/metadata";
 import {cookies} from "next/headers";
 import {defineQuery} from "groq";
-import {client} from "@/lib/sanity/client";
+import {sanityClient} from "@/lib/sanity/client";
 
 export const metadata: Metadata = getMetadata(
   "Dinoplan | Rechner - Start",
@@ -30,7 +30,7 @@ export default async function CalculatorStartPage() {
     childAge,
   }`);
 
-    customer = await client.fetch(customerQuery, {}, options);
+    customer = await sanityClient.fetch(customerQuery, {}, options);
   }
 
   return <CalculatorStart customer={customer} />;

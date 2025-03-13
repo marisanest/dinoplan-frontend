@@ -8,7 +8,10 @@ import {useCalculatorContext} from "@/lib/stores/calculator/context";
 
 export default function CalculatorCalculationServiceSegmentsDetails({children}: ReactNodeProps & {bgColor?: string}) {
     const screenSizes = useScreenSizes()
-    const {selectedServiceSegmentIndex} = useCalculatorContext(
+
+    const {
+        selectedServiceSegmentIndex
+    } = useCalculatorContext(
         useShallow((s) => ({
             selectedServiceSegmentIndex: s.selectedServiceSegmentIndex,
         }))

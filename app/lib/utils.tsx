@@ -1,4 +1,13 @@
 import {useEffect} from "react";
+import {
+    RESPONSIVE_SIZE_BREAKPOINT_LG,
+    RESPONSIVE_SIZE_BREAKPOINT_MD,
+    RESPONSIVE_SIZE_BREAKPOINT_S,
+    RESPONSIVE_SIZE_BREAKPOINT_SM,
+    RESPONSIVE_SIZE_BREAKPOINT_SS,
+    RESPONSIVE_SIZE_BREAKPOINT_XS,
+    RESPONSIVE_SIZE_BREAKPOINT_XXS
+} from "@/lib/constants/app";
 
 export const delay = (milliseconds: number) => new Promise(resolve => setTimeout(resolve, milliseconds));
 
@@ -7,14 +16,6 @@ export function toMonetary(num: number): string {
 
     return `${euros},${typeof cents === "string" ? cents.padEnd(2, '0') : '00'}`;
 }
-
-export const RESPONSIVE_SIZE_BREAKPOINT_LG = 1245
-export const RESPONSIVE_SIZE_BREAKPOINT_MD = 1150
-export const RESPONSIVE_SIZE_BREAKPOINT_SM = 1045
-export const RESPONSIVE_SIZE_BREAKPOINT_S = 980
-export const RESPONSIVE_SIZE_BREAKPOINT_SS = 820
-export const RESPONSIVE_SIZE_BREAKPOINT_XS = 470
-export const RESPONSIVE_SIZE_BREAKPOINT_XXS = 405
 
 export function getResponsiveSizeIdentifier(width: number | null | undefined): string | null {
     if (width === null || width === undefined) {

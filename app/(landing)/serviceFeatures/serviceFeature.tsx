@@ -1,13 +1,13 @@
 import {ReactNodeProps} from "@/lib/types/core";
 import Text from "@/components/text/text";
 import Image from "next/image";
-import {urlFor} from "@/lib/sanity/image";
+import {getImageUrlBuilder} from "@/lib/sanity/image";
 
 export default function LandingServiceFeature({serviceFeature}) {
     return (
         <LandingServiceFeatureContainer>
             <Image
-                src={urlFor(serviceFeature.illustration)?.url()}
+                src={getImageUrlBuilder(serviceFeature.illustration)?.url()}
                 alt={serviceFeature.name}
                 className="w-full ss:w-[182px] max-w-[182px] h-auto"
                 width={serviceFeature.illustration.width}

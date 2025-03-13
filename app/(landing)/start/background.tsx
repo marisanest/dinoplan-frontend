@@ -2,7 +2,7 @@
 
 import {ReactNodeProps} from "@/lib/types/core";
 import Image from "next/image";
-import {urlFor} from "@/lib/sanity/image";
+import {getImageUrlBuilder} from "@/lib/sanity/image";
 import {useAppContext} from "@/lib/stores/app/context";
 import {useShallow} from "zustand/react/shallow";
 
@@ -18,7 +18,7 @@ export default function LandingStartBackground() {
             {
                 startPageSection && (
                     <Image
-                        src={urlFor(startPageSection?.illustration)?.height(startPageSection.illustration?.height * 0.5).url()}
+                        src={getImageUrlBuilder(startPageSection?.illustration)?.height(startPageSection.illustration?.height * 0.5).url()}
                         alt="Illustration"
                         className="ml-auto w-full h-auto ss:h-[475px] ss:w-auto text-blue-600 text-right"
                         width={startPageSection.illustration?.width}

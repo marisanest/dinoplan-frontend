@@ -2,8 +2,10 @@ import {createStore} from 'zustand'
 import {
   ServiceSegment
 } from "@/lib/types/sanity-types";
+import {WindowSizeType} from "@/lib/types/core";
 
 export interface CalculatorStoreProps {
+  windowSize: WindowSizeType;
   serviceSegments: ServiceSegment[];
   selectedServiceSegmentIndex: number | undefined;
   prevSelectedServiceSegmentIndex: number | undefined;
@@ -11,6 +13,7 @@ export interface CalculatorStoreProps {
 }
 
 export interface CalculatorStoreActions {
+  setWindowSize: (windowSize: WindowSizeType) => void;
   selectServiceSegment: (serviceSegmentIndex: number) => void;
   selectPrevServiceSegment: () => void;
   selectNextServiceSegment: () => void;
@@ -21,7 +24,7 @@ export interface CalculatorStoreState extends CalculatorStoreProps, CalculatorSt
 
 export type CalculatorStore = ReturnType<typeof createCalculatorStore>
 
-export const createCalculatorStore = (initProps: Pick<CalculatorStoreProps, 'serviceSegments'>) => {
+export const createCalculatorStore = (initProps: Pick<CalculatorStoreProps, 'serviceSegments' | 'windowSize'>) => {
   const DEFAULT_PROPS: CalculatorStoreProps = {
     selectedServiceSegmentIndex: 0,
     prevSelectedServiceSegmentIndex: 0,
@@ -32,6 +35,7 @@ export const createCalculatorStore = (initProps: Pick<CalculatorStoreProps, 'ser
 
   return createStore<CalculatorStoreState>()((set, get) => ({
     ...DEFAULT_PROPS,
+    setWindowSize: (windowSize: WindowSizeType) => set({windowSize}),
     selectServiceSegment: (serviceSegmentIndex) => {
       const currentSelectedServiceSegmentIndex = get().selectedServiceSegmentIndex;
 

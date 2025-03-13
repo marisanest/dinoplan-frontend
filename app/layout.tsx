@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
+import 'react-phone-number-input/style.css'
 import "./styles/tailwind.css";
 import "./styles/globals.css";
 import Header from "@/components/header";
@@ -7,7 +8,7 @@ import {ReactNode} from "react";
 import localFont from 'next/font/local';
 import Footer from "@/components/footer";
 import {defineQuery} from "groq";
-import {client} from "@/lib/sanity/client";
+import {sanityClient} from "@/lib/sanity/client";
 import {getSession} from "@/lib/signIn";
 import OverlayMenu from "@/components/overlayMenu";
 // import { Analytics } from '@vercel/analytics/next';
@@ -92,7 +93,7 @@ async function AuthenticatedLayout({
                           }: Readonly<{
     children: ReactNode;
 }>) {
-    const contact = await client.fetch(CONTACT_QUERY, {}, options);
+    const contact = await sanityClient.fetch(CONTACT_QUERY, {}, options);
 
     return (
         <html lang="de">

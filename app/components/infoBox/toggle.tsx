@@ -1,23 +1,23 @@
 "use client"
 
-import {useEffect, useRef} from "react";
-import {useWindowSize} from "@uidotdev/usehooks";
-import {RESPONSIVE_SIZE_BREAKPOINT_SS} from "@/lib/utils";
+import {useRef} from "react";
 import InfoIcon from "@/components/icons/info";
 import {useShallow} from "zustand/react/shallow";
 import {useInfoBoxContext} from "@/lib/stores/infoBox/context";
+import {RESPONSIVE_SIZE_BREAKPOINT_SS} from "@/lib/constants/app";
 
 export default function InfoBoxToggle({text}: {text?: any | null}) {
-    const {width} = useWindowSize()
     const ref = useRef<HTMLDivElement>(null);
 
     const {
+        windowSize,
         toggleInfoBoxIsOpen,
         setToggleRef,
         setInfoBoxText,
         closeInfoBox,
         openInfoBox,
     } = useInfoBoxContext(useShallow((s) => ({
+        windowSize: s.windowSize,
         toggleInfoBoxIsOpen: s.toggleInfoBoxIsOpen,
         setToggleRef: s.setToggleRef,
         setInfoBoxText: s.setInfoBoxText,
@@ -33,14 +33,14 @@ export default function InfoBoxToggle({text}: {text?: any | null}) {
                  setToggleRef(ref)
              }}
             onMouseEnter={() => {
-                if (width && width > RESPONSIVE_SIZE_BREAKPOINT_SS) {
+                if (windowSize.width && windowSize.width > RESPONSIVE_SIZE_BREAKPOINT_SS) {
                     openInfoBox()
                     setInfoBoxText(text)
                     setToggleRef(ref)
                 }
             }}
             onMouseLeave={() => {
-                if (width && width > RESPONSIVE_SIZE_BREAKPOINT_SS) {
+                if (windowSize.width && windowSize.width > RESPONSIVE_SIZE_BREAKPOINT_SS) {
                     closeInfoBox()
                     setInfoBoxText(text)
                     setToggleRef(ref)
