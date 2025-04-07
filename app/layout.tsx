@@ -8,6 +8,7 @@ import {ReactNode} from "react";
 import localFont from 'next/font/local';
 import Footer from "@/components/footer";
 import {sanityClient} from "@/lib/sanity/client";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import OverlayMenu from "@/components/overlayMenu";
 import { Analytics } from '@vercel/analytics/next';
 import {getMetadata} from "@/lib/metadata";
@@ -102,6 +103,7 @@ export default async function RootLayout({
             {children}
             <Footer contact={contact} />
             <Analytics key="analytics" />
+            <SpeedInsights key="speedInsights" />
         </body>
         </html>
   );
