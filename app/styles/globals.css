@@ -1,4 +1,5 @@
 :root {
+    --spacing-x-xxs: 20px;
     --spacing-x-xs: 3rem;
     --spacing-x-s: 4rem;
     --spacing-x-sm: 5rem;
@@ -27,7 +28,7 @@
     --height-start: 625px;
     --height-start-description: 5.75rem;
     --height-footer-image: 457px;
-    --height-input-field: 45px;
+    --height-input-field: 50px;
 
     --width-sm: 900px;
     --width-md: 1150px;
@@ -35,20 +36,31 @@
     --width-text-lg: 750px;
     --width-footer-image: 1150px;
 
+    --brown-200: #857459;
+
     --blue: #4772D2;
+    --blue-faded: rgba(76,118,201,0.27);
     --blue-200: #cdd8ee;
     --blue-600: #294290;
     --blue-600-faded: #889bd3;
+    --blue-600-faded-2: rgb(225, 230, 246);
+
     --red-200: #FAA19F;
     --red-200-faded: #ffc7c6;
     --red-200-faded-2: #ffdedd;
+
     --orange: #E6B45A;
     --orange-faded: #eecb8d;
     --orange-faded-2: #dfb366;
     --orange-600: #CAA263;
     --orange-400: #EFE6D6;
+    --orange-300: #F3EBDF;
     --orange-200: #F7F2EA;
+    --orange-200-faded: rgb(236,219,193);
+    --orange-100: #fbf8f4;
+
     --yellow-100: #FFFFFA;
+    --yellow-100-transparent: rgba(255,255,250,0.6);
 
     --PhoneInput-color--focus: #FFFFFF;
 }
@@ -171,6 +183,9 @@ input[type="checkbox"]:checked::before {
     display: block;
 }
 
+
+
+
 .PhoneInputInput {
     height: var(--height-input-field);
     padding: 0 10px;
@@ -178,6 +193,12 @@ input[type="checkbox"]:checked::before {
     color: var(--blue-600);
     background-color: var(--yellow-100);
     min-width: 250px!important;
+}
+
+@media only screen and (max-width: 819px) {
+    .PhoneInputInput {
+        min-width: 233px!important;
+    }
 }
 
 .PhoneInputInput:active,
@@ -192,3 +213,123 @@ input[type="checkbox"]:checked::before {
     min-width: 55px !important;
 }
 
+
+
+
+.css-b62m3t-container {
+    cursor: pointer!important;
+}
+
+.select__control {
+    height: var(--height-input-field)!important;
+
+    background-color: var(--yellow-100)!important;
+    color: var(--blue-600-faded)!important;
+
+    border-color: var(--blue-600-faded)!important;
+    border-radius: 0!important;
+    border-width: 2px!important;
+
+    box-shadow: none!important;
+
+    cursor: pointer!important;
+}
+
+.select__control:hover {
+    border-color: var(--blue)!important;
+}
+
+.select__control--menu-is-open {
+    border-color: var(--blue)!important;
+}
+
+.select__control--is-focused {
+    border-color: var(--blue)!important;
+}
+
+.select__control--is-disabled {
+    background-color: var(--orange-100)!important;
+    color: var(--blue-600-faded)!important;
+    border-color: var(--blue-600-faded)!important;
+}
+
+.select__single-value {
+    color: var(--blue-600)!important;
+}
+
+.select__single-value--is-disabled {
+    color: var(--blue-600-faded)!important;
+}
+
+.select__input-container {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.css-b62m3t-container:focus-visible {
+    outline: none!important;
+}
+
+.select__placeholder {
+    margin: 0 !important;
+    color: var(--blue-600-faded)!important;
+}
+
+.select__value-container {
+    padding: 8px 1rem!important;
+}
+
+.select__indicator {
+    color: var(--blue-600-faded)!important;
+    border-color: var(--blue-600-faded)!important;
+}
+
+.select__menu {
+    margin: 0!important;
+    border-radius: 0px!important;
+    border-top: none;
+    border-bottom: 2px solid var(--blue-600-faded)!important;
+    border-right: 2px solid var(--blue-600-faded)!important;
+    border-left: 2px solid var(--blue-600-faded)!important;
+    box-shadow: none!important;
+}
+
+.select__menu-list {
+    padding: 0 !important;
+    max-height: 150px!important;
+    overflow-y: scroll!important;
+}
+
+@media only screen and (max-width: 600px) {
+    .select__menu-list {
+        padding: 0 !important;
+        max-height: 125px!important;
+        overflow-y: scroll!important;
+    }
+}
+
+.select__option {
+    color: var(--blue-600)!important;
+    background-color: var(--yellow-100)!important;
+    padding: 8px 1rem !important;
+    height: var(--height-input-field);
+    display: flex;
+    align-content: center;
+    justify-items: center;
+}
+
+.select__option:hover {
+    background-color: var(--blue-600-faded-2)!important;
+}
+
+.select__option--is-selected {
+    background-color: var(--blue-600-faded-2)!important;
+}
+
+.select__indicators {
+    border-color: var(--blue-600-faded)!important;
+}
+
+.select__indicator-separator {
+    background-color: var(--blue-600-faded)!important;
+}

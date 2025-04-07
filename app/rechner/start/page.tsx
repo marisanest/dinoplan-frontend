@@ -1,5 +1,3 @@
-import {getSession} from "@/lib/signIn";
-import {redirect} from "next/navigation";
 import CalculatorStart from "@/rechner/start/components/start";
 import type {Metadata} from "next";
 import {getMetadata} from "@/lib/metadata";
@@ -12,14 +10,9 @@ export const metadata: Metadata = getMetadata(
   "Berechne jetzt deinen Beitrag!",
 );
 
-const options = { next: { revalidate: 3600 } };
+const options = { next: { revalidate: 0 } };
 
 export default async function CalculatorStartPage() {
-  const session = await getSession();
-  if (!session.hasAccess) {
-    redirect('/login')
-  }
-
   const customerId = cookies().get('customerId')?.value
   let customer;
 

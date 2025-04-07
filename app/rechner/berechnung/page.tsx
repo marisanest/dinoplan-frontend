@@ -1,4 +1,3 @@
-import {getSession} from "@/lib/signIn";
 import {redirect} from "next/navigation";
 import {cookies} from "next/headers";
 import {defineQuery} from "groq";
@@ -51,11 +50,6 @@ const COST_CALCULATION_QUERY = defineQuery(`*[_type == "costCalculation"] | orde
 }`);
 
 export default async function CalculatorCalculationPage() {
-  const session = await getSession();
-  if (!session.hasAccess) {
-    redirect('/login')
-  }
-
   const customerId = cookies().get('customerId')?.value
   if (!customerId) {
     redirect('/rechner/start')

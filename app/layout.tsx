@@ -9,7 +9,6 @@ import localFont from 'next/font/local';
 import Footer from "@/components/footer";
 import {defineQuery} from "groq";
 import {sanityClient} from "@/lib/sanity/client";
-import {getSession} from "@/lib/signIn";
 import OverlayMenu from "@/components/overlayMenu";
 // import { Analytics } from '@vercel/analytics/next';
 import {getMetadata} from "@/lib/metadata";
@@ -80,19 +79,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-    const session = await getSession();
-    return (
-      <>
-          {session.hasAccess ? <AuthenticatedLayout>{children}</AuthenticatedLayout> : <UnauthenticatedLayout>{children}</UnauthenticatedLayout>}
-      </>
-  );
-}
-
-async function AuthenticatedLayout({
-                              children,
-                          }: Readonly<{
-    children: ReactNode;
-}>) {
     const contact = await sanityClient.fetch(CONTACT_QUERY, {}, options);
 
     return (
@@ -115,32 +101,13 @@ async function AuthenticatedLayout({
             <link rel="icon" type="image/x-icon" sizes="any" href="/favicon.ico"/>
             <link rel="manifest" href="/manifest.json"/>
         </head>
-        <BasicBodyLayout>
+        <body className={`${nunito.variable} ${afacad.variable}`}>
             <OverlayMenu contact={contact} />
             <Header />
             {children}
             <Footer contact={contact} />
-        </BasicBodyLayout>
-        </html>
-    );
-}
-
-
-
-function UnauthenticatedLayout({children}: Readonly<{children: ReactNode;}>) {
-    return (
-        <html lang="de">
-        <BasicBodyLayout>{children}</BasicBodyLayout>
-        </html>
-    );
-}
-
-
-function BasicBodyLayout({children}: Readonly<{children: ReactNode;}>) {
-    return (
-        <body className={`${nunito.variable} ${afacad.variable}`}>
-        {children}
-        {/*<Analytics key="analytics" />*/}
+            {/*<Analytics key="analytics" />*/}
         </body>
-    );
+        </html>
+  );
 }

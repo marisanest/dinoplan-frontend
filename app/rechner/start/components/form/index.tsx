@@ -15,8 +15,8 @@ const schema = z.object({
     childName: z.string({
         invalid_type_error: 'Der Name deines Kindes muss angegeben werden.',
     }).trim().min(1,  { message: "Der Name deines Kindes muss angegeben werden." }),
-    childAge: z.string().transform((value, ctx): number => {
-        if (value === null || value === '' || value === undefined) {
+    childAge: z.number().transform((value, ctx): number => {
+        if (value === null || value === undefined) {
             ctx.addIssue({
                 code: "invalid_type",
                 expected: "number",
@@ -26,29 +26,7 @@ const schema = z.object({
             return z.NEVER;
         }
 
-        const parsedValue = parseInt(value)
-
-        if (isNaN(parsedValue)) {
-            ctx.addIssue({
-                code: "invalid_type",
-                expected: "number",
-                received: "null",
-                message: "Ein gültiges Alter muss angegeben werden."
-            });
-            return z.NEVER;
-        }
-
-        if (parsedValue < 0) {
-            ctx.addIssue({
-                code: "invalid_type",
-                expected: "number",
-                received: "null",
-                message: "Dein Kind muss mindestens 0 Jahre alt sein."
-            });
-            return z.NEVER;
-        }
-
-        return parsedValue;
+        return value;
     })
 })
 
@@ -78,8 +56,13 @@ export default function CalculatorStartForm({customer}: {customer: any}) {
         register,
         handleSubmit,
         formState: { errors },
+        control,
     } = useForm<CreateCustomerSchema>({
         resolver: resolver,
+        defaultValues: {
+            childName: customer?.childName,
+            childAge: customer?.childAge,
+        }
     })
 
     const onSubmit: SubmitHandler<CreateCustomerSchema> = async (data) => {
@@ -95,10 +78,8 @@ export default function CalculatorStartForm({customer}: {customer: any}) {
     };
 
     return (
-        <form className="w-full"
-              onSubmit={handleSubmit(onSubmit)}>
-
-            <div className="s:grid ss:grid-cols-[140px_1fr] ss:gap-x-[1.5rem] ss:gap-y-[0.4rem] pb-y-paragraph">
+        <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+            <div className="s:grid ss:grid-cols-[140px_1fr] ss:gap-x-[1.5rem] ss:gap-y-[0.4rem]">
                 <div className="w-full h-full flex items-center justify-center">
                     <Button className="hidden ss:inline-block !cursor-default hover:!bg-orange hover:!border-orange"
                             size="sm"
@@ -111,24 +92,44 @@ export default function CalculatorStartForm({customer}: {customer: any}) {
                 <div className="flex flex-col gap-y-[0.8rem]">
                     <CalculatorStartFormChildNameInput key="child-name-input"
                                                        register={register}
-                                                       error={errors.childName}
                                                        pending={pending}
                                                        customer={customer} />
 
                     <CalculatorStartFormChildAgeInput key="child-age-input"
-                                                      register={register}
-                                                      error={errors.childAge}
+                                                      control={control}
                                                       pending={pending}
                                                       customer={customer} />
-
-                    {serverResponse.error && (
-                        <>
+                </div>
+            </div>
+            <div className="s:grid ss:grid-cols-[140px_1fr] ss:gap-x-[1.5rem] ss:gap-y-[0.4rem] pb-y-paragraph">
+                <div/>
+                <div>
+                    {
+                        (serverResponse.error || errors?.childAge || errors?.childName) && (
                             <div className="pt-[8px] ss:pt-[0.4rem]"/>
+                        )
+                    }
+                    {
+                        serverResponse.error && (
                             <Text className="text-red-500" align="center" size="sm">
                                 {serverResponse.error}
                             </Text>
-                        </>
-                    )}
+                        )
+                    }
+                    {
+                        errors?.childName && (
+                            <Text className="text-red-500" align="left" size="sm">
+                                {errors?.childName.message}
+                            </Text>
+                        )
+                    }
+                    {
+                        errors?.childAge && (
+                            <Text className="text-red-500" align="left" size="sm">
+                                {errors?.childAge.message}
+                            </Text>
+                        )
+                    }
                 </div>
             </div>
 

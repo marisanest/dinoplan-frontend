@@ -8,7 +8,7 @@ import InternalLink from "@/components/link/internal";
 
 export default function FooterFaq() {
     const pathname = usePathname()
-    const text = <Text key="text" className="hover:text-blue-600-faded transition-colors" size="md">Fragen?</Text>
+    const text = <Text key="text" className="hover:text-brown-200 transition-colors" size="md">Fragen?</Text>
 
     if (pathname !== '/') {
         return (

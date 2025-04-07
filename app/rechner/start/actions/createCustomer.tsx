@@ -26,7 +26,7 @@ export async function createCustomer(customer: any, data: CreateCustomerSchema):
 
         if (Object.keys(setFields).length > 0) {
             const response = await fetch(
-                `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.SANITY_DATASET}`,
+                `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.NEXT_PUBLIC_SANITY_DATASET}`,
                 {
                     body: JSON.stringify(updateStatement({id: customer._id, setFields})),
                     headers: {
@@ -76,6 +76,7 @@ export async function createCustomer(customer: any, data: CreateCustomerSchema):
         if (response && typeof response === 'object' && response.results && Array.isArray(response.results) && response.results.length > 0 && response.results[0].id) {
             const customerId = response.results[0].id;
             cookies().set('customerId', customerId)
+            // cookies().set('customerId', customerId, { expires: Date.now() + 30 * 60 * 1000})
 
             return {status: 200}
         } else {

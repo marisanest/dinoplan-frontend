@@ -14,14 +14,13 @@ export default function DinoplanFormTextInput({name, placeholder, register, pend
         <input id={name}
                type="text"
                className={cn(
-                   "min-h-[55px] w-full text-left px-[1rem] !rounded-none !border-2",
-                   pending ? '!border-blue-600-faded !text-blue-600-faded' : '!bg-yellow-100 border-blue-600-faded focus:border-blue !text-blue-600'
+                   "min-h-input-field w-full text-left px-[1rem] !rounded-none !border-2",
+                   pending ? 'bg-orange-100 !border-blue-600-faded !text-blue-600-faded' : '!bg-yellow-100 border-blue-600-faded focus:border-blue !text-blue-600'
                )}
                name={name}
                placeholder={placeholder}
                disabled={pending}
                defaultValue={defaultValue}
                {...register(name)} />
-
     );
 }

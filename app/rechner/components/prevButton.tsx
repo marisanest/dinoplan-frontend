@@ -8,7 +8,7 @@ export type CalculatorPrevButtonProps = {
 
 export default function CalculatorPrevButton({prevLink}: CalculatorPrevButtonProps) {
     return (
-        <Link className="cursor-pointer mt-[1rem]" link={prevLink}>
+        <Link className="cursor-pointer p-[10px]" link={prevLink}>
             <Text className="hover:text-blue-600-faded" size="md">Zurück</Text>
         </Link>
     )

@@ -9,25 +9,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        blue: '#4772D2',
-        'blue-faded': 'rgba(76,118,201,0.27)',
-        'brown-200': '#857459',
+        'brown-200': 'var(--brown-200)',
+
+        blue: 'var(--blue)',
+        'blue-faded': 'var(--blue-faded)',
         'blue-200': 'var(--blue-200)',
-        'blue-600': '#294290',
-        'blue-600-faded': '#889bd3',
+        'blue-600': 'var(--blue-600)',
+        'blue-600-faded': 'var(--blue-600-faded)',
+        'blue-600-faded-2': 'var(--blue-600-faded-2)',
+
         'red-200': 'var(--red-200)',
         'red-200-faded': 'var(--red-200-faded)',
         'red-200-faded-2': 'var(--red-200-faded-2)',
-        orange: '#E6B45A',
-        'orange-faded': '#eecb8d',
+
+        orange: 'var(--orange)',
+        'orange-faded': 'var(--orange-faded)',
         'orange-faded-2': 'var(--orange-faded-2)',
-        'orange-600': '#CAA263',
-        'orange-400': '#EFE6D6',
-        'orange-300': '#F3EBDF',
-        'orange-200': '#F7F2EA',
-        'orange-200-faded': 'rgb(236,219,193)',
-        'yellow-100': '#FFFFFA',
-        'yellow-100-transparent': 'rgba(255,255,250,0.6)',
+        'orange-600': 'var(--orange-600)',
+        'orange-400': 'var(--orange-400)',
+        'orange-300': 'var(--orange-300)',
+        'orange-200': 'var(--orange-200)',
+        'orange-200-faded': 'var(--orange-200-faded)',
+        'orange-100': 'var(--orange-100)',
+
+        'yellow-100': 'var(--yellow-100)',
+        'yellow-100-transparent': 'var(--yellow-100-transparent)',
       },
       width: {
         sm: 'var(--width-sm)',
@@ -50,11 +56,18 @@ const config: Config = {
         'text-lg': 'var(--width-text-lg)',
         'footer-image': 'var(--width-footer-image)',
       },
+      minHeight: {
+        'input-field': 'var(--height-input-field)',
+      },
+      maxHeight: {
+        'input-field': 'var(--height-input-field)',
+      },
       height: {
         banner: 'var(--height-banner)',
         start: 'var(--height-start)',
         'start-description': 'var(--height-start-description)',
         'footer-image': 'var(--height-footer-image)',
+        'input-field': 'var(--height-input-field)',
       },
       spacing: {
         'x-xs': 'var(--spacing-x-xs)',
