@@ -59,6 +59,7 @@ export async function createCustomer(customer: any, data: CreateCustomerSchema):
                                 "_type": "customer",
                                 "childName": data.childName,
                                 "childAge": data.childAge,
+                                "state": "Neu"
                             },
                         },
                     ]
@@ -75,8 +76,8 @@ export async function createCustomer(customer: any, data: CreateCustomerSchema):
 
         if (response && typeof response === 'object' && response.results && Array.isArray(response.results) && response.results.length > 0 && response.results[0].id) {
             const customerId = response.results[0].id;
-            cookies().set('customerId', customerId)
-            // cookies().set('customerId', customerId, { expires: Date.now() + 30 * 60 * 1000})
+            // cookies().set('customerId', customerId)
+            cookies().set('customerId', customerId, { expires: Date.now() + 30 * 60 * 1000})
 
             return {status: 200}
         } else {
