@@ -1,16 +1,30 @@
 'use server'
 
-import {Customer, ServiceModule} from "@/lib/types/sanity-types";
+import {CostCalculation, Customer, ServiceModule} from "@/lib/types/sanity-types";
+import {calculatePricePerMonth} from "@/lib/calculation";
+import hash from "object-hash";
 
-export async function updateServiceModules(customer: Customer, serviceModule: ServiceModule, isSelected: boolean): Promise<{
+export async function updateServiceModules(
+    customer: Customer | undefined,
+    serviceModule: ServiceModule,
+    costCalculation: CostCalculation,
+    isSelected: boolean,
+): Promise<{
     status: number;
-    customer: Customer;
+    customer: Customer | undefined;
 }> {
-    const currentServiceModules = customer?.serviceModules  ? [...customer?.serviceModules] : []
-    let updatedServiceModules: string[] = []
+    if (!customer) {
+        return {
+            status: 500,
+            customer,
+        };
+    }
+
+    const currentServiceModules: Customer['serviceModules'] = customer?.serviceModules  ? [...customer?.serviceModules] : []
+    let updatedServiceModules: Customer['serviceModules'] = []
 
     if (isSelected) {
-        if (serviceModule.name && currentServiceModules.includes(serviceModule.name)) {
+        if (currentServiceModules.map((m) => m.name).includes(serviceModule.name ?? '')) {
             return {
                 status: 200,
                 customer: {
@@ -19,11 +33,15 @@ export async function updateServiceModules(customer: Customer, serviceModule: Se
                 },
             };
         } else {
-            updatedServiceModules = serviceModule.name ? [...currentServiceModules, serviceModule.name] : currentServiceModules;
+            const costPerMonth = calculatePricePerMonth(serviceModule, costCalculation, customer)
+            const newServiceModule = {_key: "", name: serviceModule.name ?? '', costPerMonth}
+            newServiceModule["_key"] = hash(newServiceModule)
+
+            updatedServiceModules = currentServiceModules ? [...currentServiceModules, newServiceModule] : [newServiceModule];
         }
     } else {
-        if (serviceModule.name && currentServiceModules.includes(serviceModule.name)) {
-            updatedServiceModules = currentServiceModules.filter(m => m !== serviceModule.name)
+        if (currentServiceModules.map((m) => m.name).includes(serviceModule.name ?? '')) {
+            updatedServiceModules = currentServiceModules.filter(m => m.name !== serviceModule.name)
         } else {
             return {
                 status: 200,
@@ -56,7 +74,7 @@ export async function updateServiceModules(customer: Customer, serviceModule: Se
     };
 }
 
-function updateStatement({id, updatedServiceModules}: {id: string; updatedServiceModules: string[]}) {
+function updateStatement({id, updatedServiceModules}: {id: string; updatedServiceModules: Customer['serviceModules']}) {
     return {
         "mutations": [
             {
@@ -65,18 +83,6 @@ function updateStatement({id, updatedServiceModules}: {id: string; updatedServic
                     "set": {serviceModules: updatedServiceModules},
                 },
             },
-            // {
-            //     "patch": {
-            //         "id": id,
-            //         "insert": {
-            //             "after": "serviceModules[-1]",
-            //             "items": [
-            //                 serviceModule.name
-            //             ]
-            //         }
-            //     }
-            // }
         ]
     }
 }
-

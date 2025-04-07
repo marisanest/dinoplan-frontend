@@ -14,7 +14,7 @@ import Banner from "@/components/banner";
 import FooterBannerImprint from "@/components/footer/banner/imprint";
 import FooterBannerPrivacy from "@/components/footer/banner/privacy";
 import FooterBannerLogo from "@/components/footer/banner/logo";
-import FooterFaq from "@/components/footer/faq";
+import FooterBannerFaq from "@/components/footer/banner/faq";
 import FooterBannerContact from "@/components/footer/banner/contact";
 import FooterBannerContainer from "@/components/footer/banner/container";
 import type {Metadata} from "next";
@@ -75,7 +75,7 @@ export default function GlobalError() {
                 <FooterBannerImprint />
                 <FooterBannerPrivacy />
                 <FooterBannerLogo />
-                <FooterFaq key="faq" />
+                <FooterBannerFaq />
                 <FooterBannerContact email="info@dinoplan.de" />
             </FooterBannerContainer>
         </footer>

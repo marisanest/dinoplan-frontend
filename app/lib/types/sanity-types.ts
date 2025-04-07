@@ -70,7 +70,7 @@ export type Geopoint = {
 
 export type Slug = {
   _type: "slug";
-  current?: string;
+  current: string;
   source?: string;
 };
 
@@ -91,9 +91,31 @@ export type Customer = {
   _updatedAt: string;
   _rev: string;
   childName?: string;
-  childAge?: number;
+  childAge: number;
   phoneNumber?: string;
-  serviceModules?: Array<string>;
+  serviceModules?: Array<{
+    name: string;
+    costPerMonth: number;
+    _key: string;
+  }>;
+  note?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
 };
 
 export type CostCalculation = {
@@ -102,8 +124,8 @@ export type CostCalculation = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  inflationRate?: number;
-  interestRate?: number;
+  inflationRate: number;
+  interestRate: number;
   generalNote?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -130,7 +152,7 @@ export type PageSectionsPrivacy = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: Array<{
+  title: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -148,7 +170,7 @@ export type PageSectionsPrivacy = {
     _type: "block";
     _key: string;
   }>;
-  text?: Array<{
+  text: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -174,7 +196,7 @@ export type PageSectionsImprint = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: Array<{
+  title: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -192,7 +214,7 @@ export type PageSectionsImprint = {
     _type: "block";
     _key: string;
   }>;
-  text?: Array<{
+  text: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -218,7 +240,7 @@ export type PageSectionsFaq = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: Array<{
+  title: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -236,7 +258,7 @@ export type PageSectionsFaq = {
     _type: "block";
     _key: string;
   }>;
-  subTitle?: Array<{
+  subTitle: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -263,7 +285,7 @@ export type PageSectionsFaq = {
     };
     _key: string;
   }>;
-  illustration?: {
+  illustration: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -282,8 +304,8 @@ export type Question = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  question?: string;
-  answer?: Array<{
+  question: string;
+  answer: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -309,7 +331,7 @@ export type PageSectionsAbout = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: Array<{
+  title: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -327,7 +349,7 @@ export type PageSectionsAbout = {
     _type: "block";
     _key: string;
   }>;
-  description?: Array<{
+  description: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -354,7 +376,7 @@ export type PageSectionsAbout = {
     };
     _key: string;
   }>;
-  illustration?: {
+  illustration: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -373,8 +395,8 @@ export type PersonalFeature = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
-  description?: Array<{
+  name: string;
+  description: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -400,7 +422,7 @@ export type PageSectionsServiceModules = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: Array<{
+  title: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -435,7 +457,7 @@ export type PageSectionsServiceFeatures = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: Array<{
+  title: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -453,7 +475,7 @@ export type PageSectionsServiceFeatures = {
     _type: "block";
     _key: string;
   }>;
-  description?: Array<{
+  description: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -488,7 +510,7 @@ export type PageSectionsServiceSegments = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: Array<{
+  title: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -506,7 +528,7 @@ export type PageSectionsServiceSegments = {
     _type: "block";
     _key: string;
   }>;
-  description?: Array<{
+  description: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -541,7 +563,7 @@ export type PageSectionsStart = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: Array<{
+  title: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -559,7 +581,7 @@ export type PageSectionsStart = {
     _type: "block";
     _key: string;
   }>;
-  subTitle?: Array<{
+  subTitle: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -577,7 +599,7 @@ export type PageSectionsStart = {
     _type: "block";
     _key: string;
   }>;
-  illustration?: {
+  illustration: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -596,8 +618,8 @@ export type ServiceFeature = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
-  illustration?: {
+  name: string;
+  illustration: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -667,7 +689,7 @@ export type ServiceModule = {
   _updatedAt: string;
   _rev: string;
   name?: string;
-  serviceSegment?: {
+  serviceSegment: {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
@@ -815,7 +837,7 @@ export type SanityImageMetadata = {
 export type Link = {
   _type: "link";
   text?: string;
-  type?: string;
+  type: string;
   internalLink?: {
     _ref: string;
     _type: "reference";
@@ -837,17 +859,433 @@ export type None = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  isNone?: boolean;
+  isNone: boolean;
 };
 
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | Contact | Customer | CostCalculation | PageSectionsPrivacy | PageSectionsImprint | PageSectionsFaq | Question | PageSectionsAbout | PersonalFeature | PageSectionsServiceModules | PageSectionsServiceFeatures | PageSectionsServiceSegments | PageSectionsStart | ServiceFeature | ServiceSegment | ServiceModule | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Link | None;
 export declare const internalGroqTypeReferenceTo: unique symbol;
-// Source: ../dinoplan-frontend/app/layout.tsx
-// Variable: CONTACT_QUERY
-// Query: *[_type == "contact"][0] {    _id,     email, }
-export type CONTACT_QUERYResult = {
+// Source: ../dinoplan-frontend/app/page.tsx
+// Variable: PAGE_SECTION_START_QUERY
+// Query: *[_type == "pageSectionsStart"][0] {    _id,     title,     subTitle,    illustration {      'height': asset->metadata.dimensions.height,      'width': asset->metadata.dimensions.width,      asset->{        url,      }    },}
+export type PAGE_SECTION_START_QUERYResult = {
   _id: string;
-  email: Link | null;
+  title: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  subTitle: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  illustration: {
+    height: number | null;
+    width: number | null;
+    asset: {
+      url: string | null;
+    } | null;
+  };
+} | null;
+// Variable: PAGE_SECTION_SERVICE_SEGMENTS_QUERY
+// Query: *[_type == "pageSectionsServiceSegments"][0] {    _id,    title,    description,    serviceSegments[] {        serviceSegment-> {           _id,           name,           listName,           dinoPrefix,           illustration {             'height': asset->metadata.dimensions.height,             'width': asset->metadata.dimensions.width,             asset->{               url,             }           },           dinoSubtitle,           description,           serviceModules[] {              serviceModule-> {                _id,                name,              }           }        }    }}
+export type PAGE_SECTION_SERVICE_SEGMENTS_QUERYResult = {
+  _id: string;
+  title: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  description: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  serviceSegments: Array<{
+    serviceSegment: {
+      _id: string;
+      name: string | null;
+      listName: string | null;
+      dinoPrefix: string | null;
+      illustration: {
+        height: number | null;
+        width: number | null;
+        asset: {
+          url: string | null;
+        } | null;
+      } | null;
+      dinoSubtitle: string | null;
+      description: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }> | null;
+      serviceModules: Array<{
+        serviceModule: {
+          _id: string;
+          name: string | null;
+        } | null;
+      }> | null;
+    } | null;
+  }> | null;
+} | null;
+// Variable: PAGE_SECTION_SERVICE_FEATURES_QUERY
+// Query: *[_type == "pageSectionsServiceFeatures"][0] {    _id,     title,     description,     serviceFeatures[] {        serviceFeature-> {           _id,           name,           illustration {              'height': asset->metadata.dimensions.height,              'width': asset->metadata.dimensions.width,              asset->{                url,              }           },        }    }}
+export type PAGE_SECTION_SERVICE_FEATURES_QUERYResult = {
+  _id: string;
+  title: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  description: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  serviceFeatures: Array<{
+    serviceFeature: {
+      _id: string;
+      name: string;
+      illustration: {
+        height: number | null;
+        width: number | null;
+        asset: {
+          url: string | null;
+        } | null;
+      };
+    } | null;
+  }> | null;
+} | null;
+// Variable: PAGE_SECTION_SERVICE_MODULES_QUERY
+// Query: *[_type == "pageSectionsServiceModules"][0] {    _id,     title,     serviceModules[] {        serviceModule-> {           _id,           name,           example,           costCalculationDescription,           serviceSegment-> {              _id,              illustration {                'height': asset->metadata.dimensions.height,                'width': asset->metadata.dimensions.width,                asset->{                  url,                }              },           }        }    }}
+export type PAGE_SECTION_SERVICE_MODULES_QUERYResult = {
+  _id: string;
+  title: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  serviceModules: Array<{
+    serviceModule: {
+      _id: string;
+      name: string | null;
+      example: {
+        input?: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        }>;
+        output?: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        }>;
+      } | null;
+      costCalculationDescription: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }> | null;
+      serviceSegment: {
+        _id: string;
+        illustration: {
+          height: number | null;
+          width: number | null;
+          asset: {
+            url: string | null;
+          } | null;
+        } | null;
+      };
+    } | null;
+  }> | null;
+} | null;
+// Variable: PAGE_SECTION_ABOUT_QUERY
+// Query: *[_type == "pageSectionsAbout"][0] {    _id,     title,     description,    personalFeatures[] {        personalFeature-> {           _id,           name,           description,        }    },    illustration {      'height': asset->metadata.dimensions.height,      'width': asset->metadata.dimensions.width,      asset->{        url,      }    },}
+export type PAGE_SECTION_ABOUT_QUERYResult = {
+  _id: string;
+  title: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  description: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  personalFeatures: Array<{
+    personalFeature: {
+      _id: string;
+      name: string;
+      description: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }>;
+    } | null;
+  }> | null;
+  illustration: {
+    height: number | null;
+    width: number | null;
+    asset: {
+      url: string | null;
+    } | null;
+  };
+} | null;
+// Variable: PAGE_SECTION_FAQ_QUERY
+// Query: *[_type == "pageSectionsFaq"][0] {    _id,     title,     subTitle,    questions[] {        question-> {           _id,           question,           answer,        }    },    illustration {      'height': asset->metadata.dimensions.height,      'width': asset->metadata.dimensions.width,      asset->{        url,      }    },}
+export type PAGE_SECTION_FAQ_QUERYResult = {
+  _id: string;
+  title: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  subTitle: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  questions: Array<{
+    question: {
+      _id: string;
+      question: string;
+      answer: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }>;
+    } | null;
+  }> | null;
+  illustration: {
+    height: number | null;
+    width: number | null;
+    asset: {
+      url: string | null;
+    } | null;
+  };
 } | null;
 
 // Source: ../dinoplan-frontend/app/datenschutz/page.tsx
@@ -872,7 +1310,7 @@ export type PRIVACY_QUERYResult = {
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }>;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -890,7 +1328,7 @@ export type PRIVACY_QUERYResult = {
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }>;
 } | null;
 
 // Source: ../dinoplan-frontend/app/impressum/page.tsx
@@ -915,7 +1353,7 @@ export type IMPRINT_QUERYResult = {
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }>;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -933,15 +1371,30 @@ export type IMPRINT_QUERYResult = {
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }>;
+} | null;
+
+// Source: ../dinoplan-frontend/app/lib/sanity/queries/contact.ts
+// Variable: CONTACT_QUERY
+// Query: *[_type == "contact"][0] {    _id,     email,    calendly,}
+export type CONTACT_QUERYResult = {
+  _id: string;
+  email: Link | null;
+  calendly: Link | null;
 } | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"contact\"][0] {\n    _id, \n    email, \n}": CONTACT_QUERYResult;
+    "*[_type == \"pageSectionsStart\"][0] {\n    _id, \n    title, \n    subTitle,\n    illustration {\n      'height': asset->metadata.dimensions.height,\n      'width': asset->metadata.dimensions.width,\n      asset->{\n        url,\n      }\n    },\n}": PAGE_SECTION_START_QUERYResult;
+    "*[_type == \"pageSectionsServiceSegments\"][0] {\n    _id,\n    title,\n    description,\n    serviceSegments[] {\n        serviceSegment-> {\n           _id,\n           name,\n           listName,\n           dinoPrefix,\n           illustration {\n             'height': asset->metadata.dimensions.height,\n             'width': asset->metadata.dimensions.width,\n             asset->{\n               url,\n             }\n           },\n           dinoSubtitle,\n           description,\n           serviceModules[] {\n              serviceModule-> {\n                _id,\n                name,\n              }\n           }\n        }\n    }\n}": PAGE_SECTION_SERVICE_SEGMENTS_QUERYResult;
+    "*[_type == \"pageSectionsServiceFeatures\"][0] {\n    _id, \n    title, \n    description, \n    serviceFeatures[] {\n        serviceFeature-> {\n           _id,\n           name,\n           illustration {\n              'height': asset->metadata.dimensions.height,\n              'width': asset->metadata.dimensions.width,\n              asset->{\n                url,\n              }\n           },\n        }\n    }\n}": PAGE_SECTION_SERVICE_FEATURES_QUERYResult;
+    "*[_type == \"pageSectionsServiceModules\"][0] {\n    _id, \n    title, \n    serviceModules[] {\n        serviceModule-> {\n           _id,\n           name,\n           example,\n           costCalculationDescription,\n           serviceSegment-> {\n              _id,\n              illustration {\n                'height': asset->metadata.dimensions.height,\n                'width': asset->metadata.dimensions.width,\n                asset->{\n                  url,\n                }\n              },\n           }\n        }\n    }\n}": PAGE_SECTION_SERVICE_MODULES_QUERYResult;
+    "*[_type == \"pageSectionsAbout\"][0] {\n    _id, \n    title, \n    description,\n    personalFeatures[] {\n        personalFeature-> {\n           _id,\n           name,\n           description,\n        }\n    },\n    illustration {\n      'height': asset->metadata.dimensions.height,\n      'width': asset->metadata.dimensions.width,\n      asset->{\n        url,\n      }\n    },\n}": PAGE_SECTION_ABOUT_QUERYResult;
+    "*[_type == \"pageSectionsFaq\"][0] {\n    _id, \n    title, \n    subTitle,\n    questions[] {\n        question-> {\n           _id,\n           question,\n           answer,\n        }\n    },\n    illustration {\n      'height': asset->metadata.dimensions.height,\n      'width': asset->metadata.dimensions.width,\n      asset->{\n        url,\n      }\n    },\n}": PAGE_SECTION_FAQ_QUERYResult;
     "*[_type == \"pageSectionsPrivacy\"][0] {\n    _id,\n    title,\n    text,\n}": PRIVACY_QUERYResult;
     "*[_type == \"pageSectionsImprint\"][0] {\n    _id,\n    title,\n    text,\n}": IMPRINT_QUERYResult;
+    "*[_type == \"contact\"][0] {\n    _id, \n    email,\n    calendly,\n}": CONTACT_QUERYResult;
   }
 }

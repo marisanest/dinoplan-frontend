@@ -1,4 +1,5 @@
 import {round} from "@/lib/math";
+import {CostCalculation, Customer, ServiceModule} from "@/lib/types/sanity-types";
 
 export function calculatePricePerMonthForFinancialInvestment({
                                                           cost,
@@ -34,5 +35,21 @@ export function calculatePricePerMonthForForInsurance({serviceModule, customer}:
         return serviceModule.extractedCostPerMonthForInsurance[customer.childAge]
     } else {
         return serviceModule.extractedCostPerMonthForInsurance[18]
+    }
+}
+
+export function calculatePricePerMonth(serviceModule: ServiceModule, costCalculation: CostCalculation | undefined, customer: Customer | undefined) {
+    if (serviceModule.costPerMonthForInsurance) {
+        return calculatePricePerMonthForForInsurance({serviceModule, customer});
+    } else if (serviceModule.costCalculationForFinancialInvestment) {
+        return calculatePricePerMonthForFinancialInvestment({
+            cost: serviceModule.costCalculationForFinancialInvestment.cost ?? 0,
+            ageAtPayout: serviceModule.costCalculationForFinancialInvestment.ageAtPayout ?? 0,
+            childAge: customer?.childAge ?? 0,
+            interestRate: costCalculation?.interestRate ?? 0,
+            inflationRate: costCalculation?.inflationRate ?? 0,
+        });
+    } else {
+        return 0;
     }
 }

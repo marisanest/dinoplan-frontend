@@ -3,8 +3,7 @@ import CalculatorCalculationSummaryTableHeader from "@/rechner/berechnung/compon
 import CalculatorCalculationSummaryTableSum from "@/rechner/berechnung/components/summary/table/sum";
 import CalculatorCalculationSummaryTableValues from "@/rechner/berechnung/components/summary/table/values";
 import {useCalculatorContext} from "@/lib/stores/calculator/context";
-import {calculatePricePerMonthForFinancialInvestment, calculatePricePerMonthForForInsurance} from "@/lib/calculation";
-import {CostCalculation, Customer} from "@/lib/types/sanity-types";
+import {calculatePricePerMonth} from "@/lib/calculation";
 
 export type CalculatorCalculationSummaryTableValueType = {
     name: string;
@@ -40,20 +39,4 @@ export default function CalculatorCalculationSummaryTable() {
             <CalculatorCalculationSummaryTableSum key="sum" values={values} />
         </div>
     );
-}
-
-function calculatePricePerMonth(serviceModule: any, costCalculation: CostCalculation, customer: Customer) {
-    if (serviceModule.costPerMonthForInsurance) {
-        return calculatePricePerMonthForForInsurance({serviceModule, customer});
-    } else if (serviceModule.costCalculationForFinancialInvestment) {
-        return calculatePricePerMonthForFinancialInvestment({
-            cost: serviceModule.costCalculationForFinancialInvestment.cost,
-            ageAtPayout: serviceModule.costCalculationForFinancialInvestment.ageAtPayout,
-            childAge: customer.childAge,
-            interestRate: costCalculation.interestRate,
-            inflationRate: costCalculation.inflationRate,
-        });
-    } else {
-        return 0;
-    }
 }

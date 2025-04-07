@@ -12,12 +12,14 @@ export default function CalculatorCalculationServiceModule({serviceModule}: {ser
       selectServiceModule,
       customer,
       setCustomer,
+      costCalculation,
   } = useCalculatorContext(
     useShallow((s) => ({
         selectedServiceModules: s.selectedServiceModules,
         selectServiceModule: s.selectServiceModule,
         customer: s.customer,
         setCustomer: s.setCustomer,
+        costCalculation: s.costCalculation,
     })),
   );
 
@@ -27,7 +29,7 @@ export default function CalculatorCalculationServiceModule({serviceModule}: {ser
                onClick={async () => {
                    const isSelected = !(serviceModule._id in selectedServiceModules)
                    selectServiceModule(serviceModule)
-                   const res = await updateServiceModules(customer, serviceModule, isSelected)
+                   const res = await updateServiceModules(customer, serviceModule, costCalculation, isSelected)
                    res.status === 200 && res.customer && setCustomer(res.customer)
                }}>
               <div className="min-w-circle w-circle min-h-circle h-circle rounded-full p-[2px] xs:p-[3px] border-blue-600 border-[2px]">

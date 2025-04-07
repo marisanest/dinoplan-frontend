@@ -10,6 +10,7 @@ import {useRouter} from "next/navigation";
 import Text from "@/components/text/text";
 import CalculatorStartFormChildAgeInput from "@/rechner/start/components/form/inputs/childAge";
 import Button from "@/components/buttons";
+import {CustomerQueryResult} from "@/rechner/start/components/start";
 
 const schema = z.object({
     childName: z.string({
@@ -48,10 +49,15 @@ const resolver = async (data) => {
     }
 }
 
-export default function CalculatorStartForm({customer}: {customer: any}) {
+type CalculatorStartFormProps = {
+    customer: CustomerQueryResult
+}
+
+export default function CalculatorStartForm({customer}: CalculatorStartFormProps) {
     const [serverResponse, setServerResponse] = useState<CreateCustomerState>({})
     const router = useRouter()
     const [pending, startTransition] = useTransition();
+
     const {
         register,
         handleSubmit,

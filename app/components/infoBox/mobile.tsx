@@ -46,7 +46,7 @@ export default function InfoBoxMobile() {
                             <CrossIcon/>
                         </div>
                     </div>
-                    <Text className="flex-col gap-2" size="xs" align={'left'}>
+                    <Text className="gap-2" size="xs" align={'left'} isFlexCol={true}>
                         <PortableText value={infoBoxText}/>
                     </Text>
                 </div>

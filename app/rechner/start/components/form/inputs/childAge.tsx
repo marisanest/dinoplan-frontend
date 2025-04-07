@@ -1,11 +1,12 @@
 import React from "react";
 import Select from 'react-select';
 import { Controller } from 'react-hook-form';
+import {CustomerQueryResult} from "@/rechner/start/components/start";
 
 type CalculatorStartFormChildAgeInputProps = {
     control: any;
     pending: boolean;
-    customer: any;
+    customer: CustomerQueryResult;
 }
 
 const options = [
@@ -39,7 +40,7 @@ export default function CalculatorStartFormChildAgeInput({control, pending, cust
                         options={options}
                         isDisabled={pending}
                         required={false}
-                        defaultValue={customer.childAge !== null && customer.childAge !== undefined ? {value: customer.childAge, label: `${customer.childAge} ${customer.childAge === 1 ? 'Jahr' : 'Jahre'}`} : null}
+                        defaultValue={customer?.childAge !== null && customer?.childAge !== undefined ? {value: customer.childAge, label: `${customer.childAge} ${customer.childAge === 1 ? 'Jahr' : 'Jahre'}`} : null}
                         onChange={((value) => field.onChange(value?.value))}
                 />
             )}

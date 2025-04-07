@@ -1,6 +1,7 @@
 import Landing from "@/app/(landing)/landing"
 import {sanityClient} from "@/lib/sanity/client";
 import {defineQuery} from "groq";
+import {CONTACT_QUERY} from "@/lib/sanity/queries/contact";
 
 const options = { next: { revalidate: 3600 } };
 
@@ -126,12 +127,6 @@ const PAGE_SECTION_FAQ_QUERY = defineQuery(`*[_type == "pageSectionsFaq"][0] {
         url,
       }
     },
-}`);
-
-const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {
-    _id, 
-    email, 
-    calendly,
 }`);
 
 export default async function LandingPage() {

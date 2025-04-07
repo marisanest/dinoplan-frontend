@@ -12,6 +12,7 @@ import {sanityClient} from "@/lib/sanity/client";
 import OverlayMenu from "@/components/overlayMenu";
 // import { Analytics } from '@vercel/analytics/next';
 import {getMetadata} from "@/lib/metadata";
+import {CONTACT_QUERY} from "@/lib/sanity/queries/contact";
 
 const nunito = Nunito({
     subsets: ['latin'],
@@ -66,11 +67,6 @@ const afacad = localFont({
 })
 
 export const metadata: Metadata = getMetadata();
-
-const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0] {
-    _id, 
-    email, 
-}`);
 
 const options = { next: { revalidate: 3600 } };
 

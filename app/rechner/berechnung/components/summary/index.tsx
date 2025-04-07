@@ -52,7 +52,7 @@ export default function CalculatorCalculationSummary() {
                         </Text>
 
                         <Text className="mb-y-xs mt-[6px]" size="xs">
-                            *&nbsp;<PortableText value={costCalculation?.generalNote}/>
+                            <PortableText value={costCalculation?.generalNote ?? []}/>
                         </Text>
                     </>
                 )
