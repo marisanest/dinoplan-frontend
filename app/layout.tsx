@@ -7,10 +7,9 @@ import Header from "@/components/header";
 import {ReactNode} from "react";
 import localFont from 'next/font/local';
 import Footer from "@/components/footer";
-import {defineQuery} from "groq";
 import {sanityClient} from "@/lib/sanity/client";
 import OverlayMenu from "@/components/overlayMenu";
-// import { Analytics } from '@vercel/analytics/next';
+import { Analytics } from '@vercel/analytics/next';
 import {getMetadata} from "@/lib/metadata";
 import {CONTACT_QUERY} from "@/lib/sanity/queries/contact";
 
@@ -102,7 +101,7 @@ export default async function RootLayout({
             <Header />
             {children}
             <Footer contact={contact} />
-            {/*<Analytics key="analytics" />*/}
+            <Analytics key="analytics" />
         </body>
         </html>
   );
