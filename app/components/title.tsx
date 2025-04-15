@@ -24,15 +24,7 @@ const alignToClasses: { [key: string]: string } = {
 
 export default function Title({className, children, size = 'xl', color = 'text-blue-600', align = 'center'}: TitleProps) {
     return (
-        <TitleContainer className={cn(className, sizeToClasses[size], color, alignToClasses[align])}>
-            {children}
-        </TitleContainer>
-    );
-}
-
-function TitleContainer({className, children}: ReactNodeProps) {
-    return (
-        <div className={cn("flex items-center w-full !font-afacad", className)}>
+        <div className={cn("flex items-center w-full !font-afacad", className, sizeToClasses[size], color, alignToClasses[align])}>
             {children}
         </div>
     );

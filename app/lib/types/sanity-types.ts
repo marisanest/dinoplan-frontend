@@ -98,6 +98,7 @@ export type Customer = {
     costPerMonth: number;
     _key: string;
   }>;
+  state: "Neu" | "In Bearbeitung (Dominik)" | "In Bearbeitung (Florian)" | "Gewonnen (Dominik)" | "Gewonnen (Florian)" | "Verloren (Dominik)" | "Verloren (Florian)" | "Unvollst\xE4ndige Daten";
   note?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -149,50 +150,6 @@ export type CostCalculation = {
 export type PageSectionsPrivacy = {
   _id: string;
   _type: "pageSectionsPrivacy";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-  text: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-};
-
-export type PageSectionsImprint = {
-  _id: string;
-  _type: "pageSectionsImprint";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -862,7 +819,7 @@ export type None = {
   isNone: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | Contact | Customer | CostCalculation | PageSectionsPrivacy | PageSectionsImprint | PageSectionsFaq | Question | PageSectionsAbout | PersonalFeature | PageSectionsServiceModules | PageSectionsServiceFeatures | PageSectionsServiceSegments | PageSectionsStart | ServiceFeature | ServiceSegment | ServiceModule | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Link | None;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | Contact | Customer | CostCalculation | PageSectionsPrivacy | PageSectionsFaq | Question | PageSectionsAbout | PersonalFeature | PageSectionsServiceModules | PageSectionsServiceFeatures | PageSectionsServiceSegments | PageSectionsStart | ServiceFeature | ServiceSegment | ServiceModule | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Link | None;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../dinoplan-frontend/app/page.tsx
 // Variable: PAGE_SECTION_START_QUERY
@@ -1331,49 +1288,6 @@ export type PRIVACY_QUERYResult = {
   }>;
 } | null;
 
-// Source: ../dinoplan-frontend/app/impressum/page.tsx
-// Variable: IMPRINT_QUERY
-// Query: *[_type == "pageSectionsImprint"][0] {    _id,    title,    text,}
-export type IMPRINT_QUERYResult = {
-  _id: string;
-  title: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-  text: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-} | null;
-
 // Source: ../dinoplan-frontend/app/lib/sanity/queries/contact.ts
 // Variable: CONTACT_QUERY
 // Query: *[_type == "contact"][0] {    _id,     email,    calendly,}
@@ -1394,7 +1308,6 @@ declare module "@sanity/client" {
     "*[_type == \"pageSectionsAbout\"][0] {\n    _id, \n    title, \n    description,\n    personalFeatures[] {\n        personalFeature-> {\n           _id,\n           name,\n           description,\n        }\n    },\n    illustration {\n      'height': asset->metadata.dimensions.height,\n      'width': asset->metadata.dimensions.width,\n      asset->{\n        url,\n      }\n    },\n}": PAGE_SECTION_ABOUT_QUERYResult;
     "*[_type == \"pageSectionsFaq\"][0] {\n    _id, \n    title, \n    subTitle,\n    questions[] {\n        question-> {\n           _id,\n           question,\n           answer,\n        }\n    },\n    illustration {\n      'height': asset->metadata.dimensions.height,\n      'width': asset->metadata.dimensions.width,\n      asset->{\n        url,\n      }\n    },\n}": PAGE_SECTION_FAQ_QUERYResult;
     "*[_type == \"pageSectionsPrivacy\"][0] {\n    _id,\n    title,\n    text,\n}": PRIVACY_QUERYResult;
-    "*[_type == \"pageSectionsImprint\"][0] {\n    _id,\n    title,\n    text,\n}": IMPRINT_QUERYResult;
     "*[_type == \"contact\"][0] {\n    _id, \n    email,\n    calendly,\n}": CONTACT_QUERYResult;
   }
 }
