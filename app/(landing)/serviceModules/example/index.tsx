@@ -40,7 +40,7 @@ export default function LandingServiceModulesExample() {
             <div className={cn("w-full flex flex-col items-center transition-[height] duration-700", overflowClass)}
                  style={{ height: selectedServiceModuleIndex === undefined ? '0px' : `${height}px`}}>
                 <div ref={el => setHeight(el?.clientHeight ?? 0)}
-                     className="w-full flex flex-col-reverse xs:grid xs:grid-cols-[4fr_2fr] gap-[1rem] ss:gap-[4rem] pb-y-paragraph">
+                     className="w-full flex flex-col-reverse xs:grid xs:grid-cols-[4fr_2fr] gap-y-[16px] ss:gap-x-[48px] pb-y-paragraph">
                     <LandingServiceModulesExampleText key="text" selectedServiceModule={selectedServiceModule}/>
                     <LandingServiceModulesExampleImage key="image" selectedServiceModule={selectedServiceModule}/>
                 </div>

@@ -9,7 +9,7 @@ export default function LandingAboutDescription() {
     const aboutPageSection = useAppContext(useShallow((s) => s.aboutPageSection));
 
     return (
-        <Text key="description" className="pt-y-paragraph pb-y-section max-w-text" size="sm">
+        <Text key="description" className="py-y-paragraph max-w-text" size="sm">
             {aboutPageSection?.description && <PortableText value={aboutPageSection.description}/>}
         </Text>
     );

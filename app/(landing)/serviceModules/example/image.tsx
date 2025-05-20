@@ -8,7 +8,7 @@ export default function LandingServiceModulesExampleImage({selectedServiceModule
                 <Image
                     src={getImageUrlBuilder(selectedServiceModule.serviceSegment?.illustration)?.url()}
                     alt="Illustration"
-                    className="w-[150px] h-auto xs:w-full xs:max-w-[250px]"
+                    className="w-[150px] h-auto xs:w-full xs:max-w-[200px]"
                     width={selectedServiceModule.serviceSegment?.illustration.width}
                     height={selectedServiceModule.serviceSegment?.illustration.height}
                 />

@@ -20,7 +20,7 @@ type ButtonProps = {
 
 const  responsiveSizesToClasses = {
     md: 'h-[45px] sm:h-[60px] border-[2px] sm:border-[3px]',
-    sm: 'h-[48px] xs:h-[48px] border-[2px]',
+    sm: 'h-[44px] xs:h-[44px] border-[2px]',
     xs: 'h-[40px] xs:h-[45px] border-[2px]',
 }
 
@@ -32,13 +32,13 @@ const sizesToClasses = {
 
 const responsiveToChildrenClasses = {
     md: 'px-[1rem] sm:px-[2rem]',
-    sm: 'px-[1rem] sm:px-[1.5rem]',
+    sm: 'px-[16px] sm:px-[24px]',
     xs: 'px-[1rem] sm:px-[1.25rem]',
 }
 
 const sizesToChildrenClasses = {
     md: 'px-[2rem]',
-    sm: 'px-[1.75rem]',
+    sm: 'px-[26px]',
     xs: 'px-[1.2rem]',
 }
 

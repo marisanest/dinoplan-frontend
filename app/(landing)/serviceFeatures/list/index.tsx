@@ -9,7 +9,7 @@ export default function LandingServiceFeaturesList() {
 
     return (
         <div key="features"
-             className="grid grid-cols-2 ss:grid-cols-3 px-x-xs ss:px-0 py-y-section gap-x-[1.5rem] gap-y-paragraph ss:gap-x-[1.5rem] ss:gap-y-paragraph">
+             className="grid grid-cols-2 ss:grid-cols-3 px-x-xs ss:px-[32px] py-y-section gap-x-[12px] gap-y-paragraph ss:gap-x-[0px] ss:gap-y-paragraph">
             {serviceFeatures.map((serviceFeature) => <LandingServiceFeature key={serviceFeature._id} serviceFeature={serviceFeature}/>)}
         </div>
     );

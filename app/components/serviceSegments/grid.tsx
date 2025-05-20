@@ -15,7 +15,7 @@ export default function ServiceSegmentsGrid() {
     if (screenSizes?.isXs) return null;
 
     return (
-      <div className="w-full hidden ss:grid ss:grid-cols-3 ss:justify-between ss:gap-[1.5rem] sm:gap-[4rem]">
+      <div className="w-full hidden ss:grid ss:grid-cols-3 ss:justify-between ss:gap-[1.5rem] sm:gap-x-[56px]">
             {serviceSegments.map((serviceSegment, index) => (
                 <ServiceSegment
                     key={serviceSegment._id}

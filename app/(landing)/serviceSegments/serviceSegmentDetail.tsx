@@ -36,34 +36,35 @@ export default function LandingServiceSegmentDetail() {
                 "w-full sm:w-sm sm:max-w-sm flex justify-center px-x-s xs:px-x-sm pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-s))] pb-y-s rounded-bl-md bg-orange-400 transition-[transform] duration-1000 pointer-events-auto",
                 typeof selectedServiceSegmentIndex === 'number' || screenSizes?.isXs ? 'translate-y-[calc(-1*var(--dino-bottom-offset))]' : 'translate-y-[-100%] rounded-tr-md'
             )}>
-                <div className="w-fit flex flex-col gap-y-[20px]">
+                <div className="flex flex-col sm:grid sm:grid-cols-2 gap-x-[32px]">
+
+                  <div className="w-full flex flex-col justify-start items-start gap-y-[16px]">
                     <div>
-                        <Title key="title" className="!text-[2rem]" size="lg" align="left">
-                            {selectedServiceSegment && `${selectedServiceSegment?.dinoPrefix}-Dino`}
-                        </Title>
-                        <Text key="title" size="xl" align="left">
-                            {selectedServiceSegment?.dinoSubtitle}
-                        </Text>
+                      <Title key="title" className="!text-[32px]" size="lg" align="left">
+                        {selectedServiceSegment && `${selectedServiceSegment?.dinoPrefix}-Dino`}
+                      </Title>
+                      <Text key="title" size="xl" align="left">
+                        {selectedServiceSegment?.dinoSubtitle}
+                      </Text>
                     </div>
-                    <div className="flex flex-col sm:grid sm:grid-cols-2 gap-x-[32px] sm:gap-x-[40px]">
-                        <div className="flex justify-start items-center w-full">
-                            <Text size="md" align="left" className="gap-y-[16px]" isFlexCol>
-                                <PortableText value={selectedServiceSegment?.description}/>
-                            </Text>
+                    <Text size="md" align="left" className="gap-y-[16px]" isFlexCol>
+                      <PortableText value={selectedServiceSegment?.description}/>
+                    </Text>
+                  </div>
+
+                  <div className="w-full flex justify-center">
+                    <div className="flex flex-col justify-center gap-y-[16px]">
+                      {selectedServiceSegment?.serviceModules?.map((serviceModule: any) => (
+                        <div key={serviceModule.serviceModule?._id}
+                             className="flex items-center gap-x-[16px]">
+                          <CheckmarkDot className={checkmarkDotBackgroundColor}/>
+                          <Text className="break-words"
+                                align="left">{serviceModule.serviceModule.name}</Text>
                         </div>
-                        <div className="w-full flex justify-center">
-                          <div className="flex flex-col gap-y-[16px]">
-                            {selectedServiceSegment?.serviceModules?.map((serviceModule: any) => (
-                              <div key={serviceModule.serviceModule?._id}
-                                   className="flex items-center gap-x-[16px]">
-                                <CheckmarkDot className={checkmarkDotBackgroundColor}/>
-                                <Text className="break-words"
-                                      align="left">{serviceModule.serviceModule.name}</Text>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
+                      ))}
                     </div>
+                  </div>
+
                 </div>
             </div>
         </div>
