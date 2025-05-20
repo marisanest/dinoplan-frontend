@@ -65,6 +65,7 @@ const config: Config = {
       height: {
         banner: 'var(--height-banner)',
         start: 'var(--height-start)',
+        'start-image': 'var(--height-start-image)',
         'start-description': 'var(--height-start-description)',
         'footer-image': 'var(--height-footer-image)',
         'input-field': 'var(--height-input-field)',
@@ -82,6 +83,7 @@ const config: Config = {
         'y-m': 'var(--spacing-y-m)',
 
         'y-outer': 'var(--spacing-y-outer)',
+        'y-block-start': 'var(--spacing-y-block-start)',
         'y-block': 'var(--spacing-y-block)',
         'y-section': 'var(--spacing-y-section)',
         'y-paragraph': 'var(--spacing-y-paragraph)',

@@ -1,6 +1,5 @@
 "use client"
 
-import {ReactNodeProps} from "@/lib/types/core";
 import Image from "next/image";
 import {getImageUrlBuilder} from "@/lib/sanity/image";
 import {useAppContext} from "@/lib/stores/app/context";
@@ -14,28 +13,20 @@ export default function LandingStartBackground() {
     )
 
     return (
-        <LandingStartBackgroundContainer>
+      <div className="absolute w-[100dvw] min-w-[100dvw] max-w-[100dvw] flex justify-center px-x-outer py-y-block bg-orange-200">
+        <div className="w-full max-w-md h-[calc(100dvh-2*var(--spacing-y-block)-var(--height-banner))] ss:h-start flex items-center ss:items-start">
             {
                 startPageSection && (
                     <Image
                         src={getImageUrlBuilder(startPageSection?.illustration)?.height(startPageSection.illustration?.height * 0.5).url()}
-                        alt="Illustration"
-                        className="ml-auto w-full h-auto ss:h-[475px] ss:w-auto text-blue-600 text-right"
+                        alt=""
+                        className="w-full h-auto ss:h-start-image ss:w-auto ml-auto"
                         width={startPageSection.illustration?.width}
                         height={startPageSection.illustration?.height}
                     />
                 )
             }
-        </LandingStartBackgroundContainer>
-    );
-}
-
-function LandingStartBackgroundContainer({children}: ReactNodeProps) {
-    return (
-        <div className="absolute w-full flex justify-center px-x-outer py-y-block bg-orange-200">
-            <div className="w-full max-w-md h-[calc(100dvh-2*var(--spacing-y-block)-var(--height-banner))] ss:h-start flex items-center ss:items-start">
-                {children}
-            </div>
         </div>
-    )
+      </div>
+    );
 }

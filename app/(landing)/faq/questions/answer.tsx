@@ -19,7 +19,7 @@ export default function LandingFaqQuestionAnswer({question}: { question: any }) 
             <div ref={el => setHeight(el?.clientHeight ?? 0)}
                  className="w-full pb-[1.2rem] grid grid-cols-[1fr_28px]"
             >
-                <Text size="md" align="left">
+                <Text className="gap-y-[16px]" size="md" align="left" isFlexCol={true} >
                     <PortableText value={question.answer}/>
                 </Text>
                 <div/>

@@ -36,15 +36,7 @@ const colorToClasses: { [key: string]: string } = {
 
 export default function Text({className, children, size = 'lg', color = 'blue', align = 'center', isFlexCol = false}: TextProps) {
     return (
-        <TextContainer className={cn(className, sizeToClasses[size], colorToClasses[color], isFlexCol ? alignToClassesFlexCol[align] : alignToClasses[align], isFlexCol && 'flex-col')}>
-            {children}
-        </TextContainer>
-    );
-}
-
-function TextContainer({className, children}: ReactNodeProps) {
-    return (
-        <div className={cn("flex w-full", className)}>
+        <div className={cn("flex w-full", className, sizeToClasses[size], colorToClasses[color], isFlexCol ? alignToClassesFlexCol[align] : alignToClasses[align], isFlexCol && 'flex-col')}>
             {children}
         </div>
     );
