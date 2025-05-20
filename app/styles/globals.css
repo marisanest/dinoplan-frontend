@@ -1,8 +1,8 @@
 :root {
     --spacing-x-xxs: 20px;
     --spacing-x-xs: 3rem;
-    --spacing-x-s: 4rem;
-    --spacing-x-sm: 5rem;
+    --spacing-x-s: 64px;
+    --spacing-x-sm: 64px;
     --spacing-x-outer: 5rem;
 
     --spacing-y-xs: 2rem;
@@ -32,7 +32,7 @@
     --height-start-image: 375px;
     --height-start: 500px;
 
-    --width-sm: 775px;
+    --width-sm: 750px;
     --width-md: 900px;
     --width-text: 550px;
     --width-text-lg: 750px;

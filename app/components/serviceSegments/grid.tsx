@@ -3,7 +3,6 @@
 import {useShallow} from "zustand/react/shallow";
 import useScreenSizes from "@/lib/hooks/useScreenSizes";
 import ServiceSegment from "@/components/serviceSegments/serviceSegment";
-import {ReactNodeProps} from "@/lib/types/core";
 import {useAppContext} from "@/lib/stores/app/context";
 
 export default function ServiceSegmentsGrid() {
@@ -16,7 +15,7 @@ export default function ServiceSegmentsGrid() {
     if (screenSizes?.isXs) return null;
 
     return (
-        <ServiceSegmentsGridContainer>
+      <div className="w-full hidden ss:grid ss:grid-cols-3 ss:justify-between ss:gap-[1.5rem] sm:gap-[4rem]">
             {serviceSegments.map((serviceSegment, index) => (
                 <ServiceSegment
                     key={serviceSegment._id}
@@ -24,14 +23,6 @@ export default function ServiceSegmentsGrid() {
                     index={index}
                     serviceSegment={serviceSegment}/>
             ))}
-        </ServiceSegmentsGridContainer>
-    );
-}
-
-function ServiceSegmentsGridContainer({children}: ReactNodeProps) {
-    return (
-        <div className="w-full hidden ss:grid ss:grid-cols-3 ss:justify-between ss:gap-[1.5rem] sm:gap-[4rem] sm:px-[15px]">
-            {children}
         </div>
     );
 }
