@@ -7,8 +7,11 @@ import {
   PAGE_SECTION_SERVICE_SEGMENTS_QUERYResult,
   PAGE_SECTION_START_QUERYResult, ServiceFeature, ServiceModule, ServiceSegment
 } from "@/lib/types/sanity-types";
+import { WindowSizeType } from "@/lib/types/core";
 
 export interface AppStoreProps {
+  windowSize: WindowSizeType;
+
   startPageSection: PAGE_SECTION_START_QUERYResult;
   serviceSegmentsPageSection: PAGE_SECTION_SERVICE_SEGMENTS_QUERYResult;
   serviceFeaturesPageSection: PAGE_SECTION_SERVICE_FEATURES_QUERYResult;
@@ -30,6 +33,7 @@ export interface AppStoreProps {
 }
 
 export interface AppStoreActions {
+  setWindowSize: (windowSize: WindowSizeType) => void;
   selectServiceSegment: (serviceSegmentIndex: number) => void;
   selectPrevServiceSegment: () => void;
   selectNextServiceSegment: () => void;
@@ -41,7 +45,7 @@ export interface AppStoreState extends AppStoreProps, AppStoreActions {}
 
 export type AppStore = ReturnType<typeof createAppStore>
 
-export const createAppStore = (initProps: Pick<AppStoreProps, 'startPageSection' | 'serviceSegmentsPageSection' | 'serviceFeaturesPageSection' | 'serviceModulesPageSection' | 'aboutPageSection' | 'faqPageSection' | 'contact'>) => {
+export const createAppStore = (initProps: Pick<AppStoreProps, 'windowSize' | 'startPageSection' | 'serviceSegmentsPageSection' | 'serviceFeaturesPageSection' | 'serviceModulesPageSection' | 'aboutPageSection' | 'faqPageSection' | 'contact'>) => {
   const DEFAULT_PROPS: AppStoreProps = {
     serviceSegments: initProps.serviceSegmentsPageSection?.serviceSegments ? initProps.serviceSegmentsPageSection.serviceSegments.map((s: any) => s?.serviceSegment).filter(Boolean) : [],
     selectedServiceSegmentIndex: 0,
@@ -58,6 +62,7 @@ export const createAppStore = (initProps: Pick<AppStoreProps, 'startPageSection'
 
   return createStore<AppStoreState>()((set, get) => ({
     ...DEFAULT_PROPS,
+    setWindowSize: (windowSize: WindowSizeType) => set({ windowSize }),
     selectServiceSegment: (serviceSegmentIndex) => {
       const currentSelectedServiceSegmentIndex = get().selectedServiceSegmentIndex;
 

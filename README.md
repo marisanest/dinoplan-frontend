@@ -1,4 +1,9 @@
 # Todo
+* Datenschutz
+* Calendly gegen neuen Kalender
+
+
+
 * CSS: text-wrap: balanced or pretty;
 * Wenn auf Dino geklickt wird: Es wird mit gescrollt
 * Effekte beim klicken

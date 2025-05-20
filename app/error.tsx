@@ -41,12 +41,12 @@ export default function Error() {
                     url: '/'
                 }}>
                     <Text className="pr-[10px]" color="yellow" size="md">Zurück zur Startseite</Text>
-                    <ArrowIcon color="var(--orange-200)" className="-rotate-90"/>
+                    <ArrowIcon strokeColor="var(--orange-200)" className="rotate-90"/>
                 </Button>
 
                 <EmailLink className="flex justify-center items-center" href="info@dinoplan.de">
                     <Text className="pr-[8px]" color="blue" size="md">Kontakt</Text>
-                    <ArrowIcon className="-rotate-90"/>
+                    <ArrowIcon className="rotate-90"/>
                 </EmailLink>
             </div>
         </div>

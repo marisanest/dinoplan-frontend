@@ -9,7 +9,7 @@ const useQuestionsStore = create<UseQuestionsStoreProps>((set, get) => ({
   selectedQuestion: null,
   selectQuestion: (question) => {
     const selectedQuestion = get().selectedQuestion;
-    const nextSelectedQuestion = selectedQuestion && selectedQuestion.id === question.id ? null : question
+    const nextSelectedQuestion = selectedQuestion && selectedQuestion._id === question._id ? null : question
 
     set({
       selectedQuestion: nextSelectedQuestion,

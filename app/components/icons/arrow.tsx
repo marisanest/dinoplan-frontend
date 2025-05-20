@@ -1,18 +1,15 @@
 import {ReactNodeProps} from "@/lib/types/core";
 
 export type ArrowIconProps = {
-    color?: string;
-    scale?: number;
+  strokeColor?: string;
+  scale?: number;
 } & ReactNodeProps
 
-export default function ArrowIcon({ className, color = '#294290', scale = 0.9 }: ArrowIconProps) {
+export default function ArrowIcon({ className, strokeColor = '#294290', scale = 0.7 }: ArrowIconProps) {
     return (
-        <svg className={className} xmlns="http://www.w3.org/2000/svg" width={17.197*scale} height={11.102*scale} viewBox="0 0 17.197 11.102">
-            <g transform="translate(2.121 8.981) rotate(-90)">
-                <path d="M0,0" transform="translate(2.314 6.629)" fill="none" stroke={color} strokeLinecap="round" strokeWidth="3"/>
-                <path d="M0,0,6.86,6.328" transform="translate(0 6.629)" fill="none" stroke={color} strokeLinecap="round" strokeWidth="3"/>
-                <path d="M0,6.629,6.86,0" fill="none" stroke={color} strokeLinecap="round" strokeWidth="3"/>
-            </g>
-        </svg>
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" width={scale * 18} height={scale * 11} viewBox="0 0 18 11" fill="none">
+        <path d="M9 2L2 9" stroke={strokeColor} strokeWidth="3" strokeLinecap="round"/>
+        <path d="M9 2L16 9" stroke={strokeColor} strokeWidth="3" strokeLinecap="round"/>
+      </svg>
     );
 }
