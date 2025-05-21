@@ -2,6 +2,14 @@
 * Datenschutz
 * Calendly gegen neuen Kalender
 
+* sizing: buttons, mobile
+* die info boxen noch mal gerade ziehen
+* alle seiten so, dass erst was angezeogt wird, wenn im frontend (wie bei max.valentin)
+* bei kalender scroll to to bei load der seite
+* bei kalender: loading animation oder sowas
+
+later:
+* cookie banner
 
 
 * CSS: text-wrap: balanced or pretty;
