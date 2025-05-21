@@ -33,11 +33,10 @@ export default function LandingServiceSegmentDetail() {
     return (
         <div className="w-full flex justify-center px-x-s xs:px-x-sm sm:px-0">
             <div className={cn(
-                "w-full sm:w-sm sm:max-w-sm flex justify-center px-x-s xs:px-x-sm pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-s))] pb-y-s rounded-bl-md bg-orange-400 transition-[transform] duration-1000 pointer-events-auto",
+                "w-full sm:w-sm max-w-sm flex justify-center px-x-s xs:px-x-sm pt-[calc(var(--dino-bottom-offset)+var(--spacing-y-s))] pb-y-s rounded-bl-md bg-orange-400 transition-[transform] duration-1000 pointer-events-auto",
                 typeof selectedServiceSegmentIndex === 'number' || screenSizes?.isXs ? 'translate-y-[calc(-1*var(--dino-bottom-offset))]' : 'translate-y-[-100%] rounded-tr-md'
             )}>
-                <div className="flex flex-col sm:grid sm:grid-cols-2 gap-x-[32px]">
-
+                <div className="flex flex-col sm:grid sm:grid-cols-2 gap-x-[32px] gap-y-[16px]">
                   <div className="w-full flex flex-col justify-start items-start gap-y-[16px]">
                     <div>
                       <Title key="title" className="!text-[32px]" size="lg" align="left">
@@ -52,7 +51,7 @@ export default function LandingServiceSegmentDetail() {
                     </Text>
                   </div>
 
-                  <div className="w-full flex justify-center">
+                  <div className="w-full flex sm:justify-center">
                     <div className="flex flex-col justify-center gap-y-[16px]">
                       {selectedServiceSegment?.serviceModules?.map((serviceModule: any) => (
                         <div key={serviceModule.serviceModule?._id}
