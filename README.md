@@ -1,6 +1,5 @@
 # Todo
 * Datenschutz
-* Calendly gegen neuen Kalender
 
 * sizing: buttons, mobile
 * die info boxen noch mal gerade ziehen
@@ -25,3 +24,11 @@ later:
 * Video
 * Auf der Error-Page die E-mal anpassen
 * wenn ein form feld abgesendet wird: alles disablen, so dass man versteht was passiert
+
+TODOS FACEBOOK
+* Facebookpage: bio-text
+* Kampagne: 
+  * Texte noch mal schauen
+  * ggf. mini video / animation?
+* Für nadja raus finden: welche formate und welchedanger zones
+* Dominik: analytics: jain, facebook: ja, website: nein

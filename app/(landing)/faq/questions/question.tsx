@@ -30,7 +30,7 @@ export default function LandingFaqQuestion({question}: {question: any}) {
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-[1fr_27px] xs:grid-cols-[1fr_30px] cursor-pointer my-[12px] sm:my-[16px]"
+      <div className="grid grid-cols-[1fr_27px] xs:grid-cols-[1fr_30px] gap-x-[16px] cursor-pointer my-[12px] sm:my-[16px]"
            onClick={() => selectQuestion(question)}>
 
         <Text align="left" size="lg">{question.question}</Text>
