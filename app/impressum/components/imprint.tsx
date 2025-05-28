@@ -13,8 +13,8 @@ export default function Imprint() {
                         <p>
                             Dominik Nolden<br/>
                             Versicherungsmakler<br/>
-                            Kurf&uuml;rstendamm 195<br/>
-                            10707 Berlin
+                            Baron-Carl-Straße 7<br/>
+                            74740 Adelsheim
                         </p>
                     </div>
                 </Text>
@@ -28,7 +28,7 @@ export default function Imprint() {
                     <div>
                         <p>
                             Telefon: +49 (0) 171 230 2322<br/>
-                            E-Mail:  <a href="mailto:info@dinoplan.de" target="_blank" rel="noopener noreferrer">info@dinoplan.de</a>
+                            E-Mail:  <a href="mailto:hallo@dinoplan.de" target="_blank" rel="noopener noreferrer">hallo@dinoplan.de</a>
                         </p>
                     </div>
                 </Text>
