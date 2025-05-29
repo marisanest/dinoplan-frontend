@@ -68,7 +68,7 @@ const afacad = localFont({
 
 export const metadata: Metadata = getMetadata();
 
-const options = { next: { revalidate: 3600 } };
+const options = { next: { revalidate: 300 } };
 
 export default async function RootLayout({
   children,

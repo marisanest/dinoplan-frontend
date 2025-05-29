@@ -3,7 +3,7 @@ import {sanityClient} from "@/lib/sanity/client";
 import {defineQuery} from "groq";
 import {CONTACT_QUERY} from "@/lib/sanity/queries/contact";
 
-const options = { next: { revalidate: 0 } };
+const options = { next: { revalidate: 300 } };
 
 const PAGE_SECTION_START_QUERY = defineQuery(`*[_type == "pageSectionsStart"][0] {
     _id, 

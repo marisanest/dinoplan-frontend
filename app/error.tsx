@@ -9,6 +9,7 @@ import ArrowIcon from "@/components/icons/arrow";
 import EmailLink from "@/components/link/email";
 import type {Metadata} from "next";
 import {getMetadata} from "@/lib/metadata";
+import { FALLBACK_EMAIL } from "@/lib/constants/app";
 
 export const metadata: Metadata = getMetadata(
     "Dinoplan | Error"
@@ -44,7 +45,7 @@ export default function Error() {
                     <ArrowIcon strokeColor="var(--orange-200)" className="rotate-90"/>
                 </Button>
 
-                <EmailLink className="flex justify-center items-center" href="info@dinoplan.de">
+                <EmailLink className="flex justify-center items-center" href={FALLBACK_EMAIL ?? ''}>
                     <Text className="pr-[8px]" color="blue" size="md">Kontakt</Text>
                     <ArrowIcon className="rotate-90"/>
                 </EmailLink>

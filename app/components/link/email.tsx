@@ -12,6 +12,8 @@ export default function EmailLink({
 }: EmailLinkProps): ReactNode {
   return (
       <a className={className}
+         target="_blank"
+         rel="noopener noreferrer"
          href={`mailto:${href}`}>
         {children && children}
       </a>

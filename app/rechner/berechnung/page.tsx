@@ -11,7 +11,7 @@ export const metadata: Metadata = getMetadata(
   "Berechne jetzt deinen Beitrag!",
 );
 
-const options = { next: { revalidate: 0 } };
+const options = { next: { revalidate: 300 } };
 
 const PAGE_SECTION_SERVICE_SEGMENTS_QUERY = defineQuery(`*[_type == "pageSectionsServiceSegments"][0] {
     serviceSegments[] {

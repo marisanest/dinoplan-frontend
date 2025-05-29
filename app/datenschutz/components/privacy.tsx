@@ -1,8 +1,7 @@
 import Title from "@/components/title";
-import {PortableText} from "next-sanity";
-import Text from "@/components/text/text";
+import EmailLink from "@/components/link/email";
 
-export default function Privacy() {
+export default function Privacy({ contact }) {
     return (
       <main
         className="bg-orange-300 min-h-[calc(100dvh-var(--height-banner)-var(--height-footer-image)+var(--spacing-footer-image-correction))] h-fit pt-[calc(var(--height-banner)+var(--spacing-y-block))] pb-[var(--spacing-y-block)] px-x-outer flex flex-col justify-center items-center w-full">
@@ -51,7 +50,7 @@ export default function Privacy() {
           </Title>
 
           <p>Dominik Nolden<br />Kurfürstendamm 195<br />10707 Berlin, Deutschland</p>
-          <p>E-Mail-Adresse: <a href="mailto:info@dinoplan.de">info@dinoplan.de</a></p>
+          <p>E-Mail-Adresse: <EmailLink href={contact.email.email}>{contact.email.email}</EmailLink></p>
           <p>Impressum: <a href="https://dinoplan.de/impressum" target="_blank">https://dinoplan.de/impressum</a></p>
 
           <Title size="md" align="left">

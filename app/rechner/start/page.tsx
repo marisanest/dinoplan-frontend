@@ -10,7 +10,7 @@ export const metadata: Metadata = getMetadata(
   "Berechne jetzt deinen Beitrag!",
 );
 
-const options = { next: { revalidate: 0 } };
+const options = { next: { revalidate: 300 } };
 
 export default async function CalculatorStartPage() {
   const customerId = cookies().get('customerId')?.value

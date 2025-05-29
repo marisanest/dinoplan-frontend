@@ -1,7 +1,8 @@
 import Title from "@/components/title";
 import Text from "@/components/text/text";
+import EmailLink from "@/components/link/email";
 
-export default function Imprint() {
+export default function Imprint({contact}) {
     return (
         <main className="bg-orange-300 min-h-[calc(100dvh-var(--height-banner)-var(--height-footer-image)+var(--spacing-footer-image-correction))] h-fit pt-[calc(var(--height-banner)+var(--spacing-y-block))] pb-[var(--spacing-y-block)] px-x-outer flex flex-col gap-y-[24px] justify-center items-center w-full">
             <div>
@@ -28,7 +29,7 @@ export default function Imprint() {
                     <div>
                         <p>
                             Telefon: +49 (0) 171 230 2322<br/>
-                            E-Mail:  <a href="mailto:hallo@dinoplan.de" target="_blank" rel="noopener noreferrer">hallo@dinoplan.de</a>
+                            E-Mail: <EmailLink href={contact.email.email}>{contact.email.email}</EmailLink>
                         </p>
                     </div>
                 </Text>
