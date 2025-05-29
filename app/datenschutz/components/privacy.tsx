@@ -49,7 +49,12 @@ export default function Privacy({ contact }) {
             <h2>Verantwortlicher</h2>
           </Title>
 
-          <p>Dominik Nolden<br />Kurfürstendamm 195<br />10707 Berlin, Deutschland</p>
+          <p>
+            Dominik Nolden<br/>
+            Baron-Carl-Straße 7<br/>
+            74740 Adelsheim
+          </p>
+
           <p>E-Mail-Adresse: <EmailLink href={contact.email.email}>{contact.email.email}</EmailLink></p>
           <p>Impressum: <a href="https://dinoplan.de/impressum" target="_blank">https://dinoplan.de/impressum</a></p>
 
